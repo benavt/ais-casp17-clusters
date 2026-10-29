@@ -3,9 +3,7 @@
  'use strict';
  let expanded = null, returnFocus = null, cohort = null;
  const resize = () => requestAnimationFrame(() => {
-  document.querySelectorAll('.js-plotly-plot').forEach(plot => {
-   if (plot.getBoundingClientRect().width && plot.getBoundingClientRect().height) Plotly.Plots.resize(plot);
-  });
+  AtlasResponsive.schedule();
   window.dispatchEvent(new Event('resize'));
  });
  function restore() {
