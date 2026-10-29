@@ -73,7 +73,7 @@
     }
     function draw() {
       if (!payload) return;
-      const width = Math.max(280, Math.round(svg.getBoundingClientRect().width || 1000)), height = Math.min(700, Math.max(380, Math.round(width * .62)));
+      const width = Math.max(160, Math.round(svg.getBoundingClientRect().width || 1000)), height = Math.min(620, Math.max(260, Math.round(width * .8)), Math.max(260, (window.visualViewport?.height || window.innerHeight || 800) - 260));
       lastWidth = width; svg.setAttribute('viewBox', `0 0 ${width} ${height}`); svg.style.height = height + 'px';
       const layout = payload.layouts.find(x => x.key === select.value) || payload.layouts[0];
       const color = colorResolver(scheme, projection), byName = new Map(data.models.map((n, i) => [n, i]));
