@@ -46,11 +46,12 @@
  function tools(node){
   if(node.nextElementSibling?.classList.contains('plot-tools'))return;
   const bar=document.createElement('div');bar.className='plot-tools';bar.setAttribute('aria-label','Plot controls');
-  for(const [text,action]of [['Zoom in',()=>zoom(node,.7)],['Zoom out',()=>zoom(node,1.4)],['Reset plot',()=>root.Plotly.relayout(node,{'xaxis.autorange':true,'yaxis.autorange':node.data?.some(t=>t.type==='heatmap')?'reversed':true})],['Save PNG',()=>root.Plotly.downloadImage(node,{format:'png',filename:node.id,width:Math.max(900,node.layout.width),height:Math.max(650,node.layout.height)})]]){
+  for(const [text,action]of [['Zoom in',()=>zoom(node,.7)],['Zoom out',()=>zoom(node,1.4)],['Reset plot',()=>reset(node)],['Save PNG',()=>root.Plotly.downloadImage(node,{format:'png',filename:node.id,width:Math.max(900,node.layout.width),height:Math.max(650,node.layout.height)})]]){
    const button=document.createElement('button');button.type='button';button.textContent=text;button.onclick=()=>Promise.resolve(action()).catch(error=>console.error(error));bar.append(button);
   }
   node.insertAdjacentElement('afterend',bar);
  }
+ function reset(node){const saved=records.get(node);if(!saved)return;const spec=prepare(node,saved.traces,saved.layout,saved.config),update={};for(const key of ['xaxis','yaxis']){const axis=spec.layout[key]||{};if(axis.range){update[key+'.range']=[...axis.range];update[key+'.autorange']=false}else update[key+'.autorange']=axis.autorange==='reversed'?'reversed':true}return root.Plotly.relayout(node,update)}
  function zoom(node,factor){const update={};for(const axis of ['xaxis','yaxis']){const range=node._fullLayout?.[axis]?.range;if(!range?.every(Number.isFinite))continue;const mid=(range[0]+range[1])/2,half=(range[1]-range[0])*factor/2;update[axis+'.range']=[mid-half,mid+half]}return root.Plotly.relayout(node,update)}
  async function react(node,traces,layout,config){
   if(typeof node==='string')node=document.getElementById(node);
