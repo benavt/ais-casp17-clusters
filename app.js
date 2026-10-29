@@ -87,7 +87,10 @@ async function drawCandidateReview(){
 async function drawMedoidTM(){
  const grid=data.medoid_tm;$('medoidTMTitle').textContent=grid?.title||'TM similarity across cluster medoids';$('medoidTM').hidden=!grid;$('medoidTMNote').textContent=grid?.note||'The complete medoid matrix is being prepared; no truncated grid is substituted.';$('medoidTMCsv').hidden=!grid?.csv;if(!grid)return;
  if(grid.csv)$('medoidTMCsv').href=grid.csv;
- const n=grid.labels.length;await Plotly.react($('medoidTM'),[{type:'heatmap',z:grid.matrix,x:grid.labels,y:grid.labels,zmin:0,zmax:1,colorscale:'Plasma',text:grid.matrix.map(row=>row.map(v=>Number.isFinite(v)?v.toFixed(2):'')),texttemplate:n<=15?'%{text}':'',colorbar:{title:{text:'TM similarity'}},hovertemplate:'%{y} / %{x}<br>TM: %{z:.4f}<extra></extra>'}],{paper_bgcolor:'#fff',margin:{l:85,r:30,t:20,b:100},font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{tickangle:-55},yaxis:{autorange:'reversed',scaleanchor:'x'},height:Math.max(500,Math.min(1000,250+n*18))},{responsive:true,displaylogo:false,toImageButtonOptions:{format:'svg',filename:data.target+'_'+data.view_id+'_medoid_TM'}});
+ const n=grid.labels.length,height=Math.max(500,Math.min(1000,250+n*18));
+ // Reserve the rendered plot height in document flow, including after subset changes.
+ $('medoidTM').style.height=height+'px';
+ await Plotly.react($('medoidTM'),[{type:'heatmap',z:grid.matrix,x:grid.labels,y:grid.labels,zmin:0,zmax:1,colorscale:'Plasma',text:grid.matrix.map(row=>row.map(v=>Number.isFinite(v)?v.toFixed(2):'')),texttemplate:n<=15?'%{text}':'',colorbar:{title:{text:'TM similarity'}},hovertemplate:'%{y} / %{x}<br>TM: %{z:.4f}<extra></extra>'}],{paper_bgcolor:'#fff',margin:{l:85,r:30,t:20,b:100},font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{tickangle:-55},yaxis:{autorange:'reversed',scaleanchor:'x'},height},{responsive:true,displaylogo:false,toImageButtonOptions:{format:'svg',filename:data.target+'_'+data.view_id+'_medoid_TM'}});
  $('medoidTM').removeAllListeners('plotly_click');$('medoidTM').on('plotly_click',e=>choose(e.points[0].x).catch(fail));
 }
 
