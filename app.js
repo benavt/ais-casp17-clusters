@@ -1,7 +1,7 @@
 'use strict';
 let atlas,data,viewer,selected=null,spinning=false,loadSerial=0,targetRequest=0,modelDownloadURL=null,ensembleDownloadURL=null;
 const $=id=>document.getElementById(id), escapeText=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-async function json(url){let r;try{r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(30000)})}catch(error){throw Error('The atlas service is unavailable. Reopen the local atlas or request a fresh private preview; models in an already loaded analysis remain available.')}if(!r.ok)throw Error(`Could not load ${url}: ${r.status}`);return r.json()}
+async function json(url){let r;try{r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(30000)})}catch(error){throw Error('The atlas could not load this analysis. Check your connection and reload the page.')}if(!r.ok)throw Error(`Could not load ${url}: ${r.status}`);return r.json()}
 function fail(error){$('error').hidden=false;$('error').textContent=error.message||String(error);console.error(error)}
 function population(count){const percent=100*count/data.models.length;return percent<.1?'<0.1%':percent.toFixed(1)+'%'}
 function scheme(){return data.schemes.find(x=>x.key===$('color').value)}
@@ -38,12 +38,12 @@ async function choose(label){
  $('modelTitle').textContent=label+' · '+(ensemble?(data.ensemble_kind||'comparison ensemble'):(data.representative_kind||'structural medoid'));$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(cluster.tm_to_reference)?' · TM (5–95): '+cluster.tm_to_reference.toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_text;$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)$('ensemblePse').href=cluster.ensemble_pse;
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:label==='C1.1'?[]:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
-function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?');return {target,view:new URLSearchParams(query).get('view')||'whole'}}
-async function load(target,viewId='whole'){
+function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?');return {target,view:new URLSearchParams(query).get('view')||'primary'}}
+async function load(target,viewId='primary'){
  const request=++targetRequest;++loadSerial;
  $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');viewer.spin(false);viewer.removeAllModels();viewer.render();
  const found=atlas.targets.find(x=>x.id===target)||atlas.targets[0],base=await json(found.data),view=(base.views||[]).find(x=>x.id===viewId);
- const loaded=view&&view.id!=='whole'?await json(view.data):base;if(request!==targetRequest)return;data=loaded;selected=null;
+ const loaded=view&&view.id!=='whole'?await json(view.data):base;if(request!==targetRequest)return;data=loaded;selected=null;window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base}}));
  const previousColor=$('color').value,requestedColor=new URLSearchParams(location.search).get('color');
  $('analysisViewLabel').hidden=!base.views;$('analysisView').replaceChildren(...(base.views||[]).map(x=>Object.assign(document.createElement('option'),{value:x.id,textContent:x.name})));$('analysisView').value=view?.id||'whole';
  $('title').textContent=data.view_title||data.target;$('summary').textContent=`${data.models.length.toLocaleString()} models · ${new Set(data.methods).size} methods · ${data.representatives.length} clusters · ${data.residues} residues in supplied construct`;
@@ -57,7 +57,7 @@ async function load(target,viewId='whole'){
  const preferredColor=previousColor||requestedColor;if(visibleSchemes.some(s=>s.key===preferredColor&&!s.unavailable))$('color').value=preferredColor;
  $('members').href=data.membership_file;$('clusterRows').replaceChildren();
  for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+Number(c.tm_to_reference).toFixed(3)+'</td>':''}<td>${c.ensemble_file?'<a download href="'+escapeText(c.ensemble_file)+'">PDB</a>':''} ${c.ensemble_pse?'<a download href="'+escapeText(c.ensemble_pse)+'">PSE</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
- $('heatmaps').replaceChildren(...data.heatmaps.map(p=>{const a=document.createElement('a');a.href=p.file;a.target='_blank';const img=document.createElement('img');img.src=p.file;img.alt=p.name;img.loading='lazy';a.append(img);return a}));
+ $('heatmaps').replaceChildren(...data.heatmaps.map(p=>{const a=document.createElement('a');a.href=p.file;a.target='_blank';const img=document.createElement('img');img.src=p.file;img.alt=p.name;img.loading='lazy';a.append(img);const figure=document.createElement('figure'),caption=document.createElement('figcaption');caption.textContent=p.name;figure.append(a,caption);return figure}));
  $('mask').textContent=data.mask_note;$('provenance').textContent=JSON.stringify(data.provenance,null,2);
  await draw();if(request===targetRequest)await choose(data.representatives[0].cluster);
 }
