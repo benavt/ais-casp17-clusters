@@ -3,7 +3,7 @@
  'use strict';
  const content=document.getElementById('targetContextContent');
  let currentTarget=null;
- const source=new URL('target-context.json?v=e8375a13857d',document.currentScript.src);
+ const source=new URL('target-context.json',document.currentScript.src);
  const records=fetch(source).then(response=>{if(!response.ok)throw Error('Target context unavailable');return response.json()}).catch(()=>null);
  function element(tag,text,className){const node=document.createElement(tag);if(text)node.textContent=text;if(className)node.className=className;return node}
  function reference(record){
@@ -29,9 +29,9 @@
   document.getElementById('targetContext').dataset.target=target;
  }
  window.addEventListener('atlas:cohort',async event=>{
-  const target=event.detail.current.target;currentTarget=target;
+  const current=event.detail.current,target=current.target;currentTarget=target;const sequence=current.provenance?.sequence_sha256||current.provenance?.original_parent_provenance?.sequence_sha256;
   content.replaceChildren(element('p','Biological context','eyebrow'),element('h3',target.split('_')[0]),element('p','Loading target records…'));
-  try{const metadata=await records;if(currentTarget!==target)return;const entry=metadata.targets[target];if(!entry)throw Error('Target context unavailable');render(target,entry,metadata.verified_on)}
+  try{const metadata=await records;if(currentTarget!==target)return;const entry=metadata.targets[target];if(!entry)throw Error('Target context unavailable');const recorded=entry.provenance?.analysis_sequence_sha256;if(!sequence||!recorded||sequence!==recorded)throw Error('Target sequence does not match the context record');render(target,entry,metadata.verified_on)}
   catch(error){if(currentTarget===target)content.replaceChildren(element('h3',target.split('_')[0]+' · Target context'),element('p','The project write-up and reference records are not available for this target yet.'))}
  });
 })();

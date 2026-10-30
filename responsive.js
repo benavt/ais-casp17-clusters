@@ -5,7 +5,8 @@
  const short=value=>String(value).replace(/^Cluster\s+/,'C');
  const tickSet=(labels,count)=>{const step=Math.max(1,Math.ceil(labels.length/count)),indices=labels.map((_,i)=>i).filter(i=>i%step===0);if(indices.at(-1)!==labels.length-1){if(indices.length>1&&labels.length-1-indices.at(-1)<step)indices.pop();indices.push(labels.length-1)}return indices.map(i=>labels[i])};
  function dimensions(node){
-  const width=Math.max(1,Math.round(node.getBoundingClientRect().width||node.parentElement.getBoundingClientRect().width||root.innerWidth-32));
+  const frame=node.id==='tmViolin'?node.closest?.('.plot-scroll'):null;
+  const width=Math.max(1,Math.round(frame?.getBoundingClientRect().width||node.getBoundingClientRect().width||node.parentElement.getBoundingClientRect().width||root.innerWidth-32));
   return {width,small:width<600,viewport:Math.max(320,root.visualViewport?.height||root.innerHeight||800),maximized:!!node.closest('.is-maximized')};
  }
  function title(value){return typeof value==='string'?{text:value}:value||{}}
@@ -15,7 +16,7 @@
   if(sharedLegend){
    const continuous=data.some(t=>t.marker?.showscale),legendCount=data.filter(t=>t.showlegend!==false).length;
    const entryWidth=small?.5:150,columns=small?2:Math.max(1,Math.floor((width-24)/(entryWidth+40)));
-   next.height=continuous?(legendCount?112:88):Math.max(52,Math.min(260,20+Math.ceil(legendCount/columns)*22));
+   next.height=continuous?(legendCount?112:88):Math.max(52,20+Math.ceil(legendCount/columns)*22);
    next.margin={l:8,r:8,t:8,b:8,autoexpand:false};
    next.legend={...layout.legend,orientation:'h',x:0,xanchor:'left',y:1,yanchor:'top',maxheight:1,font:{size:12},entrywidth:entryWidth,entrywidthmode:small?'fraction':'pixels'};
    for(const trace of data)if(trace.marker?.showscale)trace.marker.colorbar={...trace.marker.colorbar,orientation:'h',x:.5,xanchor:'center',y:.16,yanchor:'bottom',len:Math.min(.9,700/width),thickness:12,title:{...title(trace.marker.colorbar?.title),side:'top',font:{size:12}},tickfont:{size:11}};
@@ -39,8 +40,16 @@
    next.uirevision=layout.uirevision||node.id+'-'+labels.join('|');
    if(layout.title)next.title={...title(layout.title),font:{size:small?12:15},xref:'paper',x:.5,xanchor:'center',yref:'paper',y:1+(margin.t-24)/side,yanchor:'top'};
    for(const trace of data)if(trace.type==='heatmap')trace.colorbar={...trace.colorbar,orientation:'h',x:.5,xanchor:'center',y:1.025,yanchor:'bottom',len:Math.min(.88,side/space),thickness:12,outlinewidth:0,tickfont:{size:11},title:{...title(trace.colorbar?.title),side:'top',font:{size:12}}};
+  }else if(node.id==='tmViolin'){
+   const labels=[...new Set(data.flatMap(t=>t.x||[]))],plotWidth=Math.max(width,100+labels.length*64);
+   next.width=plotWidth;next.height=540;next.showlegend=false;
+   next.margin={l:72,r:24,t:28,b:125,autoexpand:false};
+   next.xaxis={...layout.xaxis,type:'category',categoryorder:'array',categoryarray:labels,tickmode:'array',tickvals:labels,ticktext:labels.map(value=>String(value).replace(' · ','<br>')),tickangle:-45,automargin:false};
+   next.yaxis={...layout.yaxis,title:{...title(layout.yaxis?.title),font:{size:12},standoff:12},range:[0,1],automargin:false};
+   node.style.width=plotWidth+'px';
+   const hint=document.getElementById('violinScrollHint');if(hint)hint.hidden=plotWidth<=width;
   }else{
-   const legendCount=data.filter(t=>t.showlegend!==false&&!t.marker?.showscale).length;
+   const legendCount=layout.showlegend===false?0:data.filter(t=>t.showlegend!==false&&!t.marker?.showscale).length;
    const continuous=data.some(t=>t.marker?.showscale),longLegend=small&&data.some(t=>String(t.name||'').length>18);
    if(longLegend)for(const trace of data){const words=String(trace.name||'').split(' ');let line=0;trace.name=words.map(word=>{if(line&&line+word.length>18){line=word.length;return '<br>'+word}line+=word.length+1;return word}).join(' ')}
    const columns=small?2:Math.max(1,Math.floor((width-90)/180));
@@ -62,12 +71,13 @@
   return {data,layout:next,config:{...config,responsive:false,displayModeBar:projection||sharedLegend?false:!small,scrollZoom:false}};
  }
  function tools(node){
-  if(node.id==='projectionLegend'||node.closest?.('.cluster-view')||node.nextElementSibling?.classList.contains('plot-tools'))return;
+  const anchor=node.closest?.('.plot-scroll')||node;
+  if(node.id==='projectionLegend'||node.closest?.('.cluster-view')||anchor.nextElementSibling?.classList.contains('plot-tools'))return;
   const bar=document.createElement('div');bar.className='plot-tools';bar.setAttribute('aria-label','Plot controls');
   for(const [text,action]of [['Reset plot',()=>reset(node)],['Save PNG',()=>root.Plotly.downloadImage(node,{format:'png',filename:node.id,width:Math.max(900,node.layout.width),height:Math.max(650,node.layout.height)})]]){
    const button=document.createElement('button');button.type='button';button.textContent=text;button.onclick=()=>Promise.resolve(action()).catch(error=>console.error(error));bar.append(button);
   }
-  node.insertAdjacentElement('afterend',bar);
+  anchor.insertAdjacentElement('afterend',bar);
  }
  function reset(node){const saved=records.get(node);if(!saved)return;const spec=prepare(node,saved.traces,saved.layout,saved.config),update={};for(const key of ['xaxis','yaxis']){const axis=spec.layout[key]||{};if(axis.range){update[key+'.range']=[...axis.range];update[key+'.autorange']=false}else update[key+'.autorange']=axis.autorange==='reversed'?'reversed':true}return root.Plotly.relayout(node,update)}
  async function react(node,traces,layout,config){

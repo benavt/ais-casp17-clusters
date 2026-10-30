@@ -124,7 +124,9 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
-      note.textContent = `${payload.models.length} models from ${data.representatives.length} cluster ensembles. Click a point or press Enter to select its cluster in the 3D viewer. Use Structure view to switch between the cluster medoid (Representative) and Comparison ensemble. Drag to pan; scroll to zoom.`;
+      const ensembleAvailable = data.representatives.some(row => row.ensemble_file || row.ensemble_text);
+      const structureNote = ensembleAvailable ? 'Use Structure view to switch between Representative and Comparison ensemble.' : 'The 3D viewer shows the saved cluster representative; coordinate ensembles are unavailable for this result.';
+      note.textContent = `${payload.models.length} selected models from ${data.representatives.length} clusters. Click a point or press Enter to select its cluster in the 3D viewer. ${structureNote} Drag to pan; scroll to zoom.`;
       info.textContent = 'Hover over a point or use Tab to view model details.';
       transform();
     }
