@@ -34,7 +34,7 @@ function changeProjectionCategory(event,isolate=false){
   const alreadyIsolated=keys.every(k=>hiddenProjectionCategories.has(k)===(k!==key));
   hiddenProjectionCategories.clear();if(!alreadyIsolated)for(const k of keys)if(k!==key)hiddenProjectionCategories.add(k);
  }else if(hiddenProjectionCategories.has(key))hiddenProjectionCategories.delete(key);else hiddenProjectionCategories.add(key);
- drawProjections().catch(fail);return false;
+ drawProjections().then(drawBonsai).catch(fail);return false;
 }
 async function drawProjections(){
  const key=data.target+'|'+(data.view_id||'whole')+'|'+scheme().key;
@@ -48,7 +48,8 @@ async function drawProjections(){
  showProjection();
 }
 async function draw(){
- await drawProjections();await drawViolins();await drawCandidateReview();await drawMedoidTM();await drawBonsai();
+ window.AtlasExplorer?.setBusy(true);
+ await drawProjections();await drawViolins();await drawCandidateReview();await drawMedoidTM();await drawBonsai();window.AtlasExplorer?.setBusy(false);
 }
 async function drawViolins(){
  const score=data.schemes.find(s=>s.key==='tm_colabfold12_rank1_chainA_res5_95');$('tmDistribution').hidden=!score;if(!score)return;
@@ -58,10 +59,10 @@ async function drawViolins(){
  $('violinDownload').href=data.violin_interactive||'SR215_bmr6366/tm-cluster-violins.html';
  $('violinPdf').href=data.violin_pdf||'SR215_bmr6366/tm-cluster-violins.pdf';
 }
-function showProjection(){const p=$('projection').value;for(const m of ['pca','umap','tsne'])$(m).parentElement.hidden=p!=='all'&&p!==m;$('plots').style.gridTemplateColumns=p==='all'?'':'1fr';for(const m of ['pca','umap','tsne'])if(!$(m).parentElement.hidden)Plotly.Plots.resize($(m))}
+function showProjection(){if(window.AtlasExplorer)window.AtlasExplorer.feature($('projection').value);}
 async function choose(label){
  const serial=++loadSerial,cluster=data.representatives.find(x=>x.cluster===label);if(!cluster)return;
- selected=label;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(label);for(const tr of $('clusterRows').children){tr.classList.toggle('selected',tr.dataset.cluster===label);tr.setAttribute('aria-selected',String(tr.dataset.cluster===label))}
+ selected=label;$('clusterSelect').value=label;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(label);for(const tr of $('clusterRows').children){tr.classList.toggle('selected',tr.dataset.cluster===label);tr.setAttribute('aria-selected',String(tr.dataset.cluster===label))}
  $('error').hidden=true;$('modelTitle').textContent='Loading '+label+'…';$('modelInfo').textContent='';$('structure').removeAttribute('href');viewer.spin(false);viewer.removeAllModels();viewer.render();
  let coordinate=cluster.coordinate_text;try{if(!coordinate){const response=await fetch(cluster.file,{cache:'no-cache',signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('HTTP '+response.status);coordinate=await response.text();cluster.coordinate_text=coordinate}}catch(error){if(serial!==loadSerial)return;$('modelTitle').textContent=label+' · model unavailable';throw Error('Could not load '+label+'. The private preview may have expired. Reopen the atlas with an active service. '+error.message)}if(serial!==loadSerial)return;
  const ensemble=$('modelMode').value==='ensemble'&&cluster.ensemble_text;if(ensemble){viewer.addModels(cluster.ensemble_text,'pdb')}else{viewer.addModel(coordinate,cluster.format)}viewer.setStyle({},{cartoon:{color:cluster.color,opacity:ensemble ? 0.62 : 1}});
@@ -88,6 +89,7 @@ async function load(target,viewId='primary'){
  $('color').value=visibleSchemes.find(s=>s.key==='ais_method'&&!s.unavailable)?.key||visibleSchemes.find(s=>!s.unavailable).key;
  const preferredColor=previousColor||requestedColor;if(visibleSchemes.some(s=>s.key===preferredColor&&!s.unavailable))$('color').value=preferredColor;
  $('members').href=data.membership_file;$('clusterRows').replaceChildren();
+ $('clusterSelect').replaceChildren(Object.assign(document.createElement('option'),{value:'',textContent:'Select a cluster'}),...data.representatives.map(c=>Object.assign(document.createElement('option'),{value:c.cluster,textContent:c.cluster+' · '+c.count.toLocaleString()})));
  for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+Number(c.tm_to_reference).toFixed(3)+'</td>':''}<td>${c.ensemble_file?'<a download href="'+escapeText(c.ensemble_file)+'">PDB</a>':''} ${c.ensemble_pse?'<a download href="'+escapeText(c.ensemble_pse)+'">PSE</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
  $('heatmaps').replaceChildren(...data.heatmaps.map(p=>{const a=document.createElement('a');a.href=p.file;a.target='_blank';const img=document.createElement('img');img.src=p.file;img.alt=p.name;img.loading='lazy';a.append(img);const figure=document.createElement('figure'),caption=document.createElement('figcaption');caption.textContent=p.name;figure.append(a,caption);return figure}));
  $('mask').textContent=data.mask_note;$('provenance').textContent=JSON.stringify(data.provenance,null,2);
@@ -96,10 +98,11 @@ async function load(target,viewId='primary'){
 async function start(){
  atlas=await json('atlas.json');for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id;a.dataset.target=t.id;$('targets').append(a)}
  viewer=$3Dmol.createViewer($('molecule'),{backgroundColor:'white',antialias:true});
- $('modelMode').onchange=()=>{if(selected)choose(selected).catch(fail)};$('color').onchange=()=>draw().catch(fail);$('projection').onchange=showProjection;$('clear').onclick=()=>{selected=null;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(null);for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}for(const m of ['pca','umap','tsne'])Plotly.relayout($(m),{annotations:[],'xaxis.autorange':true,'yaxis.autorange':true})};
+ $('clusterSelect').onchange=()=>{if($('clusterSelect').value)choose($('clusterSelect').value).catch(fail)};
+ $('modelMode').onchange=()=>{if(selected)choose(selected).catch(fail)};$('color').onchange=()=>draw().catch(fail);$('projection').onchange=showProjection;$('clear').onclick=()=>{selected=null;$('clusterSelect').value='';viewer.removeAllModels();viewer.render();$('modelTitle').textContent='Select a cluster';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(null);for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}for(const m of ['pca','umap','tsne'])Plotly.relayout($(m),{annotations:[],'xaxis.autorange':true,'yaxis.autorange':true})};
  $('analysisView').onchange=()=>{location.hash=data.target+'?view='+encodeURIComponent($('analysisView').value)};
  $('reset').onclick=()=>{viewer.zoomTo();viewer.render()};$('spin').onclick=()=>{spinning=!spinning;viewer.spin(spinning);$('spin').setAttribute('aria-pressed',String(spinning));$('spin').textContent=spinning?'Stop rotation':'Rotate'};
- window.addEventListener('hashchange',()=>{const s=hashSelection();if(atlas.targets.some(t=>t.id===s.target))load(s.target,s.view).catch(fail)});window.addEventListener('resize',()=>viewer.resize());const s=hashSelection();await load(s.target,s.view);
+ window.addEventListener('hashchange',()=>{const s=hashSelection();if(atlas.targets.some(t=>t.id===s.target))load(s.target,s.view).catch(fail)});window.addEventListener('resize',()=>viewer.resize());window.addEventListener('atlas:layout',()=>viewer.resize());const s=hashSelection();await load(s.target,s.view);
 }
 window.addEventListener('DOMContentLoaded',()=>start().catch(fail));
 
@@ -128,9 +131,11 @@ async function drawMedoidTM(){
 
 let bonsaiPanel=null,bonsaiSerial=0;
 async function drawBonsai(){
- const serial=++bonsaiSerial,current=data;$('bonsaiSection').hidden=!current.bonsai;if(!current.bonsai)return;
+ const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if(!current.bonsai)return;
  if(!current.bonsaiPayload){const response=await fetch(current.bonsai.file,{cache:'no-cache'});if(!response.ok)throw Error('Saved Bonsai layout unavailable');const bytes=await response.arrayBuffer(),digest=crypto.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(x=>x.toString(16).padStart(2,'0')).join(''):null;if(digest!==null&&digest!==current.bonsai.sha256)throw Error('Saved Bonsai layout hash mismatch');current.bonsaiPayload=JSON.parse(new TextDecoder().decode(bytes));}
  if(serial!==bonsaiSerial||data!==current)return;
  if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail)});
- bonsaiPanel.update(current,current.bonsaiPayload,scheme(),$('pca'));if(selected)bonsaiPanel.select(selected);
+ bonsaiPanel.update(current,current.bonsaiPayload,scheme(),$('pca'),hiddenProjectionCategories);if(selected)bonsaiPanel.select(selected);
 }
+
+window.AtlasPlotActions={async reset(method){if(method==='bonsai')bonsaiPanel?.resetView();else await AtlasResponsive.reset($(method))},async save(method){if(method==='bonsai')return bonsaiPanel?.savePNG();return Plotly.downloadImage($(method),{format:'png',filename:data.target+'_'+method,width:1200,height:900})}};

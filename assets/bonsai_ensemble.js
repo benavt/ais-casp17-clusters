@@ -61,7 +61,7 @@
     const info = document.createElement('p'); info.className = 'hint'; info.setAttribute('aria-live', 'polite');
     const note = document.createElement('p'); note.className = 'hint';
     container.append(toolbar, legend, svg, info, note);
-    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0;
+    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set();
     function transform() { if (world) world.setAttribute('transform', `translate(${pan}) scale(${zoom})`); }
     function point(e) {
       const matrix = svg.getScreenCTM();
@@ -73,7 +73,9 @@
     }
     function draw() {
       if (!payload) return;
-      const width = Math.max(160, Math.round(svg.getBoundingClientRect().width || 1000)), height = Math.min(620, Math.max(260, Math.round(width * .8)), Math.max(260, (window.visualViewport?.height || window.innerHeight || 800) - 260));
+      const panel=container.closest('.cluster-view'),featured=!panel||panel.classList.contains('is-featured');
+      const width=Math.max(1,Math.round(svg.getBoundingClientRect().width||container.getBoundingClientRect().width||320));
+      const height=featured?Math.round(Math.max(180,Math.min(width*.7,(window.visualViewport?.height||window.innerHeight||800)*.6))):Math.round(Math.max(45,width*.62));
       lastWidth = width; svg.setAttribute('viewBox', `0 0 ${width} ${height}`); svg.style.height = height + 'px';
       const layout = payload.layouts.find(x => x.key === select.value) || payload.layouts[0];
       const color = colorResolver(scheme, projection), byName = new Map(data.models.map((n, i) => [n, i]));
@@ -85,7 +87,7 @@
       const xy = p => [width / 2 + (p[0] - (xmin + xmax) / 2) * scale, height / 2 - (p[1] - (ymin + ymax) / 2) * scale];
       for (const segment of layout.edges) world.append(element('polyline', {points: segment.map(xy).map(p => p.join(',')).join(' '), fill: 'none', stroke: '#a0a0a0', 'stroke-width': 1.2, 'vector-effect': 'non-scaling-stroke'}));
       const vertices = new Map();
-      for (const row of payload.models) { if (!vertices.has(row.vertex)) vertices.set(row.vertex, []); vertices.get(row.vertex).push(row); }
+      for (const row of payload.models) { const i=byName.get(row.model),value=scheme.values[i],key=scheme.type==='continuous'?(Number.isFinite(value)?'valid':'Not calculable'):String(value??'Unspecified');if(hiddenCategories.has(key))continue; if (!vertices.has(row.vertex)) vertices.set(row.vertex, []); vertices.get(row.vertex).push(row); }
       for (const [vertex, rows] of vertices) {
         const [x, y] = xy(layout.nodes[vertex]), radius = 5 * Math.sqrt(rows.length);
         rows.forEach((row, sector) => {
@@ -122,7 +124,7 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
-      note.textContent = `${payload.models.length} models from ${data.representatives.length} cluster ensembles. Click a point or press Enter to select its cluster in the 3D viewer below. Use Structure view to switch between the cluster medoid (Representative) and Comparison ensemble. Drag to pan; scroll to zoom.`;
+      note.textContent = `${payload.models.length} models from ${data.representatives.length} cluster ensembles. Click a point or press Enter to select its cluster in the 3D viewer. Use Structure view to switch between the cluster medoid (Representative) and Comparison ensemble. Drag to pan; scroll to zoom.`;
       info.textContent = 'Hover over a point or use Tab to view model details.';
       transform();
     }
@@ -162,10 +164,22 @@
     const resize = new ResizeObserver(() => { if (payload && Math.abs(svg.getBoundingClientRect().width - lastWidth) > 1) draw(); });
     resize.observe(container);
     return {
-      update(currentData, currentPayload, currentScheme, currentProjection) {
+      update(currentData, currentPayload, currentScheme, currentProjection, hidden = []) {
         validate(currentPayload, currentData.models);
         if (payload !== currentPayload) { pan = [0, 0]; zoom = 1; active = null; select.replaceChildren(...currentPayload.layouts.map(x => Object.assign(document.createElement('option'), {value: x.key, textContent: x.title}))); }
-        data = currentData; payload = currentPayload; scheme = currentScheme; projection = currentProjection; draw();
+        data = currentData; payload = currentPayload; scheme = currentScheme; projection = currentProjection; hiddenCategories = new Set(hidden); draw();
+      },
+      resetView() { reset.onclick(); },
+      async savePNG() {
+        const copy=svg.cloneNode(true),box=svg.viewBox.baseVal,width=1200,height=Math.round(width*box.height/box.width);
+        copy.setAttribute('xmlns',ns);copy.setAttribute('width',width);copy.setAttribute('height',height);copy.removeAttribute('style');
+        const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(copy)],{type:'image/svg+xml'}));
+        try {
+          const image=new Image();image.src=url;await image.decode();
+          const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+          const context=canvas.getContext('2d');context.fillStyle='#fff';context.fillRect(0,0,width,height);context.drawImage(image,0,0,width,height);
+          const link=document.createElement('a');link.href=canvas.toDataURL('image/png');link.download=data.target+'_bonsai.png';link.click();
+        } finally { URL.revokeObjectURL(url); }
       },
       select(cluster) { active = cluster; draw(); },
       clear() { resize.disconnect(); container.replaceChildren(); },
