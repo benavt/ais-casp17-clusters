@@ -446,11 +446,13 @@ async function drawMedoidTM(){
 
 let bonsaiPanel=null,bonsaiSerial=0;
 async function drawBonsai(){
- const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if(!current.bonsai)return;
+ const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if($('bonsaiDetails'))$('bonsaiDetails').hidden=!current.bonsai;if(!current.bonsai)return;
  if(!current.bonsaiPayload){const response=await fetch(current.bonsai.file,{cache:'no-cache'});if(!response.ok)throw Error('Saved Bonsai layout unavailable');const bytes=await response.arrayBuffer(),digest=globalThis.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(x=>x.toString(16).padStart(2,'0')).join(''):null;if(digest!==null&&digest!==current.bonsai.sha256)throw Error('Saved Bonsai layout hash mismatch');current.bonsaiPayload=JSON.parse(new TextDecoder().decode(bytes));}
  if(serial!==bonsaiSerial||data!==current)return;
- if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail)});
- const filtered={...current.bonsaiPayload,models:current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)]))};bonsaiPanel.update({...current,representatives:current.representatives.filter(c=>visibleCluster(c.cluster))},filtered,scheme(),$('pca'),hiddenProjectionCategories);if(selected)bonsaiPanel.select(selected);
+ if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#bonsaiDetails'});
+ const representatives=current.representatives.filter(c=>visibleCluster(c.cluster));
+ if($('bonsaiStructureDetails'))$('bonsaiStructureDetails').textContent=representatives.some(row=>row.ensemble_file||row.ensemble_text)?'Use Structure view to switch between Representative and Comparison ensemble.':'The 3D viewer shows the saved cluster representative; coordinate ensembles are unavailable for this result.';
+ const filtered={...current.bonsaiPayload,models:current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)]))};bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories);if(selected)bonsaiPanel.select(selected);
 }
 
 window.AtlasPlotActions={async reset(method){if(method==='bonsai')bonsaiPanel?.resetView();else await AtlasResponsive.reset($(method))},async save(method){if(method==='bonsai')return bonsaiPanel?.savePNG();return Plotly.downloadImage($(method),{format:'png',filename:data.target+'_'+(data.range_id||'all')+'_'+method,width:1200,height:900})}};
