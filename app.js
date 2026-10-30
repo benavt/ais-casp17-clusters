@@ -72,8 +72,12 @@ async function choose(label){
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:label==='C1.1'?[]:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
 function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?');return {target,view:new URLSearchParams(query).get('view')||'primary'}}
+function setAnalysisLoading(loading){
+ $('clusterExplorer').setAttribute('aria-busy',String(loading));
+ for(const id of ['analysisView','color','clear'])$(id).disabled=loading;
+}
 async function load(target,viewId='primary'){
- const request=++targetRequest;++loadSerial;
+ const request=++targetRequest;++loadSerial;setAnalysisLoading(true);
  $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');viewer.spin(false);viewer.removeAllModels();viewer.render();
  const found=atlas.targets.find(x=>x.id===target)||atlas.targets[0],base=await json(found.data),view=(base.views||[]).find(x=>x.id===viewId);
  const loaded=view&&view.id!=='whole'?await json(view.data):base;if(request!==targetRequest)return;data=loaded;selected=null;window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base}}));
@@ -93,7 +97,7 @@ async function load(target,viewId='primary'){
  for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+Number(c.tm_to_reference).toFixed(3)+'</td>':''}<td>${c.ensemble_file?'<a download href="'+escapeText(c.ensemble_file)+'">PDB</a>':''} ${c.ensemble_pse?'<a download href="'+escapeText(c.ensemble_pse)+'">PSE</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
  $('heatmaps').replaceChildren(...data.heatmaps.map(p=>{const a=document.createElement('a');a.href=p.file;a.target='_blank';const img=document.createElement('img');img.src=p.file;img.alt=p.name;img.loading='lazy';a.append(img);const figure=document.createElement('figure'),caption=document.createElement('figcaption');caption.textContent=p.name;figure.append(a,caption);return figure}));
  $('mask').textContent=data.mask_note;$('provenance').textContent=JSON.stringify(data.provenance,null,2);
- await draw();if(request===targetRequest)await choose(data.representatives[0].cluster);
+ await draw();if(request===targetRequest){await choose(data.representatives[0].cluster);if(request===targetRequest)setAnalysisLoading(false)}
 }
 async function start(){
  atlas=await json('atlas.json');for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id;a.dataset.target=t.id;$('targets').append(a)}

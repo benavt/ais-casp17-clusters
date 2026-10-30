@@ -1,15 +1,33 @@
-The cluster explorer follows the SCHERAGA poster’s featured-view layout. PCA,
-UMAP, t-SNE and Bonsai share one collapsible section and one color legend. One
-view is featured at a time, with alternative thumbnails on desktop and labeled
-tabs on phones. The selected cluster’s medoid or comparison ensemble appears
-beside the plot on wider screens and directly below it on phones.
+The cluster explorer groups PCA, UMAP, t-SNE and Bonsai in one collapsible
+section with a single shared legend and compact analysis/color controls.
 
-The featured view has one Reset plot / Save PNG toolbar. Compact corner controls
-feature or minimize a view; the explorer can also expand as a whole. Cluster
-representatives, downloads and supporting figures remain in separate collapsible
-sections. Colors follow the selected scheme; category clicks filter all four
-views together. Scientific inputs, projections, scores and cluster assignments
-are unchanged.
+On desktop, two equal-height screens use native proximity scroll snapping.
+The upper screen pairs the featured view with the selected cluster medoid or
+comparison ensemble. The lower screen groups the other three views on the left
+and target context on the right. The all-four-views option and screen-navigation
+buttons provide alternatives to scrolling. Promoting a plot returns to the
+comparison screen. One Reset plot / Save PNG toolbar follows the featured view.
 
-Run source regression checks with `node --test tests/*.test.mjs`. Native browser
-visual and interaction checks are a separate validation step.
+On narrow phones, plots, structures and notes use a natural stacked layout;
+compact view tabs remain available. Reduced-motion preferences disable animated
+scrolling and snapping. No custom wheel interception is added. The loading
+menus retain their places and stay disabled until the analysis is ready.
+
+Cluster representatives, downloads and supporting figures remain in separate
+collapsible sections. Category clicks filter all four views together. Scientific
+inputs, projections, scores and saved cluster assignments are unchanged.
+
+Run source checks with `node --test tests/*.test.mjs`. Native browser visual,
+scrolling and interaction checks are a separate validation step.
+
+`target-context.json` is the versioned target metadata record. Each entry links
+repository references to the frozen analysis sequence hash, records verification
+sources/date and source-document digests, and reserves fields for biological relevance, ensemble
+interpretation, project citations and a project-record URL. Repository identity
+and draft project interpretation are separate; unresolved source annotations
+remain explicit review notes.
+
+Update the metadata revision and asset-version hashes with reviewed project
+changes, and retain this metadata with future archived site releases. Prior
+revisions remain in Git history. Adding a repository link does not add an
+experimental structure to the scientific analysis or recompute any result.

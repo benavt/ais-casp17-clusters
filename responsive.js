@@ -22,9 +22,11 @@
   }else if(projection&&node.closest('.cluster-view')){
    const panel=node.closest('.cluster-view'),featured=panel.classList.contains('is-featured');
    next.margin=featured?{l:50,r:14,t:12,b:52}:{l:8,r:8,t:5,b:8};
-   next.height=featured?Math.round(Math.max(180,Math.min(width*.75+48,viewport*.65))):Math.round(Math.max(45,width*.62));
+   const screen=panel.closest?.('.explorer-screen'),available=screen?panel.getBoundingClientRect().height-panel.querySelector('.view-heading').getBoundingClientRect().height:null;
+   next.height=available>0?Math.max(30,Math.floor(available)):featured?Math.round(Math.max(180,Math.min(width*.75+48,viewport*.65))):Math.round(Math.max(45,width*.62));
    next.showlegend=false;next.hovermode=featured?'closest':false;
-   for(const axis of ['xaxis','yaxis'])next[axis]={...layout[axis],visible:featured,title:featured?{...title(layout[axis]?.title),font:{size:11},standoff:8}:undefined,automargin:featured};
+   if(screen&&!featured)next.margin={l:38,r:8,t:7,b:36};
+   for(const axis of ['xaxis','yaxis'])next[axis]={...layout[axis],visible:featured||!!screen,title:featured||screen?{...title(layout[axis]?.title),font:{size:11},standoff:8}:undefined,automargin:featured};
    if(!featured)for(const trace of data)if(trace.marker)trace.marker.size=2.5;
   }else if(matrix&&matrix.x?.length===matrix.y?.length){
    const labels=matrix.x,margin={l:small?52:88,r:small?14:38,t:layout.title?112:(small?82:104),b:small?72:92,autoexpand:false};

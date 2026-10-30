@@ -61,7 +61,7 @@
     const info = document.createElement('p'); info.className = 'hint'; info.setAttribute('aria-live', 'polite');
     const note = document.createElement('p'); note.className = 'hint';
     container.append(toolbar, legend, svg, info, note);
-    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set();
+    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set(), resolvedColor = null, lastHeight = 0;
     function transform() { if (world) world.setAttribute('transform', `translate(${pan}) scale(${zoom})`); }
     function point(e) {
       const matrix = svg.getScreenCTM();
@@ -75,10 +75,10 @@
       if (!payload) return;
       const panel=container.closest('.cluster-view'),featured=!panel||panel.classList.contains('is-featured');
       const width=Math.max(1,Math.round(svg.getBoundingClientRect().width||container.getBoundingClientRect().width||320));
-      const height=featured?Math.round(Math.max(180,Math.min(width*.7,(window.visualViewport?.height||window.innerHeight||800)*.6))):Math.round(Math.max(45,width*.62));
-      lastWidth = width; svg.setAttribute('viewBox', `0 0 ${width} ${height}`); svg.style.height = height + 'px';
+      const height=panel?.closest('.explorer-screen')?Math.max(30,Math.round(svg.getBoundingClientRect().height)):featured?Math.round(Math.max(180,Math.min(width*.7,(window.visualViewport?.height||window.innerHeight||800)*.6))):Math.round(Math.max(45,width*.62));
+      lastWidth = width; lastHeight=height; svg.setAttribute('viewBox', `0 0 ${width} ${height}`); svg.style.height = height + 'px';
       const layout = payload.layouts.find(x => x.key === select.value) || payload.layouts[0];
-      const color = colorResolver(scheme, projection), byName = new Map(data.models.map((n, i) => [n, i]));
+      const color = resolvedColor || colorResolver(scheme, projection), byName = new Map(data.models.map((n, i) => [n, i]));
       svg.replaceChildren(element('title', {}, `${data.target}: ${layout.title} Bonsai; color by ${scheme.name}`));
       world = element('g'); svg.append(world);
       const all = [...layout.nodes, ...layout.edges.flat()], xs = all.map(p => p[0]), ys = all.map(p => p[1]);
@@ -139,7 +139,7 @@
     svg.addEventListener('pointerup', () => { setTimeout(() => { drag = null; }, 0); });
     svg.addEventListener('pointercancel', () => { drag = null; });
     download.onclick = () => {
-      const color = colorResolver(scheme, projection), entries = [...new Set(scheme.values)], footer = scheme.type === 'continuous' ? 165 : 110 + 25 * Math.ceil(entries.length / 5);
+      const color = resolvedColor || colorResolver(scheme, projection), entries = [...new Set(scheme.values)], footer = scheme.type === 'continuous' ? 165 : 110 + 25 * Math.ceil(entries.length / 5);
       const drawing = svg.cloneNode(true); drawing.removeAttribute('style'); drawing.setAttribute('width', 1000); drawing.setAttribute('height', 620);
       const copy = element('svg', {xmlns: ns, width: 1000, height: 620 + footer, viewBox: `0 0 1000 ${620 + footer}`}); copy.append(drawing);
       copy.append(element('rect', {x: 0, y: 620, width: 1000, height: footer, fill: 'white'}));
@@ -161,13 +161,13 @@
       const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(copy)], {type: 'image/svg+xml'}));
       const link = document.createElement('a'); link.href = url; link.download = `${data.target}_${data.view_id || 'whole'}_bonsai_${scheme.key}.svg`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     };
-    const resize = new ResizeObserver(() => { if (payload && Math.abs(svg.getBoundingClientRect().width - lastWidth) > 1) draw(); });
-    resize.observe(container);
+    const resize = new ResizeObserver(() => {const box=svg.getBoundingClientRect();if(payload&&box.width>0&&(Math.abs(box.width-lastWidth)>1||Math.abs(box.height-lastHeight)>1))draw()});
+    resize.observe(svg);
     return {
       update(currentData, currentPayload, currentScheme, currentProjection, hidden = []) {
         validate(currentPayload, currentData.models);
         if (payload !== currentPayload) { pan = [0, 0]; zoom = 1; active = null; select.replaceChildren(...currentPayload.layouts.map(x => Object.assign(document.createElement('option'), {value: x.key, textContent: x.title}))); }
-        data = currentData; payload = currentPayload; scheme = currentScheme; projection = currentProjection; hiddenCategories = new Set(hidden); draw();
+        data = currentData; payload = currentPayload; scheme = currentScheme; projection = currentProjection; hiddenCategories = new Set(hidden); resolvedColor=colorResolver(scheme,projection); draw();
       },
       resetView() { reset.onclick(); },
       async savePNG() {
