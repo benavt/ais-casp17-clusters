@@ -30,7 +30,7 @@ for(const [screenWidth,screenHeight]of screens){
    const node={id:type==='scattergl'?'pca':type,style:{},getBoundingClientRect:()=>({width}),closest:()=>null};
    const values=[.2,.5,.9],source={type,x:[1,2,3],y:values};
    const spec=window.AtlasResponsive.prepare(node,[source],{xaxis:{title:{text:'Structure'}},yaxis:{title:{text:'Similarity'},range:[0,1]}},{});
-   assert(!('marker'in spec.data[0]),'Traces without markers must omit the marker property for Plotly compatibility');assert.equal(spec.layout.width,width);assert.deepEqual([...spec.layout.yaxis.range],[0,1]);assert(spec.layout.height>=320);assert.equal(spec.data[0].y,values);assert.equal(spec.config.displayModeBar,width>=600);
+   assert(!('marker'in spec.data[0]),'Traces without markers must omit the marker property for Plotly compatibility');assert.equal(spec.layout.width,width);assert.deepEqual([...spec.layout.yaxis.range],[0,1]);assert(spec.layout.height>=320);assert.equal(spec.data[0].y,values);assert.equal(spec.config.displayModeBar,type==='scattergl'?false:width>=600);
   }
  });
 }
@@ -41,4 +41,26 @@ test('serializes resize and data renders for the same Plotly element',async()=>{
  const node={id:'pca',style:{},dataset:{responsiveObserved:'true'},getBoundingClientRect:()=>({width:340}),closest:()=>null,nextElementSibling:{classList:{contains:()=>true}}};
  await Promise.all([1,2,3].map(()=>window.AtlasResponsive.react(node,[{type:'scatter',x:[1],y:[.5]}],{},{})));
  assert.equal(calls,3);assert.equal(maximum,1,'Overlapping Plotly renders can corrupt mutable trace state');
+});
+
+test('explorer thumbnails fit compact widths and retain the original scientific arrays',()=>{
+ const window={innerWidth:1440,innerHeight:900,addEventListener(){}};
+ vm.runInNewContext(code,{window,document:{addEventListener(){}},setTimeout,clearTimeout});
+ const source={type:'scattergl',x:[1,2,3],y:[4,5,6],customdata:[0,1,2],marker:{color:['red','green','blue'],size:4.5},showlegend:false},before=JSON.stringify(source);
+ for(const width of [96,150,230]){
+  const panel={classList:{contains:()=>false}},node={id:'pca',style:{},getBoundingClientRect:()=>({width}),closest:selector=>selector==='.cluster-view'?panel:null};
+  const spec=window.AtlasResponsive.prepare(node,[source],{xaxis:{title:{text:'PC1'}},yaxis:{title:{text:'PC2'}}},{});
+  assert.equal(spec.layout.width,width,'A thumbnail must not acquire a larger artificial minimum width');
+  assert(spec.layout.height<width);assert.equal(spec.layout.xaxis.visible,false);assert.equal(spec.layout.hovermode,false);
+  assert.equal(spec.data[0].x,source.x);assert.equal(spec.data[0].customdata,source.customdata);assert.equal(JSON.stringify(source),before);
+ }
+});
+
+test('featured explorer view restores axes and shares the plot toolbar',async()=>{
+ const window={innerWidth:390,innerHeight:844,addEventListener(){},Plotly:{async react(node,traces,layout){node.layout=layout}}};
+ vm.runInNewContext(code,{window,document:{addEventListener(){},createElement(){throw Error('A projection must use the shared explorer toolbar')}},setTimeout,clearTimeout});
+ const panel={classList:{contains:()=>true}},node={id:'umap',style:{},dataset:{responsiveObserved:'true'},getBoundingClientRect:()=>({width:336}),closest:selector=>selector==='.cluster-view'?panel:null};
+ const spec=window.AtlasResponsive.prepare(node,[{type:'scattergl',x:[1],y:[2]}],{xaxis:{title:{text:'UMAP 1'}},yaxis:{title:{text:'UMAP 2'}}},{});
+ assert.equal(spec.layout.xaxis.visible,true);assert.equal(spec.layout.xaxis.title.text,'UMAP 1');assert.equal(spec.layout.hovermode,'closest');assert.equal(spec.config.displayModeBar,false);assert(spec.layout.height<500);
+ await window.AtlasResponsive.react(node,[{type:'scattergl',x:[1],y:[2]}],{},{});
 });
