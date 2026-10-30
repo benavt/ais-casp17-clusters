@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      
+      - name: Run JavaScript tests
+        run: node --test 'tests/**/*.mjs'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies for privacy scan
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      
+      - name: Run privacy scanner unit tests
+        run: python3 scripts/test_privacy_scan.py -v
+      
+      - name: Run privacy scan on repository
+        env:
+          PRIVACY_HOSTNAMES: ${{ secrets.PRIVACY_HOSTNAMES }}
+        run: python3 scripts/privacy-scan.py
+      
+      - name: Run size guard
+        run: python3 scripts/size-guard.py
