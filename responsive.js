@@ -5,7 +5,7 @@
  const short=value=>String(value).replace(/^Cluster\s+/,'C');
  const tickSet=(labels,count)=>{const step=Math.max(1,Math.ceil(labels.length/count)),indices=labels.map((_,i)=>i).filter(i=>i%step===0);if(indices.at(-1)!==labels.length-1){if(indices.length>1&&labels.length-1-indices.at(-1)<step)indices.pop();indices.push(labels.length-1)}return indices.map(i=>labels[i])};
  function dimensions(node){
-  const width=Math.max(180,Math.round(node.getBoundingClientRect().width||node.parentElement.getBoundingClientRect().width||root.innerWidth-32));
+  const width=Math.max(1,Math.round(node.getBoundingClientRect().width||node.parentElement.getBoundingClientRect().width||root.innerWidth-32));
   return {width,small:width<600,viewport:Math.max(320,root.visualViewport?.height||root.innerHeight||800),maximized:!!node.closest('.is-maximized')};
  }
  function title(value){return typeof value==='string'?{text:value}:value||{}}
@@ -19,6 +19,13 @@
    next.margin={l:8,r:8,t:8,b:8,autoexpand:false};
    next.legend={...layout.legend,orientation:'h',x:0,xanchor:'left',y:1,yanchor:'top',maxheight:1,font:{size:12},entrywidth:entryWidth,entrywidthmode:small?'fraction':'pixels'};
    for(const trace of data)if(trace.marker?.showscale)trace.marker.colorbar={...trace.marker.colorbar,orientation:'h',x:.5,xanchor:'center',y:.16,yanchor:'bottom',len:Math.min(.9,700/width),thickness:12,title:{...title(trace.marker.colorbar?.title),side:'top',font:{size:12}},tickfont:{size:11}};
+  }else if(projection&&node.closest('.cluster-view')){
+   const panel=node.closest('.cluster-view'),featured=panel.classList.contains('is-featured');
+   next.margin=featured?{l:50,r:14,t:12,b:52}:{l:8,r:8,t:5,b:8};
+   next.height=featured?Math.round(Math.max(180,Math.min(width*.75+48,viewport*.65))):Math.round(Math.max(45,width*.62));
+   next.showlegend=false;next.hovermode=featured?'closest':false;
+   for(const axis of ['xaxis','yaxis'])next[axis]={...layout[axis],visible:featured,title:featured?{...title(layout[axis]?.title),font:{size:11},standoff:8}:undefined,automargin:featured};
+   if(!featured)for(const trace of data)if(trace.marker)trace.marker.size=2.5;
   }else if(matrix&&matrix.x?.length===matrix.y?.length){
    const labels=matrix.x,margin={l:small?52:88,r:small?14:38,t:layout.title?112:(small?82:104),b:small?72:92,autoexpand:false};
    const space=width-margin.l-margin.r,side=Math.max(100,Math.min(space,820,Math.max(160,viewport-margin.t-margin.b-(maximized?130:200))));
@@ -53,7 +60,7 @@
   return {data,layout:next,config:{...config,responsive:false,displayModeBar:projection||sharedLegend?false:!small,scrollZoom:false}};
  }
  function tools(node){
-  if(node.id==='projectionLegend'||node.nextElementSibling?.classList.contains('plot-tools'))return;
+  if(node.id==='projectionLegend'||node.closest?.('.cluster-view')||node.nextElementSibling?.classList.contains('plot-tools'))return;
   const bar=document.createElement('div');bar.className='plot-tools';bar.setAttribute('aria-label','Plot controls');
   for(const [text,action]of [['Reset plot',()=>reset(node)],['Save PNG',()=>root.Plotly.downloadImage(node,{format:'png',filename:node.id,width:Math.max(900,node.layout.width),height:Math.max(650,node.layout.height)})]]){
    const button=document.createElement('button');button.type='button';button.textContent=text;button.onclick=()=>Promise.resolve(action()).catch(error=>console.error(error));bar.append(button);
@@ -77,5 +84,5 @@
  const widths=new WeakMap(),observer=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{for(const entry of entries){const width=Math.round(entry.contentRect.width);if(width>0&&widths.get(entry.target)!==width){widths.set(entry.target,width);schedule()}}}):null;
  root.addEventListener('resize',schedule);root.visualViewport?.addEventListener('resize',schedule);
  document.addEventListener('toggle',event=>{if(event.target.open)schedule()},true);
- root.AtlasResponsive={react,resizeAll,schedule,prepare};
+ root.AtlasResponsive={react,resizeAll,schedule,prepare,reset};
 })(window);
