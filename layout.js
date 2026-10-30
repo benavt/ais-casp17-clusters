@@ -55,24 +55,25 @@
  window.AtlasExplorer={feature,showScreen,refresh:resize,setBusy(busy){$('resetPlot').disabled=busy;$('savePlot').disabled=busy},get featured(){return featured}};
  window.addEventListener('atlas:cohort', event => {
   const { current, base } = event.detail;currentTarget=current.target;
-  const subset = current.models.length < 11000;
-  const counts = new Map(); current.methods.forEach(method => counts.set(method, (counts.get(method) || 0) + 1));
+  const baseCounts=new Map();base.methods.forEach(method=>baseCounts.set(method,(baseCounts.get(method)||0)+1));
+  const fullCount=base.models.length,subset=current.models.length<fullCount;
+  const counts=new Map();current.methods.forEach(method=>counts.set(method,(counts.get(method)||0)+1));
   const box = document.getElementById('cohortSummary');
   box.replaceChildren();
   const strong = document.createElement('strong');
-  strong.textContent = subset ? `Largest-cluster subset · ${current.models.length.toLocaleString()} of 11,000 original models` : 'Full target · 11,000 original models · 1,000 per sampling method';
+  strong.textContent=subset?`Saved subset · ${current.models.length.toLocaleString()} of ${fullCount.toLocaleString()} models`:`Full saved cohort · ${current.models.length.toLocaleString()} models · ${counts.size} sampling methods`;
   const note = document.createElement('p');
-  note.textContent = subset ? 'Only members of the selected primary cluster appear here. Method counts differ because each method contributes a different number to this cluster.' : 'All eleven methods are included. Each projection shows the same original model cohort; Bonsai shows selected representative ensembles.';
+  note.textContent = subset ? 'Only members of this saved subset appear here. Counts below describe this selection.' : 'Each projection shows the same saved model cohort; Bonsai shows selected representative ensembles. Filters reuse the saved memberships.';
   box.append(strong, note);
-  if (subset && base.views?.some(view => view.id === 'primary')) {
-   const link = document.createElement('a'); link.href = '#' + current.target + '?view=primary'; link.textContent = 'Show all 11,000 models'; box.append(link);
+  if (subset && base.views?.some(view => view.id === 'whole')) {
+   const link = document.createElement('a'); link.href = '#' + current.target + '?view=whole'; link.textContent = 'Show all '+fullCount.toLocaleString()+' saved models'; box.append(link);
   }
   const table = document.createElement('table');
   table.innerHTML = '<thead><tr><th scope="col">Sampling method</th><th scope="col">Shown</th><th scope="col">Full target</th></tr></thead>';
   const body = document.createElement('tbody');
   for (const [method, count] of [...counts].sort((a,b) => a[0].localeCompare(b[0]))) {
    const row = document.createElement('tr');
-   for (const value of [method, count.toLocaleString(), '1,000']) { const cell = document.createElement('td'); cell.textContent = value; row.append(cell); }
+   for (const value of [method, count.toLocaleString(), baseCounts.get(method)?.toLocaleString()||'—']) { const cell = document.createElement('td'); cell.textContent = value; row.append(cell); }
    body.append(row);
   }
   table.append(body); document.getElementById('methodCounts').replaceChildren(table);
