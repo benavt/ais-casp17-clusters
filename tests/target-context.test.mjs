@@ -2,7 +2,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
-const metadata=JSON.parse(fs.readFileSync(new URL('../target-context.json',import.meta.url),'utf8'));
+const logicalJSON=relative=>{const plain=new URL(relative,import.meta.url);return JSON.parse(fs.existsSync(plain)?fs.readFileSync(plain,'utf8'):gunzipSync(fs.readFileSync(new URL(relative+'.gz',import.meta.url))).toString('utf8'))};
+const metadata=logicalJSON('../target-context.json');
 test('target context records have an explicit revision and project write-up state',()=>{
  assert.equal(metadata.schema_version,1);assert.match(metadata.revision,/^\d{4}-\d{2}-\d{2}_/);assert.equal(Object.keys(metadata.targets).length,5);
  for(const entry of Object.values(metadata.targets))assert(['placeholder','draft','reviewed'].includes(entry.project_writeup.status));
