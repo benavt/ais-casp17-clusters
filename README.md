@@ -32,6 +32,6 @@ changes, and retain this metadata with future archived site releases. Prior
 revisions remain in Git history. Adding a repository link does not add an
 experimental structure to the scientific analysis or recompute any result.
 
-This site consumes the canonical Structure_Clustering main release [`c68587076f3b`](https://github.com/benavt/Structure_Clustering/commit/c68587076f3b8cad6ac3df55b02510c8e0fa496c). The actual renderer is `84cc73a5493fc36ef2691fcfb9e0287f88362037`; its complete Git tree matches that release (`1bbdb8f7915aad632db7a29d1f38a9c8a46ac2d3`). Shared explorer behavior is maintained in the canonical repository.
+This site consumes the canonical Structure_Clustering main release [`9500b0de0da0`](https://github.com/benavt/Structure_Clustering/commit/9500b0de0da0f0b019ae1ec0f85b56f094441c23). The actual renderer is `cbbdec27f50b8101005be3a1020cfda39b068055`; its complete Git tree matches that release (`3cacb5f54fae1f9d1e42cd9afa4994fd251dad40`). Shared explorer behavior is maintained in the canonical repository. Set view aligns display models using the clustering residues and preserves the camera/slab while switching clusters; saved coordinate files and downloads stay unchanged.
 
 The explorer offers Primary and HDBSCAN for all five CASP17 targets. SR215 supports canonical residues 1–139 and 5–95; PaT90 clustering retains the frozen canonical 8–91 mask. Saved computational cluster labels do not establish biological state counts.

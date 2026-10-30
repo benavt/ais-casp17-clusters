@@ -107,3 +107,5 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 16px;margin:0 0 18px
 /* Keep dense cluster distributions readable within the page width. */
 .plot-scroll{width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-gutter:stable;scrollbar-width:auto;padding-bottom:8px}.plot-scroll:focus-visible{outline:2px solid #a60018;outline-offset:2px}.plot-scroll>.plot-tools{position:sticky;left:0}
 #heatmaps>section{min-width:0}#heatmaps>.hint{grid-column:1/-1}
+
+#setStructureView[aria-pressed="true"]{color:#8f0014;border-color:var(--red);background:#fff4f4}
