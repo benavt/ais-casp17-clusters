@@ -24,3 +24,63 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 16px;margin:0 0 18px
 .explorer-body>#colorAvailability:empty{display:none}
 @media(max-width:850px){.explorer-controls{grid-template-columns:minmax(0,1fr) auto;gap:7px 10px}.explorer-controls>#analysisViewLabel{grid-column:1/-1}}
 @media(max-width:699px){.explorer-controls{padding:7px 8px}.explorer-controls label{font-size:10px;gap:6px}.explorer-controls select{font-size:11px}.explorer-controls>button{font-size:10px;padding:5px 6px}}
+
+/* Reserve both menu slots and keep them inactive until a complete analysis is ready. */
+.cluster-explorer[aria-busy=true] .explorer-controls{position:static}
+
+/* Two equal viewing screens: linked structures, then alternatives and context. */
+.explorer-interface{position:sticky;top:var(--explorer-heading-height,47px);z-index:19;background:#fff;border-bottom:1px solid var(--line)}
+.explorer-interface .explorer-controls{position:static;border-bottom:1px solid #e5e5de}
+.explorer-interface .shared-projection-legend{border-bottom:0;min-height:52px}
+.cluster-explorer[aria-busy=true] .explorer-interface{position:static}
+.screen-nav{display:flex;gap:6px;margin:0;padding:5px 12px;border-top:1px solid #efefe9}
+.screen-nav button{font-size:11px;padding:4px 7px;border-color:transparent;background:#fff;border-bottom:2px solid transparent}
+.screen-nav button[aria-current=true]{color:#a60018;border-bottom-color:var(--red)}
+.explorer-screens{position:relative;block-size:var(--explorer-screen-height,calc(100dvh - 220px));overflow-y:auto;overflow-x:hidden;scroll-snap-type:y proximity;scroll-behavior:smooth;scrollbar-gutter:stable}
+.explorer-screen{height:100%;min-height:0;display:flex;flex-direction:column;padding:12px;scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
+.explorer-screen .explorer-pair,.context-pair{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,1fr);gap:22px;flex:1;min-height:0;align-items:stretch}
+#featuredPlotHost{height:100%;min-height:0;display:flex;flex-direction:column}
+.explorer-screen .cluster-view{display:flex;height:100%;min-height:0;flex-direction:column;order:initial;grid-column:auto}
+.explorer-screen .cluster-view .view-heading{flex:none}
+.explorer-screen .cluster-view .plot{flex:1;min-height:0}
+#comparisonScreen .molecular{height:100%;min-height:0;display:flex;flex-direction:column;overflow:auto}
+#comparisonScreen #molecule{height:auto;min-height:80px;flex:1}
+#comparisonScreen .molecular h4,#comparisonScreen #modelInfo,#comparisonScreen .model-controls,#comparisonScreen #structureHint{flex:none}
+.screen-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex:none;padding-top:8px;font-size:10px;color:var(--muted)}
+.screen-footer button{font-size:10px;padding:3px 5px;border-color:transparent;color:#8f0014}
+.context-heading{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px;flex:none}
+.context-heading h3{font-size:13px;margin:0}.context-heading button{font-size:11px;padding:4px 7px}
+#contextScreen #plots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;margin:0;height:100%;min-height:0}
+#contextScreen #plots:not(.all-views)>.cluster-view:last-child{grid-column:1/-1}
+#contextScreen .cluster-view:not(.is-featured){display:flex}
+#contextScreen .cluster-view .view-heading h3{font-size:12px;font-weight:600}
+#contextScreen .cluster-view:not(.is-featured) #bonsai{display:flex;flex:1;min-height:0;flex-direction:column}
+.explorer-screen #bonsai{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.explorer-screen #bonsai>svg{flex:1 1 0%;min-height:0}
+.explorer-screen #bonsai>.hint,.explorer-screen #bonsai>.bonsai-toolbar,.explorer-screen .bonsai-description{flex:none}
+.explorer-screen #bonsai>.hint{font-size:10px;line-height:1.35;margin:5px 0}
+.explorer-screen .bonsai-description{font-size:10px;line-height:1.35;margin:5px 8px}
+.no-featured{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;border:1px dashed #ccc;color:var(--muted);text-align:center}
+.no-featured h3{font-size:16px}.no-featured p{font-size:12px}
+.target-context{min-width:0;min-height:0;overflow:auto;border-left:1px solid #e5e5de;padding:4px 0 0 20px;scrollbar-gutter:stable}
+.target-context .eyebrow{font-size:10px;margin:0 0 10px}.target-context h3{font-size:20px;line-height:1.25;margin:0 0 8px}.target-context h4{font-size:12px;margin:22px 0 8px}.target-context p{font-size:12px;line-height:1.6}.context-organism{font-style:italic;margin:0 0 14px}.context-summary{max-width:60ch}.writeup-placeholder{border-left:2px solid #d5d5cb;padding:10px 12px;background:var(--paper);color:#707066;max-width:60ch}.context-references{padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 14px;margin:10px 0}.context-references li{font-size:12px}.context-references a{display:inline-block;padding:4px 0}.context-provenance{font-size:10px!important;color:#77776b;margin-top:22px}.reference-review,.context-help{font-size:11px;color:#707066;border-top:1px solid #e6e6df;padding-top:8px;margin-top:14px}.reference-review summary,.context-help summary{cursor:pointer}.reference-review p,.context-help p{font-size:11px}.context-help .explorer-hint{margin-bottom:0}
+@media(min-width:700px) and (max-width:1000px){.explorer-screen .explorer-pair,.context-pair{gap:14px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.target-context{padding-left:12px}.target-context h3{font-size:18px}.explorer-screen .model-controls{gap:5px}.explorer-screen .model-controls>label{width:100%}}
+@media(max-width:699px){
+ .explorer-interface .shared-projection-legend{min-height:150px}
+ .screen-nav{padding:4px 8px;gap:2px;justify-content:space-between}.screen-nav button{font-size:10px;padding:5px 4px}
+ .explorer-screens{block-size:auto;overflow:visible;scrollbar-gutter:auto;scroll-snap-type:none}
+ .explorer-screen{height:auto;min-height:var(--explorer-screen-height);padding:10px 8px;scroll-margin-top:var(--explorer-chrome-height,290px)}
+ .explorer-screen .explorer-pair,.context-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;flex:none}
+ #featuredPlotHost{height:clamp(280px,88vw,420px)}
+ #comparisonScreen .molecular{height:420px;overflow:visible;padding-top:10px;border-top:1px solid var(--line);border-left:0}
+ #comparisonScreen #molecule{min-height:160px}
+ #contextScreen #plots{height:620px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .target-context{border-left:0;border-top:1px solid var(--line);padding:16px 0 4px;overflow:visible}
+ .target-context h3{font-size:19px}.target-context p{font-size:12px}
+ .screen-footer{align-items:flex-start;margin-top:10px}.screen-footer span{max-width:45%}
+ .cluster-explorer.is-maximized{scroll-snap-type:y proximity;scroll-padding-top:0}
+ html:has(.cluster-explorer[open][aria-busy=false]):not(:has(.cluster-explorer.is-maximized)){scroll-snap-type:y proximity}
+}
+@media(prefers-reduced-motion:reduce){.explorer-screens{scroll-behavior:auto;scroll-snap-type:none}html:has(.cluster-explorer),.cluster-explorer.is-maximized{scroll-snap-type:none!important}}
+
+@media(max-width:699px){html:has(.cluster-explorer[open]){scroll-padding-top:0}}
