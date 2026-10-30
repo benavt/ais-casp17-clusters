@@ -47,8 +47,8 @@
       if (!layout.nodes.length || !layout.nodes.every(p => p.length === 2 && p.every(Number.isFinite)) || !layout.edges.every(s => s.length >= 2 && s.every(p => p.length === 2 && p.every(Number.isFinite))) || payload.models.some(r => r.vertex >= layout.nodes.length)) throw Error('Invalid native Bonsai geometry.');
     }
   }
-  function create(container, {onChoose = () => {}} = {}) {
-    container.replaceChildren();
+  function create(container, {onChoose = () => {}, detailsHref = null} = {}) {
+    container.replaceChildren(); container.style.position = 'relative';
     const toolbar = document.createElement('div'); toolbar.className = 'bonsai-toolbar'; toolbar.style.cssText = 'display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0';
     const label = document.createElement('label'); label.append('Tree layout ');
     const select = document.createElement('select'); select.setAttribute('aria-label', 'Bonsai tree layout'); label.append(select);
@@ -58,8 +58,11 @@
     const legend = document.createElement('div'); legend.className = 'bonsai-legend'; legend.style.cssText = 'display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;font-size:12px;margin:12px 0';
     const svg = element('svg', {viewBox: '0 0 1000 620', role: 'img', 'aria-label': 'Interactive Bonsai tree of selected ensemble models', tabindex: 0});
     svg.style.cssText = 'display:block;width:100%;background:white;touch-action:none;border:1px solid #dce5e8;border-radius:6px';
-    const info = document.createElement('p'); info.className = 'hint'; info.setAttribute('aria-live', 'polite');
-    const note = document.createElement('p'); note.className = 'hint';
+    const info = document.createElement('p'); info.className = 'hint bonsai-model-info'; info.hidden = true; info.setAttribute('aria-live', 'polite');
+    // Keep point details out of the flex layout: showing them must not resize
+    // the SVG and cause its ResizeObserver to replace the focused marker.
+    info.style.cssText = 'position:absolute;z-index:2;left:8px;right:8px;margin:0;padding:6px 8px;background:rgba(255,255,255,.96);border:1px solid #ddd;border-radius:2px;pointer-events:none;overflow-wrap:anywhere';
+    const note = document.createElement('p'); note.className = 'hint bonsai-caption';
     container.append(toolbar, legend, svg, info, note);
     let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set(), resolvedColor = null, lastHeight = 0;
     function transform() { if (world) world.setAttribute('transform', `translate(${pan}) scale(${zoom})`); }
@@ -77,6 +80,7 @@
       const width=Math.max(1,Math.round(svg.getBoundingClientRect().width||container.getBoundingClientRect().width||320));
       const height=panel?.closest('.explorer-screen')?Math.max(30,Math.round(svg.getBoundingClientRect().height)):featured?Math.round(Math.max(180,Math.min(width*.7,(window.visualViewport?.height||window.innerHeight||800)*.6))):Math.round(Math.max(45,width*.62));
       lastWidth = width; lastHeight=height; svg.setAttribute('viewBox', `0 0 ${width} ${height}`); svg.style.height = height + 'px';
+      info.style.top = Math.max(0, svg.getBoundingClientRect().top - container.getBoundingClientRect().top + 6) + 'px';
       const layout = payload.layouts.find(x => x.key === select.value) || payload.layouts[0];
       const color = resolvedColor || colorResolver(scheme, projection), byName = new Map(data.models.map((n, i) => [n, i]));
       svg.replaceChildren(element('title', {}, `${data.target}: ${layout.title} Bonsai; color by ${scheme.name}`));
@@ -99,8 +103,8 @@
             marker = element('path', {...attributes, d: `M${x},${y} L${x + radius * Math.cos(a)},${y + radius * Math.sin(a)} A${radius},${radius} 0 ${b - a > Math.PI ? 1 : 0} 1 ${x + radius * Math.cos(b)},${y + radius * Math.sin(b)} Z`});
           }
           marker.style.cursor = 'pointer'; marker.append(element('title', {}, title));
-          marker.addEventListener('mouseenter', () => { info.textContent = title; });
-          marker.addEventListener('focus', () => { info.textContent = title; });
+          marker.addEventListener('mouseenter', () => { info.textContent = title; info.hidden = false; });
+          marker.addEventListener('focus', () => { info.textContent = title; info.hidden = false; });
           marker.addEventListener('click', () => { if (!drag?.moved) onChoose(data.clusters[i], row.model); });
           marker.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onChoose(data.clusters[i], row.model); } });
           world.append(marker);
@@ -124,10 +128,12 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
-      const ensembleAvailable = data.representatives.some(row => row.ensemble_file || row.ensemble_text);
-      const structureNote = ensembleAvailable ? 'Use Structure view to switch between Representative and Comparison ensemble.' : 'The 3D viewer shows the saved cluster representative; coordinate ensembles are unavailable for this result.';
-      note.textContent = `${payload.models.length} selected models from ${data.representatives.length} clusters. Click a point or press Enter to select its cluster in the 3D viewer. ${structureNote} Drag to pan; scroll to zoom.`;
-      info.textContent = 'Hover over a point or use Tab to view model details.';
+      note.textContent = `${payload.models.length} models · ${data.representatives.length} clusters. Select a point to view its cluster.`;
+      if (detailsHref) {
+        const link = document.createElement('a'); link.href = detailsHref; link.className = 'bonsai-details-link'; link.textContent = 'Details'; link.setAttribute('aria-label', 'Bonsai plot details and controls');
+        note.append(' ', link);
+      }
+      info.textContent = ''; info.hidden = true;
       transform();
     }
     select.onchange = () => { pan = [0, 0]; zoom = 1; draw(); };
