@@ -122,8 +122,8 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
-      note.textContent = `${payload.models.length} models from ${data.representatives.length} displayed cluster ensembles · ${payload.group_count} exploratory Bonsai groups. ${payload.method} ${payload.scope} Colors and numeric bounds match the current PCA, UMAP and t-SNE scheme. Coincident models use separate colored sectors. Drag to pan; scroll to zoom; click a point to inspect its cluster.`;
-      info.textContent = 'Hover or focus a point for model, method, cluster and score.';
+      note.textContent = `${payload.models.length} models from ${data.representatives.length} cluster ensembles. Click a point or press Enter to select its cluster in the 3D viewer below. Use Structure view to switch between the cluster medoid (Representative) and Comparison ensemble. Drag to pan; scroll to zoom.`;
+      info.textContent = 'Hover over a point or use Tab to view model details.';
       transform();
     }
     select.onchange = () => { pan = [0, 0]; zoom = 1; draw(); };
