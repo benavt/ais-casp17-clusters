@@ -30,7 +30,7 @@ for(const [screenWidth,screenHeight]of screens){
    const node={id:type==='scattergl'?'pca':type,style:{},getBoundingClientRect:()=>({width}),closest:()=>null};
    const values=[.2,.5,.9],source={type,x:[1,2,3],y:values};
    const spec=window.AtlasResponsive.prepare(node,[source],{xaxis:{title:{text:'Structure'}},yaxis:{title:{text:'Similarity'},range:[0,1]}},{});
-   assert(!('marker'in spec.data[0]),'Traces without markers must omit the marker property for Plotly compatibility');assert.equal(spec.layout.width,width);assert.deepEqual([...spec.layout.yaxis.range],[0,1]);assert(spec.layout.height>=320);assert.equal(spec.data[0].y,values);assert.equal(spec.config.displayModeBar,width>=600);
+   assert(!('marker'in spec.data[0]),'Traces without markers must omit the marker property for Plotly compatibility');assert.equal(spec.layout.width,width);assert.deepEqual([...spec.layout.yaxis.range],[0,1]);assert(spec.layout.height>=320);assert.equal(spec.data[0].y,values);assert.equal(spec.config.displayModeBar,type==='scattergl'?false:width>=600);
   }
  });
 }

@@ -1,5 +1,7 @@
 'use strict';
 let atlas,data,viewer,selected=null,spinning=false,loadSerial=0,targetRequest=0,modelDownloadURL=null,ensembleDownloadURL=null;
+let projectionLegendKey='';
+const hiddenProjectionCategories=new Set();
 const $=id=>document.getElementById(id), escapeText=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 async function json(url){let r;try{r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(30000)})}catch(error){throw Error('The atlas could not load this analysis. Check your connection and reload the page.')}if(!r.ok)throw Error(`Could not load ${url}: ${r.status}`);return r.json()}
 function fail(error){$('error').hidden=false;$('error').textContent=error.message||String(error);console.error(error)}
@@ -9,14 +11,44 @@ function traces(method){
  const s=scheme(),xy=data.projections[method].xy,out=[],groups=new Map();
  data.models.forEach((name,i)=>{const v=s.values[i],key=s.type==='continuous'?(Number.isFinite(v)?'valid':'Not calculable'):String(v??'Unspecified');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i)});
  for(const [label,indices] of groups){const numeric=s.type==='continuous'&&label==='valid',marker={size:4.5,opacity:.7};
-  if(numeric)Object.assign(marker,{color:indices.map(i=>s.values[i]),colorscale:s.colorscale,cmin:s.range?.[0],cmax:s.range?.[1],showscale:true,colorbar:{title:{text:s.short_name||s.name},thickness:10,len:.7}});
+  if(numeric)Object.assign(marker,{color:indices.map(i=>s.values[i]),colorscale:s.colorscale,cmin:s.range?.[0],cmax:s.range?.[1],showscale:false,colorbar:{title:{text:s.short_name||s.name},thickness:10,len:.7}});
   else marker.color=s.type==='continuous'?'#808080':s.colors[label]||'#808080';
-  out.push({type:'scattergl',mode:'markers',name:label==='valid'?s.name:label,x:indices.map(i=>xy[i][0]),y:indices.map(i=>xy[i][1]),customdata:indices,text:indices.map(i=>`${escapeText(data.models[i])}<br>${escapeText(data.clusters[i])}<br>${escapeText(data.methods[i])}${numeric?'<br>'+s.name+': '+s.values[i].toFixed(2):''}`),hovertemplate:'%{text}<extra></extra>',marker,showlegend:!numeric&&(s.key!=='clusters'||groups.size<=12)});
- }if(s.type==='continuous')out.sort((a,b)=>Number(!!a.marker.showscale)-Number(!!b.marker.showscale));return out;
+  out.push({type:'scattergl',mode:'markers',name:label==='valid'?s.name:label,x:indices.map(i=>xy[i][0]),y:indices.map(i=>xy[i][1]),customdata:indices,text:indices.map(i=>`${escapeText(data.models[i])}<br>${escapeText(data.clusters[i])}<br>${escapeText(data.methods[i])}${numeric?'<br>'+s.name+': '+s.values[i].toFixed(2):''}`),hovertemplate:'%{text}<extra></extra>',marker,meta:{legendKey:label,numeric},visible:hiddenProjectionCategories.has(label)?'legendonly':true,showlegend:false});
+ }if(s.type==='continuous')out.sort((a,b)=>Number(a.meta.numeric)-Number(b.meta.numeric));return out;
+}
+function projectionLegendTraces(){
+ const s=scheme();
+ return traces('pca').map(trace=>{
+  const marker={...trace.marker,size:8,opacity:1};
+  if(trace.meta.numeric){
+   const finite=s.values.filter(Number.isFinite),range=s.range||[Math.min(...finite),Math.max(...finite)];
+   Object.assign(marker,{color:range,showscale:true,cmin:range[0],cmax:range[1],colorbar:{title:{text:s.short_name||s.name},outlinewidth:0}});
+  }
+  return {type:'scatter',mode:'markers',name:trace.name,meta:trace.meta,x:trace.meta.numeric?[0,0]:[0],y:trace.meta.numeric?[0,0]:[0],marker,visible:trace.visible,showlegend:!trace.meta.numeric,hoverinfo:'skip'};
+ });
+}
+function changeProjectionCategory(event,isolate=false){
+ const trace=$('projectionLegend').data[event.curveNumber],key=trace?.meta?.legendKey;if(!key||trace.meta.numeric)return false;
+ const keys=traces('pca').map(t=>t.meta.legendKey);
+ if(isolate&&scheme().type!=='continuous'){
+  const alreadyIsolated=keys.every(k=>hiddenProjectionCategories.has(k)===(k!==key));
+  hiddenProjectionCategories.clear();if(!alreadyIsolated)for(const k of keys)if(k!==key)hiddenProjectionCategories.add(k);
+ }else if(hiddenProjectionCategories.has(key))hiddenProjectionCategories.delete(key);else hiddenProjectionCategories.add(key);
+ drawProjections().catch(fail);return false;
+}
+async function drawProjections(){
+ const key=data.target+'|'+(data.view_id||'whole')+'|'+scheme().key;
+ if(projectionLegendKey!==key){projectionLegendKey=key;hiddenProjectionCategories.clear()}
+ await Promise.all(['pca','umap','tsne'].map(async method=>{const p=data.projections[method];await AtlasResponsive.react($(method),traces(method),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:52,r:25,t:16,b:58},showlegend:false,hovermode:'closest',font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{title:{text:p.axes[0]},zeroline:false,gridcolor:'#edf1f2'},yaxis:{title:{text:p.axes[1]},zeroline:false,gridcolor:'#edf1f2'},uirevision:data.target+'-'+(data.view_id||'whole')+'-'+method},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d']});$(method).removeAllListeners('plotly_click');$(method).on('plotly_click',e=>{const i=e.points[0].customdata;choose(data.clusters[i]).catch(fail)})}));
+ const legend=$('projectionLegend');
+ await AtlasResponsive.react(legend,projectionLegendTraces(),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:8,r:8,t:8,b:8},xaxis:{visible:false,range:[1,2],fixedrange:true},yaxis:{visible:false,range:[1,2],fixedrange:true},showlegend:true,legend:{orientation:'h',font:{size:12}},uirevision:projectionLegendKey},{displayModeBar:false,displaylogo:false,staticPlot:false});
+ legend.removeAllListeners('plotly_legendclick');legend.removeAllListeners('plotly_legenddoubleclick');
+ legend.on('plotly_legendclick',event=>changeProjectionCategory(event));
+ legend.on('plotly_legenddoubleclick',event=>changeProjectionCategory(event,true));
+ showProjection();
 }
 async function draw(){
- await Promise.all(['pca','umap','tsne'].map(async method=>{const p=data.projections[method];await AtlasResponsive.react($(method),traces(method),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:52,r:25,t:(scheme().type==='continuous'||(scheme().key==='clusters'&&new Set(data.clusters).size>12))?12:150,b:58},hovermode:'closest',font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{title:{text:p.axes[0]},zeroline:false,gridcolor:'#edf1f2'},yaxis:{title:{text:p.axes[1]},zeroline:false,gridcolor:'#edf1f2'},legend:{orientation:'h',font:{size:10},y:1.02,yanchor:'bottom'},uirevision:data.target+'-'+(data.view_id||'whole')+'-'+method},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d']});$(method).removeAllListeners('plotly_click');$(method).on('plotly_click',e=>{const i=e.points[0].customdata;choose(data.clusters[i]).catch(fail)})}));
- showProjection();await drawViolins();await drawCandidateReview();await drawMedoidTM();await drawBonsai();
+ await drawProjections();await drawViolins();await drawCandidateReview();await drawMedoidTM();await drawBonsai();
 }
 async function drawViolins(){
  const score=data.schemes.find(s=>s.key==='tm_colabfold12_rank1_chainA_res5_95');$('tmDistribution').hidden=!score;if(!score)return;

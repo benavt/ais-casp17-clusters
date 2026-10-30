@@ -1,13 +1,15 @@
 /* Presentation controls only: saved scientific data are never changed. */
 (() => {
  'use strict';
- let expanded = null, returnFocus = null, cohort = null;
+ let expanded = null, returnFocus = null, cohort = null, legendHome = null;
  const resize = () => requestAnimationFrame(() => {
   AtlasResponsive.schedule();
   window.dispatchEvent(new Event('resize'));
  });
  function restore() {
   if (!expanded) return;
+  const legend = document.getElementById('projectionLegend');
+  if (legendHome && expanded.contains(legend)) legendHome.after(legend);
   expanded.classList.remove('is-maximized');
   expanded.querySelector('.maximize-panel').textContent = 'Maximize';
   expanded.querySelector('.maximize-panel').setAttribute('aria-pressed', 'false');
@@ -40,6 +42,9 @@
   table.append(body); document.getElementById('methodCounts').replaceChildren(table);
  });
  document.addEventListener('DOMContentLoaded', () => {
+  const legend = document.getElementById('projectionLegend');
+  legendHome = document.createComment('Shared projection legend home');
+  legend.before(legendHome);
   document.querySelectorAll('details.figure-panel').forEach((panel, index) => {
    if (!panel.id) panel.id = 'figure-panel-' + index;
    const summary = panel.querySelector(':scope > summary'), button = document.createElement('button');
@@ -51,6 +56,7 @@
     if (expanded === panel) { restore(); return; }
     restore(); returnFocus = button; expanded = panel; panel.open = true;
     panel.classList.add('is-maximized'); document.body.classList.add('panel-is-maximized');
+    if (panel.classList.contains('projection-panel')) summary.after(legend);
     button.textContent = 'Restore'; button.setAttribute('aria-pressed', 'true'); resize();
    });
    summary.append(button);
