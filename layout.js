@@ -2,7 +2,7 @@
 (() => {
  'use strict';
  const $=id=>document.getElementById(id),names={umap:'UMAP',pca:'PCA',tsne:'t-SNE',bonsai:'Bonsai'};
- let expanded=null,returnFocus=null,featured='umap',pending=false;
+ let expanded=null,returnFocus=null,featured='umap',pending=false,currentTarget=null;
  function resize(){
   if(pending)return;pending=true;
   requestAnimationFrame(()=>{pending=false;AtlasResponsive.schedule();window.dispatchEvent(new Event('atlas:layout'));});
@@ -37,7 +37,7 @@
  }
  window.AtlasExplorer={feature,refresh:resize,setBusy(busy){$('resetPlot').disabled=busy;$('savePlot').disabled=busy},get featured(){return featured}};
  window.addEventListener('atlas:cohort', event => {
-  const { current, base } = event.detail;
+  const { current, base } = event.detail;currentTarget=current.target;
   const subset = current.models.length < 11000;
   const counts = new Map(); current.methods.forEach(method => counts.set(method, (counts.get(method) || 0) + 1));
   const box = document.getElementById('cohortSummary');
@@ -104,7 +104,9 @@
    const link=event.target.closest('a[href^="#"]');if(!link)return;
    const target=$(link.hash.slice(1));if(target?.matches('details')){target.open=true;resize()}
   });
-  window.addEventListener('hashchange',restore);
+  window.addEventListener('hashchange',()=>{if(decodeURIComponent(location.hash.slice(1)).split('?')[0]!==currentTarget)restore()});
+  const explorer=$('clusterExplorer'),heading=explorer.querySelector(':scope > summary');
+  new ResizeObserver(()=>explorer.style.setProperty('--explorer-heading-height',heading.getBoundingClientRect().height+'px')).observe(heading);
   new ResizeObserver(resize).observe($('molecule'));
   feature('umap');
  });

@@ -12,3 +12,15 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 16px;margin:0 0 18px
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 /* Thumbnails are navigation surfaces, with controls reserved for the featured view. */
 .cluster-view:not(.is-featured) .bonsai-toolbar{display:none!important}
+
+/* Keep analysis and color settings with the plots, including while enlarged. */
+.cluster-explorer{overflow:visible}
+.cluster-explorer>summary{position:sticky;top:0;z-index:20}
+.explorer-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;align-items:center;gap:8px 16px;position:sticky;top:var(--explorer-heading-height,39px);z-index:19;padding:8px 12px;background:#fff;border-bottom:1px solid var(--line)}
+.explorer-controls label{display:flex;align-items:center;gap:7px;min-width:0;font-size:11px;color:var(--muted);white-space:nowrap}
+.explorer-controls select{flex:1;width:0;min-width:0;font-size:12px}
+.explorer-controls>button{justify-self:end;white-space:nowrap}
+.explorer-body>#colorAvailability,.explorer-body>#metricNote{font-size:11px;margin:8px 0}
+.explorer-body>#colorAvailability:empty{display:none}
+@media(max-width:850px){.explorer-controls{grid-template-columns:minmax(0,1fr) auto;gap:7px 10px}.explorer-controls>#analysisViewLabel{grid-column:1/-1}}
+@media(max-width:699px){.explorer-controls{padding:7px 8px}.explorer-controls label{font-size:10px;gap:6px}.explorer-controls select{font-size:11px}.explorer-controls>button{font-size:10px;padding:5px 6px}}

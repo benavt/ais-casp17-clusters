@@ -1,16 +1,18 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CASP17 · structural cluster atlas</title><link rel="stylesheet" href="style.css?v=baad9de0987b"><script src="packed_assets.js"></script><script defer src="assets/plotly.min.js"></script><script defer src="assets/3Dmol-min.js"></script><script defer src="assets/bonsai_ensemble.js?v=23162a2410ee"></script><script defer src="responsive.js?v=79bc3f64c023"></script><script defer src="app.js?v=7e1e829d90f6"></script><script defer src="layout.js?v=c79d3fe7d665"></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CASP17 · structural cluster atlas</title><link rel="stylesheet" href="style.css?v=f57eb069a1f9"><script src="packed_assets.js"></script><script defer src="assets/plotly.min.js"></script><script defer src="assets/3Dmol-min.js"></script><script defer src="assets/bonsai_ensemble.js?v=23162a2410ee"></script><script defer src="responsive.js?v=79bc3f64c023"></script><script defer src="app.js?v=7e1e829d90f6"></script><script defer src="layout.js?v=29039eb61450"></script></head>
 <body><header><a class="brand" href="./">AIS / CASP17</a><span>STRUCTURAL CLUSTER ATLAS</span><a href="#methods">Methods & provenance</a></header>
 <main><section class="intro"><p class="eyebrow">ELEVEN SAMPLING METHODS · FIVE TARGETS</p><h1>Explore the structural ensembles</h1><p>Start with all 11,000 original structures for each target: 1,000 from each of eleven sampling methods. Compare structural projections, explore the Bonsai tree, and inspect representative ensembles. Largest-cluster analyses remain available in the Clustering selector.</p><p><a href="previous-analyses/">Original whole-target and SR215 regional analyses</a> · <a href="#reports">Download final reports</a></p></section>
 <nav id="targets" aria-label="Select target"></nav>
-<div class="toolbar"><div><h2 id="title">Loading verified analyses…</h2><p id="summary" aria-live="polite"></p></div><label id="analysisViewLabel" hidden>Clustering <select id="analysisView" aria-label="Saved clustering analysis"></select></label><label>Color by <select id="color" aria-label="Plot color scheme"></select></label><button id="clear">Clear selection</button></div>
-<p id="colorAvailability" class="hint"></p>
-<p id="metricNote" class="hint" hidden></p>
+<div class="toolbar"><div><h2 id="title">Loading verified analyses…</h2><p id="summary" aria-live="polite"></p></div></div>
 <div id="cohortSummary" class="cohort-summary" aria-live="polite"></div><details class="method-counts"><summary>Model counts by sampling method</summary><p>Counts refer to the selected analysis. The full target contains 1,000 original models per method; a cluster subset contains only its members.</p><div id="methodCounts" class="table-wrap"></div></details>
 <nav class="page-index" aria-label="On this target"><a href="#clusterExplorer">Cluster explorer</a><a href="#representativesPanel">Cluster table</a><a href="#supplementary">Supporting figures</a><a href="#reports">Reports</a><a href="#methods">Methods</a></nav>
 <details id="clusterExplorer" class="figure-panel cluster-explorer" open>
 <summary><span>Cluster explorer</span><button type="button" id="expandExplorer" class="icon-control" aria-label="Expand cluster explorer" aria-pressed="false" title="Expand explorer">⛶</button></summary>
+<div class="explorer-controls" role="group" aria-label="Cluster explorer settings"><label id="analysisViewLabel" hidden>Clustering <select id="analysisView" aria-label="Saved clustering analysis"></select></label><label>Color by <select id="color" aria-label="Plot color scheme"></select></label><button id="clear">Clear selection</button></div>
 <div class="explorer-body">
+<p id="colorAvailability" class="hint"></p>
+<p id="metricNote" class="hint" hidden></p>
+
 <p class="explorer-hint">Select a point to view its cluster’s medoid or ensemble. Choose another view below the main plot; legend clicks filter all four views.</p>
 <div class="explorer-pair">
 <div class="plot-column">
