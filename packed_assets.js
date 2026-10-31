@@ -1,7 +1,7 @@
 /* Lossless static transport for large scientific artifacts on GitHub Pages. */
 (function () {
  'use strict';
- const rawFetch=window.fetch.bind(window),script=document.currentScript,base=new URL('.',script.src),manifest=rawFetch(new URL('packed-assets.json',base)).then(r=>{if(!r.ok)throw Error('Packed artifact inventory unavailable');return r.json()});
+ const rawFetch=window.fetch.bind(window),script=document.currentScript,base=new URL('.',script.src),manifest=rawFetch(new URL('packed-assets.json',base),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Packed artifact inventory unavailable');return r.json()});
  async function entry(input){const url=new URL(typeof input==='string'?input:input.url||String(input),location.href);if(url.origin!==base.origin||!url.pathname.startsWith(base.pathname))return null;const key=decodeURIComponent(url.pathname.slice(base.pathname.length));return (await manifest).files[key]||null}
  window.fetch=async function(input,init){
   const record=await entry(input);if(!record)return rawFetch(input,init);
