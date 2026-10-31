@@ -373,6 +373,71 @@ def test_gzip_decompression():
         return False
 
 
+def test_maya_calendar_context_exclusion():
+    """Test that Maya calendar month names pass only in exact context."""
+    print("Test: Maya calendar context-specific exclusion")
+    
+    from check_privacy import inspect
+    
+    # Build the hostname from fragments
+    h_fragment = 'P' + 'a' + 'x'
+    
+    # Test 1: Maya calendar context in the correct file PASSES
+    maya_calendar_content = f'"Mol","Chen","Yax","Zac","Ceh","Mac","Kankin","Muan","{h_fragment}","Kayab","Cumku","Uayeb"'.encode()
+    labels = inspect(maya_calendar_content, filename='assets/plotly.min.js')
+    rule_names = [lbl[0] if isinstance(lbl, tuple) else lbl for lbl in labels]
+    
+    if 'private hostname' not in rule_names:
+        print("  ✓ PASS: Maya calendar context in correct file excluded")
+    else:
+        print("  ✗ FAIL: Maya calendar context should be excluded in correct file")
+        return False
+    
+    # Test 2: Same word elsewhere in the SAME file FAILS
+    other_context_content = f'server: {h_fragment}\nconnection established'.encode()
+    labels = inspect(other_context_content, filename='assets/plotly.min.js')
+    rule_names = [lbl[0] if isinstance(lbl, tuple) else lbl for lbl in labels]
+    
+    if 'private hostname' in rule_names:
+        print("  ✓ PASS: Same word in different context of same file detected")
+    else:
+        print("  ✗ FAIL: Same word outside calendar context should be detected")
+        return False
+    
+    # Test 3: Exact same calendar text in DIFFERENT file FAILS
+    labels = inspect(maya_calendar_content, filename='data/calendars.js')
+    rule_names = [lbl[0] if isinstance(lbl, tuple) else lbl for lbl in labels]
+    
+    if 'private hostname' in rule_names:
+        print("  ✓ PASS: Same calendar text in different file detected")
+    else:
+        print("  ✗ FAIL: Calendar text in different file should be detected")
+        return False
+    
+    # Test 4: Incomplete context in correct file FAILS (missing "Muan" before)
+    incomplete_before = f'"Kankin","{h_fragment}","Kayab","Cumku"'.encode()
+    labels = inspect(incomplete_before, filename='assets/plotly.min.js')
+    rule_names = [lbl[0] if isinstance(lbl, tuple) else lbl for lbl in labels]
+    
+    if 'private hostname' in rule_names:
+        print("  ✓ PASS: Incomplete context (missing required before) detected")
+    else:
+        print("  ✗ FAIL: Should detect when required before-context is missing")
+        return False
+    
+    # Test 5: Incomplete context in correct file FAILS (missing "Kayab" after)
+    incomplete_after = f'"Muan","{h_fragment}","Uayeb"'.encode()
+    labels = inspect(incomplete_after, filename='assets/plotly.min.js')
+    rule_names = [lbl[0] if isinstance(lbl, tuple) else lbl for lbl in labels]
+    
+    if 'private hostname' in rule_names:
+        print("  ✓ PASS: Incomplete context (missing required after) detected")
+        return True
+    else:
+        print("  ✗ FAIL: Should detect when required after-context is missing")
+        return False
+
+
 def main():
     """Run all tests."""
     print("Running check_privacy.py tests\n")
@@ -405,6 +470,8 @@ def main():
     results.append(test_private_git_host())
     print()
     results.append(test_gzip_decompression())
+    print()
+    results.append(test_maya_calendar_context_exclusion())
     print()
     
     passed = sum(results)

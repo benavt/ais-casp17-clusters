@@ -46,6 +46,15 @@ CREDENTIAL_EXCLUDED_FILES = {
     'assets/plotly.min.js',  # URL parameter placeholders (api_key=) and doc examples in minified library
 }
 
+# Context-specific exclusions for false positives in known positions
+# Each entry: (filepath, pattern_name, context_before_bytes, context_after_bytes)
+# The match is excluded ONLY when surrounded by these exact byte sequences
+CONTEXT_EXCLUDED_MATCHES = [
+    # Maya calendar month name in plotly.min.js calendar data
+    # Matches only when surrounded by neighboring month names in the sequence
+    ('assets/plotly.min.js', 'private hostname', b'"Muan",', b',"Kayab"'),
+]
+
 def extract_png_text_chunks(body):
     """Extract text chunks from PNG without parsing IDAT (compressed image data).
     
@@ -272,8 +281,28 @@ def inspect(body, filename=''):
         # Track line numbers for each match
         found_lines = set()
         for line_num, line in enumerate(body_lines, start=1):
-            if re.search(pattern, line):
-                found_lines.add(line_num)
+            matches = list(re.finditer(pattern, line))
+            for match in matches:
+                # Check context-specific exclusions
+                is_excluded = False
+                for excl_file, excl_pattern, context_before, context_after in CONTEXT_EXCLUDED_MATCHES:
+                    if filename == excl_file and name == excl_pattern:
+                        # Check if match is surrounded by the required context
+                        match_start = match.start()
+                        match_end = match.end()
+                        before_start = max(0, match_start - len(context_before))
+                        after_end = min(len(line), match_end + len(context_after))
+                        
+                        actual_before = line[before_start:match_start]
+                        actual_after = line[match_end:after_end]
+                        
+                        if actual_before.endswith(context_before) and actual_after.startswith(context_after):
+                            is_excluded = True
+                            break
+                
+                if not is_excluded:
+                    found_lines.add(line_num)
+                    break  # One match per line is enough
         
         if found_lines:
             for line_num in sorted(found_lines):
