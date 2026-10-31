@@ -15,7 +15,10 @@ def create_test_pdf_with_dirty_attachment():
         import pikepdf
         from reportlab.pdfgen import canvas as pdf_canvas
         from reportlab.lib.pagesizes import letter
-    except ImportError:
+    except ImportError as e:
+        # In CI, missing dependencies are a hard failure
+        if os.environ.get('CI') == 'true':
+            raise SystemExit(f"Required test dependency missing in CI: {e}")
         print("  ⚠ SKIP: pikepdf or reportlab not installed")
         return None
     

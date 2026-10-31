@@ -40,6 +40,12 @@ FIXTURE_FILES = {
     'scripts/test_check_privacy.py',  # Contains fake credentials/paths as test data
 }
 
+# Files excluded from credential patterns only (hostnames, IPs, paths still checked)
+# These are third-party libraries with false positives in minified code
+CREDENTIAL_EXCLUDED_FILES = {
+    'assets/plotly.min.js',  # URL parameter placeholders (api_key=) and doc examples in minified library
+}
+
 def extract_png_text_chunks(body):
     """Extract text chunks from PNG without parsing IDAT (compressed image data).
     
@@ -71,8 +77,9 @@ def extract_png_text_chunks(body):
                     if null_pos > 0 and null_pos + 2 < len(chunk_data):
                         compressed = chunk_data[null_pos+2:]
                         text_content += gzip.decompress(b'\x1f\x8b\x08\x00\x00\x00\x00\x00' + compressed)
-                except:
-                    pass  # Skip unreadable compressed chunks
+                except Exception as e:
+                    # Unreadable compressed PNG text chunk is a violation
+                    raise SystemExit(f'{filename}: PNG zTXt chunk decompression failed: {e}')
             else:
                 text_content += chunk_data
         
@@ -126,6 +133,8 @@ def inspect(body, filename=''):
     exclude_protein_patterns = file_ext in PROTEIN_DATA_EXTENSIONS
     # Path-based exclusion for test fixtures only, not extension-based
     is_fixture_file = filename in FIXTURE_FILES
+    # Path-based exclusion for third-party libraries with credential false positives
+    is_credential_excluded_file = filename in CREDENTIAL_EXCLUDED_FILES
     
     if body.startswith(b'\x1f\x8b'):
         body = gzip.decompress(body)
@@ -249,6 +258,12 @@ def inspect(body, filename=''):
                                         'private key', 'service token', 'literal credential',
                                         'authorization value', 'private git host', 'ssh config',
                                         'private network address'):
+            continue
+        # Skip credential patterns ONLY for third-party libraries with false positives
+        # (hostnames, IPs, and paths are still checked)
+        if is_credential_excluded_file and name in ('GitHub token', 'cloud access key',
+                                                     'private key', 'service token', 
+                                                     'literal credential', 'authorization value'):
             continue
         # Skip AWS key pattern for protein data files (sequences contain AKIA-like substrings)
         if exclude_protein_patterns and name == 'cloud access key':
