@@ -64,7 +64,7 @@
     info.style.cssText = 'position:absolute;z-index:2;left:8px;right:8px;margin:0;padding:6px 8px;background:rgba(255,255,255,.96);border:1px solid #ddd;border-radius:2px;pointer-events:none;overflow-wrap:anywhere';
     const note = document.createElement('p'); note.className = 'hint bonsai-caption';
     container.append(toolbar, legend, svg, info, note);
-    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set(), resolvedColor = null, lastHeight = 0;
+    let data, payload, scheme, projection, active = null, pan = [0, 0], zoom = 1, world, drag, lastWidth = 0, hiddenCategories = new Set(), resolvedColor = null, lastHeight = 0, highlightedModels = null;
     function transform() { if (world) world.setAttribute('transform', `translate(${pan}) scale(${zoom})`); }
     function point(e) {
       const matrix = svg.getScreenCTM();
@@ -90,12 +90,12 @@
       const spanX = xmax - xmin || 1, spanY = ymax - ymin || 1, scale = Math.min((width - 80) / spanX, (height - 80) / spanY);
       const xy = p => [width / 2 + (p[0] - (xmin + xmax) / 2) * scale, height / 2 - (p[1] - (ymin + ymax) / 2) * scale];
       for (const segment of layout.edges) world.append(element('polyline', {points: segment.map(xy).map(p => p.join(',')).join(' '), fill: 'none', stroke: '#a0a0a0', 'stroke-width': 1.2, 'vector-effect': 'non-scaling-stroke'}));
-      const vertices = new Map();
+      const vertices = new Map();let visibleHighlighted=0;
       for (const row of payload.models) { const i=byName.get(row.model),value=scheme.values[i],key=scheme.type==='continuous'?(Number.isFinite(value)?'valid':'Not calculable'):String(value??'Unspecified');if(hiddenCategories.has(key))continue; if (!vertices.has(row.vertex)) vertices.set(row.vertex, []); vertices.get(row.vertex).push(row); }
       for (const [vertex, rows] of vertices) {
         const [x, y] = xy(layout.nodes[vertex]), radius = 5 * Math.sqrt(rows.length);
         rows.forEach((row, sector) => {
-          const i = byName.get(row.model), title = describe(row, i), attributes = {fill: color(scheme.values[i]), stroke: 'white', 'stroke-width': .8, 'data-model': row.model, 'data-cluster': data.clusters[i], tabindex: 0, role: 'button', 'aria-label': title};
+          const i = byName.get(row.model), title = describe(row, i), attributes = {fill: color(scheme.values[i]), stroke: 'white', 'stroke-width': .8, 'data-model': row.model, 'data-cluster': data.clusters[i], tabindex: 0, role: 'button', 'aria-label': title, opacity: highlightedModels?(highlightedModels.has(row.model)?1:.16):1, 'data-sampling-highlight': String(!!highlightedModels?.has(row.model))};
           let marker;
           if (rows.length === 1) marker = element('circle', {...attributes, cx: x, cy: y, r: radius});
           else {
@@ -108,6 +108,11 @@
           marker.addEventListener('click', () => { if (!drag?.moved) onChoose(data.clusters[i], row.model); });
           marker.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onChoose(data.clusters[i], row.model); } });
           world.append(marker);
+          if(highlightedModels?.has(row.model)){
+            ++visibleHighlighted;
+            const ring={fill:'none',stroke:'#151515','stroke-width':1.8,'vector-effect':'non-scaling-stroke','pointer-events':'none','aria-hidden':'true','data-sampling-ring':'true','data-sampling-model':row.model,'data-model-index':i};
+            world.append(rows.length===1?element('circle',{...ring,cx:x,cy:y,r:radius+2}):element('path',{...ring,d:marker.getAttribute('d')}));
+          }
         });
         if (rows.some(r => data.clusters[byName.get(r.model)] === active)) world.append(element('circle', {cx: x, cy: y, r: radius + 3, fill: 'none', stroke: '#153f4d', 'stroke-width': 2, 'pointer-events': 'none', 'data-selection-ring': 'true'}));
       }
@@ -128,7 +133,7 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
-      note.textContent = `${payload.models.length} models · ${data.representatives.length} clusters. Select a point to view its cluster.`;
+      note.textContent = `${payload.models.length} models · ${data.representatives.length} clusters. Select a point to view its cluster.`+(highlightedModels?` ${visibleHighlighted} of ${highlightedModels.size} highlighted models shown.`:'');
       if (detailsHref) {
         const link = document.createElement('a'); link.href = detailsHref; link.className = 'bonsai-details-link'; link.textContent = 'Details'; link.setAttribute('aria-label', 'Bonsai plot details and controls');
         note.append(' ', link);
@@ -172,8 +177,10 @@
     const resize = new ResizeObserver(() => {const box=svg.getBoundingClientRect();if(payload&&box.width>0&&(Math.abs(box.width-lastWidth)>1||Math.abs(box.height-lastHeight)>1))draw()});
     resize.observe(svg);
     return {
-      update(currentData, currentPayload, currentScheme, currentProjection, hidden = []) {
+      update(currentData, currentPayload, currentScheme, currentProjection, hidden = [], highlighted = null) {
         validate(currentPayload, currentData.models);
+        highlightedModels=highlighted===null?null:new Set(highlighted);
+        if(highlightedModels&&[...highlightedModels].some(model=>!currentData.models.includes(model)))throw Error('Saved selection contains a model outside this cohort.');
         if (payload !== currentPayload) { pan = [0, 0]; zoom = 1; active = null; select.replaceChildren(...currentPayload.layouts.map(x => Object.assign(document.createElement('option'), {value: x.key, textContent: x.title}))); }
         data = currentData; payload = currentPayload; scheme = currentScheme; projection = currentProjection; hiddenCategories = new Set(hidden); resolvedColor=colorResolver(scheme,projection); draw();
       },

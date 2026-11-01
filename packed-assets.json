@@ -3127,8 +3127,8 @@
       "content_type": "application/json"
     },
     "clustering-residues.json": {
-      "sha256": "aa92c7b9374b0f44e09f85a48a8cd4cd2c29ae904e892841155948c63546ab93",
-      "bytes": 386826,
+      "sha256": "c3299709bd0d2896cab2890f188c67f3a087c00b0daa3e6e45fe95efd03c45c9",
+      "bytes": 425887,
       "content_type": "application/json"
     },
     "cmr116-hdbscan/bonsai/density.json": {
@@ -4322,8 +4322,8 @@
       "content_type": "application/json"
     },
     "metric-overlays.json": {
-      "sha256": "10141723e22d5d150dfc3327c354f710918ffc97bea99ebc13002ae987fcf85c",
-      "bytes": 9305,
+      "sha256": "7de3fe07d0ee65a9242f7aa1adf0b66a974633088a8ae91e65758fca8a562bff",
+      "bytes": 9894,
       "content_type": "application/json"
     },
     "metrics/BhR2_bmr6717.json": {
@@ -5637,9 +5637,1459 @@
       "content_type": "application/json"
     },
     "publication-provenance.json": {
-      "sha256": "87cd4e92b05fec52637860f4685c269c26435944dc0018196b2b613bdb3764d6",
-      "bytes": 173101,
+      "sha256": "7f38a4ddab8581a8cc1247d6bd0d5f182fc7382a2802501e0c37a3e31a086310",
+      "bytes": 228686,
       "content_type": "application/json"
+    },
+    "res32-47-plus78-99/data/density.json": {
+      "sha256": "0e8f734b94813cab494e300c2e6d0e43540ce998639ee4dadc1d9e225264242c",
+      "bytes": 4646422,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/data/primary.json": {
+      "sha256": "ce042e1371892a3289da015e57eb8d5077c751644fa53cd830d65a3f91c946dc",
+      "bytes": 4440399,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/density-memberships.csv": {
+      "sha256": "d4d269ead19d9dad5ab13ebdc334932d23f3c933a66ae190d15f18519fefdfe8",
+      "bytes": 460863,
+      "content_type": "text/csv"
+    },
+    "res32-47-plus78-99/models/medoid-00034-scope.json": {
+      "sha256": "8d63423717481ab099291cb3969863ea75267ae77fbd5c06a2d52c56c821d377",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00034.pdb": {
+      "sha256": "ec1a3293cb9e805bfd0dc39fddc75a3413465b0ac4d110093c9d0cda290fcb92",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00066-scope.json": {
+      "sha256": "eb8e5495acd664107f871273a463d531c298349c9d73dfed661ea73eb87102f5",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00066.pdb": {
+      "sha256": "b8aeb2e7218ed4dc7372cf38a068a031c1d8c4bb9f9bd2acf0853a41669c9c22",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00091-scope.json": {
+      "sha256": "4931a2c7e135718efc81ab42bdd03f9966f81471c841ecf97aca8f720a5986ef",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00091.pdb": {
+      "sha256": "094faa955aa74c95986cafb92a928deb9bfe0cd997e989771e522e4b0a027ca3",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00137-scope.json": {
+      "sha256": "9845ae3c2a581b352a53c51ada3c0453c3fd17138281ecc30ec2cf557a1a9548",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00137.pdb": {
+      "sha256": "de784ea1f8337844e819da49b07d23c5444ea96660fffcbb4a2522e9cbd6ef65",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00198-scope.json": {
+      "sha256": "f125abded257f427a5a6ecdd1341a4c3fc0732ac44ca5d1e514ede340447ef4f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00198.pdb": {
+      "sha256": "ac226e1cd68c6e43deac66f8dba123f80b5db58663b80b71098157385a0e80ba",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00218-scope.json": {
+      "sha256": "8087e0f26a76d67681dfac24ee98eaa019c7e6380fc9e4fc7dae292e3343733b",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00218.pdb": {
+      "sha256": "e09f222b377d2cc8e667e05d57f35cd9f6b4716c3c91539ebd0341050d3a2b3f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00256-scope.json": {
+      "sha256": "5ffa8948ac6abbdd86ebe50be832ce332c24142e59c1d8afe5d2bf561131966f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00256.pdb": {
+      "sha256": "7a9638b99719483866511e5732cce29551df6d2220743b7b96fa3a170c6123d0",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00277-scope.json": {
+      "sha256": "b4352ce6f8b85d997c54973d01af243fbe4a03fd7804a8030400a0aa15507be0",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00277.pdb": {
+      "sha256": "517431b286dbde5246c9058f8c468c509575d09b4d64fe03eeaebedcf65d633f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00449-scope.json": {
+      "sha256": "ebe80ac110a39911cde77e5311534bf6cd45bf601f0471495071b7c9022453f2",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00449.pdb": {
+      "sha256": "58aeff60d294ce81458aae873a647bde5f7a45a3d030a2dc58ec6d322b891cd1",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00450-scope.json": {
+      "sha256": "d0e98dc47f5fba726d2dfbe953e5783115d154c282990eb2dc25ee1fb72033ce",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00450.pdb": {
+      "sha256": "bed0fd4df4946b5c6eef53cc0bcd207880c5f6b4f259b4e44509e92bd7f5e9c3",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00460-scope.json": {
+      "sha256": "4a4ec43f53b616bfea8c5845b6c98d7898eaa444f5092ea8baaf98e2a149cc20",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00460.pdb": {
+      "sha256": "f679f2ff57fead5ba001110484db3c64a363491a07e5497ddb3c0d3de8f3a7ed",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00489-scope.json": {
+      "sha256": "377ffa0d7f078e6367dbcb19a3223ddbfa81b9d9bfe8b0e170ffdbb89b0b18ea",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00489.pdb": {
+      "sha256": "10609556d8b5c2c22754ece9ec6220f6e0d7efa22349cc469eb6d3bcfbce2009",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00534-scope.json": {
+      "sha256": "d97d0138fb64be24ada36b8dcdbd2b2daaf18ac7aba4078c510a1e20d93ee11b",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00534.pdb": {
+      "sha256": "7e737f75390592e67aeb32afdc015ee57800685eb1f51fc8a5c70dd8a2024e21",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00554-scope.json": {
+      "sha256": "13831af97b2fe662b518b536e0250149538412f7475378eb3f909bc26b469db4",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00554.pdb": {
+      "sha256": "d5c7d928c0a903c22c1269d2d58502ff61dbb3ddf4fe2f7014e98bf9d9e997f2",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00732-scope.json": {
+      "sha256": "68aab42603b9c371911e2f23e54d10442afb9da10ce2822c9108ad38cf9ac6be",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00732.pdb": {
+      "sha256": "87d0fd9f5abab64a7e6ad6790b7490c29befabd7b3c51414823931b1ee7c6a24",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00733-scope.json": {
+      "sha256": "f3191dee8017d138e9b90fcdc495d091d601036fb0f30cf072e44550153df6f5",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00733.pdb": {
+      "sha256": "059def2720674978f1e9dd7cb086fa319c7adacc9274edfa220e07358f2cfcdf",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00838-scope.json": {
+      "sha256": "1d871fe30067144a5e3e81fb3878b6b960580107baefa67abf2328dfeaa6f486",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00838.pdb": {
+      "sha256": "dcedea3fad9f37fe92e690e0a802a443d4d1d5ea61d3ed07c27008e449257f17",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00897-scope.json": {
+      "sha256": "b4c42b366e11cfb1143aab5500c828c13473197150f27f8f1856d0d11fe376c8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00897.pdb": {
+      "sha256": "e9b7e47112bf0651009db9db713eb9da5a770df3069753143df605ede54f3ff2",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00972-scope.json": {
+      "sha256": "0d9601ea79c294bcfdb2989e74cce0d9dda08b92ee0224cd099606a57841716c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00972.pdb": {
+      "sha256": "5718ba16adb6f4ab9d4d8a346d1efc5b49ab14bb9e13c332cb60e2979f7fd732",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-00980-scope.json": {
+      "sha256": "b5d05779c4f6d026a2bd9cca8c76a6bb1a1b41b99915c1ba2466b06b422999b5",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-00980.pdb": {
+      "sha256": "93e079d6d9b3e7c066ebcd87c607440367e3bdb4812b9d8b3a5ddbd2830838db",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-01532-scope.json": {
+      "sha256": "77d73879bfdbb2b43f70b0d99feeec9913b9c0ca2a0a6aa19f390e9b9851477e",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-01532.pdb": {
+      "sha256": "5e65ba72a9eb6224e7ac5583b33dff059fe4efc13e1c7d18fda2a8f88e763c04",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-01600-scope.json": {
+      "sha256": "6b85c2eb17ad40ab0c13014d3ec0aeb50e303a5ad568511f3ed2a15232ca3df2",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-01600.pdb": {
+      "sha256": "1f0ad00fe337098c28c7c1dfb078e951305a146db457ff0c3051ac1ebaf1f54c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-01649-scope.json": {
+      "sha256": "e25263c21164e1747c9e4dddef3de33ce8f45c6d032d96655061bb5268b589cc",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-01649.pdb": {
+      "sha256": "88bd9b7b863b7d116776ae67ba356da3ec800cde57672e560caab9da64023875",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-01822-scope.json": {
+      "sha256": "a7189bce585a7b9c2757421f2906a5a76a672fc787b97e2b0a0fd9fd2aec4a02",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-01822.pdb": {
+      "sha256": "227300eed8331eaaf0309c2d5b1921499b6a27977958824615fb6f7d6b5fef62",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-01896-scope.json": {
+      "sha256": "d3c1d5e170b84dab69e7a911678797092e4ce37bcbfecc69cc702c9ea8eba132",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-01896.pdb": {
+      "sha256": "2a9b74fe86ea95c681dca96d6d407312b17138e34db704f0ce4372089c4b5c1a",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02024-scope.json": {
+      "sha256": "bd3f326102284163abdb2c244201e12e6b8f143b1fbcd0ae34ae9a06130f1d65",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02024.pdb": {
+      "sha256": "8ad1db41e72f9b44cf90c86d8e7f40fde2144233f604d08478fc60ed38eb24cf",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02025-scope.json": {
+      "sha256": "1609152fb3f63d18bccdeb62017de1c437018fb5cb371698bcadc9ed874136f5",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02025.pdb": {
+      "sha256": "0eeba5a8801900dacd8dbf7ea78136c4b3883875f7d44a3c135911125289e675",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02070-scope.json": {
+      "sha256": "e1143852da0da6a4a06e0e0fdc3444870abd3aa525bafe9b407d941371fc9453",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02070.pdb": {
+      "sha256": "5e2859bf04ca85b1a67c993b3080ada6f2575ba73d63f45210491ce59cffe3d0",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02105-scope.json": {
+      "sha256": "7987eb8bc6daffe493cb37a6afc9110714af5b1dc9bc0e189e98c834b0a95345",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02105.pdb": {
+      "sha256": "6a35df7f01116abd24d3f88ad1137f7b6715de5dcf172fa7207666e8efb5ecd2",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02113-scope.json": {
+      "sha256": "2c88c5f579de8766590daac42c21030e994436db8bd62ae7830378088fcc8310",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02113.pdb": {
+      "sha256": "025728b2443a01767f9b4842fa20b4c77c5206db13213e0a03f67f7a4d11ad08",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02230-scope.json": {
+      "sha256": "432e5ea79aac354d3237e1ab073b0be154c2e8c683db6a13864fc0c131f4dce9",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02230.pdb": {
+      "sha256": "23f0743c012f2f1eb96df45b554d463bdd5e7ebef66403877424a2275e3f20a8",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02299-scope.json": {
+      "sha256": "b497be82a92c04e383c6229d2ea32e48129aace5b361ab490b030bd62ec11a93",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02299.pdb": {
+      "sha256": "4de5ec3b5393563aff8260ef167b9fa8a8344a560e68f3271de5bd25b68bd855",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02317-scope.json": {
+      "sha256": "1fb9501777e8ba2700b7e238f24944db0a0718cafc688cadbdc1391605318905",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02317.pdb": {
+      "sha256": "4e26eb98a02d083ff0eb25e1915088e7d13b732223475ba38e8bfe1b8e7feeda",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02329-scope.json": {
+      "sha256": "a899565d96cc29c043363096ff6295ec9d89418e5ce455e68d2b3bc679b382be",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02329.pdb": {
+      "sha256": "b0897e68c70181e705bf95b78640bfb8b2143af3a4b122090e2b3d41df192303",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02409-scope.json": {
+      "sha256": "19ab9d27d829f0258016b9ce7b84d773ba588d159ee5b199d60ecf1c2d028210",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02409.pdb": {
+      "sha256": "2ea1904ae33bb61c122ce119dcf60c660d41e498f3aaeb3f2e83107e22a2c4de",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02549-scope.json": {
+      "sha256": "da7f73b5b0554ff7f72391c80b1c80b463e14ee72015ba3fc89f511de7f19042",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02549.pdb": {
+      "sha256": "91b6d3214ce743c88d81524bf1a987eabe901a84edf5dceb1cb773be7de6c008",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02636-scope.json": {
+      "sha256": "090035d851ca05a9328dc9a59d161a2b93aee855d1ee99ccd11ed521cceb025b",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02636.pdb": {
+      "sha256": "cbf89a9bfc731cda8111caec438563984ff497ba784968364729c483f741383c",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02720-scope.json": {
+      "sha256": "8a274d44936abacd3198094a2aa2239df76a4dd34b4f6bef2a253554df33a2ea",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02720.pdb": {
+      "sha256": "6e7178f965854a23412f08874ffefd1aafd9bd5cfb0484f0c4396aae07570a90",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02738-scope.json": {
+      "sha256": "aa080662606386b1a03b9a9da3910b440e6ab0cc38d2d1fee5d6163b67b49b04",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02738.pdb": {
+      "sha256": "af853de24caec403f26656d41e04716857c683f7c2c7a9b4cdc85f53f2cca6be",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02799-scope.json": {
+      "sha256": "43305a39bbed1d8350802f2cfd4bfc641a4eb71ffefdec4dd67b053a22a4c7cc",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02799.pdb": {
+      "sha256": "191c14d92b5bc1d951be5313eab03c77aec2f6480b13576d510a4d6b601732c7",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02837-scope.json": {
+      "sha256": "df69a213704febd868743c4cfc63bb4586bb648efd4092a91b5152e700867c16",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02837.pdb": {
+      "sha256": "61079f1f5a77da6c3f564b1f3ad6e4e9f2804ddd1aa20d65d37dc6927d4800c4",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02838-scope.json": {
+      "sha256": "591092c446cd219107c2d88752cc25112bfdc82c63c90b591451efc5d4a7c9d8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02838.pdb": {
+      "sha256": "0e30edd27560e0805bfeb46e44e8bdac362b9adef406d71eda6cf53bd94c47ac",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-02890-scope.json": {
+      "sha256": "ecfdfd3f12b4bb36d4a801c40e964d6a51c89618d6514413e581a16d4c3a68e7",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-02890.pdb": {
+      "sha256": "e80583807de41d4cdde455b5772a589c23912205b429eee5a046b95861763fce",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03012-scope.json": {
+      "sha256": "68f0875e5ff99595af835977cba1cbc776d0ff401b75aa7641102f26246bbbe4",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03012.pdb": {
+      "sha256": "adbd0c64d4c602931062a4eff16aded1a015894edbdd6e6d5222d6333da77567",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03053-scope.json": {
+      "sha256": "52f48e85d69a578d30ae5ea60bba46150f6091d32aa42dcdb17308230e3ccf87",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03053.pdb": {
+      "sha256": "2470da0a90630c6ac86f5e541539b89669ef7eb347631d5f239c9ad462f8f781",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03063-scope.json": {
+      "sha256": "dc3e3564a187b832ab3f4c0c30bd70ccb958ab2ddeaac2eeaae152c559c96f80",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03063.pdb": {
+      "sha256": "d61231ce73db0d3e4fbd897add88e7d800ba04a30bc48d788e5e548ca9453700",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03149-scope.json": {
+      "sha256": "948f1bd633d0b06d21c7ac8a9d400fa7ccaeba2ffe1cc220fd0ed0659da63e9f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03149.pdb": {
+      "sha256": "1b89576090158af661b7ec030e3fe758cc91895135edba346e82bf9d2463aec1",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03158-scope.json": {
+      "sha256": "8519d1ee86dfab6a4b16a029d5bd3a8525775889adc656d8dd7dda8912abf05e",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03158.pdb": {
+      "sha256": "3807b3c313be3fb0fc0bc82ed9ce07319dabb4ed38eedb757355a9969bdcfa6c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03257-scope.json": {
+      "sha256": "5203cda8f3051d16fa275290b41f1de5d7ed2b14c6f342674fb6ada62472573d",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03257.pdb": {
+      "sha256": "a44fc4e2829fa7d3ad7eed0ae4e9ae9da98d4ee2f32f8078aca080e536dc9f38",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03261-scope.json": {
+      "sha256": "9158709e071d6a457489e947daabc0b7c4f3ad2bffc575e50488be29885d06ed",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03261.pdb": {
+      "sha256": "6c3aa1af5a3e88ed211ae96bf9bb7194e2c7d177c1652842479f03ad0bbb348f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03272-scope.json": {
+      "sha256": "46a070feeb294e0f59a595cf8f2441517343385505c2bbc3351a5105cbf958d0",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03272.pdb": {
+      "sha256": "fe0f37bbe817151b20281f0d2d8952afeae96e0d033934c6e4991013bb139a49",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03280-scope.json": {
+      "sha256": "0b3321e8a29cb72a8b0b1ab399e05a388fa16c8082de6cab9aab53e14ef19961",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03280.pdb": {
+      "sha256": "8986a833a72dbbe71c511714ad5aa9488fc15abd9fd0d614ea9752a336c968d2",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03325-scope.json": {
+      "sha256": "79be160761eaaca4cbdd4d508aa65eb67ac21b25d57b70bb8616b4919dceb112",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03325.pdb": {
+      "sha256": "2095d4156fd014af178e8f51d2198a3e465bb44d98f4a7000823d2cb70f29b01",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03363-scope.json": {
+      "sha256": "9ba828ec25781eb7698bc2999c549a69a19a8eaa1ab0f96f1c7e324e9c36d02d",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03363.pdb": {
+      "sha256": "a5273d08c6e39d239851a8b71348222dd9003cf92c37c1cf97b444072ac5246f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03367-scope.json": {
+      "sha256": "fc39462d30d2dbe86fd7c3062562ef01db84a578d1ed83854d0f5876a7f1da0a",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03367.pdb": {
+      "sha256": "8409c8c80dfa122ca1b3561b90981a96b3fa824e5433c5f727dd524355eef0d0",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03370-scope.json": {
+      "sha256": "a119d7af07b43ad84f02fb887c2546ee1f136cce7130c1f5e9a54c1f26263cd0",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03370.pdb": {
+      "sha256": "46a2531fb0dccff9daa7f28879623028fc60464fbafab8e91e1b228edc3602b6",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03384-scope.json": {
+      "sha256": "d714f56e46db349d63b5b215fdd41fdc8be97b966cee0871d20684b3f84944f9",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03384.pdb": {
+      "sha256": "d8fd50eb40cf23a1a8c47d45b98b643a7b17f0727dfb430c17f5f97cd53ee51b",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03444-scope.json": {
+      "sha256": "58c5cabaebd7303870b84cb35de849ad7dc975c1c70d3dfe38044fb43b69df4f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03444.pdb": {
+      "sha256": "17b6681acbd902ac083ab2403ffc4d5c93bd52848347801907d84b4ea21baca9",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03491-scope.json": {
+      "sha256": "423212541258876ab229c6a02991ca5ccc982587dea5ab1339cb59a69097915c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03491.pdb": {
+      "sha256": "cbb9bf367ab29e01b14d64c48c228ac2d15c34e8dea2461d51692bc8576d5786",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03511-scope.json": {
+      "sha256": "c04fc23a164671b275d0d71a09387a4f5e3bfd39da866d12d0086bf157342475",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03511.pdb": {
+      "sha256": "32d4a418c1322aa68e0ca09fdc8036fc11126b8a20f7653de5033724dc434568",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03550-scope.json": {
+      "sha256": "19b9ea43c9c1e1889e06cdf37b5009d301335a87a13916e1ee6de21ba1d76ee8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03550.pdb": {
+      "sha256": "0433dcd27ccb49bd4228e862c936d17089c5e830be7a965ed766bd1f329606bf",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03570-scope.json": {
+      "sha256": "c32f0c53b989930e04eab10faa882ad24004367a326af1b0d287b06606d17e8d",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03570.pdb": {
+      "sha256": "c97f18d1e31bf057276ce73fec4e9cf0504d4cc5ca1988fb25c4e6e6ebb24ce3",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03625-scope.json": {
+      "sha256": "4ac9a4e50eb4b10ca984d2f539f430c6b503e9bf19bc1ac73f644133530f9582",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03625.pdb": {
+      "sha256": "672a02506714914038b4e183d3efc76e3c6a7097d901fd78585e107dcaa46dad",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03668-scope.json": {
+      "sha256": "9a275de180c8b905c016c89e3d2d4047c9add8f2aafd032b432ca122ffa81e05",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03668.pdb": {
+      "sha256": "1490f6f92407415d04a39d438ec86622c4c31a4d030c27a437552ad4f5b42423",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03721-scope.json": {
+      "sha256": "429c8a5eced0621785a40f64a90e37e94bd52711704e1d26046216253e9c8f6d",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03721.pdb": {
+      "sha256": "c68005950e68c11f2c6a1ddbf8ba819106389ef000dbd273ed5820d6d8bbacd2",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03748-scope.json": {
+      "sha256": "66a1f897e8be9a03548012809d8f9e5324365331fd30b9ecec95f5c4f5c40ccc",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03748.pdb": {
+      "sha256": "747b34d8de26b9ab996bc39575ddd07c156b8990c1164495c307aebb1314bd9c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03834-scope.json": {
+      "sha256": "9dd1167ff637fca94bacfdc748a004a728365ce975da1f1fddefcb70650ae609",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03834.pdb": {
+      "sha256": "96f50718f0289ce1e0f3b0bdeb7c9a95a35999fe6c14de75318e1f95ad220263",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03837-scope.json": {
+      "sha256": "3d680495bc88d05405ad6a191052499d800a0c19b9c331bb531cfcda3a6146ce",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03837.pdb": {
+      "sha256": "f65b6ac3200a3f8ae668d35c7d9be1bc7d58ca9b84e67b41c574fb59c074ce14",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03889-scope.json": {
+      "sha256": "56e81229a4f0315e3736dfe9b03a66f6de300a824f128ac35dcf20f7ee3be1a1",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03889.pdb": {
+      "sha256": "34637c4ce67cf49f2961aea05699e33b3822a1a4e45f93258a943ebf112b0916",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-03967-scope.json": {
+      "sha256": "4fdc2570d3deb612a7c768d50e2c1ed869ac4cbb37b6436eb9a91fa3cb8c7c11",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-03967.pdb": {
+      "sha256": "4c5d0b2d4b0334b78d7c31a53628c94cb0fe901649140e3c14aa6e1a3753d3c2",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04176-scope.json": {
+      "sha256": "83c520277d87565f0d3c2d4aadef3a7feffb59cc7aa4934f08d238352077ca18",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04176.pdb": {
+      "sha256": "6e3cf4eaf748878e329041f06fd23a1565032322d2ea66f83aafcff0e9540dea",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04201-scope.json": {
+      "sha256": "1f85cc8fae4a3cbf8fd3909e1bd125cd6a7e4e15c7163f24855f4fabc5cb1da7",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04201.pdb": {
+      "sha256": "b4e19fdba2f17ed475bfbfe0de892c61fd1652324312dbe04149bfe81a16c2a5",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04240-scope.json": {
+      "sha256": "ef2aeba57c091d0ccbe4563bb4da1ee7eff9acc1dd723c8da24b3fe99abe8e32",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04240.pdb": {
+      "sha256": "e8eabb9c12e7ccccea1161cc191fb2f1d10efee55bd3a7603264fa1ca8c4a108",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04411-scope.json": {
+      "sha256": "e944b8486573b286d906fc5548424ab73e6cda873aa276326d61f366dda298de",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04411.pdb": {
+      "sha256": "68013c8270de1b84915e6fef0ced385653e7d65ddb72b5fa701337235625590f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04451-scope.json": {
+      "sha256": "a80670530bc7780867076c95e17743439674b7abac50372b3dabdb841e0c18c1",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04451.pdb": {
+      "sha256": "f53be38cb6255536d06634347defd26dd82952d38415811bf28582d3aecfe001",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04475-scope.json": {
+      "sha256": "a32c11fe7b5a002838e0b11ca2f2f9972e5e0147aca5350873326750ae2fc87d",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04475.pdb": {
+      "sha256": "657cbe6efa15e923ef674d7c337670c9736e916fe7f91250e5ea4a6d0e43687c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04493-scope.json": {
+      "sha256": "7cc3fdf7f4710369d406f396e82b44626aea08da410919fd96046dc6608212b3",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04493.pdb": {
+      "sha256": "3f8a91218581dc70b6f972832bb70936ba01bc4acb2c0d4b870e766995495f90",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04498-scope.json": {
+      "sha256": "68f19f38be913489df74ac49f7645c1de1f2621c0aff7b0bc2eebecc88a2b963",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04498.pdb": {
+      "sha256": "06a72b3ab2dbc77b327ec0bb25ecf3f266ea30634e71380b183b66ba04056588",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04626-scope.json": {
+      "sha256": "10f719cc54f73a0bf8b1569fe37809aa9fac9a7155dfe4d391ac1099e9d810d9",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04626.pdb": {
+      "sha256": "54d328b28cda520e115ac56b623bf1a5b9624536f53814e12e6b786cb71d9ed3",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04733-scope.json": {
+      "sha256": "1c2d4a8c7c72de50851c7ff086b6e1eed4b4e325430d4f3d306e98c9d869d943",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04733.pdb": {
+      "sha256": "ecafd58ecfe189d964814cabebef82a3f067c57f6343dbb766b3de5d60488588",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04742-scope.json": {
+      "sha256": "9e304f74c2be59a7b8dd0f08052e176548920aa495d52d933c22aa5ec92b8832",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04742.pdb": {
+      "sha256": "2216678a9f55de1b8b20ad3aed0e21d066a610ce078aa73db9a7d4f41401514b",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04816-scope.json": {
+      "sha256": "8c077e4b314fa7804973375dd7f7f557f9f81e2c1ffa40fcbbf8b96e7464f7a4",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04816.pdb": {
+      "sha256": "e16fa67ad48d2e7b0c36d28517f0bf4c1b6e435de512091aa378d28567867b0c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04924-scope.json": {
+      "sha256": "2d8383ffa3f5fec7f9db1d356cd43b4e37fcbe17f4047745739d8e0cff27602e",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04924.pdb": {
+      "sha256": "40dad94b9027a099d3e08588a6b2e7a7b80aaa1a02e2c52c2c9a6e189a7cee37",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-04964-scope.json": {
+      "sha256": "ed021f5860cf544dac6cee9b5542de8b626acf5356d0c841e898f6f0d4d25f1f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-04964.pdb": {
+      "sha256": "9f4849bc27c54d5f28418df3924da54a64e3baf110eed839a2d323b3b100b1ca",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-05376-scope.json": {
+      "sha256": "de21e47ecf2fcb9bf9d08d73c91d62f13a95e8cc6c9d25e1f00f04e21f70875c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-05376.pdb": {
+      "sha256": "a24aaf7e270b72b95d4f9103116cc9eace1dced2b5b4f1294566a516662d64a4",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-05656-scope.json": {
+      "sha256": "d41cf7f86a56fd19533bba2f9da29b22994660674bfd9ce10677bd97fb535e08",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-05656.pdb": {
+      "sha256": "67f02aae0c589eeb3c599e2646a77979d713af1ea35d2e66a118e4f76212de90",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07088-scope.json": {
+      "sha256": "6b97a164cf0ae605ae359fd6966388d84e18798c91bdf32890af688ea3980315",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07088.pdb": {
+      "sha256": "e5471d4637a8b1df77d178131c738b6aa2b43cdbf5ed174aeacfa2cb12db6787",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07106-scope.json": {
+      "sha256": "114e2a36dd6ac2b1f19be59eea0b56e3e1d2ceeebb7128d24acb84685dd2907c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07106.pdb": {
+      "sha256": "f2b178f6efcd77279ac6e6845fb430d4595b7c9317bf596eef2cd00c751ece0c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07165-scope.json": {
+      "sha256": "56f1d8ab16d30e6495519eb8b9523576debdb8d5c1cdd19bcda5e11c2f550e83",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07165.pdb": {
+      "sha256": "31259fed61bb79a07fc177982d870e22234fe51685fa28bf72ac728a88faffc1",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07186-scope.json": {
+      "sha256": "65978fa917de549c536d9fa1df6f274847bc2f45dac1294779dbf924d5fb2a2c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07186.pdb": {
+      "sha256": "490fd650a1b6127d14ecea85f1af86ce736827d15d74d615f216ae9e2979815a",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07216-scope.json": {
+      "sha256": "900c1e6e74b05682b8df861b3e47e292572464aa5dd5e94ecbdd8b14dfcb2a1f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07216.pdb": {
+      "sha256": "fd9f7a7cafb269bbd5c78cd3be81a98f929bb8967cad6b21bc81ac32c7e9a87c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07217-scope.json": {
+      "sha256": "012b67d43c917ee1eabcfc4c4e6d30bac59b59894c508b6afdfb910506e35d62",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07217.pdb": {
+      "sha256": "bdf875cc58b64b60b1985f4d12c1dcb96e59b026982a09852e6f922edaf2d0fd",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07220-scope.json": {
+      "sha256": "c5012245f8b6ba708ee6223364d6a0946a1a019fea170b1b3c413f3480cf98c6",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07220.pdb": {
+      "sha256": "b9a23604d8a31b565ce2584a5a6a47769f5b1dc0095058e507edca86d4f7dac3",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07222-scope.json": {
+      "sha256": "22e8b36545a1c2aeefcb83ce2393a3bc85cef4ef54f70fc683c0bdebf50169c1",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07222.pdb": {
+      "sha256": "85448cd23e4d874c0f171dddaf17bdf704b7fb1add7250aeed71031a48d2585d",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07332-scope.json": {
+      "sha256": "e66b9d6ca5820fdf92811018aff2f3e5886d550542d595244abc28103e527201",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07332.pdb": {
+      "sha256": "d02082da89e61d33e11ba124c2f4e5810a1ede7c7775a0cfc1f12aacfeda9771",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07562-scope.json": {
+      "sha256": "d2f8c46f7ac33cd001bca1dabd3460532d30c4ebaf99bbd873a11b30900460ab",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07562.pdb": {
+      "sha256": "beb5dc998a0294f6a1e6f45ec371b16fa05d501bc25011f18c4f88f7608c018f",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07838-scope.json": {
+      "sha256": "b12283f73399393e6d213f88340c74a3464096a3e782a40e8228b14fab0903ae",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07838.pdb": {
+      "sha256": "3f6603c817d190954a5d9fdf75cbca3e3c1af1d40e7f9b5ae3d42645dd53dd53",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-07996-scope.json": {
+      "sha256": "28496b03e15dd9742e85da6023485bd6f5d3f24cc34bb3f5bb3132fcdeb7fe85",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-07996.pdb": {
+      "sha256": "50242a7d79faa2637e75b0c1e996e32966244b1857a77dbf867183c4a7416f3e",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-08193-scope.json": {
+      "sha256": "e35471d9101562b48255255479ae50c6a8412975f3f011803e8b0148df301c32",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-08193.pdb": {
+      "sha256": "6794d92e6bc4d62bd3d198e683f272eedf48d42b21f6ddc8d81059cf89fc8d22",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-08239-scope.json": {
+      "sha256": "86eb108dc04b898cb2035646293f93b8f5d6eca77d6d977df79309b87b966443",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-08239.pdb": {
+      "sha256": "7a3fe78e7d998eabfec51fc0113f39c8e5a9bf6730e0c2ec493bb8d3185630ff",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-08306-scope.json": {
+      "sha256": "3c4842c444fcbe29af8c0e17e0c6115966ac496a5a1cddd804e74fbd9e695f94",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-08306.pdb": {
+      "sha256": "584f56fbcabe28e957d6dc1e2aad23000ad463ff396612e9815eb573a9884bee",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-08426-scope.json": {
+      "sha256": "836c050555a60ca225790c55b87d31b2023e7033c4817f8e3db936772499e8c8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-08426.pdb": {
+      "sha256": "c5c1895a731dd4d3cfabefbf3cacef3977ca34401da317ae376fbd12a444d70c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-08678-scope.json": {
+      "sha256": "c512e244527264bc7fb3decde0bdeb2bbe3defa0ed1914870f8fa0e619cbd226",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-08678.pdb": {
+      "sha256": "f23a3bfed6dd9657a4a1ea51f3a98bea6a630c40b28a3144e38a1bd64af69761",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09053-scope.json": {
+      "sha256": "7e5ab64309374b525c9d8ad41521bcb0ba440718d2979f47abb356ae366f9675",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09053.pdb": {
+      "sha256": "763f58c1c215cb4b7bbd9a2c008cabc3b5eb24a81abd160374376ebb00874b37",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09105-scope.json": {
+      "sha256": "7a5f0f67e97a335a5ad338a8e8303f1b0053b534b2ff38e2f4f73af56f0cb730",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09105.pdb": {
+      "sha256": "289486c1c924e1c7433ea046fdca1256932ad0113d950e459f314b6b68589993",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09129-scope.json": {
+      "sha256": "0d56614d19c7e554877a47f7f7e648381d76d4dc9af6fc52e00b2171b8b41732",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09129.pdb": {
+      "sha256": "ce18766ac7d9bff9a5648d3a3b17f0d7adcb6fd7cf5699eddbd2ab0d2f530d87",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09170-scope.json": {
+      "sha256": "ca88452f7a17732c4f12db576465161f279c57f2da5a012fb1f7b8735bf12f6f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09170.pdb": {
+      "sha256": "b6b74ab725b940a60d2b63bb59ecb9ba10f5cbebb38fc5b2beecc4aa569df4e9",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09171-scope.json": {
+      "sha256": "d646abfc438c479858fca0af869242378fd41c1f953163f801d72982716ead2a",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09171.pdb": {
+      "sha256": "c96019fac1da2e1844ee9adbd84363aa614b2b3733308903e3ced36483a29e22",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09226-scope.json": {
+      "sha256": "3df886bd2c437fcba8269fb891fd1a04930f335f23da2d0419c1d5377b962782",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09226.pdb": {
+      "sha256": "9b2b58424013c0d08507a9f52693371eb4ec00bd2dd8a58ae63f2976755a2ba6",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09236-scope.json": {
+      "sha256": "f1d99a6195284851dd67f1b9f8ea977aab0c34f495ad495a936eef35e4e8d5d8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09236.pdb": {
+      "sha256": "f4aa2eb937279518417fbc837ca21e129e6578f602056e884e0db21a7e25a020",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09237-scope.json": {
+      "sha256": "978e3b2d2e8ccc179020e53389f6041e8b1de2ee5d1f7249b29c983f5951163f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09237.pdb": {
+      "sha256": "93b4cc68d7f5f2f895cc44d1441edfb40cd55a3540af77bfef2152c06d24a54b",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09266-scope.json": {
+      "sha256": "70201fec09ce7191bb86b5365ebb522a696637c96996cfe5197094ee8990277a",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09266.pdb": {
+      "sha256": "cac3c4c05ce8bc3001e1662f980a186f3cc30705daf1ba8b01db3d0ed5e9616e",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09296-scope.json": {
+      "sha256": "7db2557640ec0d66201d4ff06a4c007e8bce21b72e6f76500422500767de7946",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09296.pdb": {
+      "sha256": "06e6921e7cf3ca53277e1867f2ec647fec56e375a524a61c112cffed90de400c",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09351-scope.json": {
+      "sha256": "f9c435f57c84e265dd327e8c45b8f2fe5b04e6131a3c392c961a3290188dc23c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09351.pdb": {
+      "sha256": "cb0c92573f1c5f44441ace780203ea33e4ce5eb1b745dfd0ea3336fbdcf46cff",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09372-scope.json": {
+      "sha256": "1cd374da599a6d53b3dbde239836f681cffae271acb916b74276f634c1d214b1",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09372.pdb": {
+      "sha256": "a84e2faf880d1063c9e0a66b0dd7610fa4c63f4139148f4d7fae840dc4bc8d46",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09624-scope.json": {
+      "sha256": "246060434d1af080c0f1c581db433e5d5117dc10707205b0cf530b523f4bfbf2",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09624.pdb": {
+      "sha256": "0624f010f14ed8b4f6b5a092c824ea763f92a3988676f25a9065784e7aadd9f5",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09688-scope.json": {
+      "sha256": "816840d2726e243f4d1f01d30145ae5bf852a974c1866ced88648490df1a7e97",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09688.pdb": {
+      "sha256": "7fd0818bbf0751dd5272d19e2f2044182306f4fadcee3b29b32879732856beed",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09716-scope.json": {
+      "sha256": "0f2509a98c41dbc47c054ffe3ff4ea98828eec99dd48e6664ace527048035226",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09716.pdb": {
+      "sha256": "813e72ce11d81d8f69c92fe311ba5a2f0f1f34faea65c25c130f05225aff8cdb",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09897-scope.json": {
+      "sha256": "1373d416ea2563de94c4428014558e7c4984a1b4cf387b66b93d139878348ee2",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09897.pdb": {
+      "sha256": "dedb2a5ac80473ffc9e8ed566d5f0ef3321494d2840f40e7429973e22cefc2bf",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-09979-scope.json": {
+      "sha256": "59cd4b250bed10bc2651ed3ff945d1d64eb5620853a889e45dd53052b9945b0f",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-09979.pdb": {
+      "sha256": "25838cbdc5fc582d567fa75760eb8161d3e7384d28bd3e73f342d27f7a210174",
+      "bytes": 90161,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10062-scope.json": {
+      "sha256": "9da9ac364bb2857cfdfe86119e259ecc52fa1419cac0c730aae2bc5e7c26b2c1",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10062.pdb": {
+      "sha256": "0dd550b13ed9a759a6d0c7f9ed05ce70814c5032b52b74b0b8cf595492f68a82",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10090-scope.json": {
+      "sha256": "5d78b2d3b65182caefa2ec51a97b14a48eb39a485c78e3720ddd9abfd1a447db",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10090.pdb": {
+      "sha256": "e731fb411452922d2209f0028fea45feb52ad301ec7decd28caecf3d87632048",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10091-scope.json": {
+      "sha256": "61f2763b8af0e379323e129493278312b253278a7b2450ac58b89ef6cc07089c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10091.pdb": {
+      "sha256": "e3e0ea40a36dd846c502c10a93f35e8efc84c38368f4774c6e8d7fa6aa80f80d",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10097-scope.json": {
+      "sha256": "bcf60fdaa094bc8dac9f86e940afebee023b85fa2c92a6dc3d69516cd527e610",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10097.pdb": {
+      "sha256": "8b5db906ae8ab77b309cde7bbb689895794d6aa747181b32a68e043d9bd0e4ed",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10207-scope.json": {
+      "sha256": "150f43c068ab2367c0c8e8bb80f8f7a4afd2ce89638981276a21173e01d73b12",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10207.pdb": {
+      "sha256": "f40909124a0a4214fa353587c4eb63b66fcaf83b7df3e58580838a07c252c0d6",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10286-scope.json": {
+      "sha256": "de1cd26667a3a8ea77a54d2ebd89fa65c8361249efd94dea2a9127ec07ad0ac6",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10286.pdb": {
+      "sha256": "254199acafa50a64f0118ba67591f1248729410f5104f75197ae742047a0712c",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10294-scope.json": {
+      "sha256": "47b4719477cd556278ec708f78e428b8e305cfffef8ff1752cb4b20289eedaa8",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10294.pdb": {
+      "sha256": "4d9a23761ac5c4e56371dc1acb8dc78074bb8f94175a5c53616b010256656826",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10311-scope.json": {
+      "sha256": "66fde6e32081a4427d21c1ad14fdaeda0ea1e16cb0ab63f917b25ad43f596305",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10311.pdb": {
+      "sha256": "53afab02ca7f13cb7452494d2d4d17d87fd508cc3e3640291a1bebd74ce15554",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10342-scope.json": {
+      "sha256": "5cebb00d6a2c5be66ae89338529e8d4dc7cacbecffc835e5b80e32a9865e21ce",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10342.pdb": {
+      "sha256": "60f7681543b63fe8a35c458c5bab930140cc46b73954430092ab0ffda6291143",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10469-scope.json": {
+      "sha256": "17e1798c6f4d1477318cdfad0bccfa425993f14ca72e38c1069aec81c138dbef",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10469.pdb": {
+      "sha256": "8e540b3bb76af948aff0ac883db2b7861d104395bb25d3c78d99ca0e57e5a789",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10517-scope.json": {
+      "sha256": "7f1aefe6b7929e8f07045cecf5081c1066feac5e64c04d8c78e2d120c9de9485",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10517.pdb": {
+      "sha256": "2d8b49b2540eebc40659588eb87f75a62ec595c84a1d6990c999d745018931bf",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10550-scope.json": {
+      "sha256": "08b8e70d9d46bc9dfd2025ce1dc5f2aee0db5509aa5b4c92222de72222c71ce9",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10550.pdb": {
+      "sha256": "766672c621407813dfe189a5e474f0445d435f1e4a79f136c19ff9956e5ca820",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10753-scope.json": {
+      "sha256": "03ac2b6bb646dc6efd90a758bf5794594a07ed158452b356d87a88771a24e7d3",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10753.pdb": {
+      "sha256": "fc9e0c38a7de4f2f11f4474e3f0b63c28214cb903922603de0a0df19810e3872",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10763-scope.json": {
+      "sha256": "98b5182dadc34aaf9c1792157ca00eaade3196f920113bf26511df9986a53370",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10763.pdb": {
+      "sha256": "f394e5d4a4f4b6f631524ffca0075f298d87b2b2febcc31490a9b1745a9fbc67",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10780-scope.json": {
+      "sha256": "462dc0869dadbebdd2761f1bf18ee3dfc3c47a9559a5ff7a414d10bfe5c7db69",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10780.pdb": {
+      "sha256": "25b19f5813af5ea93a98cb6aebcda61af7c4d03711142a38c389948cff14532b",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10793-scope.json": {
+      "sha256": "a3597b0258e71f834ca10b43ba904eaa7f4191dc81efdc3305984561907c0d44",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10793.pdb": {
+      "sha256": "0a9adbdd73144351dd51dd7bbb45bad1e0d859e369ab6e92de2368b02407a2b5",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10820-scope.json": {
+      "sha256": "4e43d29cc4fc95f288ad9f4a82ddd33244cb13faf2dbaf9be2b522de984f74d7",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10820.pdb": {
+      "sha256": "fa734434b517cd9a73cb3f9a4cc017700b58f1f9131a1abc8eea55626fadf042",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10833-scope.json": {
+      "sha256": "eb7fcebd558e2e2e9efe70a8a5216ebef714c1386938a8044adb9b07b8219627",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10833.pdb": {
+      "sha256": "d41bda9076d6d6ccaa39493fe698af0c32ec80941c7a03265ae10fff50aba399",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10881-scope.json": {
+      "sha256": "e7b5abf3ee154b334e33b92762ac1c01f28e90dea6d3b02964aa184554b3599c",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10881.pdb": {
+      "sha256": "e6a9dfdfc454831dc6ddc0c84cec8752aefdd5cc8e06e1a5d9eb0602895a7cfc",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10887-scope.json": {
+      "sha256": "a6ce4e2494b1997b154662a46d3432cd0acf18de1515074d6a1beaf3b1a22436",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10887.pdb": {
+      "sha256": "b262aa759148a45bbdd9055c1383ebea80300feef3e6522f974ab1c10959128d",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10910-scope.json": {
+      "sha256": "28b7db55cbd48bedfe52b7537cd6670b16f16334e90e6499a30e56e095b0e5ff",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10910.pdb": {
+      "sha256": "b246d24238cb85054710c2fa84491f86ded8917c579b6dc6c1fb764d77d3c2ac",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10932-scope.json": {
+      "sha256": "07d2b08b82e38e741ee22a2346bd909ee97df5f6df85411633db000e697844b5",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10932.pdb": {
+      "sha256": "94c8c1fb50109033b5bcd9bbb531251f0d3f63ca0b0bb111b587ddd4c91d92ca",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/models/medoid-10984-scope.json": {
+      "sha256": "6e1ca4dc57c6050f64bb845f2d38d0cacbc9f178c67043f451289c050976cdf2",
+      "bytes": 565,
+      "content_type": "application/json"
+    },
+    "res32-47-plus78-99/models/medoid-10984.pdb": {
+      "sha256": "b531f4035e8c0f298a4b5d7adc7e776b05a22bbdfc656a98e4613bcb9565cd98",
+      "bytes": 90080,
+      "content_type": "chemical/x-pdb"
+    },
+    "res32-47-plus78-99/primary-memberships.csv": {
+      "sha256": "5393d01e01f3316fa62d3e08da514131f2184fdcad2151567f546d9e7f2aa51f",
+      "bytes": 390646,
+      "content_type": "text/csv"
     },
     "res5-95/data/density-bonsai.json": {
       "sha256": "cf5408631aad5d0d73daba75cdac2a71ae1867e74416e5810022d591de96dd9f",
@@ -6932,8 +8382,83 @@
       "content_type": "text/csv"
     },
     "residue-ranges.json": {
-      "sha256": "141110714c2cbe9ff730bfc7a3e10b961114488c8a1b562e1ec09770ab22cb53",
-      "bytes": 47155,
+      "sha256": "fb7b8cb50b45094b13cd1e9705212fb9d44ed3caaa64d02f06fc564f714cc424",
+      "bytes": 51352,
+      "content_type": "application/json"
+    },
+    "selection-highlights.json": {
+      "sha256": "fedad56addd9bdc7b7ffe818b1c27c0b45a31b94b338c8a6c498f0f99a8eac50",
+      "bytes": 10722,
+      "content_type": "application/json"
+    },
+    "selection-highlights/all-hdbscan.json": {
+      "sha256": "6ff57cb5d3f2f62487393486965f7f356ced6fb9d3dcd7b8bb854a1fa4e62a38",
+      "bytes": 3697869,
+      "content_type": "application/json"
+    },
+    "selection-highlights/all-primary.json": {
+      "sha256": "70210d61dc9db20fd6004d67de423984f6a025da3c13b36f6198d3fd824b159d",
+      "bytes": 2865591,
+      "content_type": "application/json"
+    },
+    "selection-highlights/bhr2-all-hdbscan.json": {
+      "sha256": "05e70020eb911bcd45cb3c19c9943dc74b752fd0817fd57393e1f2ffb822af88",
+      "bytes": 3648180,
+      "content_type": "application/json"
+    },
+    "selection-highlights/bhr2-all-primary.json": {
+      "sha256": "1576d2a0daf2f5b2f2c98422124ce2fb7e613a918c3fcc0893f30890aafd0a76",
+      "bytes": 2977579,
+      "content_type": "application/json"
+    },
+    "selection-highlights/cmr116-all-hdbscan.json": {
+      "sha256": "1b5409aa39308d2fad1ec06a420df54c049ffa60f6ff0438b4df6c9d1675616c",
+      "bytes": 3604764,
+      "content_type": "application/json"
+    },
+    "selection-highlights/cmr116-all-primary.json": {
+      "sha256": "f9e31009b5a722bd6c3af9d961e79389764971c18a6eb4834dd078b753941d8c",
+      "bytes": 3079955,
+      "content_type": "application/json"
+    },
+    "selection-highlights/pat90-all-hdbscan.json": {
+      "sha256": "9ba537ae166ff6d100998e4858773ed8ebdae6a02f66b1ecabcd3c2638545468",
+      "bytes": 3235398,
+      "content_type": "application/json"
+    },
+    "selection-highlights/pat90-all-primary.json": {
+      "sha256": "27816b5fa8cbbaa05701baba637d306f82e35b9d1467797aba34d554b802c129",
+      "bytes": 2770942,
+      "content_type": "application/json"
+    },
+    "selection-highlights/res32-47-plus78-99-hdbscan.json": {
+      "sha256": "c98ca49dd5e3dcf350db09f0d7b2c16aaec0e1979691292f970e085336645de5",
+      "bytes": 3678688,
+      "content_type": "application/json"
+    },
+    "selection-highlights/res32-47-plus78-99-primary.json": {
+      "sha256": "fe73d904f76df4a8d9b79cf8b2f98b451c865e8f84078fd0df16ed7d9f440cb3",
+      "bytes": 2828426,
+      "content_type": "application/json"
+    },
+    "selection-highlights/res5-95-hdbscan.json": {
+      "sha256": "4250149ffa46147a21a03a2266d431250ffe2f0591207c40868af05b054ff7ef",
+      "bytes": 3690703,
+      "content_type": "application/json"
+    },
+    "selection-highlights/res5-95-primary.json": {
+      "sha256": "146964250b5795fffb486aa3758a58daf7bd61b3f0f30d95fee19a92cf69ccdf",
+      "bytes": 2875054,
+      "content_type": "application/json"
+    },
+    "selection-highlights/str82-all-hdbscan.json": {
+      "sha256": "8d8fa5f4d3b22d0d4dcebd8c4ed012630fa19d4cda39199a14665ee5d21a107d",
+      "bytes": 3469109,
+      "content_type": "application/json"
+    },
+    "selection-highlights/str82-all-primary.json": {
+      "sha256": "4c2537c917eb2db3b0a84594c3442ee37023cbc5cc3b399da106276a58b32cbf",
+      "bytes": 3085133,
       "content_type": "application/json"
     },
     "sr215-full/data/density-bonsai.json": {
@@ -10087,8 +11612,8 @@
       "content_type": "application/json"
     },
     "supplementary-metadata.json": {
-      "sha256": "924cd3506c1d23f9c920ce56b8b2e98004b14a9136736570feb2d42bac05d4ce",
-      "bytes": 487469,
+      "sha256": "a15c96fd48c232a2e12a721bca26391a6ce80a94a397b0701cb88cedbdf65c9d",
+      "bytes": 574642,
       "content_type": "application/json"
     },
     "target-context.json": {
@@ -10097,8 +11622,8 @@
       "content_type": "application/json"
     },
     "view-policy.json": {
-      "sha256": "e0b4cf616bc987497f055329b0536d6a11671df70a0386f91bc812efffabbe72",
-      "bytes": 47161,
+      "sha256": "a7cd8645df351fc01144ca35d98f71c107fbf3398b00d728b0d620f964823668",
+      "bytes": 51380,
       "content_type": "application/json"
     }
   }
