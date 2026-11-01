@@ -47,9 +47,11 @@ async function chooseMedoidPair(left,right,value){
 let atlas,data,viewer,selected=null,spinning=false,loadSerial=0,targetRequest=0,modelDownloadURL=null,ensembleDownloadURL=null;
 let projectionLegendKey='',renderQueue=Promise.resolve(),metricOverlayLoader=null;
 let selectionLoader=null,selectionPayload=null,selectionPreference={method:'panel',alpha:.5,tau_multiplier:1,replicate:1},selectionHighlight={active:false,indices:new Set(),orderedIndices:[]},selectionResult={status:'unavailable',note:''},selectionLoading=true,selectionRenderSerial=0;
+let tmStateLoader=null,tmStatePayload=null,tmStatePreference={state_id:'none',method:'mcmc50'},tmStateHighlight={active:false,indices:new Set(),orderedIndices:[]},tmStateResult={status:'unavailable',note:''},tmStateLoading=true,tmDownloadSerial=0,tmDownloadBusy=false;
+function effectiveSelectionHighlight(){return tmStateHighlight.active?tmStateHighlight:selectionHighlight}
 const hiddenProjectionCategories=new Set();
 const $=id=>document.getElementById(id), escapeText=x=>String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-async function json(url){let r;try{r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(30000)})}catch(error){throw Error('The atlas service is unavailable. Reopen the local atlas or request a fresh private preview; models in an already loaded analysis remain available.')}if(!r.ok)throw Error(`Could not load ${url}: ${r.status}`);return r.json()}
+async function json(url){let r;try{r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(30000)})}catch(error){throw Error('The atlas service is unavailable. Reopen the local atlas or request a fresh private preview; models in an already loaded analysis remain available.')}if(!r.ok)throw Error(`Could not load ${url}: ${r.status}`);if(typeof AISExplorerTMStates!=='undefined'&&typeof r.arrayBuffer==='function'){const raw=new Uint8Array(await r.arrayBuffer()),value=JSON.parse(new TextDecoder().decode(raw));return {...value,_source_sha:AISExplorerTMStates.sha256(raw)}}return r.json()}
 function fail(error){setAnalysisLoading(false);window.AtlasExplorer?.setBusy(false);$('error').hidden=false;$('error').textContent=error.message||String(error);console.error(error)}
 let clusteringResidueCatalog={},structureScopePreference='clustering',structureMappingError='';
 let supplementaryMetadataCatalog={},savedHeatmapSpecs=[];
@@ -64,9 +66,9 @@ function updateSelectionControls(){
  if(typeof AISExplorerSelections==='undefined'){if($('selectionControls'))$('selectionControls').hidden=true;return}
  if($('selectionControls'))$('selectionControls').hidden=selectionLoader?.enabled===false;
  const available=!!selectionPayload&&!selectionLoading;
- method.disabled=!available;method.value=available?selectionPreference.method:'none';
- for(const [id,value]of [['selectionBalance',selectionPreference.alpha],['selectionPressure',selectionPreference.tau_multiplier],['selectionReplicate',selectionPreference.replicate]]){const node=$(id);if(!node)continue;node.value=String(value);node.disabled=!available||(['selectionBalance','selectionPressure'].includes(id)?!['panel','exact','mh'].includes(selectionPreference.method):!['panel','uniform'].includes(selectionPreference.method))}
- const note=$('selectionStatus');if(note){note.textContent=selectionLoading?'Loading verified saved selections…':selectionPayload?selectionHighlight.note||'':selectionResult.note||'No saved selection highlights are available for this analysis.';if(selectionHighlight.active&&data){const visible=selectionHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(scheme(),i))).length;if(visible!==selectionHighlight.indices.size)note.textContent+=' '+visible.toLocaleString()+' highlighted models remain visible after filters.'}}
+ method.disabled=!available||tmStateHighlight.active;method.value=available?selectionPreference.method:'none';
+ for(const [id,value]of [['selectionBalance',selectionPreference.alpha],['selectionPressure',selectionPreference.tau_multiplier],['selectionReplicate',selectionPreference.replicate]]){const node=$(id);if(!node)continue;node.value=String(value);node.disabled=!available||tmStateHighlight.active||(['selectionBalance','selectionPressure'].includes(id)?!['panel','exact','mh'].includes(selectionPreference.method):!['panel','uniform'].includes(selectionPreference.method))}
+ const note=$('selectionStatus');if(note){note.textContent=tmStateHighlight.active?'TM-state 50-model highlights are active; the previous selection settings are preserved.':selectionLoading?'Loading verified saved selections…':selectionPayload?selectionHighlight.note||'':selectionResult.note||'No saved selection highlights are available for this analysis.';if(selectionHighlight.active&&!tmStateHighlight.active&&data){const visible=selectionHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(scheme(),i))).length;if(visible!==selectionHighlight.indices.size)note.textContent+=' '+visible.toLocaleString()+' highlighted models remain visible after filters.'}}
 }
 function refreshSelectionHighlight(){
  try{selectionHighlight=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.select(selectionPayload,selectionPreference):{active:false,indices:new Set(),orderedIndices:[]}}
@@ -74,12 +76,40 @@ function refreshSelectionHighlight(){
  updateSelectionControls();
 }
 function clearSamplingHighlight(){selectionPayload=null;selectionHighlight={active:false,indices:new Set(),orderedIndices:[]};selectionResult={status:'loading',note:''};++selectionRenderSerial;}
-function selectionProjectionTraces(method){const rows=traces(method);if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,selectionHighlight,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...rows,overlay]:rows;}
+function selectionProjectionTraces(method){const rows=traces(method);if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,effectiveSelectionHighlight(),scheme(),visibleCluster,hiddenProjectionCategories);if(overlay&&tmStateHighlight.active){overlay.name='TM-state '+tmStatePreference.method;overlay.meta.tmStateHighlight=true}return overlay?[...rows,overlay]:rows;}
 function scheduleSelectionDraw(){const request=targetRequest,serial=++selectionRenderSerial;renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest||serial!==selectionRenderSerial)return;await drawProjections();if(request===targetRequest&&serial===selectionRenderSerial)await drawBonsai()});return renderQueue;}
-function readSelectionRoute(){if(typeof AISExplorerSelections!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';selectionPreference=AISExplorerSelections.parseSettings(new URLSearchParams(query),selectionPreference)}}
+function readSelectionRoute(){if(typeof AISExplorerSelections!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';selectionPreference=AISExplorerSelections.parseSettings(new URLSearchParams(query),selectionPreference)}if(typeof AISExplorerTMStates!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';tmStatePreference=AISExplorerTMStates.parseSettings(new URLSearchParams(query),tmStatePreference)}}
 function changeSavedSelection(){
  selectionPreference={method:$('selectionMethod').value,alpha:Number($('selectionBalance').value),tau_multiplier:Number($('selectionPressure').value),replicate:Number($('selectionReplicate').value)};refreshSelectionHighlight();
  window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));scheduleSelectionDraw().catch(fail);
+}
+function updateTMStateControls(){
+ const row=$('tmStateControls');if(!row)return;row.hidden=typeof AISExplorerTMStates==='undefined'||tmStateLoader?.enabled!==true;if(row.hidden)return;
+ const available=!!tmStatePayload&&!tmStateLoading,select=$('tmStateSelect');select.replaceChildren(Object.assign(document.createElement('option'),{value:'none',textContent:'None'}),...(tmStatePayload?.states||[]).map(state=>Object.assign(document.createElement('option'),{value:state.id,textContent:state.id+' · '+state.members.length.toLocaleString()+' models'})));
+ if(tmStatePreference.state_id!=='none'&&!tmStatePayload?.states.some(s=>s.id===tmStatePreference.state_id))select.append(Object.assign(document.createElement('option'),{value:tmStatePreference.state_id,textContent:tmStatePreference.state_id+' — unavailable',disabled:true}));
+ select.value=tmStatePreference.state_id;select.disabled=!available||!tmStatePayload.states.length;$('tmStateMethod').value=tmStatePreference.method;$('tmStateMethod').disabled=!available||!tmStateHighlight.active;
+ $('tmStateStatus').textContent=tmStateLoading?'Loading completed TM-state subsets…':tmStatePayload?tmStateHighlight.note||'Choose a saved TM state to inspect its 50-model subsets.':tmStateResult.note||'No saved TM-state subsets are available.';
+ if(tmStateHighlight.active&&data&&typeof AISExplorerSelections!=='undefined'){const currentScheme=scheme();if(currentScheme){const shown=tmStateHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(currentScheme,i))).length;if(shown!==50)$('tmStateStatus').textContent+=' '+shown+' of 50 highlighted models remain visible after filters.'}}
+ $('tmStateCoverage').textContent=tmStatePayload?AISExplorerTMStates.coverageNote(tmStatePayload):'';
+ $('tmStateDetails').hidden=!tmStateHighlight.active||!tmStateHighlight.details;$('tmStateDetailsText').textContent=tmStateHighlight.details||'';
+ for(const id of ['tmStateMCMCDownload','tmStateDiscoDownload']){$(id).hidden=!tmStateHighlight.active;$(id).disabled=tmDownloadBusy||!tmStateHighlight.active}
+}
+function refreshTMStateHighlight(){
+ try{tmStateHighlight=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.select(tmStatePayload,tmStatePreference):{active:false,indices:new Set(),orderedIndices:[]}}
+ catch(error){tmStatePayload=null;tmStateHighlight={active:false,indices:new Set(),orderedIndices:[]};tmStateResult={status:'unavailable',note:error.message}}
+ updateTMStateControls();updateSelectionControls();
+}
+function clearTMStateHighlight(){tmStatePayload=null;tmStateHighlight={active:false,indices:new Set(),orderedIndices:[]};tmStateResult={status:'loading',note:''};++tmDownloadSerial;tmDownloadBusy=false;}
+function changeTMState(){
+ ++tmDownloadSerial;tmDownloadBusy=false;tmStatePreference={state_id:$('tmStateSelect').value,method:$('tmStateMethod').value};refreshTMStateHighlight();
+ window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));scheduleSelectionDraw().catch(fail);
+}
+async function downloadTMState(method){
+ const artifact=tmStateHighlight.active?tmStateHighlight.downloads?.[method]:null;if(!artifact||typeof AISExplorerTMStates==='undefined')return;
+ const request=targetRequest,serial=++tmDownloadSerial,payload=tmStatePayload;tmDownloadBusy=true;updateTMStateControls();
+ try{const bytes=await AISExplorerTMStates.readArtifact(artifact);if(request!==targetRequest||serial!==tmDownloadSerial||payload!==tmStatePayload)return;const url=URL.createObjectURL(new Blob([bytes],{type:'chemical/x-pdb'})),link=document.createElement('a');link.href=url;link.download=artifact.file.split('/').slice(1).join('_');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+ catch(error){if(request===targetRequest&&serial===tmDownloadSerial)$('tmStateStatus').textContent='Saved ensemble download unavailable: '+error.message}
+ finally{if(request===targetRequest&&serial===tmDownloadSerial){tmDownloadBusy=false;for(const id of ['tmStateMCMCDownload','tmStateDiscoDownload'])$(id).disabled=!tmStateHighlight.active}}
 }
 function clusteringResidues(current=data){
  const target=clusteringResidueCatalog.targets?.[current.target],range=current.range_id||'all',entry=target?.ranges?.[range]?.views?.[current.view_id||'whole']||(range==='all'?target?.views?.[current.view_id||'whole']:null);
@@ -88,6 +118,17 @@ function clusteringResidues(current=data){
  if(positions.some(p=>!Number.isInteger(p)||p<1||p>entry.expected_ca_count)||new Set(positions).size!==positions.length)return null;
  return entry;
 }
+function inspectedStructure(){
+ const cluster=viewer?._aisDescriptor,meta=data?clusteringResidues():null;
+ if(!cluster||!cluster.coordinate_text||!meta)return null;
+ return {target:data.target,range_id:data.range_id||'all',view_id:data.view_id,
+  cluster:cluster.cluster,model:cluster.model,format:cluster.format,coordinate_text:cluster.coordinate_text,
+  scope:{chain:meta.chain,expected_ca_count:meta.expected_ca_count,sequence_sha256:meta.sequence_sha256}};
+}
+function notifyInspectedStructure(){
+ if(typeof window.dispatchEvent==='function'&&typeof CustomEvent==='function')window.dispatchEvent(new CustomEvent('atlas:structure',{detail:inspectedStructure()}));
+}
+window.AtlasInspection={current:inspectedStructure,target:()=>data?.target||null};
 function verifiedRegions(meta){
  if(!meta?.regions_verified||!Array.isArray(meta.regions)||!meta.regions.length)return [];
  const used=new Set();for(const region of meta.regions){if(typeof region.label!=='string'||!/^#[0-9a-f]{6}$/i.test(region.color)||!Number.isInteger(region.start)||!Number.isInteger(region.end)||region.start<1||region.end<region.start||region.end>meta.expected_ca_count)return [];for(let p=region.start;p<=region.end;p++){if(used.has(p))return [];used.add(p)}}
@@ -259,7 +300,7 @@ function scheme(){return data.schemes.find(x=>x.key===$('color').value)}
 function traces(method){
  const s=scheme(),xy=data.projections[method].xy,out=[],groups=new Map();
  data.models.forEach((name,i)=>{const v=s.values[i],key=s.type==='continuous'?(Number.isFinite(v)?'valid':'Not calculable'):String(v??'Unspecified');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i)});
- for(const [label,indices] of groups){const numeric=s.type==='continuous'&&label==='valid',marker={size:4.5,opacity:indices.map(i=>visibleCluster(data.clusters[i])?(selectionHighlight.active?(selectionHighlight.indices.has(i) ? .85 : .09):.7):.06)};
+ for(const [label,indices] of groups){const numeric=s.type==='continuous'&&label==='valid',marker={size:4.5,opacity:indices.map(i=>visibleCluster(data.clusters[i])?(effectiveSelectionHighlight().active?(effectiveSelectionHighlight().indices.has(i) ? .85 : .09):.7):.06)};
   if(numeric)Object.assign(marker,{color:indices.map(i=>s.values[i]),colorscale:s.colorscale,cmin:s.range?.[0],cmax:s.range?.[1],showscale:false,colorbar:{title:{text:s.short_name||s.name},thickness:10,len:.7}});
   else marker.color=s.type==='continuous'?'#808080':s.colors[label]||'#808080';
   out.push({type:'scattergl',mode:'markers',name:label==='valid'?s.name:label,x:indices.map(i=>xy[i][0]),y:indices.map(i=>xy[i][1]),customdata:indices,text:indices.map(i=>`${escapeText(data.models[i])}<br>${escapeText(data.clusters[i])}<br>${escapeText(data.methods[i])}${numeric?'<br>'+s.name+': '+s.values[i].toFixed(2):''}`),hovertemplate:'%{text}<extra></extra>',marker,meta:{legendKey:label,numeric},visible:hiddenProjectionCategories.has(label)?'legendonly':true,showlegend:false});
@@ -294,7 +335,7 @@ async function drawProjections(){
  legend.removeAllListeners('plotly_legendclick');legend.removeAllListeners('plotly_legenddoubleclick');
  legend.on('plotly_legendclick',event=>changeProjectionCategory(event));
  legend.on('plotly_legenddoubleclick',event=>changeProjectionCategory(event,true));
- updateSelectionControls();showProjection();
+ updateTMStateControls();updateSelectionControls();showProjection();
 }
 async function draw(){
  window.AtlasExplorer?.setBusy(true);
@@ -329,16 +370,16 @@ async function choose(label){
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
  const serial=++loadSerial,current=data,cluster=current.representatives.find(x=>x.cluster===label);if(!cluster){clearStructure(label+' · no representative',label.endsWith('.unassigned')?'These models were left unassigned by HDBSCAN. No structural medoid or ensemble was calculated for this group.':'No saved representative is available for this group.');return;}
  configureModelMode(cluster);if(!pairSelecting)$('pairSection').hidden=true;selected=label;$('clusterSelect').value=label;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(label);for(const tr of $('clusterRows').children){tr.classList.toggle('selected',tr.dataset.cluster===label);tr.setAttribute('aria-selected',String(tr.dataset.cluster===label))}
- $('error').hidden=true;$('modelTitle').textContent='Loading '+label+'…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;updateStructureViewControls();viewer.render();
+ $('error').hidden=true;$('modelTitle').textContent='Loading '+label+'…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;notifyInspectedStructure();updateStructureViewControls();viewer.render();
  let coordinate=cluster.coordinate_text;try{if(!coordinate){const response=await fetch(cluster.file,{cache:'no-cache',signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('HTTP '+response.status);coordinate=await response.text();cluster.coordinate_text=coordinate}}catch(error){if(serial!==loadSerial||data!==current)return;$('modelTitle').textContent=label+' · model unavailable';throw Error('Could not load '+label+'. The private preview may have expired. Reopen the atlas with an active service. '+error.message)}if(serial!==loadSerial||data!==current)return;
  if($('modelMode').value==='ensemble'&&!cluster.ensemble_text&&cluster.ensemble_file){const response=await fetch(cluster.ensemble_file);if(!response.ok)throw Error('Ensemble file unavailable');cluster.ensemble_text=await response.text()}if(serial!==loadSerial||data!==current)return;const ensemble=$('modelMode').value==='ensemble'&&cluster.ensemble_text;viewer._aisModels=ensemble?viewer.addModels(cluster.ensemble_text,'pdb'):[viewer.addModel(coordinate,cluster.format)];viewer._aisDescriptor=cluster;viewer._aisEnsemble=!!ensemble;alignStructureToSetView();styleSavedStructure(viewer,cluster.color,ensemble ? .62 : 1);
 
- frameSelectedStructure();viewer.spin(spinning);
+ frameSelectedStructure();viewer.spin(spinning);notifyInspectedStructure();
  $('modelTitle').textContent=label+' · '+(ensemble?(data.ensemble_kind||'comparison ensemble'):(data.representative_kind||'structural medoid'));$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(referenceSimilarity(cluster))?' · TM (5–95): '+referenceSimilarity(cluster).toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').hidden=false;$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_file;if(cluster.ensemble_file)$('ensemblePdb').href=cluster.ensemble_file;$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)$('ensemblePse').href=cluster.ensemble_pse;
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
 function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||'whole'}}
-function analysisHash(target,range,view){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');return base+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')}
+function analysisHash(target,range,view){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');const tm=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.routeParams(tmStatePreference):'';return base+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')+(tm?'&'+tm:'')}
 function navigateSavedSection(event){
  const anchor=event.target.closest?.('a[href^="#"]');if(!anchor||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
  const fragment=anchor.getAttribute('href').slice(1);let id;try{id=decodeURIComponent(fragment)}catch{return}
@@ -392,7 +433,7 @@ function configureResidueRangeControls(target,selectedRange,requested){
 }
 
 function setAnalysisLoading(loading){
- selectionLoading=loading;updateSelectionControls();
+ selectionLoading=loading;tmStateLoading=loading;updateTMStateControls();updateSelectionControls();
  $('clusterExplorer').setAttribute('aria-busy',String(loading));
  for(const id of ['residueRange','analysisView','color','clear','family','clusterSubset','allClusters','clusterSelect','modelMode','structureScope','structureColor','setStructureView'])$(id).disabled=loading;
  if(!loading)updateStructureViewControls();
@@ -405,14 +446,15 @@ function clearStructure(title='Select a cluster',note=''){
  $('pairSection').hidden=true;if(bonsaiPanel)bonsaiPanel.select(null);
  updateStructureViewControls();
  for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}
+ notifyInspectedStructure();
 }
 async function load(target,viewId='whole',rangeId='all'){
- const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();setAnalysisLoading(true);try{
+ const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();clearTMStateHighlight();setAnalysisLoading(true);try{
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
- $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;viewer.render();
+ $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;viewer.render();notifyInspectedStructure();
  const found=atlas.targets.find(x=>x.id===target)||atlas.targets[0],ranges=savedResidueRanges(found),range=ranges.find(r=>r.id===rangeId&&availableResidueRange(r))||ranges.find(r=>r.id==='all'&&availableResidueRange(r));
  if(!range)throw Error('No verified residue-range analysis is available for this target.');
- const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const [enriched,highlightResult]=await Promise.all([metricOverlayLoader?metricOverlayLoader.enrich(loaded):withoutUnavailableRefolds(loaded),selectionLoader?selectionLoader.load(loaded):{status:'unavailable',payload:null,note:'No saved selection highlights are available for this analysis.'}]);if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;selectionResult=highlightResult;selectionPayload=highlightResult.payload;selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
+ const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const [enriched,highlightResult,tmResult]=await Promise.all([metricOverlayLoader?metricOverlayLoader.enrich(loaded):withoutUnavailableRefolds(loaded),selectionLoader?selectionLoader.load(loaded):{status:'unavailable',payload:null,note:'No saved selection highlights are available for this analysis.'},tmStateLoader?tmStateLoader.load(loaded):{status:'unavailable',payload:null,note:'No completed TM-state subsets are available for this analysis.'}]);if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;selectionResult=highlightResult;selectionPayload=highlightResult.payload;tmStateResult=tmResult;tmStatePayload=tmResult.payload;selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
  const previousColor=$('color').value,requestedColor=new URLSearchParams(location.search).get('color');
  $('analysisViewLabel').hidden=false;$('analysisView').replaceChildren(...(base.views||[]).map(x=>Object.assign(document.createElement('option'),{value:x.id,textContent:x.name+(x.available===false?' — '+(x.status||'awaiting verified results'):''),disabled:x.available===false})));$('analysisView').value=view?.id||'whole';
  $('title').textContent=data.view_title||data.target;$('summary').textContent=`${range.name} · ${data.models.length.toLocaleString()} models · ${new Set(data.methods).size} methods · ${data.representatives.length} structural clusters · ${data.clusters.filter(x=>x.endsWith(".unassigned")).length.toLocaleString()} unassigned · ${data.residues} residues in supplied construct`;
@@ -423,7 +465,7 @@ async function load(target,viewId='whole',rangeId='all'){
  for(const a of $('targets').children)a.setAttribute('aria-current',a.dataset.target===data.target?'page':'false');
  const visibleSchemes=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.populateSelect($('color'),data.schemes):data.schemes.filter(s=>s.key!=='origin');if(typeof AISExplorerMetrics==='undefined')$('color').replaceChildren(...visibleSchemes.map(s=>Object.assign(document.createElement('option'),{value:s.key,textContent:s.name+(s.unavailable?' — unavailable':''),disabled:!!s.unavailable})));$('colorAvailability').textContent=visibleSchemes.some(s=>s.unavailable)?'Some saved score observations are unavailable for this cohort; no values are imputed.':'';
  $('color').value=visibleSchemes.find(s=>s.key==='clusters'&&!s.unavailable)?.key||visibleSchemes.find(s=>!s.unavailable).key;
- const preferredColor=previousColor||requestedColor;if(visibleSchemes.some(s=>s.key===preferredColor&&!s.unavailable))$('color').value=preferredColor;updateMetricOverlayNote();refreshSelectionHighlight();
+ const preferredColor=previousColor||requestedColor;if(visibleSchemes.some(s=>s.key===preferredColor&&!s.unavailable))$('color').value=preferredColor;updateMetricOverlayNote();refreshTMStateHighlight();refreshSelectionHighlight();
  const reviewDownloads=data.review_downloads||(range.id==='all'&&!data.visible_view_policy?{waveMemberships:'wave-memberships.csv',decisionsDownload:'decisions.csv',boundsDownload:'bounds.json'}:{});for(const id of ['waveMemberships','decisionsDownload','boundsDownload']){const path=reviewDownloads[id];$(id).hidden=!path;if(path)$(id).href=rangeAssetPath(path,{...range,asset_root:data.presentation_asset_root??range.asset_root});else $(id).removeAttribute('href')}
  $('members').href=data.membership_file;$('clusterRows').replaceChildren();$('clusterSelect').replaceChildren(Object.assign(document.createElement('option'),{value:'',textContent:'Select a cluster'}),...data.representatives.map(c=>Object.assign(document.createElement('option'),{value:c.cluster,textContent:c.cluster+' · '+c.count.toLocaleString()})));
  for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+(Number.isFinite(referenceSimilarity(c))?referenceSimilarity(c).toFixed(3):'Unavailable')+'</td>':''}<td>${c.ensemble_file?'<a download href="'+escapeText(c.ensemble_file)+'">PDB</a>':''} ${c.ensemble_pse?'<a download href="'+escapeText(c.ensemble_pse)+'">PSE</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
@@ -435,16 +477,18 @@ async function load(target,viewId='whole',rangeId='all'){
 }
 async function start(){
  document.addEventListener('click',navigateSavedSection);
- const loaded=await Promise.all([json('atlas.json'),fetchClusteringResidues(),fetchOptionalJSON('residue-ranges.json'),fetchOptionalJSON('projection-metadata.json'),fetchOptionalJSON('supplementary-metadata.json'),fetchOptionalJSON('metric-overlays.json'),fetchOptionalJSON('selection-highlights.json')]);metricOverlayLoader=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.createLoader(loaded[5]):null;selectionLoader=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.createLoader(loaded[6]):null;atlas=loaded[0];clusteringResidueCatalog=loaded[1];projectionMetadataCatalog=loaded[3];supplementaryMetadataCatalog=loaded[4];const rangeCatalog=loaded[2];atlas={...atlas,targets:atlas.targets.map(target=>({...target,residue_ranges:rangeCatalog.targets?.[target.id]?.residue_ranges||target.residue_ranges}))};for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id;a.dataset.target=t.id;$('targets').append(a)}
+ const loaded=await Promise.all([json('atlas.json'),fetchClusteringResidues(),fetchOptionalJSON('residue-ranges.json'),fetchOptionalJSON('projection-metadata.json'),fetchOptionalJSON('supplementary-metadata.json'),fetchOptionalJSON('metric-overlays.json'),fetchOptionalJSON('selection-highlights.json'),fetchOptionalJSON('tm-states.json')]);metricOverlayLoader=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.createLoader(loaded[5]):null;selectionLoader=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.createLoader(loaded[6]):null;tmStateLoader=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.createLoader(loaded[7]):null;atlas=loaded[0];clusteringResidueCatalog=loaded[1];projectionMetadataCatalog=loaded[3];supplementaryMetadataCatalog=loaded[4];const rangeCatalog=loaded[2];atlas={...atlas,targets:atlas.targets.map(target=>({...target,residue_ranges:rangeCatalog.targets?.[target.id]?.residue_ranges||target.residue_ranges}))};for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id;a.dataset.target=t.id;$('targets').append(a)}
  viewer=$3Dmol.createViewer($('molecule'),{backgroundColor:'white',antialias:true});$('clusterSelect').onchange=()=>{if($('clusterSelect').value)choose($('clusterSelect').value).catch(fail)};
  $('structureScope').onchange=()=>{structureScopePreference=$('structureScope').value;restyleStructureViews()};$('structureColor').onchange=restyleStructureViews;
  $('modelMode').onchange=()=>{if(selected)choose(selected).catch(fail)};$('color').onchange=()=>{updateMetricOverlayNote();scheduleDraw().catch(fail)};$('projection').onchange=showProjection;$('clear').onclick=()=>{clearStructure();for(const m of ['pca','umap','tsne'])Plotly.relayout($(m),{annotations:[],'xaxis.autorange':true,'yaxis.autorange':true})};
  for(const id of ['selectionMethod','selectionBalance','selectionPressure','selectionReplicate'])if($(id))$(id).onchange=changeSavedSelection;
+ for(const id of ['tmStateSelect','tmStateMethod'])if($(id))$(id).onchange=changeTMState;
+ for(const method of ['mcmc50','disco50']){const button=$(method==='mcmc50'?'tmStateMCMCDownload':'tmStateDiscoDownload');if(button)button.onclick=()=>downloadTMState(method)}
  $('analysisView').onchange=()=>{location.hash=analysisHash(data.target,$('residueRange').value,$('analysisView').value)};
  $('residueRange').onchange=()=>{location.hash=analysisHash(data.target,$('residueRange').value,$('analysisView').value)};
  $('setStructureView').onclick=setStructureView;
  $('reset').onclick=()=>frameSelectedStructure(structureViewAnchor?.camera);$('spin').onclick=()=>{spinning=!spinning;viewer.spin(spinning);$('spin').setAttribute('aria-pressed',String(spinning));$('spin').textContent=spinning?'Stop rotation':'Rotate'};
- window.addEventListener('hashchange',()=>{const s=hashSelection();readSelectionRoute();if(atlas.targets.some(t=>t.id===s.target)){if(data?.target===s.target&&(data.range_id||'all')===s.range&&(data.policy_view_id||data.view_id)===s.view){refreshSelectionHighlight();scheduleSelectionDraw().catch(fail)}else load(s.target,s.view,s.range).catch(fail)}});window.addEventListener('resize',()=>viewer.resize());window.addEventListener('atlas:layout',()=>{viewer.resize();pairViewers.forEach(v=>v.resize())});const s=hashSelection();readSelectionRoute();await load(s.target,s.view,s.range);
+ window.addEventListener('hashchange',()=>{const s=hashSelection();readSelectionRoute();if(atlas.targets.some(t=>t.id===s.target)){if(data?.target===s.target&&(data.range_id||'all')===s.range&&(data.policy_view_id||data.view_id)===s.view){refreshTMStateHighlight();refreshSelectionHighlight();scheduleSelectionDraw().catch(fail)}else load(s.target,s.view,s.range).catch(fail)}});window.addEventListener('resize',()=>viewer.resize());window.addEventListener('atlas:layout',()=>{viewer.resize();pairViewers.forEach(v=>v.resize())});const s=hashSelection();readSelectionRoute();await load(s.target,s.view,s.range);
 }
 window.addEventListener('DOMContentLoaded',()=>start().catch(fail));
 
@@ -479,7 +523,7 @@ async function drawBonsai(){
  if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#bonsaiDetails'});
  const representatives=current.representatives.filter(c=>visibleCluster(c.cluster));
  if($('bonsaiStructureDetails'))$('bonsaiStructureDetails').textContent=representatives.some(row=>row.ensemble_file||row.ensemble_text)?'Use Structure view to switch between Representative and Comparison ensemble.':'The 3D viewer shows the saved cluster representative; coordinate ensembles are unavailable for this result.';
- const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,selectionHighlight.active?new Set(selectionHighlight.orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);
+ const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,effectiveSelectionHighlight().active?new Set(effectiveSelectionHighlight().orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);
 }
 
 window.AtlasPlotActions={async reset(method){if(method==='bonsai')bonsaiPanel?.resetView();else await AtlasResponsive.reset($(method))},async save(method){if(method==='bonsai')return bonsaiPanel?.savePNG();return Plotly.downloadImage($(method),{format:'png',filename:data.target+'_'+(data.range_id||'all')+'_'+method,width:1200,height:900})}};
