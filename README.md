@@ -32,7 +32,7 @@ changes, and retain this metadata with future archived site releases. Prior
 revisions remain in Git history. Adding a repository link does not add an
 experimental structure to the scientific analysis or recompute any result.
 
-This site is generated from the reviewed canonical Structure_Clustering saved-selection renderer [`c517b0058d37`](https://github.com/benavt/Structure_Clustering/commit/c517b0058d378fb2dd695bb5c10850c7b5834572), Git tree `32ecdc6ce9658a0e8e6e84bdfab07d1f9e691721`. Shared explorer behavior is maintained in the canonical repository. The exact renderer, loader and saved-data identities are recorded in `publication-provenance.json`. Set view aligns display models using the clustering residues and preserves the camera/slab while switching clusters; saved coordinate files and downloads stay unchanged.
+This site is generated from the canonical Structure_Clustering renderer [`474270e3d2f1`](https://github.com/benavt/Structure_Clustering/commit/474270e3d2f1ce374913e1a7d2f1aa9af9bd169c), Git tree `a237ffdd8053c6cd7b43c4d500a86347eed7bd52`. Shared explorer behavior is maintained in the canonical repository. The exact renderer, loader and saved-data identities are recorded in `publication-provenance.json`. Set view aligns display models using the clustering residues and preserves the camera/slab while switching clusters; saved coordinate files and downloads stay unchanged.
 
 The explorer offers Primary and HDBSCAN for all five CASP17 targets. SR215 supports canonical residues 1–139, 5–95, and the combined mask 32–47 + 78–99 (38 residues); PaT90 clustering retains the frozen canonical 8–91 mask. Saved computational cluster labels do not establish biological state counts.
 
@@ -45,4 +45,48 @@ Each partition has nine saved balance/energy-scale conditions (alpha 0/0.5/1 and
 
 The fixed-budget MCMC chains have observed mixing limitations. In the additional four-target pilot, matched independent categorical draws had smaller cluster total-variation error in 71 of 72 conditions; one MCMC condition missed a cluster with 2.18% declared target mass. Active MCMC status reports the saved MH and matched-IID cluster errors and unvisited assigned-cluster count. Lower error means closer agreement with the declared target label probabilities. These exploratory chains do not establish convergence or equilibrium populations. Exact categorical draws provide the finite-pool occupancy comparison; weighted unique panels trade energy against structural coverage.
 
-The third SR215 mask retains its completed representative-only stage. Saved PCA/UMAP/t-SNE projections, variance labels, distance summaries and representative PDBs are included; Bonsai, complete medoid grids and coordinate ensembles/PSE exports for that mask are explicitly unavailable. Existing complete figures and exports for the other twelve views are preserved. Selection runs are completed and frozen; static-page preparation performs no further sampling, clustering, scoring or coordinate export. No automatic/K=2–20 clustering choices or private residue-planning controls are published.
+The third SR215 mask retains its completed representative-only fine-clustering stage. Saved PCA/UMAP/t-SNE projections, variance labels, distance summaries and representative PDBs are included; Bonsai, complete medoid grids and fine-cluster coordinate ensembles/PSE exports for that mask remain unavailable. The separate TM-state ensemble downloads below do not replace those missing fine-cluster figures. Existing complete figures and exports for the other twelve views are preserved. Selection runs are completed and frozen; static-page preparation performs no further sampling, clustering, scoring or coordinate fitting. No automatic/K=2–20 clustering choices or private residue-planning controls are published.
+
+## Saved TM-state selections
+
+The optional **TM state** and **State subset** menus show completed MCMC50 or
+DISCO50 selections: exactly 50 distinct models per supported state and saved
+Primary/HDBSCAN view. The projection rings retain the original model IDs;
+Bonsai highlights only those present in its saved subset. Downloads contain
+the corresponding full-construct fifty-model PDB ensembles. Turning TM states
+off restores the independent legacy selection controls.
+
+Membership requires TM-score ≥ 0.70 to a structural representative using fixed
+canonical CA correspondence and the chosen terminal-candidate intersection.
+These are operational neighborhoods, not biological-state populations. Each
+scope has one supported state under the frozen rule:
+
+| Target / saved analysis | Canonical TM core | Supported models |
+| --- | --- | ---: |
+| BhR2 / all | 7–84 | 9,392/11,000 (85.38%) |
+| CmR116 / all | 1–86 | 9,824/11,000 (89.31%) |
+| PaT90 / all | 8–91 | 8,296/11,000 (75.42%) |
+| SR215 / all and 5–95 | 15–72 | 10,294/11,000 (93.58%) |
+| SR215 / 32–47 + 78–99 | 32–47 | 4,406/11,000 (40.05%) |
+| StR82 / all | 22–54 | 10,712/11,000 (97.38%) |
+
+The last SR215 core has 16 residues and describes a local structural comparison.
+Its 14-member unsupported neighborhood receives no selections or downloads;
+another 6,580 models fall below cutoff. Supported, unsupported and below-cutoff
+counts stay separate. The original clustering masks and coordinates remain
+unchanged, including SR215's 38-residue combined clustering mask.
+
+The new MCMC50 target is a product-weight distribution on distinct 50-model sets,
+using the original full-cohort energy/cluster prior conditioned on each state.
+DISCO50 is a different coverage control: minimum-energy assigned fine-group
+seeds followed by weighted selection/fill. Old HDBSCAN noise remains eligible
+for fills within a supported state. Both use saved full-construct t=0.10 energies,
+alpha 0.5 and tau = one original-cohort IQR. Equal 50-model quotas are designed coverage.
+The fixed-budget chains have mixing limitations; the maximum available Rhat is
+1.0444 and minimum bulk ESS is 92.26. Diagnostics and source identities remain
+available; completion does not establish convergence.
+
+The 28 saved ensemble PDB downloads preserve their original bytes and hashes.
+Their display poses use a core least-squares fit, separate from native TM fits
+that certify membership. No sampler, scorer or structure-fitting route exists
+in the static interface.

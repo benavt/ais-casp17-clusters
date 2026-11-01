@@ -5637,8 +5637,8 @@
       "content_type": "application/json"
     },
     "publication-provenance.json": {
-      "sha256": "7f38a4ddab8581a8cc1247d6bd0d5f182fc7382a2802501e0c37a3e31a086310",
-      "bytes": 228686,
+      "sha256": "b8c5af156e8120069a4aa7627e5608497e01b16a681f8d6656d16d3b98e9a090",
+      "bytes": 235134,
       "content_type": "application/json"
     },
     "res32-47-plus78-99/data/density.json": {
@@ -11619,6 +11619,181 @@
     "target-context.json": {
       "sha256": "e8375a13857dbdae7c3621812f4be2ef5ef4d0b413b37128770bfa85bb807874",
       "bytes": 12737,
+      "content_type": "application/json"
+    },
+    "tm-state-ensembles/BhR2_bmr6717/all/density/S1/disco50.pdb": {
+      "sha256": "262f43fbc18462da4aa370973fb277027c0a28d2fe613d0292ca2c99f5f7eab2",
+      "bytes": 3589715,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/BhR2_bmr6717/all/density/S1/mcmc50.pdb": {
+      "sha256": "a7b56a75c5531357016d5cd5eabc2133cf67021bdebfd03658b3169fbe14516d",
+      "bytes": 3589477,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/BhR2_bmr6717/all/primary/S1/disco50.pdb": {
+      "sha256": "265dd778e438764c9d43d7ecc602da76bf6b4a934715f8d7ccd9cbcee5abde67",
+      "bytes": 3589945,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/BhR2_bmr6717/all/primary/S1/mcmc50.pdb": {
+      "sha256": "727ddd14104f86c2c2bf8d27e892c8eedd3df9cb05f3fe82bb7d3bc05fb4dbb3",
+      "bytes": 3589720,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/CmR116_bmr17022/all/density/S1/disco50.pdb": {
+      "sha256": "aa75e5bb7088ee9e2e26e7c6c1852fadd968535a2f2833e05fe3c2aa02cefeba",
+      "bytes": 4245646,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/CmR116_bmr17022/all/density/S1/mcmc50.pdb": {
+      "sha256": "5dfee4e8fe8de1d5d3498bff7fd414afbc9fd83f98b6388bf46fd1a28cce8279",
+      "bytes": 4245828,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/CmR116_bmr17022/all/primary/S1/disco50.pdb": {
+      "sha256": "5478bc84fe1b9f5030f234dfff8ecdc695e5de7d53cabbe4e652c33acd1af2b5",
+      "bytes": 4212491,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/CmR116_bmr17022/all/primary/S1/mcmc50.pdb": {
+      "sha256": "b70a88a060cf2d2624bcf97cbb7aa04dd4f83f99050cd51d1f1ae0d1d3fd2404",
+      "bytes": 4245209,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/PaT90_bmr7191/all/density/S1/disco50.pdb": {
+      "sha256": "228f5ef8a266b7d951683695f745dc886b7f6b5ffebdf305711915b4c7255b9d",
+      "bytes": 3026616,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/PaT90_bmr7191/all/density/S1/mcmc50.pdb": {
+      "sha256": "fa5076daa284cba32bca4daee461f91f3d72f5d3c398b5df6b4aa32037388a1b",
+      "bytes": 2982230,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/PaT90_bmr7191/all/primary/S1/disco50.pdb": {
+      "sha256": "0c85f33d123bee5750b747bda95d79eeffc34c5598a7e0673946c182ba7b5ecc",
+      "bytes": 3025911,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/PaT90_bmr7191/all/primary/S1/mcmc50.pdb": {
+      "sha256": "2c2bcc50fd2e73a5eba662c662411a48ecb045214235bf27a13cbf342ed4c05f",
+      "bytes": 2960647,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/all/density/S1/disco50.pdb": {
+      "sha256": "501b8feef0bf0258c1055602bf2804d1d6751c0a02618585df8e30e01c7c36a1",
+      "bytes": 4509146,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/all/density/S1/mcmc50.pdb": {
+      "sha256": "f96e08becfb4acc77d958b1ef9ac3f3cf677e02391bfec3ad997e9075a832734",
+      "bytes": 4372164,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/all/primary/S1/disco50.pdb": {
+      "sha256": "09c7f2cc8694d697bc1272723d65d115851f59fc241155a2ce9a4470ccae326a",
+      "bytes": 4508892,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/all/primary/S1/mcmc50.pdb": {
+      "sha256": "3ec306eae3335bd16f42858997a027fe956ffe2d181cc9f96ab33265be9d60c6",
+      "bytes": 4440521,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res32-47-plus78-99/density/S2/disco50.pdb": {
+      "sha256": "1baa4ab78c1db51d73a20fd586974804580e8ec324347a40e78c8a27bb8af4fd",
+      "bytes": 4508853,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res32-47-plus78-99/density/S2/mcmc50.pdb": {
+      "sha256": "5073b12f179cb6cc9e0d34013c72910c0aede6ee47e8db7514f3b4a41275aa33",
+      "bytes": 4510259,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res32-47-plus78-99/primary/S2/disco50.pdb": {
+      "sha256": "527ac97dc34fcd6d6cc20bbe60a2a57fc9b36770437f4dc54a68046aa22e116e",
+      "bytes": 4509789,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res32-47-plus78-99/primary/S2/mcmc50.pdb": {
+      "sha256": "cefb411de20835e388f69042a04beb679fb3c7e1cb5ce0a799a3393cfe76bff2",
+      "bytes": 4441531,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res5-95/density/S1/disco50.pdb": {
+      "sha256": "90542c3cd1126e1c9690eecbc8dc8302f8ea705d82dee389b895fcbce3503722",
+      "bytes": 4474716,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res5-95/density/S1/mcmc50.pdb": {
+      "sha256": "1e96ebff1f283bf292971434b85d321d9849fb7b31d927734cd5ff65994dfa6c",
+      "bytes": 4474554,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res5-95/original/S1/disco50.pdb": {
+      "sha256": "359d72abf42d8894f04c1c28273432ca0394371b86856f4b145190d8056e0b71",
+      "bytes": 4440011,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/SR215_bmr6366/res5-95/original/S1/mcmc50.pdb": {
+      "sha256": "4578d72e05372051b41801bfffaee5dec09fe59966ddaae8a51b733d22a785a2",
+      "bytes": 4474377,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/StR82_bmr15386/all/density/S1/disco50.pdb": {
+      "sha256": "c3b8db4544b1a3c5457b6f470d56227ea838330afd8df5dd6ab73782285a8275",
+      "bytes": 2479649,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/StR82_bmr15386/all/density/S1/mcmc50.pdb": {
+      "sha256": "4cd184d418f7a5314127ca8a5599c38b52dec7422c4b8b651d50cee35ccd04e2",
+      "bytes": 2479743,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/StR82_bmr15386/all/primary/S1/disco50.pdb": {
+      "sha256": "97baecb3d81cb92a679a534cd59e9ffa6d7f5f5b0450c44d6d570b2e04a845a3",
+      "bytes": 2479224,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-state-ensembles/StR82_bmr15386/all/primary/S1/mcmc50.pdb": {
+      "sha256": "861475185bd0183b9a536c9d457ad6c2bd45d296b7762a8e61a2731bb365a338",
+      "bytes": 2460945,
+      "content_type": "chemical/x-pdb"
+    },
+    "tm-states.json": {
+      "sha256": "f2b826bb35e7d78da55877b63e48eaa91d2c212337217b3d209620e90f4cd637",
+      "bytes": 11742,
+      "content_type": "application/json"
+    },
+    "tm-states/BhR2_bmr6717/BhR2_bmr6717__7-84.json": {
+      "sha256": "f8fb0c673e372a32cdbda63ab400198a91aaf37322c76239fd07d0c8a7c20f6f",
+      "bytes": 1795016,
+      "content_type": "application/json"
+    },
+    "tm-states/CmR116_bmr17022/CmR116_bmr17022__1-86.json": {
+      "sha256": "03665e4a170e5105a9f491cd27c5f7591a322ca73841ef54695cd184b89679ac",
+      "bytes": 1900200,
+      "content_type": "application/json"
+    },
+    "tm-states/PaT90_bmr7191/PaT90_bmr7191__8-91.json": {
+      "sha256": "a2e41f63c22afbbe1c48da0026a0bb0e3ab9ea43db20076a2857f114fb5d538b",
+      "bytes": 1670530,
+      "content_type": "application/json"
+    },
+    "tm-states/SR215_bmr6366/SR215_bmr6366__15-72.json": {
+      "sha256": "9f6cb6150101f7cd72d440c946acd0e67e5d686b045d29d9f25e8137221610e3",
+      "bytes": 2087092,
+      "content_type": "application/json"
+    },
+    "tm-states/SR215_bmr6366/SR215_bmr6366__32-47.json": {
+      "sha256": "6fb5800c54404708f170568f0d6b4fbd69f31a1fd406953f4175e23080f6f541",
+      "bytes": 1163423,
+      "content_type": "application/json"
+    },
+    "tm-states/StR82_bmr15386/StR82_bmr15386__22-54.json": {
+      "sha256": "5923629848d1384c721ef78bf13b275c0662ee33dad698a89f3df4c2587af34e",
+      "bytes": 1994561,
       "content_type": "application/json"
     },
     "view-policy.json": {
