@@ -156,7 +156,7 @@ function updateStructureScopeNote(){
  if(mode==='rainbow')note+=' Rainbow follows canonical chain order, blue at the N terminus to red at the C terminus.';
  if(!regions.length)note+=' Verified saved variance-region labels are unavailable.';
  note+=' Display controls do not alter saved coordinates or downloads; downloads contain the full saved structures.';
- $('structureScopeNote').textContent=note;
+ $('structureScopeNote').textContent=note;if(structureMappingError)$('structureDetails')?.setAttribute('open','');
  const legend=$('structureRegionLegend');legend.replaceChildren();legend.hidden=mode!=='regions'||!regions.length;
  if(!legend.hidden){for(const r of [...regions,{label:'Other residues',color:'#aebbc1'}]){const item=document.createElement('span'),swatch=document.createElement('i');swatch.style.backgroundColor=r.color;item.append(swatch,document.createTextNode(r.label+(r.start?' · '+r.start+'–'+r.end:'')));legend.append(item)}const caption=document.createElement('p');caption.textContent='Regions are automated labels from the saved structural-variance analysis; they are not confirmed biological domains.'+(meta.regions_note?' '+meta.regions_note:'');legend.append(caption)}
 }
@@ -229,6 +229,7 @@ function rigidViewFit(mobile,reference){
  return {rotation,translation};
 }
 function updateStructureViewControls(){
+ if(structureViewMessage)$('structureDetails')?.setAttribute('open','');
  const button=$('setStructureView');if(!button)return;
  const available=!!viewer?._aisModels?.length&&!!structureViewContext();
  button.disabled=!available;button.setAttribute('aria-pressed',String(!!structureViewAnchor));button.textContent=structureViewAnchor?'Release view':'Set view';
