@@ -90,3 +90,13 @@ The 28 saved ensemble PDB downloads preserve their original bytes and hashes.
 Their display poses use a core least-squares fit, separate from native TM fits
 that certify membership. No sampler, scorer or structure-fitting route exists
 in the static interface.
+
+### Saved figure supplements
+
+The SR215 32–47 plus 78–99 Primary and HDBSCAN views receive their missing
+Bonsai trees and complete medoid TM grids through `figure-supplements.json`.
+The loader verifies the supplement hash, exact source-view bytes, ordered model
+identities and saved medoids before attaching either figure. Raw analysis files
+and the existing metric, saved-selection and TM-state bindings remain unchanged.
+The supplements record the approved run, source revision, feature hash and residue
+scope; coordinate ensemble/PSE availability remains that of the original result.

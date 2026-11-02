@@ -11800,6 +11800,41 @@
       "sha256": "a7cd8645df351fc01144ca35d98f71c107fbf3398b00d728b0d620f964823668",
       "bytes": 51380,
       "content_type": "application/json"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/primary-bonsai.json": {
+      "sha256": "06c8336f68528bdd16468c9d209a18a53e3204adb2baa33dbe4fcb611a6db7b2",
+      "bytes": 1013298,
+      "content_type": "application/json"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/primary-medoid-tm.csv": {
+      "sha256": "f698e50ceb8a016aff4a9a3eaaa22f2116c8fdffd957356e50a97997bc934567",
+      "bytes": 13482,
+      "content_type": "text/csv"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/primary.json": {
+      "sha256": "7677247382bd608cd73d26b0ab7c1dee61e4503feab7c46a6b3057cba1ae9c6c",
+      "bytes": 386550,
+      "content_type": "application/json"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/density-bonsai.json": {
+      "sha256": "24355dec92186f85082f2d593303de1d292fe3acdc4d48754ad67eb904f85d78",
+      "bytes": 4469130,
+      "content_type": "application/json"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/density-medoid-tm.csv": {
+      "sha256": "bfb23d44392f7456b106b2319bb7d9c57c2507102e427a7b4a594cd2726008ec",
+      "bytes": 151287,
+      "content_type": "text/csv"
+    },
+    "figure-supplements/SR215_bmr6366/res32-47-plus78-99/density.json": {
+      "sha256": "73d8f054e31f24ee93bc27bd128e38d1d614aa91c9b572266537ba59512598d2",
+      "bytes": 533460,
+      "content_type": "application/json"
+    },
+    "figure-supplements.json": {
+      "sha256": "f082090de35713717f900d0c62b1b680e0e4233a4ed87a45029717ed8c95e80c",
+      "bytes": 707,
+      "content_type": "application/json"
     }
   }
 }
