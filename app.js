@@ -69,7 +69,7 @@ function updateSelectionControls(){
  const available=!!selectionPayload&&!selectionLoading;
  method.disabled=!available||tmStateHighlight.active;method.value=available?selectionPreference.method:'none';
  for(const [id,value]of [['selectionBalance',selectionPreference.alpha],['selectionPressure',selectionPreference.tau_multiplier],['selectionReplicate',selectionPreference.replicate]]){const node=$(id);if(!node)continue;node.value=String(value);node.disabled=!available||tmStateHighlight.active||(['selectionBalance','selectionPressure'].includes(id)?!['panel','exact','mh'].includes(selectionPreference.method):!['panel','uniform'].includes(selectionPreference.method))}
- const note=$('selectionStatus');if(note){note.textContent=tmStateHighlight.active?'TM-state 50-model highlights are active; the previous selection settings are preserved.':selectionLoading?'Loading verified saved selections…':selectionPayload?selectionHighlight.note||'':selectionResult.note||'No saved selection highlights are available for this analysis.';if(selectionHighlight.active&&!tmStateHighlight.active&&data){const visible=selectionHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(scheme(),i))).length;if(visible!==selectionHighlight.indices.size)note.textContent+=' '+visible.toLocaleString()+' highlighted models remain visible after filters.'}}
+ const note=$('selectionStatus');if(note){note.textContent=tmStateHighlight.active?'TM-state highlights are active; the previous selection settings are preserved.':selectionLoading?'Loading verified saved selections…':selectionPayload?selectionHighlight.note||'':selectionResult.note||'No saved selection highlights are available for this analysis.';if(selectionHighlight.active&&!tmStateHighlight.active&&data){const visible=selectionHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(scheme(),i))).length;if(visible!==selectionHighlight.indices.size)note.textContent+=' '+visible.toLocaleString()+' highlighted models remain visible after filters.'}}
 }
 function refreshSelectionHighlight(){
  try{selectionHighlight=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.select(selectionPayload,selectionPreference):{active:false,indices:new Set(),orderedIndices:[]}}
@@ -77,7 +77,7 @@ function refreshSelectionHighlight(){
  updateSelectionControls();
 }
 function clearSamplingHighlight(){selectionPayload=null;selectionHighlight={active:false,indices:new Set(),orderedIndices:[]};selectionResult={status:'loading',note:''};++selectionRenderSerial;}
-function selectionProjectionTraces(method){const rows=traces(method);if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,effectiveSelectionHighlight(),scheme(),visibleCluster,hiddenProjectionCategories);if(overlay&&tmStateHighlight.active){overlay.name='TM-state '+tmStatePreference.method;overlay.meta.tmStateHighlight=true}return overlay?[...rows,overlay]:rows;}
+function selectionProjectionTraces(method){const rows=traces(method);if(tmStateHighlight.active&&typeof AISExplorerTMStates!=='undefined')return [...rows,...AISExplorerTMStates.overlayTraces(data,method,tmStateHighlight,scheme(),visibleCluster,hiddenProjectionCategories)];if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,selectionHighlight,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...rows,overlay]:rows;}
 function scheduleSelectionDraw(){const request=targetRequest,serial=++selectionRenderSerial;renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest||serial!==selectionRenderSerial)return;await drawProjections();if(request===targetRequest&&serial===selectionRenderSerial)await drawBonsai()});return renderQueue;}
 function readSelectionRoute(){if(typeof AISExplorerSelections!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';selectionPreference=AISExplorerSelections.parseSettings(new URLSearchParams(query),selectionPreference)}if(typeof AISExplorerTMStates!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';tmStatePreference=AISExplorerTMStates.parseSettings(new URLSearchParams(query),tmStatePreference)}}
 function changeSavedSelection(){
@@ -86,15 +86,25 @@ function changeSavedSelection(){
 }
 function updateTMStateControls(){
  const row=$('tmStateControls');if(!row)return;row.hidden=typeof AISExplorerTMStates==='undefined'||tmStateLoader?.enabled!==true;if(row.hidden)return;
- const available=!!tmStatePayload&&!tmStateLoading,select=$('tmStateSelect');select.replaceChildren(Object.assign(document.createElement('option'),{value:'none',textContent:'None'}),...(tmStatePayload?.states||[]).map(state=>Object.assign(document.createElement('option'),{value:state.id,textContent:state.id+' · '+state.members.length.toLocaleString()+' models'})));
- if(tmStatePreference.state_id!=='none'&&!tmStatePayload?.states.some(s=>s.id===tmStatePreference.state_id))select.append(Object.assign(document.createElement('option'),{value:tmStatePreference.state_id,textContent:tmStatePreference.state_id+' — unavailable',disabled:true}));
- select.value=tmStatePreference.state_id;select.disabled=!available||!tmStatePayload.states.length;$('tmStateMethod').value=tmStatePreference.method;$('tmStateMethod').disabled=!available||!tmStateHighlight.active;
- $('tmStateStatus').textContent=tmStateLoading?'Loading completed TM-state subsets…':tmStatePayload?tmStateHighlight.note||'Choose a saved TM state to inspect its 50-model subsets.':tmStateResult.note||'No saved TM-state subsets are available.';
- if(tmStateHighlight.active&&data&&typeof AISExplorerSelections!=='undefined'){const currentScheme=scheme();if(currentScheme){const shown=tmStateHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(currentScheme,i))).length;if(shown!==50)$('tmStateStatus').textContent+=' '+shown+' of 50 highlighted models remain visible after filters.'}}
+ const available=!!tmStatePayload&&!tmStateLoading,select=$('tmStateSelect'),states=tmStatePayload?.states||[];
+ const options=[Object.assign(document.createElement('option'),{value:'none',textContent:'None'})];
+ if(states.length)options.push(Object.assign(document.createElement('option'),{value:'all',textContent:'All supported states'}));
+ options.push(...states.map(state=>Object.assign(document.createElement('option'),{value:state.id,textContent:state.id+' · '+state.members.length.toLocaleString()+' members'})));
+ select.replaceChildren(...options);
+ if(!['none','all'].includes(tmStatePreference.state_id)&&!states.some(s=>s.id===tmStatePreference.state_id))select.append(Object.assign(document.createElement('option'),{value:tmStatePreference.state_id,textContent:tmStatePreference.state_id+' — unavailable',disabled:true}));
+ select.value=tmStatePreference.state_id;select.disabled=!available||!states.length;$('tmStateMethod').value=tmStatePreference.method;$('tmStateMethod').disabled=!available||!tmStateHighlight.active;
+ $('tmStateStatus').textContent=tmStateLoading?'Loading verified saved states…':tmStatePayload?tmStateHighlight.note||'Choose a state, then inspect MCMC50, DISCO50 or all qualified members.':tmStateResult.note||'No saved states are available.';
+ if(tmStateHighlight.active&&data&&typeof AISExplorerSelections!=='undefined'){const currentScheme=scheme();if(currentScheme){const shown=tmStateHighlight.orderedIndices.filter(i=>visibleCluster(data.clusters[i])&&!hiddenProjectionCategories.has(AISExplorerSelections.category(currentScheme,i))).length;if(shown!==tmStateHighlight.orderedIndices.length)$('tmStateStatus').textContent+=' '+shown.toLocaleString()+' of '+tmStateHighlight.orderedIndices.length.toLocaleString()+' highlighted models remain visible after filters.'}}
  $('tmStateCoverage').textContent=tmStatePayload?AISExplorerTMStates.coverageNote(tmStatePayload):'';
  $('tmStateDetails').hidden=!tmStateHighlight.active||!tmStateHighlight.details;$('tmStateDetailsText').textContent=tmStateHighlight.details||'';
- for(const id of ['tmStateMCMCDownload','tmStateDiscoDownload']){$(id).hidden=!tmStateHighlight.active;$(id).disabled=tmDownloadBusy||!tmStateHighlight.active}
+ const legend=$('tmStateLegend');legend.replaceChildren();legend.hidden=!tmStateHighlight.active;
+ for(const group of tmStateHighlight.groups||[]){const item=document.createElement('span'),swatch=document.createElement('i');swatch.style.borderColor=group.color;item.append(swatch,document.createTextNode(group.state_id+' · '+group.indices.length.toLocaleString()));legend.append(item)}
+ const single=tmStateHighlight.panels?.length===1,first=tmStateHighlight.panels?.[0];
+ for(const [id,method,format]of tmStateDownloadButtons()){const button=$(id);if(!button)continue;const artifact=single?AISExplorerTMStates.artifactFor(tmStateHighlight,first.state_id,method,format):null;button.hidden=!artifact;button.disabled=tmDownloadBusy||!artifact;button.onclick=artifact?()=>downloadTMState(method,format,first.state_id):null}
+ const all=$('tmStateAllDownloads'),rows=$('tmStateDownloadRows');all.hidden=!tmStateHighlight.active||single;rows.replaceChildren();
+ if(!all.hidden)for(const panel of tmStateHighlight.panels){const line=document.createElement('div'),title=document.createElement('strong');title.textContent=panel.state_id;line.append(title);for(const method of AISExplorerTMStates.PANEL_METHODS)for(const format of ['pdb','pse']){const artifact=AISExplorerTMStates.artifactFor(tmStateHighlight,panel.state_id,method,format);if(!artifact)continue;const button=document.createElement('button');button.type='button';button.textContent=(method==='mcmc50'?'MCMC50':'DISCO50')+' '+format.toUpperCase();button.disabled=tmDownloadBusy;button.onclick=()=>downloadTMState(method,format,panel.state_id);line.append(button)}rows.append(line)}
 }
+function tmStateDownloadButtons(){return[['tmStateMCMCDownload','mcmc50','pdb'],['tmStateDiscoDownload','disco50','pdb'],['tmStateMCMCPSEDownload','mcmc50','pse'],['tmStateDiscoPSEDownload','disco50','pse']]}
 function refreshTMStateHighlight(){
  try{tmStateHighlight=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.select(tmStatePayload,tmStatePreference):{active:false,indices:new Set(),orderedIndices:[]}}
  catch(error){tmStatePayload=null;tmStateHighlight={active:false,indices:new Set(),orderedIndices:[]};tmStateResult={status:'unavailable',note:error.message}}
@@ -105,12 +115,12 @@ function changeTMState(){
  ++tmDownloadSerial;tmDownloadBusy=false;tmStatePreference={state_id:$('tmStateSelect').value,method:$('tmStateMethod').value};refreshTMStateHighlight();
  window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));scheduleSelectionDraw().catch(fail);
 }
-async function downloadTMState(method){
- const artifact=tmStateHighlight.active?tmStateHighlight.downloads?.[method]:null;if(!artifact||typeof AISExplorerTMStates==='undefined')return;
+async function downloadTMState(method,format='pdb',stateId=tmStateHighlight.panels?.[0]?.state_id){
+ const artifact=tmStateHighlight.active&&typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.artifactFor(tmStateHighlight,stateId,method,format):null;if(!artifact)return;
  const request=targetRequest,serial=++tmDownloadSerial,payload=tmStatePayload;tmDownloadBusy=true;updateTMStateControls();
- try{const bytes=await AISExplorerTMStates.readArtifact(artifact);if(request!==targetRequest||serial!==tmDownloadSerial||payload!==tmStatePayload)return;const url=URL.createObjectURL(new Blob([bytes],{type:'chemical/x-pdb'})),link=document.createElement('a');link.href=url;link.download=artifact.file.split('/').slice(1).join('_');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
- catch(error){if(request===targetRequest&&serial===tmDownloadSerial)$('tmStateStatus').textContent='Saved ensemble download unavailable: '+error.message}
- finally{if(request===targetRequest&&serial===tmDownloadSerial){tmDownloadBusy=false;for(const id of ['tmStateMCMCDownload','tmStateDiscoDownload'])$(id).disabled=!tmStateHighlight.active}}
+ try{const bytes=await AISExplorerTMStates.readArtifact(artifact);if(request!==targetRequest||serial!==tmDownloadSerial||payload!==tmStatePayload)return;const url=URL.createObjectURL(new Blob([bytes],{type:format==='pdb'?'chemical/x-pdb':'application/octet-stream'})),link=document.createElement('a');link.href=url;link.download=artifact.file.split('/').slice(1).join('_');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+ catch(error){if(request===targetRequest&&serial===tmDownloadSerial)$('tmStateStatus').textContent='Saved download unavailable: '+error.message}
+ finally{if(request===targetRequest&&serial===tmDownloadSerial){tmDownloadBusy=false;updateTMStateControls()}}
 }
 function clusteringResidues(current=data){
  const target=clusteringResidueCatalog.targets?.[current.target],range=current.range_id||'all',entry=target?.ranges?.[range]?.views?.[current.view_id||'whole']||(range==='all'?target?.views?.[current.view_id||'whole']:null);
@@ -371,6 +381,7 @@ function showProjection(){if(window.AtlasExplorer)window.AtlasExplorer.feature($
 async function choose(label){
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
  const serial=++loadSerial,current=data,cluster=current.representatives.find(x=>x.cluster===label);if(!cluster){clearStructure(label+' · no representative',label.endsWith('.unassigned')?'These models were left unassigned by HDBSCAN. No structural medoid or ensemble was calculated for this group.':'No saved representative is available for this group.');return;}
+ if(!cluster.coordinate_text&&!cluster.file){clearStructure(label+' · representative unavailable','Fine-cluster representatives were not exported for this saved range. Use the saved TM-state ensemble PDB/PSE downloads.');return;}
  configureModelMode(cluster);if(!pairSelecting)$('pairSection').hidden=true;selected=label;$('clusterSelect').value=label;if(bonsaiPanel&&data.bonsai)bonsaiPanel.select(label);for(const tr of $('clusterRows').children){tr.classList.toggle('selected',tr.dataset.cluster===label);tr.setAttribute('aria-selected',String(tr.dataset.cluster===label))}
  $('error').hidden=true;$('modelTitle').textContent='Loading '+label+'…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;notifyInspectedStructure();updateStructureViewControls();viewer.render();
  let coordinate=cluster.coordinate_text;try{if(!coordinate){const response=await fetch(cluster.file,{cache:'no-cache',signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('HTTP '+response.status);coordinate=await response.text();cluster.coordinate_text=coordinate}}catch(error){if(serial!==loadSerial||data!==current)return;$('modelTitle').textContent=label+' · model unavailable';throw Error('Could not load '+label+'. The private preview may have expired. Reopen the atlas with an active service. '+error.message)}if(serial!==loadSerial||data!==current)return;
@@ -485,7 +496,7 @@ async function start(){
  $('modelMode').onchange=()=>{if(selected)choose(selected).catch(fail)};$('color').onchange=()=>{updateMetricOverlayNote();scheduleDraw().catch(fail)};$('projection').onchange=showProjection;$('clear').onclick=()=>{clearStructure();for(const m of ['pca','umap','tsne'])Plotly.relayout($(m),{annotations:[],'xaxis.autorange':true,'yaxis.autorange':true})};
  for(const id of ['selectionMethod','selectionBalance','selectionPressure','selectionReplicate'])if($(id))$(id).onchange=changeSavedSelection;
  for(const id of ['tmStateSelect','tmStateMethod'])if($(id))$(id).onchange=changeTMState;
- for(const method of ['mcmc50','disco50']){const button=$(method==='mcmc50'?'tmStateMCMCDownload':'tmStateDiscoDownload');if(button)button.onclick=()=>downloadTMState(method)}
+
  $('analysisView').onchange=()=>{location.hash=analysisHash(data.target,$('residueRange').value,$('analysisView').value)};
  $('residueRange').onchange=()=>{location.hash=analysisHash(data.target,$('residueRange').value,$('analysisView').value)};
  $('setStructureView').onclick=setStructureView;
@@ -517,7 +528,9 @@ async function drawMedoidTM(){
  $('medoidTM').removeAllListeners('plotly_click');$('medoidTM').on('plotly_click',e=>{const point=e.points[0];if(Number.isFinite(point.z))chooseMedoidPair(point.y,point.x,point.z).catch(fail)});
 }
 
-let bonsaiPanel=null,bonsaiSerial=0;
+let bonsaiPanel=null,bonsaiSerial=0,tmBonsaiObserver=null;
+function colorTMStateBonsai(){if(data&&typeof AISExplorerTMStates!=='undefined')AISExplorerTMStates.colorBonsaiRings($('bonsai'),data.models,tmStateHighlight)}
+function observeTMStateBonsai(){if(!tmBonsaiObserver&&typeof MutationObserver!=='undefined'){tmBonsaiObserver=new MutationObserver(colorTMStateBonsai);tmBonsaiObserver.observe($('bonsai'),{childList:true,subtree:true})}colorTMStateBonsai()}
 async function drawBonsai(){
  const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if($('bonsaiDetails'))$('bonsaiDetails').hidden=!current.bonsai;if(!current.bonsai)return;
  if(!current.bonsaiPayload){const response=await fetch(current.bonsai.file,{cache:'no-cache'});if(!response.ok)throw Error('Saved Bonsai layout unavailable');const bytes=await response.arrayBuffer(),digest=globalThis.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(x=>x.toString(16).padStart(2,'0')).join(''):typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.sha256(new Uint8Array(bytes)):null;if(digest!==null&&digest!==current.bonsai.sha256)throw Error('Saved Bonsai layout hash mismatch');current.bonsaiPayload=JSON.parse(new TextDecoder().decode(bytes));}
@@ -525,7 +538,7 @@ async function drawBonsai(){
  if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#bonsaiDetails'});
  const representatives=current.representatives.filter(c=>visibleCluster(c.cluster));
  if($('bonsaiStructureDetails'))$('bonsaiStructureDetails').textContent=representatives.some(row=>row.ensemble_file||row.ensemble_text)?'Use Structure view to switch between Representative and Comparison ensemble.':'The 3D viewer shows the saved cluster representative; coordinate ensembles are unavailable for this result.';
- const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,effectiveSelectionHighlight().active?new Set(effectiveSelectionHighlight().orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);
+ const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,effectiveSelectionHighlight().active?new Set(effectiveSelectionHighlight().orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);observeTMStateBonsai();
 }
 
 window.AtlasPlotActions={async reset(method){if(method==='bonsai')bonsaiPanel?.resetView();else await AtlasResponsive.reset($(method))},async save(method){if(method==='bonsai')return bonsaiPanel?.savePNG();return Plotly.downloadImage($(method),{format:'png',filename:data.target+'_'+(data.range_id||'all')+'_'+method,width:1200,height:900})}};
