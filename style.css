@@ -117,3 +117,13 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 16px;margin:0 0 18px
 .tm-state-controls{display:flex;flex-wrap:wrap;align-items:center;gap:7px 14px;padding:8px 12px;border-bottom:1px solid var(--line);background:#f5f8f6;min-width:0}.tm-state-controls[hidden]{display:none}.tm-state-controls>label{display:flex;align-items:center;gap:7px;flex:1 1 230px;min-width:0;max-width:520px;font-size:11px}.tm-state-controls select{flex:1;width:0;min-width:0;max-width:100%;font-size:11px}.tm-state-controls p{flex-basis:100%;margin:0;font-size:10px;line-height:1.45;overflow-wrap:anywhere;color:var(--muted)}.tm-state-downloads{display:flex;flex-wrap:wrap;gap:6px}.tm-state-downloads button{font-size:11px;max-width:100%}@media(max-width:699px){.tm-state-controls{padding:7px 8px;gap:6px 10px}.tm-state-controls>label{flex-basis:100%;max-width:none}.tm-state-downloads{flex-basis:100%}}
 
 .tm-state-controls details{flex-basis:100%;min-width:0;font-size:10px}.tm-state-controls details[hidden]{display:none}.tm-state-controls details summary{cursor:pointer;color:var(--muted)}.tm-state-controls details p{padding-top:5px}
+
+/* Keep display settings above the model and supporting prose out of its canvas. */
+#comparisonScreen .structure-display-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 10px;margin:8px 0;flex:none}
+#comparisonScreen .structure-display-controls>label{display:flex;flex-direction:column;align-items:stretch;gap:3px;width:auto;min-width:0;font-size:10px}
+#comparisonScreen .structure-display-controls select{width:100%;max-width:none;font-size:11px}
+.structure-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}.structure-actions button{font-size:11px;padding:4px 7px}
+#comparisonScreen .structure-details{flex:none;border-top:1px solid var(--line);margin-top:7px;padding-top:6px;font-size:11px}
+.structure-details>summary{cursor:pointer;color:var(--muted)}.structure-downloads{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font-size:11px}
+.structure-details p{font-size:11px!important;line-height:1.4;margin:8px 0!important}
+@media(max-width:699px){#comparisonScreen .structure-display-controls{grid-template-columns:repeat(2,minmax(0,1fr))}#comparisonScreen #molecule{height:clamp(300px,82vw,400px);min-height:300px}}
