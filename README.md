@@ -32,9 +32,9 @@ changes, and retain this metadata with future archived site releases. Prior
 revisions remain in Git history. Adding a repository link does not add an
 experimental structure to the scientific analysis or recompute any result.
 
-This site is generated from the canonical Structure_Clustering renderer [`474270e3d2f1`](https://github.com/benavt/Structure_Clustering/commit/474270e3d2f1ce374913e1a7d2f1aa9af9bd169c), Git tree `a237ffdd8053c6cd7b43c4d500a86347eed7bd52`. Shared explorer behavior is maintained in the canonical repository. The exact renderer, loader and saved-data identities are recorded in `publication-provenance.json`. Set view aligns display models using the clustering residues and preserves the camera/slab while switching clusters; saved coordinate files and downloads stay unchanged.
+This site is generated from the canonical Structure_Clustering renderer [`9c1c4110ce17`](https://github.com/benavt/Structure_Clustering/commit/9c1c4110ce17638e1f0b1ccf6c69d323625a734c), Git tree `08e81db0636691e424b2d091a878ec5efbbce6b7`. Shared explorer behavior is maintained in the canonical repository. The exact renderer, loader and saved-data identities are recorded in `publication-provenance.json`. Set view aligns display models using the clustering residues and preserves the camera/slab while switching clusters; saved coordinate files and downloads stay unchanged.
 
-The explorer offers Primary and HDBSCAN for all five CASP17 targets. SR215 supports canonical residues 1–139, 5–95, and the combined mask 32–47 + 78–99 (38 residues); PaT90 clustering retains the frozen canonical 8–91 mask. Saved computational cluster labels do not establish biological state counts.
+The explorer offers Primary and HDBSCAN for all five CASP17 targets. SR215 supports canonical residues 1–139, 5–95, and the combined mask 32–47 + 78–99 (38 residues); PaT90 offers canonical 8–91 and the additional saved 24–91 mask (68 residues). Saved computational cluster labels do not establish biological state counts.
 
 ProteinEBM model 6 supplies one optional energy color at the saved default conditioning level **t=0.10**: **55,000 scores, one per model**. This replaces the unavailable template-only refold placeholders. Saved clusters remain the default color. Energies are unnormalized learned scores in arbitrary units, lower-first within a target; they are not calibrated physical energies, confidence scores or trajectory times. Values use each full construct, including PaT90’s 97 residues and SR215’s 139, and stay identical across clustering methods and residue-range selections. Other energy levels are excluded from this site. Existing measured confidence and reference similarities remain available.
 
@@ -45,51 +45,60 @@ Each partition has nine saved balance/energy-scale conditions (alpha 0/0.5/1 and
 
 The fixed-budget MCMC chains have observed mixing limitations. In the additional four-target pilot, matched independent categorical draws had smaller cluster total-variation error in 71 of 72 conditions; one MCMC condition missed a cluster with 2.18% declared target mass. Active MCMC status reports the saved MH and matched-IID cluster errors and unvisited assigned-cluster count. Lower error means closer agreement with the declared target label probabilities. These exploratory chains do not establish convergence or equilibrium populations. Exact categorical draws provide the finite-pool occupancy comparison; weighted unique panels trade energy against structural coverage.
 
-The third SR215 mask retains its completed representative-only fine-clustering stage. Saved PCA/UMAP/t-SNE projections, variance labels, distance summaries and representative PDBs are included; Bonsai, complete medoid grids and fine-cluster coordinate ensembles/PSE exports for that mask remain unavailable. The separate TM-state ensemble downloads below do not replace those missing fine-cluster figures. Existing complete figures and exports for the other twelve views are preserved. Selection runs are completed and frozen; static-page preparation performs no further sampling, clustering, scoring or coordinate fitting. No automatic/K=2–20 clustering choices or private residue-planning controls are published.
+The three SR215 masks retain their saved fine-clustering arrays. Completed
+Bonsai and medoid-grid supplements for the third mask are preserved. PaT90's
+new 24–91 range includes saved PCA/UMAP/t-SNE, Primary and HDBSCAN labels, and
+TM-state selections. Fine-cluster representative coordinates, Bonsai and medoid
+grids were not generated for that new range and are explicitly unavailable;
+its state ensemble downloads remain available. The older PaT90 8–91 analysis
+is preserved separately. Static preparation performs no sampling, scoring,
+clustering or structure fitting. No automatic/K=2–20 choices or private residue
+planner are published.
 
-## Saved TM-state selections
+## Saved residual TM-state selections
 
-The optional **TM state** and **State subset** menus show completed MCMC50 or
-DISCO50 selections: exactly 50 distinct models per supported state and saved
-Primary/HDBSCAN view. The projection rings retain the original model IDs;
-Bonsai highlights only those present in its saved subset. Downloads contain
-the corresponding full-construct fifty-model PDB ensembles. Turning TM states
-off restores the independent legacy selection controls.
+Choose **TM state** (one state or all states) and **State subset** (MCMC50,
+DISCO50, or all qualified members). The same saved HDBSCAN-balanced panels
+appear on both Primary and HDBSCAN views. Each sampler selects exactly 50
+distinct models per supported state. State-colored rings preserve the original
+model IDs and cluster colors; Bonsai can highlight only its saved model subset.
+Each state offers both full-atom ensemble PDB and native PyMOL PSE downloads
+for each sampler. Downloads preserve their original saved bytes and hashes.
 
-Membership requires TM-score ≥ 0.70 to a structural representative using fixed
-canonical CA correspondence and the chosen terminal-candidate intersection.
-These are operational neighborhoods, not biological-state populations. Each
-scope has one supported state under the frozen rule:
+Membership requires TM-score ≥ 0.80 to its representative on the listed core.
+Energy-independent bounded searches inspect residual models, retain at most
+three states with at least 50 members, and reassign models to the best qualified
+representative. The searches do not impose the older 90% coverage stop. Reaching
+a candidate or three-state cap leaves additional states unresolved. Membership
+is representative-relative, not an all-pairs certificate or a biological-state
+population estimate. Terminal-candidate trims are operational high-variance
+bounds, not confirmed disorder.
 
-| Target / saved analysis | Canonical TM core | Supported models |
-| --- | --- | ---: |
-| BhR2 / all | 7–84 | 9,392/11,000 (85.38%) |
-| CmR116 / all | 1–86 | 9,824/11,000 (89.31%) |
-| PaT90 / all | 8–91 | 8,296/11,000 (75.42%) |
-| SR215 / all and 5–95 | 15–72 | 10,294/11,000 (93.58%) |
-| SR215 / 32–47 + 78–99 | 32–47 | 4,406/11,000 (40.05%) |
-| StR82 / all | 22–54 | 10,712/11,000 (97.38%) |
+| Target / clustering range | Canonical TM core | State sizes | Uncovered |
+| --- | --- | --- | ---: |
+| BhR2 / 1–107 | 7–84 | 7,650 / 195 / 148 | 3,007 |
+| CmR116 / 1–131 | 1–86 | 8,679 / 395 / 437 | 1,489 |
+| StR82 / 1–77 | 22–54 | 10,034 / 123 / 518 | 325 |
+| SR215 / 1–139 | 15–72 | 10,171 / 110 | 719 |
+| SR215 / 5–95 | 15–72 | 10,150 / 110 | 740 |
+| SR215 / 32–47 + 78–99 | 32–47 | 1,337 / 147 / 2,176 | 7,340 |
+| PaT90 / 8–91 | 8–91 | 1,246 / 704 / 134 | 8,916 |
+| PaT90 / 24–91 | 24–91 | 8,006 / 318 / 311 | 2,365 |
 
-The last SR215 core has 16 residues and describes a local structural comparison.
-Its 14-member unsupported neighborhood receives no selections or downloads;
-another 6,580 models fall below cutoff. Supported, unsupported and below-cutoff
-counts stay separate. The original clustering masks and coordinates remain
-unchanged, including SR215's 38-residue combined clustering mask.
+The 16-residue SR215 core is a local structural comparison; its membership does
+not assess the second clustering segment. The two SR215 15–72 searches remain
+independent results with their own representatives and panels.
 
-The new MCMC50 target is a product-weight distribution on distinct 50-model sets,
-using the original full-cohort energy/cluster prior conditioned on each state.
-DISCO50 is a different coverage control: minimum-energy assigned fine-group
-seeds followed by weighted selection/fill. Old HDBSCAN noise remains eligible
-for fills within a supported state. Both use saved full-construct t=0.10 energies,
-alpha 0.5 and tau = one original-cohort IQR. Equal 50-model quotas are designed coverage.
-The fixed-budget chains have mixing limitations; the maximum available Rhat is
-1.0444 and minimum bulk ESS is 92.26. Diagnostics and source identities remain
-available; completion does not establish convergence.
-
-The 28 saved ensemble PDB downloads preserve their original bytes and hashes.
-Their display poses use a core least-squares fit, separate from native TM fits
-that certify membership. No sampler, scorer or structure-fitting route exists
-in the static interface.
+Saved full-construct ProteinEBM energies remain **t=0.10 only**, with alpha=0.5
+and tau=one original-target IQR. MCMC samples product-weight distinct 50-model
+subsets with four fixed-budget chains; the displayed production panel is chain 0,
+iteration 10,000. DISCO is a different within-state coverage control, using
+minimum-energy assigned-group seeds and weighted fill. Saved HDBSCAN noise can
+remain eligible within a state. Conditioning t is separate from the sampling
+scale; learned energies and equal 50-model quotas are not physical populations.
+Diagnostics remain exploratory and do not establish convergence. This release
+contains 22 supported states, 44 unchanged ensemble PDBs and 44 unchanged PSEs
+across eight target/range options and 16 fine-clustering views.
 
 ### Saved figure supplements
 
