@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "description": "Curated CASP17 display: Primary and HDBSCAN only; saved parent masks and SR215 ranges. Missing HDBSCAN deliveries become disabled placeholders in private review.",
+  "targets": {
+    "SR215_bmr6366": {
+      "ranges": {
+        "all": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              1,
+              139
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "primary",
+              "data": "SR215_bmr6366/primary.json",
+              "source_view_id": "primary"
+            },
+            {
+              "id": "density",
+              "source": "sr215-full",
+              "data": "data/density.json",
+              "source_view_id": "density"
+            }
+          ]
+        },
+        "res5-95": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              5,
+              95
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "res5-95",
+              "data": "data/original.json",
+              "source_view_id": "original"
+            },
+            {
+              "id": "density",
+              "source": "res5-95",
+              "data": "data/density.json",
+              "source_view_id": "density"
+            }
+          ]
+        }
+      }
+    },
+    "CmR116_bmr17022": {
+      "ranges": {
+        "all": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              1,
+              131
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "primary",
+              "data": "CmR116_bmr17022/primary.json",
+              "source_view_id": "primary"
+            },
+            {
+              "id": "density",
+              "source": "cmr116-hdbscan",
+              "data": "density.json",
+              "source_view_id": "density"
+            }
+          ]
+        }
+      }
+    },
+    "PaT90_bmr7191": {
+      "ranges": {
+        "all": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              8,
+              91
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "primary",
+              "data": "PaT90_bmr7191/primary.json",
+              "source_view_id": "primary"
+            },
+            {
+              "id": "density",
+              "source": "pat90-hdbscan",
+              "data": "density.json",
+              "source_view_id": "density"
+            }
+          ]
+        }
+      }
+    },
+    "StR82_bmr15386": {
+      "ranges": {
+        "all": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              1,
+              77
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "primary",
+              "data": "StR82_bmr15386/primary.json",
+              "source_view_id": "primary"
+            },
+            {
+              "id": "density",
+              "source": "str82-hdbscan",
+              "data": "density.json",
+              "source_view_id": "density"
+            }
+          ]
+        }
+      }
+    },
+    "BhR2_bmr6717": {
+      "ranges": {
+        "all": {
+          "default_view": "primary",
+          "canonical_ranges": [
+            [
+              1,
+              107
+            ]
+          ],
+          "views": [
+            {
+              "id": "primary",
+              "source": "primary",
+              "data": "BhR2_bmr6717/primary.json",
+              "source_view_id": "primary"
+            },
+            {
+              "id": "density",
+              "source": "bhr2-hdbscan",
+              "data": "density.json",
+              "source_view_id": "density"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
