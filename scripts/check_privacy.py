@@ -124,6 +124,29 @@ def strings_scan_binary(body, min_length=4):
     
     return b'\n'.join(strings_found)
 
+def session_text(body, filename):
+    """Read pickle string operands without loading or executing a PyMOL session.
+
+    Coordinates are binary floats: searching their byte representation can
+    mistake a number for a hostname. Every text/bytes operand remains scanned.
+    Malformed sessions and unparsed trailing data fail closed.
+    """
+    import pickletools
+    parts = []
+    last = None
+    try:
+        for opcode, argument, position in pickletools.genops(body):
+            last = (opcode.name, position)
+            if isinstance(argument, str):
+                parts.append(argument.encode('utf-8'))
+            elif isinstance(argument, (bytes, bytearray)):
+                parts.append(bytes(argument))
+        if last != ('STOP', len(body) - 1):
+            raise ValueError('unparsed session data')
+    except Exception as error:
+        raise SystemExit(f'{filename}: unreadable session pickle: {type(error).__name__}')
+    return b'\n'.join(parts)
+
 def inspect(body, filename=''):
     """Inspect content for sensitive patterns.
     
@@ -147,6 +170,10 @@ def inspect(body, filename=''):
     
     if body.startswith(b'\x1f\x8b'):
         body = gzip.decompress(body)
+
+    logical_name = filename[:-3] if filename.endswith('.gz') else filename
+    if logical_name.lower().endswith('.pse'):
+        body = session_text(body, filename)
     
     # Office Open XML documents (.docx, .xlsx, .pptx) are ZIP files containing XML
     if file_ext in {'.docx', '.xlsx', '.pptx', '.docm', '.xlsm', '.pptm'}:
@@ -401,7 +428,8 @@ def main():
                     content = f.read()
                 labels = inspect(content, filename=filepath)
                 # Also check the filename itself
-                labels += inspect(filepath.encode(), filename=filepath)
+                # The path is text, not another encoded copy of the artifact.
+                labels += inspect(filepath.encode(), filename=filepath + '.path')
                 if labels:
                     # Format labels with line numbers
                     formatted_labels = [f'{lbl[0]}@L{lbl[1]}' if isinstance(lbl, tuple) else lbl for lbl in labels]
