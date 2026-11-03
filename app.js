@@ -179,6 +179,7 @@ function verifiedRegions(meta){
  return meta.regions;
 }
 function setStructureOption(id,value,enabled){const option=Array.from($(id).options||[]).find(o=>o.value===value);if(option){option.disabled=!enabled;if(id==='structureColor'&&value==='regions')option.textContent=enabled?'Regions':'Regions — unavailable'}}
+function setPackedDownload(anchor,file){anchor.href=file+'.gz';anchor.download=file.split('/').pop();anchor.setAttribute('data-packed-file',file)}
 function configureModelMode(cluster=null){
  const available=cluster?!!(cluster.ensemble_file||cluster.ensemble_text):data.representatives.some(row=>row.ensemble_file||row.ensemble_text),option=Array.from($('modelMode').options||[]).find(row=>row.value==='ensemble');
  if(option){option.disabled=!available;option.textContent=available?'Comparison ensemble':'Comparison ensemble — unavailable'}
@@ -386,10 +387,15 @@ async function draw(){
  window.AtlasExplorer?.setBusy(true);
  updateFilterDisplay();await drawProjections();await drawViolins();await drawDistanceMaps();await drawCandidateReview();await drawMedoidTM();await drawBonsai();window.AtlasExplorer?.setBusy(false);
 }
+function canonicalPositionLabel(positions){
+ const ranges=[];let start=positions[0],end=start;
+ for(const position of positions.slice(1)){if(position===end+1)end=position;else{ranges.push([start,end]);start=end=position}}
+ ranges.push([start,end]);return ranges.map(([a,b])=>a===b?String(a):a+'–'+b).join(', ');
+}
 function configureDistanceMaps(){
  const entry=supplementaryMetadataCatalog.targets?.[data.target]?.ranges?.[data.range_id||'all'];savedHeatmapSpecs=[];
  if(entry?.views?.[data.view_id||'whole']){
-  const caption=document.createElement('p');caption.className='hint';caption.textContent=entry.sample_count.toLocaleString()+' models · canonical residues '+entry.positions[0]+'–'+entry.positions.at(-1)+'. '+entry.note;
+  const caption=document.createElement('p');caption.className='hint';caption.textContent=entry.sample_count.toLocaleString()+' models · canonical residues '+canonicalPositionLabel(entry.positions)+'. '+entry.note;
   const plots=[['median_matrix','Median Cα distance (Å)','Viridis'],['variance_matrix','Cα distance variance (Å²)','Magma']].map(([key,name,scale])=>{const section=document.createElement('section'),title=document.createElement('h3'),node=document.createElement('div');title.textContent=name;node.id='saved-'+key;section.append(title,node);savedHeatmapSpecs.push({node,entry,key,name,scale});return section});
   $('heatmaps').replaceChildren(caption,...plots);return;
  }
@@ -398,7 +404,7 @@ function configureDistanceMaps(){
  $('heatmaps').replaceChildren(...images);
 }
 async function drawDistanceMaps(){
- for(const {node,entry,key,name,scale} of savedHeatmapSpecs){const positions=entry.positions;await AtlasResponsive.react(node,[{type:'heatmap',x:positions,y:positions,z:entry[key],colorscale:scale,colorbar:{title:{text:name}},hovertemplate:'Residue %{y} / %{x}<br>%{z:.3f}<extra>'+escapeText(name)+'</extra>'}],{paper_bgcolor:'#fff',margin:{l:65,r:25,t:90,b:70},xaxis:{title:{text:'Canonical residue'}},yaxis:{title:{text:'Canonical residue'},autorange:'reversed'},uirevision:data.target+'-'+data.range_id+'-'+key},{displaylogo:false});}
+ for(const {node,entry,key,name,scale} of savedHeatmapSpecs){const positions=entry.positions;await AtlasResponsive.react(node,[{type:'heatmap',x:positions,y:positions,z:entry[key],colorscale:scale,colorbar:{title:{text:name}},hovertemplate:'Residue %{y} / %{x}<br>%{z:.3f}<extra>'+escapeText(name)+'</extra>'}],{paper_bgcolor:'#fff',margin:{l:65,r:25,t:90,b:70},xaxis:{title:{text:'Canonical residue'},type:'category',categoryorder:'array',categoryarray:positions},yaxis:{title:{text:'Canonical residue'},type:'category',categoryorder:'array',categoryarray:positions,autorange:'reversed'},uirevision:data.target+'-'+data.range_id+'-'+key},{displaylogo:false});}
 }
 function scheduleDraw(){const request=targetRequest;renderQueue=renderQueue.catch(()=>{}).then(()=>request===targetRequest?draw():undefined);return renderQueue}
 async function drawViolins(){
@@ -421,10 +427,10 @@ async function choose(label){
  if($('modelMode').value==='ensemble'&&!cluster.ensemble_text&&cluster.ensemble_file){const response=await fetch(cluster.ensemble_file);if(!response.ok)throw Error('Ensemble file unavailable');cluster.ensemble_text=await response.text()}if(serial!==loadSerial||data!==current)return;const ensemble=$('modelMode').value==='ensemble'&&cluster.ensemble_text;viewer._aisModels=ensemble?viewer.addModels(cluster.ensemble_text,'pdb'):[viewer.addModel(coordinate,cluster.format)];viewer._aisDescriptor=cluster;viewer._aisEnsemble=!!ensemble;alignStructureToSetView();styleSavedStructure(viewer,cluster.color,ensemble ? .62 : 1);
 
  frameSelectedStructure();viewer.spin(spinning);notifyInspectedStructure();
- $('modelTitle').textContent=ensemble?'Ensemble':'Structure';$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(referenceSimilarity(cluster))?' · TM (5–95): '+referenceSimilarity(cluster).toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').hidden=false;$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_file;if(cluster.ensemble_file)$('ensemblePdb').href=cluster.ensemble_file;$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)$('ensemblePse').href=cluster.ensemble_pse;
+ $('modelTitle').textContent=ensemble?'Ensemble':'Structure';$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(referenceSimilarity(cluster))?' · TM (5–95): '+referenceSimilarity(cluster).toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').hidden=false;$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_file;if(cluster.ensemble_file)setPackedDownload($('ensemblePdb'),cluster.ensemble_file);$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)setPackedDownload($('ensemblePse'),cluster.ensemble_pse);
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
-function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||'whole'}}
+function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||''}}
 function analysisHash(target,range,view){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');const tm=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.routeParams(tmStatePreference):'';return base+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')+(tm?'&'+tm:'')}
 function navigateSavedSection(event){
  const anchor=event.target.closest?.('a[href^="#"]');if(!anchor||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -452,14 +458,23 @@ function prepareRangeAnalysis(raw,range){
  for(const key of ['membership_file','violin_interactive','violin_pdf'])if(raw[key])current[key]=rangeAssetPath(raw[key],range);
  return current;
 }
+function savedClusteringViews(views){
+ const name=view=>view.id==='density'?'HDBSCAN':view.id==='primary'||(['whole','original'].includes(view.id)&&/\bumap\b|\bknn\b/i.test(view.name||''))?'UMAP KNN':view.name;
+ const rank=view=>view.id==='density'?0:['primary','whole','original'].includes(view.id)?1:2;
+ return views.map(view=>({...view,name:name(view)})).sort((a,b)=>rank(a)-rank(b));
+}
+function preferredSavedView(views,requested){
+ const available=view=>view?.available!==false&&typeof view?.data==='string'&&!!view.data;
+ return views.find(view=>view.id===requested&&available(view))||views.find(view=>view.id==='density'&&available(view))||views.find(view=>['primary','whole','original'].includes(view.id)&&available(view))||views.find(available);
+}
 async function savedViewSelection(target,range,requested){
  // A curated catalog is resolved before fetching: retired URLs never load a hidden analysis.
  if(Array.isArray(range.views)){
-  const views=range.views.filter(view=>['primary','density'].includes(view.id));
+  const views=savedClusteringViews(range.views.filter(view=>['primary','density'].includes(view.id)));
   const available=view=>view?.available!==false&&typeof view?.data==='string'&&!!view.data;
   const primary=views.find(view=>view.id==='primary'&&available(view));
   if(!primary)throw Error('The curated range has no verified Primary analysis.');
-  const view=views.find(view=>view.id===requested&&available(view))||primary;
+  const view=preferredSavedView(views,requested);
   async function read(binding){
    const raw=await json(binding.data);
    if(raw.target!==target.id||raw.view_id!==binding.source_view_id)throw Error('Saved analysis differs from the verified view catalog.');
@@ -470,7 +485,7 @@ async function savedViewSelection(target,range,requested){
   const base=await read(primary),loaded=view===primary?base:await read(view);
   return {base,loaded,view};
  }
- const rawBase=await json(range.data),base=prepareRangeAnalysis(rawBase,range),views=base.views||[],view=views.find(x=>x.id===requested)||views.find(x=>x.id===(range.default_view||'whole'));
+ const rawBase=await json(range.data),base=prepareRangeAnalysis(rawBase,range),views=savedClusteringViews(base.views||[]),view=preferredSavedView(views,requested);base.views=views;
  return {base,loaded:view&&view.id!=='whole'?prepareRangeAnalysis(await json(view.data),range):base,view};
 }
 function configureResidueRangeControls(target,selectedRange,requested){
@@ -494,7 +509,7 @@ function clearStructure(title='Select a cluster',note=''){
  for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}
  notifyInspectedStructure();
 }
-async function load(target,viewId='whole',rangeId='all'){
+async function load(target,viewId='',rangeId='all'){
  const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();clearTMStateHighlight();setAnalysisLoading(true);try{
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
  $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;viewer.render();notifyInspectedStructure();
@@ -514,7 +529,7 @@ async function load(target,viewId='whole',rangeId='all'){
  const preferredColor=previousColor||requestedColor;if(visibleSchemes.some(s=>s.key===preferredColor&&!s.unavailable))$('color').value=preferredColor;updateMetricOverlayNote();refreshTMStateHighlight();refreshSelectionHighlight();
  const reviewDownloads=data.review_downloads||(range.id==='all'&&!data.visible_view_policy?{waveMemberships:'wave-memberships.csv',decisionsDownload:'decisions.csv',boundsDownload:'bounds.json'}:{});for(const id of ['waveMemberships','decisionsDownload','boundsDownload']){const path=reviewDownloads[id];$(id).hidden=!path;if(path)$(id).href=rangeAssetPath(path,{...range,asset_root:data.presentation_asset_root??range.asset_root});else $(id).removeAttribute('href')}
  $('members').href=data.membership_file;$('clusterRows').replaceChildren();$('clusterSelect').replaceChildren(Object.assign(document.createElement('option'),{value:'',textContent:'Select a cluster'}),...data.representatives.map(c=>Object.assign(document.createElement('option'),{value:c.cluster,textContent:c.cluster+' · '+c.count.toLocaleString()})));
- for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+(Number.isFinite(referenceSimilarity(c))?referenceSimilarity(c).toFixed(3):'Unavailable')+'</td>':''}<td>${c.ensemble_file?'<a download href="'+escapeText(c.ensemble_file)+'">PDB</a>':''} ${c.ensemble_pse?'<a download href="'+escapeText(c.ensemble_pse)+'">PSE</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
+ for(const c of data.representatives){const tr=document.createElement('tr');tr.dataset.cluster=c.cluster;tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-label','Inspect '+c.cluster);tr.innerHTML=`<td><span class="dot" style="background:${c.color}"></span>${escapeText(c.cluster)}</td><td>${c.count.toLocaleString()}</td><td>${escapeText(population(c.count))}</td><td>${escapeText(c.method)}</td>${data.metric_note?'<td>'+(Number.isFinite(referenceSimilarity(c))?referenceSimilarity(c).toFixed(3):'Unavailable')+'</td>':''}<td>${c.ensemble_file?'<a download="'+escapeText(c.ensemble_file.split('/').pop())+'" data-packed-file="'+escapeText(c.ensemble_file)+'" href="'+escapeText(c.ensemble_file+'.gz')+'" aria-label="'+escapeText(c.cluster)+' ensemble PDB">PDB</a>':''} ${c.ensemble_pse?'<a download="'+escapeText(c.ensemble_pse.split('/').pop())+'" data-packed-file="'+escapeText(c.ensemble_pse)+'" href="'+escapeText(c.ensemble_pse+'.gz')+'" aria-label="'+escapeText(c.cluster)+' PyMOL session">PyMOL</a>':''}</td>`;for(const a of tr.querySelectorAll('a')){a.onclick=e=>e.stopPropagation();a.onkeydown=e=>e.stopPropagation()}tr.onclick=()=>choose(c.cluster).catch(fail);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(c.cluster).catch(fail)}};$('clusterRows').append(tr)}
  configureDistanceMaps();
  $('mask').textContent=data.mask_note;$('provenance').textContent=JSON.stringify(data.provenance,null,2);
  await draw();if(request===targetRequest){if(data.representatives.length)await choose(data.representatives[0].cluster);if(request===targetRequest)setAnalysisLoading(false)}
@@ -566,10 +581,10 @@ let bonsaiPanel=null,bonsaiSerial=0,tmBonsaiObserver=null;
 function colorTMStateBonsai(){if(data&&typeof AISExplorerTMStates!=='undefined')AISExplorerTMStates.colorBonsaiRings($('bonsai'),data.models,tmStateHighlight)}
 function observeTMStateBonsai(){if(!tmBonsaiObserver&&typeof MutationObserver!=='undefined'){tmBonsaiObserver=new MutationObserver(colorTMStateBonsai);tmBonsaiObserver.observe($('bonsai'),{childList:true,subtree:true})}colorTMStateBonsai()}
 async function drawBonsai(){
- const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if($('bonsaiDetails'))$('bonsaiDetails').hidden=!current.bonsai;if(!current.bonsai)return;
+ const serial=++bonsaiSerial,current=data;$('bonsaiPanel').hidden=!current.bonsai;if(!current.bonsai)return;
  if(!current.bonsaiPayload){const response=await fetch(current.bonsai.file,{cache:'no-cache'});if(!response.ok)throw Error('Saved Bonsai layout unavailable');const bytes=await response.arrayBuffer(),digest=globalThis.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(x=>x.toString(16).padStart(2,'0')).join(''):typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.sha256(new Uint8Array(bytes)):null;if(digest!==null&&digest!==current.bonsai.sha256)throw Error('Saved Bonsai layout hash mismatch');current.bonsaiPayload=JSON.parse(new TextDecoder().decode(bytes));}
  if(serial!==bonsaiSerial||data!==current)return;
- if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#bonsaiDetails'});
+ if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#methods'});
  const representatives=current.representatives.filter(c=>visibleCluster(c.cluster));
  const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,effectiveSelectionHighlight().active?new Set(effectiveSelectionHighlight().orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);observeTMStateBonsai();
 }

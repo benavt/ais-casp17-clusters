@@ -18,13 +18,13 @@
   document.addEventListener('click',event=>{
    const anchor=event.target.closest?.('a[download]');if(!anchor||event.defaultPrevented||anchor.href.startsWith('blob:'))return;
    const url=new URL(anchor.href);if(url.origin!==base.origin||!url.pathname.startsWith(base.pathname))return;
-   const key=decodeURIComponent(url.pathname.slice(base.pathname.length)),record=index.files[key];if(!record)return;
+   const requestKey=decodeURIComponent(url.pathname.slice(base.pathname.length)),key=anchor.dataset.packedFile||requestKey,record=index.files[key];if(!record||(requestKey!==key&&requestKey!==key+'.gz'))return;
    event.preventDefault();event.stopImmediatePropagation();
    const original=anchor.textContent;anchor.textContent='Preparing download…';anchor.setAttribute('aria-busy','true');
-   fetch(url.href).then(r=>{if(!r.ok)throw Error('Download unavailable: '+r.status);return r.arrayBuffer()}).then(async bytes=>{
+   fetch(new URL(key,base).href).then(r=>{if(!r.ok)throw Error('Download unavailable: '+r.status);return r.arrayBuffer()}).then(async bytes=>{
     if(bytes.byteLength!==record.bytes)throw Error('Artifact size verification failed');
-    if(crypto.subtle){const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');if(digest!==record.sha256)throw Error('Artifact hash verification failed');}
-    const link=document.createElement('a'),blob=URL.createObjectURL(new Blob([bytes],{type:record.content_type}));link.href=blob;link.download=anchor.download||url.pathname.split('/').pop();link.click();setTimeout(()=>URL.revokeObjectURL(blob),1000);
+    const digest=crypto.subtle?[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join(''):window.AISExplorerTMStates?.sha256(new Uint8Array(bytes));if(digest!==record.sha256)throw Error('Artifact hash verification failed');
+    const link=document.createElement('a'),blob=URL.createObjectURL(new Blob([bytes],{type:record.content_type}));link.href=blob;link.download=anchor.download||key.split('/').pop();link.click();setTimeout(()=>URL.revokeObjectURL(blob),1000);
    }).catch(error=>{const box=document.getElementById('error');if(box){box.hidden=false;box.textContent=error.message}else alert(error.message)}).finally(()=>{anchor.textContent=original;anchor.removeAttribute('aria-busy')});
   },true);
  }).catch(error=>console.error(error));

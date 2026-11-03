@@ -119,7 +119,7 @@
   });
   document.addEventListener('click',event=>{
    const link=event.target.closest('a[href^="#"]');if(!link)return;
-   const target=$(link.hash.slice(1));if(target?.matches('details')){target.open=true;resize()}
+   const target=$(link.hash.slice(1));if(target){event.preventDefault();showSection(target);resize()}
   });
   window.addEventListener('hashchange',()=>{if(decodeURIComponent(location.hash.slice(1)).split('?')[0]!==currentTarget)restore()});
   const explorer=$('clusterExplorer'),heading=explorer.querySelector(':scope > summary');

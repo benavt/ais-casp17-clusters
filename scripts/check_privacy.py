@@ -124,6 +124,29 @@ def strings_scan_binary(body, min_length=4):
     
     return b'\n'.join(strings_found)
 
+def session_text(body, filename):
+    """Read pickle string operands without loading or executing a PyMOL session.
+
+    Coordinates are binary floats: searching their byte representation can
+    mistake a number for a hostname. Every text/bytes operand remains scanned.
+    Malformed sessions and unparsed trailing data fail closed.
+    """
+    import pickletools
+    parts = []
+    last = None
+    try:
+        for opcode, argument, position in pickletools.genops(body):
+            last = (opcode.name, position)
+            if isinstance(argument, str):
+                parts.append(argument.encode('utf-8'))
+            elif isinstance(argument, (bytes, bytearray)):
+                parts.append(bytes(argument))
+        if last != ('STOP', len(body) - 1):
+            raise ValueError('unparsed session data')
+    except Exception as error:
+        raise SystemExit(f'{filename}: unreadable session pickle: {type(error).__name__}')
+    return b'\n'.join(parts)
+
 def inspect(body, filename=''):
     """Inspect content for sensitive patterns.
     
@@ -147,6 +170,10 @@ def inspect(body, filename=''):
     
     if body.startswith(b'\x1f\x8b'):
         body = gzip.decompress(body)
+
+    logical_name = filename[:-3] if filename.endswith('.gz') else filename
+    if logical_name.lower().endswith('.pse'):
+        body = session_text(body, filename)
     
     # Office Open XML documents (.docx, .xlsx, .pptx) are ZIP files containing XML
     if file_ext in {'.docx', '.xlsx', '.pptx', '.docm', '.xlsm', '.pptm'}:
@@ -257,7 +284,6 @@ def inspect(body, filename=''):
     
     # Check main body with line number tracking
     labels = []
-    body_lines = body.split(b'\n')
     
     for name, pattern in RULES.items():
         # Skip all credential/secret patterns ONLY for specific test fixture files by path
@@ -278,36 +304,26 @@ def inspect(body, filename=''):
         if exclude_protein_patterns and name == 'cloud access key':
             continue
         
-        # Track line numbers for each match
+        # Scan each pattern once in C; line-by-line Python regex calls make
+        # large native sessions unnecessarily expensive. Multiline secrets
+        # remain detectable, and only findings require line-number counting.
         found_lines = set()
-        for line_num, line in enumerate(body_lines, start=1):
-            matches = list(re.finditer(pattern, line))
-            for match in matches:
-                # Check context-specific exclusions
-                is_excluded = False
-                for excl_file, excl_pattern, context_before, context_after in CONTEXT_EXCLUDED_MATCHES:
-                    if filename == excl_file and name == excl_pattern:
-                        # Check if match is surrounded by the required context
-                        match_start = match.start()
-                        match_end = match.end()
-                        before_start = max(0, match_start - len(context_before))
-                        after_end = min(len(line), match_end + len(context_after))
-                        
-                        actual_before = line[before_start:match_start]
-                        actual_after = line[match_end:after_end]
-                        
-                        if actual_before.endswith(context_before) and actual_after.startswith(context_after):
-                            is_excluded = True
-                            break
-                
-                if not is_excluded:
-                    found_lines.add(line_num)
-                    break  # One match per line is enough
-        
-        if found_lines:
-            for line_num in sorted(found_lines):
-                labels.append((name, line_num))
-    
+        for match in re.finditer(pattern, body):
+            is_excluded = False
+            for excl_file, excl_pattern, context_before, context_after in CONTEXT_EXCLUDED_MATCHES:
+                if filename == excl_file and name == excl_pattern:
+                    before = body[max(0, match.start()-len(context_before)):match.start()]
+                    after = body[match.end():match.end()+len(context_after)]
+                    if before.endswith(context_before) and after.startswith(context_after):
+                        is_excluded = True
+                        break
+            if not is_excluded:
+                position = match.start()
+                while body[position:position+1] in (b'\n', b'\r'):
+                    position += 1
+                found_lines.add(body.count(b'\n', 0, position) + 1)
+        labels.extend((name, line) for line in sorted(found_lines))
+
     return labels
 
 def main():
@@ -401,7 +417,8 @@ def main():
                     content = f.read()
                 labels = inspect(content, filename=filepath)
                 # Also check the filename itself
-                labels += inspect(filepath.encode(), filename=filepath)
+                # The path is text, not another encoded copy of the artifact.
+                labels += inspect(filepath.encode(), filename=filepath + '.path')
                 if labels:
                     # Format labels with line numbers
                     formatted_labels = [f'{lbl[0]}@L{lbl[1]}' if isinstance(lbl, tuple) else lbl for lbl in labels]

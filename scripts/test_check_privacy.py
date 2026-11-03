@@ -438,6 +438,59 @@ def test_maya_calendar_context_exclusion():
         return False
 
 
+def test_session_strings_and_binary_coordinates():
+    """Scan actual session strings, never execute pickle instructions."""
+    import gzip
+    import pickle
+    import struct
+    from check_privacy import inspect
+    hostname = 'p' + 'a' + 'x'
+    # The exact bytes of a finite coordinate happen to contain the hostname.
+    coordinate = struct.unpack('>d', b'\xc0P' + hostname.encode() + b'\x00\x00\x00')[0]
+    clean = pickle.dumps({'coordinates': [coordinate], 'name': 'ensemble'}, protocol=2)
+    assert hostname.encode() in clean
+    assert not inspect(clean, filename='ensemble.pse')
+    assert not inspect(gzip.compress(clean), filename='ensemble.pse.gz')
+    for protocol in [0, 1, 2, 4, 5]:
+        dirty = pickle.dumps({'metadata': {'host': hostname, 'source': '/home/fakeuser/private/model.pdb'}}, protocol=protocol)
+        rules = {label[0] for label in inspect(dirty, filename='ensemble.pse')}
+        assert {'private hostname', 'private filesystem path'} <= rules
+    # A REDUCE instruction must remain inert: no pickle.load/loads is used.
+    inert = b"cbuiltins\nprint\n(S'" + hostname.encode() + b"'\ntR."
+    assert any(label[0] == 'private hostname' for label in inspect(inert, filename='ensemble.pse'))
+    for broken in [clean[:-1], clean + b'ignored suffix', b'not a session']:
+        try:
+            inspect(broken, filename='ensemble.pse')
+        except SystemExit:
+            continue
+        raise AssertionError('Malformed/trailing session data must fail closed')
+    # Default Git-tree mode also scans filenames; a session path is plain text.
+    import check_privacy
+    from unittest.mock import patch
+    previous = os.getcwd()
+    try:
+        with tempfile.TemporaryDirectory() as directory:
+            Path(directory, 'ensemble.pse').write_bytes(clean)
+            with patch.object(check_privacy.subprocess, 'check_output', side_effect=[directory.encode(), b'ensemble.pse\0']), patch.object(sys, 'argv', ['check_privacy.py']):
+                assert check_privacy.main() == 0
+    finally:
+        os.chdir(previous)
+    print('Test: session strings, numeric bytes and fail-closed pickle parsing\n  ✓ PASS')
+    return True
+
+
+def test_multiline_scanning_and_line_numbers():
+    from check_privacy import inspect
+    hostname='p'+'a'+'x'
+    assert ('private hostname',2) in inspect(('clean\n'+hostname+'\nclean').encode(),filename='notes.txt')
+    assert ('private hostname',3) in inspect(('clean\nline two\nServer '+hostname+'\n').encode(),filename='notes.txt')
+    token='gh'+'p_'+'A'*30
+    rules={label[0]for label in inspect(('clean\nsecret =\n"'+token+'"\n').encode(),filename='notes.txt')}
+    assert {'GitHub token','literal credential'} <= rules
+    print('Test: multiline credentials and exact diagnostic line numbers\n  ✓ PASS')
+    return True
+
+
 def main():
     """Run all tests."""
     print("Running check_privacy.py tests\n")
@@ -472,6 +525,10 @@ def main():
     results.append(test_gzip_decompression())
     print()
     results.append(test_maya_calendar_context_exclusion())
+    print()
+    results.append(test_session_strings_and_binary_coordinates())
+    print()
+    results.append(test_multiline_scanning_and_line_numbers())
     print()
     
     passed = sum(results)
