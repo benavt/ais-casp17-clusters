@@ -29,3 +29,7 @@ in research-workflows; keep project-specific adapters here.
 Shared policy starts at external/research-workflows/README.md and its selected
 contract/stage. Its separate pin retains the producer workflow contract; native
 scientific settings are not changed by this source adoption.
+
+Before a CASP17 cutover, read config/ensemble-reconciliation.json and run
+`python scripts/check_cutover_readiness.py`. It must pass against the final reviewed
+snapshot; a green source-only CI result does not clear the ensemble publication hold.

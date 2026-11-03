@@ -54,3 +54,13 @@ locations are unchanged. Imported adapters retain the source MIT notice in LICEN
 For a new source-only checkout, use Git partial clone (`git clone --filter=blob:none`)
 to avoid downloading historical publication blobs. Git history is preserved.
 The separate research-workflows policy pin retains the producer contract.
+
+The ensemble completion is being reconciled in `config/ensemble-reconciliation.json`.
+The observed unpublished candidate retains every existing published path and native
+download, but the producer is still completing privacy review and the HDBSCAN-default
+presentation update. `config/publication.json` intentionally remains on the last
+published snapshot. The Pages workflow now runs `python scripts/check_cutover_readiness.py`
+before accessing the private dependency or building. It blocks until the final approved
+public snapshot, manifest hash, library pin and compatibility checks agree. Keep this
+PR and the live Pages source on hold while that record is pending. The observed candidate
+commit is review evidence, not a selected publication source or an execution approval.

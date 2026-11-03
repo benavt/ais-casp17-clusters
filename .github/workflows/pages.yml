@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Require the reconciled final ensemble snapshot
+        run: python scripts/check_cutover_readiness.py
       - name: Resolve the exact project dependency
         id: library
         run: |
