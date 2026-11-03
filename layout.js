@@ -19,16 +19,6 @@
   const { current, base } = cohort;
   const subset = current.models.length < 11000;
   const counts = new Map(); current.methods.forEach(method => counts.set(method, (counts.get(method) || 0) + 1));
-  const box = document.getElementById('cohortSummary');
-  box.replaceChildren();
-  const strong = document.createElement('strong');
-  strong.textContent = subset ? `Largest-cluster subset · ${current.models.length.toLocaleString()} of 11,000 original models` : 'Full target · 11,000 original models · 1,000 per sampling method';
-  const note = document.createElement('p');
-  note.textContent = subset ? 'Only members of the selected primary cluster appear here. Method counts differ because each method contributes a different number to this cluster.' : 'All eleven methods are included. Each projection shows the same original model cohort; Bonsai shows selected representative ensembles.';
-  box.append(strong, note);
-  if (subset && base.views?.some(view => view.id === 'primary')) {
-   const link = document.createElement('a'); link.href = '#' + current.target + '?view=primary'; link.textContent = 'Show all 11,000 models'; box.append(link);
-  }
   const table = document.createElement('table');
   table.innerHTML = '<thead><tr><th scope="col">Sampling method</th><th scope="col">Shown</th><th scope="col">Full target</th></tr></thead>';
   const body = document.createElement('tbody');

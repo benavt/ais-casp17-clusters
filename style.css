@@ -23,3 +23,20 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}body{min-width:0}main
 @media(max-width:759px){#plots{grid-template-columns:minmax(0,1fr)}.inspect,.pair-grid{grid-template-columns:minmax(0,1fr)}.intro{margin-bottom:20px}main{padding:24px 12px 44px}header{padding:14px 12px}header .brand{font-size:17px}header>a:last-child{margin-left:auto;font-size:12px}.toolbar label{width:100%;flex-direction:column;align-items:stretch}.toolbar label select{width:100%;max-width:none}.toolbar>button{flex:1}.toolbar h2{font-size:22px}.figure-panel>summary{padding:10px 12px;font-size:14px}.figure-panel>summary>span{line-height:1.4}.figure-panel .maximize-panel{padding:7px 9px}.panel-body{padding:0 8px 14px}.figure-caption{margin:12px;font-size:13px}.plot-tools{padding:8px;gap:5px}.plot-tools button{flex:1 1 calc(50% - 8px)}.inspect{padding:0 10px 16px}.section-heading{align-items:flex-start;flex-direction:column;gap:0}.section-heading a{min-height:44px;display:flex;align-items:center}.model-controls>label{width:100%}.model-controls select{width:100%}.bonsai-toolbar label{width:100%}.bonsai-toolbar select{flex:1;width:0}.bonsai-toolbar button{flex:1}.bonsai-legend{font-size:11px!important;gap:8px 12px!important}.page-index{gap:8px 14px}.page-index a{display:flex;align-items:center;min-height:44px}.supplementary-intro h2{font-size:25px}.supplementary-intro button{display:block;width:100%;margin:8px 0}.table-wrap{max-height:440px}#methods{max-width:100%}}
 @media(max-width:360px){.figure-panel>summary{padding:8px;font-size:13px}.figure-panel .maximize-panel{padding:6px}.cohort-summary{padding:10px}.plot-tools button{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Keep display settings above the model and supporting prose out of its canvas. */
+#comparisonScreen .structure-display-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 10px;margin:8px 0;flex:none}
+#comparisonScreen .structure-display-controls>label{display:flex;flex-direction:column;align-items:stretch;gap:3px;width:auto;min-width:0;font-size:10px}
+#comparisonScreen .structure-display-controls select{width:100%;max-width:none;font-size:11px}
+.structure-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}.structure-actions button{font-size:11px;padding:4px 7px}
+#comparisonScreen .structure-details{flex:none;border-top:1px solid var(--line);margin-top:7px;padding-top:6px;font-size:11px}
+.structure-details>summary{cursor:pointer;color:var(--muted)}.structure-downloads{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font-size:11px}
+.structure-details p{font-size:11px!important;line-height:1.4;margin:8px 0!important}
+@media(max-width:699px){#comparisonScreen .structure-display-controls{grid-template-columns:repeat(2,minmax(0,1fr))}#comparisonScreen #molecule{height:clamp(300px,82vw,400px);min-height:300px}}
+
+/* Advanced sampling stays with the explorer without taking space from its plots. */
+.sampling-panel{border-bottom:1px solid var(--line)}
+.sampling-options{max-height:min(55dvh,460px);overflow:auto;overscroll-behavior:contain}
+#samplingSummary{font-weight:400;font-size:11px;margin-left:8px;color:var(--muted)}
+#samplingSummary:empty{display:none}
+.structure-heading #modelTitle{font-size:13px;margin:0;font-weight:600;color:#202020}
