@@ -136,3 +136,18 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 #samplingSummary{font-weight:400;font-size:11px;margin-left:8px;color:var(--muted)}
 #samplingSummary:empty{display:none}
 .structure-heading #modelTitle{font-size:13px;margin:0;font-weight:600;color:#202020}
+
+/* State procedures stay visible; downloads are independent of the chosen highlight. */
+.tm-method-choices{display:flex;flex-wrap:wrap;gap:4px;min-width:0}
+.tm-method-choices button{font-size:11px;padding:5px 8px}
+.tm-method-choices button[aria-pressed="true"]{border-color:var(--red);color:#9d0017;background:#fff4f4}
+#tmStateEnsembleLink{font-size:11px;margin-left:auto}
+.state-ensembles{margin:22px 0;scroll-margin-top:14px;min-width:0}
+.state-ensembles h2{font-size:18px}.state-ensembles .section-heading{margin-bottom:9px;max-width:760px}
+.state-ensembles .section-heading p{font-size:11px;margin:0}
+.state-ensembles .table-wrap{max-width:760px;max-height:none}
+.state-ensembles table{min-width:0;table-layout:fixed}
+.state-ensembles th:first-child{width:60px}.state-ensembles tbody th{position:static;background:#fff}
+.state-ensembles td a{display:inline-block;margin:0 14px 0 0;padding:4px 0;font-size:12px}
+.state-ensembles a[aria-disabled="true"]{opacity:.5;pointer-events:none}
+@media(max-width:699px){.tm-state-controls>.tm-method-choices{flex:1 1 100%}#tmStateEnsembleLink{margin-left:0}.state-ensembles .section-heading{gap:5px}.state-ensembles td a{margin-right:9px}.state-ensembles th,.state-ensembles td{padding:8px}}
