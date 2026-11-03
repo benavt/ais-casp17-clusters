@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "awaiting_final_publication_snapshot",
+  "site_url": "https://benavt.github.io/ais-casp17-clusters/",
+  "published_baseline": "a2b80cf84130bc8352f156a6cd64e03e2df2dff9",
+  "observed_unpublished_candidate": {
+    "commit": "5c0159ea49314121e68326a31adca32485bfbcfc",
+    "final": false,
+    "producer_has_new_changes": true,
+    "selected_static_files": 4613,
+    "selected_static_bytes": 556302734,
+    "retained_existing_paths": 2503,
+    "unchanged_existing_native_files": 1610,
+    "candidate_inventory_sha256": "b0e36f604df2fd82e5cc462250d44e498aacbc2d21db18a343f15bdae40dd213",
+    "new_ensemble_PDBs": 956,
+    "new_native_sessions": 956,
+    "new_Bonsai_trees": 2,
+    "complete_views": 16,
+    "cluster_rows": 1220,
+    "ensemble_links": 2440,
+    "supplemental_TM_grids": 16,
+    "distance_map_views": 16,
+    "producer_browser_views_checked": 16,
+    "producer_CSV_downloads_checked": 16,
+    "shared_privacy_sample": "Documented numeric-coordinate session case passed; full final-candidate inspection remains required"
+  },
+  "final_publication_commit": null,
+  "manifest_sha256": null,
+  "library_commit": "3b4705a3b1151f02714e5f588753dc16a5987a14",
+  "publication_approved": false,
+  "checks": {
+    "immutable_snapshot": "pending",
+    "shared_privacy": "pending",
+    "native_path_hash_parity": "pending",
+    "frontend": "pending"
+  },
+  "remaining": [
+    "Finish and review HDBSCAN-default / UMAP KNN alternative work without changing explicit method links",
+    "Finish privacy inspection of the final producer candidate and obtain publication review approval",
+    "Select an accessible immutable public snapshot; replace the old publication manifest and bind its exact commit, ZIP and native hashes",
+    "Import the final retained frontend regressions and verify all saved routes, ensembles, Bonsai, grids and downloads with the pinned library",
+    "Set readiness only after all checks pass and the final manifest/library identities match; keep generated outputs outside source Git",
+    "Recheck published main and update the rollback commit before requesting approval of the exact PR head and coordinated Pages source switch"
+  ]
+}

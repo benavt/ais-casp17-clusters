@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "source_repository": "benavt/Structure_Clustering",
+  "source_commit": "8ffc2098f60df1ff6902aca54b8d7c62a1fcff8a",
+  "files": [
+    {
+      "source": "scripts/assemble_casp17_ensemble_exports.py",
+      "source_sha256": "cc7d5e9ad5d3f7419e13d98a0bdea6d658904df89047f9f4134e3080f50d910d",
+      "destination": "scripts/assemble_casp17_ensemble_exports.py",
+      "project_sha256": "5af46140bdc158477db2eb965b9514fc1351b44cc9c274c8cb905747f29b6a4b",
+      "adaptation": "Project pin added to source inventory; reusable imports/assets resolve from installed library"
+    },
+    {
+      "source": "scripts/assemble_casp17_hdbscan_figures.py",
+      "source_sha256": "4678fd50393d97ddacad8300d102784740289ba45c8d15a9150f8d0254ce230c",
+      "destination": "scripts/assemble_casp17_hdbscan_figures.py",
+      "project_sha256": "4678fd50393d97ddacad8300d102784740289ba45c8d15a9150f8d0254ce230c",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/casp17_ensemble_exports.py",
+      "source_sha256": "76ccfef2be4aebb5c4fc57b2429823420619549fac7170c189a1aa9f97170195",
+      "destination": "scripts/casp17_ensemble_exports.py",
+      "project_sha256": "76ccfef2be4aebb5c4fc57b2429823420619549fac7170c189a1aa9f97170195",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/casp17_hdbscan.py",
+      "source_sha256": "898f1d6cdc2e31f2dca26cf6a4975d424d0c2f1bfc4e81653414888c09ccf063",
+      "destination": "scripts/casp17_hdbscan.py",
+      "project_sha256": "8cc39ecb597a7d029758723c78224e82f6a200e575026b051118994b2636c423",
+      "adaptation": "Project pin added to source inventory; reusable imports/assets resolve from installed library"
+    },
+    {
+      "source": "scripts/casp17_hdbscan_figures.py",
+      "source_sha256": "f0b068eec2f8bd5b05cf78a468907ac294dab1ff9adc43b1e1a29fb34643f8da",
+      "destination": "scripts/casp17_hdbscan_figures.py",
+      "project_sha256": "7d646f74b9da3afab91a8457291fc5c965af4ab716eac02c5bffe8464f9fc75d",
+      "adaptation": "Project pin added to source inventory; reusable imports/assets resolve from installed library"
+    },
+    {
+      "source": "scripts/collect_casp17_primary.py",
+      "source_sha256": "098c2ff241eaaa825a0cdc596020b7b50eecf17af3bb252b0d0f45a6191f4ab8",
+      "destination": "scripts/collect_casp17_primary.py",
+      "project_sha256": "098c2ff241eaaa825a0cdc596020b7b50eecf17af3bb252b0d0f45a6191f4ab8",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/four_target_residual_states.py",
+      "source_sha256": "928c6e71229cdea688738d7bb53625ef1e4e66e9116d875d6de93d758cc0b28b",
+      "destination": "scripts/four_target_residual_states.py",
+      "project_sha256": "f789054fb5493987d1703c524d4062df904415a0ece618def09f25ab37af3665",
+      "adaptation": "Project pin added to source inventory; reusable imports/assets resolve from installed library"
+    },
+    {
+      "source": "scripts/pat90_residual_states.py",
+      "source_sha256": "20ffa6a540c2415c510c97549feb926cd8dec9c4229fab5a5c18fd4d00735cb9",
+      "destination": "scripts/pat90_residual_states.py",
+      "project_sha256": "20ffa6a540c2415c510c97549feb926cd8dec9c4229fab5a5c18fd4d00735cb9",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/pat90_trimmed_analysis.py",
+      "source_sha256": "f785dba399e383db3f26a96876c03229befb555a168cae90e9dae7e6fcc82631",
+      "destination": "scripts/pat90_trimmed_analysis.py",
+      "project_sha256": "336731a9b8fdb278ef544db9567d0a489bd0b4943a627ab6a45d854d7100ce0e",
+      "adaptation": "Project pin added to source inventory; reusable imports/assets resolve from installed library"
+    },
+    {
+      "source": "scripts/prepare_casp17_display.py",
+      "source_sha256": "707dcf910b828da75e8f264b6f86e715a1469a3d314cfafac1522c6001e2bf4c",
+      "destination": "scripts/prepare_casp17_display.py",
+      "project_sha256": "707dcf910b828da75e8f264b6f86e715a1469a3d314cfafac1522c6001e2bf4c",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/sr215_saved_figures.py",
+      "source_sha256": "1c74d30d8c3f4d590c7434960f27a4398a45eff750dd8fd544cf337e72102a42",
+      "destination": "scripts/sr215_saved_figures.py",
+      "project_sha256": "1c74d30d8c3f4d590c7434960f27a4398a45eff750dd8fd544cf337e72102a42",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "scripts/sr215_selected_mask.py",
+      "source_sha256": "c024ee0815c377c3b7eefc9acdebf2006632b72e2edf90dfa182261d9ce57402",
+      "destination": "scripts/sr215_selected_mask.py",
+      "project_sha256": "c024ee0815c377c3b7eefc9acdebf2006632b72e2edf90dfa182261d9ce57402",
+      "adaptation": "Bytes unchanged"
+    },
+    {
+      "source": "config/casp17_display_recipe.json",
+      "source_sha256": "7ac3748008f00d4b74eb89649e3170bf144475845c7cedee350fb73dbdd35dfb",
+      "destination": "config/casp17_display_recipe.json",
+      "project_sha256": "7ac3748008f00d4b74eb89649e3170bf144475845c7cedee350fb73dbdd35dfb",
+      "adaptation": "Bytes unchanged"
+    }
+  ],
+  "scientific_execution": false,
+  "historical_approvals_reused": false,
+  "native_validation": "New project-scoped native plans and installed-library inventory still required before scientific execution",
+  "compatibility_source_retention": "Original frozen branches/adapters remain unchanged while active consumers are audited"
+}

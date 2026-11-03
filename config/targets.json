@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "targets": [
+    {
+      "id": "SR215_bmr6366",
+      "data": "SR215_bmr6366/primary.json"
+    },
+    {
+      "id": "CmR116_bmr17022",
+      "data": "CmR116_bmr17022/primary.json"
+    },
+    {
+      "id": "PaT90_bmr7191",
+      "data": "PaT90_bmr7191/primary.json"
+    },
+    {
+      "id": "StR82_bmr15386",
+      "data": "StR82_bmr15386/primary.json"
+    },
+    {
+      "id": "BhR2_bmr6717",
+      "data": "BhR2_bmr6717/primary.json"
+    }
+  ],
+  "source_publication_commit": "a2b80cf84130bc8352f156a6cd64e03e2df2dff9",
+  "settings_policy": "The saved publication defines its exact target/range/view identities. New scientific settings require a separate reviewed run."
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "site_url": "https://benavt.github.io/ais-casp17-clusters/",
+  "current_source": {
+    "build_type": "legacy",
+    "branch": "main",
+    "path": "/"
+  },
+  "proposed_source": {
+    "build_type": "workflow",
+    "artifact_root": "site/build"
+  },
+  "status": "held_until_final_ensemble_snapshot_is_reconciled",
+  "preconditions": [
+    "Final ensemble/HDBSCAN-default publication reviewed and frozen as an accessible immutable snapshot",
+    "Readiness gate binds the final manifest hash and exact library commit; no prior-snapshot deployment",
+    "Source and shared privacy CI pass",
+    "Exact static native-byte and relative-path parity passes",
+    "Reconcile intervening publications before merge",
+    "Preserve original source commit and verified snapshot for rollback"
+  ],
+  "cutover_order": [
+    "Recheck the current published main, reconcile the final source snapshot and run the readiness gate; refresh rollback identity if main changed",
+    "Verify the immutable rollback snapshot, create its approved preservation branch at the recorded original commit and retain the current deployment",
+    "With explicit approval, switch Pages build type to workflow without changing the repository URL",
+    "Merge the reviewed source migration head",
+    "Dispatch the manual workflow on main with the exact manifest SHA-256",
+    "Verify the unchanged public URL and representative HTML/JSON/model/download routes",
+    "If needed, restore legacy Pages from the verified preservation branch root or redeploy the verified snapshot artifact; preserve the source-only main branch"
+  ],
+  "rollback": {
+    "original_main_commit": "a2b80cf84130bc8352f156a6cd64e03e2df2dff9",
+    "proposed_preservation_branch": "codex/pages-rollback-a2b80cf84130",
+    "branch_created": false,
+    "method": "Before cutover, create the preservation branch at this exact original commit; if rollback is needed, restore legacy Pages to this branch root without resetting main or rewriting history."
+  },
+  "readiness_record": "config/ensemble-reconciliation.json",
+  "readiness_command": "python scripts/check_cutover_readiness.py"
+}
