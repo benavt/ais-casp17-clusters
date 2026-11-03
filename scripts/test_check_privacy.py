@@ -479,6 +479,18 @@ def test_session_strings_and_binary_coordinates():
     return True
 
 
+def test_multiline_scanning_and_line_numbers():
+    from check_privacy import inspect
+    hostname='p'+'a'+'x'
+    assert ('private hostname',2) in inspect(('clean\n'+hostname+'\nclean').encode(),filename='notes.txt')
+    assert ('private hostname',3) in inspect(('clean\nline two\nServer '+hostname+'\n').encode(),filename='notes.txt')
+    token='gh'+'p_'+'A'*30
+    rules={label[0]for label in inspect(('clean\nsecret =\n"'+token+'"\n').encode(),filename='notes.txt')}
+    assert {'GitHub token','literal credential'} <= rules
+    print('Test: multiline credentials and exact diagnostic line numbers\n  ✓ PASS')
+    return True
+
+
 def main():
     """Run all tests."""
     print("Running check_privacy.py tests\n")
@@ -515,6 +527,8 @@ def main():
     results.append(test_maya_calendar_context_exclusion())
     print()
     results.append(test_session_strings_and_binary_coordinates())
+    print()
+    results.append(test_multiline_scanning_and_line_numbers())
     print()
     
     passed = sum(results)

@@ -430,7 +430,7 @@ async function choose(label){
  $('modelTitle').textContent=ensemble?'Ensemble':'Structure';$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(referenceSimilarity(cluster))?' · TM (5–95): '+referenceSimilarity(cluster).toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').hidden=false;$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_file;if(cluster.ensemble_file)setPackedDownload($('ensemblePdb'),cluster.ensemble_file);$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)setPackedDownload($('ensemblePse'),cluster.ensemble_pse);
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
-function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||'whole'}}
+function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||''}}
 function analysisHash(target,range,view){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');const tm=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.routeParams(tmStatePreference):'';return base+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')+(tm?'&'+tm:'')}
 function navigateSavedSection(event){
  const anchor=event.target.closest?.('a[href^="#"]');if(!anchor||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -458,14 +458,23 @@ function prepareRangeAnalysis(raw,range){
  for(const key of ['membership_file','violin_interactive','violin_pdf'])if(raw[key])current[key]=rangeAssetPath(raw[key],range);
  return current;
 }
+function savedClusteringViews(views){
+ const name=view=>view.id==='density'?'HDBSCAN':view.id==='primary'||(['whole','original'].includes(view.id)&&/\bumap\b|\bknn\b/i.test(view.name||''))?'UMAP KNN':view.name;
+ const rank=view=>view.id==='density'?0:['primary','whole','original'].includes(view.id)?1:2;
+ return views.map(view=>({...view,name:name(view)})).sort((a,b)=>rank(a)-rank(b));
+}
+function preferredSavedView(views,requested){
+ const available=view=>view?.available!==false&&typeof view?.data==='string'&&!!view.data;
+ return views.find(view=>view.id===requested&&available(view))||views.find(view=>view.id==='density'&&available(view))||views.find(view=>['primary','whole','original'].includes(view.id)&&available(view))||views.find(available);
+}
 async function savedViewSelection(target,range,requested){
  // A curated catalog is resolved before fetching: retired URLs never load a hidden analysis.
  if(Array.isArray(range.views)){
-  const views=range.views.filter(view=>['primary','density'].includes(view.id));
+  const views=savedClusteringViews(range.views.filter(view=>['primary','density'].includes(view.id)));
   const available=view=>view?.available!==false&&typeof view?.data==='string'&&!!view.data;
   const primary=views.find(view=>view.id==='primary'&&available(view));
   if(!primary)throw Error('The curated range has no verified Primary analysis.');
-  const view=views.find(view=>view.id===requested&&available(view))||primary;
+  const view=preferredSavedView(views,requested);
   async function read(binding){
    const raw=await json(binding.data);
    if(raw.target!==target.id||raw.view_id!==binding.source_view_id)throw Error('Saved analysis differs from the verified view catalog.');
@@ -476,7 +485,7 @@ async function savedViewSelection(target,range,requested){
   const base=await read(primary),loaded=view===primary?base:await read(view);
   return {base,loaded,view};
  }
- const rawBase=await json(range.data),base=prepareRangeAnalysis(rawBase,range),views=base.views||[],view=views.find(x=>x.id===requested)||views.find(x=>x.id===(range.default_view||'whole'));
+ const rawBase=await json(range.data),base=prepareRangeAnalysis(rawBase,range),views=savedClusteringViews(base.views||[]),view=preferredSavedView(views,requested);base.views=views;
  return {base,loaded:view&&view.id!=='whole'?prepareRangeAnalysis(await json(view.data),range):base,view};
 }
 function configureResidueRangeControls(target,selectedRange,requested){
@@ -500,7 +509,7 @@ function clearStructure(title='Select a cluster',note=''){
  for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}
  notifyInspectedStructure();
 }
-async function load(target,viewId='whole',rangeId='all'){
+async function load(target,viewId='',rangeId='all'){
  const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();clearTMStateHighlight();setAnalysisLoading(true);try{
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
  $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;viewer.render();notifyInspectedStructure();

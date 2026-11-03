@@ -134,3 +134,7 @@ approved selected-ensemble medoids and saved 11,000-model distance summaries.
 Its 34×34 Primary and 130×130 HDBSCAN grids use mean bidirectional US-align
 TM-scores with average-length normalization on canonical residues 24–91.
 The published-coverage test requires all figures in every available configuration.
+
+HDBSCAN is the default clustering in every range. UMAP KNN is the alternative
+and fallback when a verified HDBSCAN result is unavailable. Explicit saved-view
+links keep the requested clustering. This preference changes no scientific data.
