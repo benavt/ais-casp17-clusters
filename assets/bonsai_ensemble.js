@@ -50,7 +50,7 @@
   function create(container, {onChoose = () => {}} = {}) {
     container.replaceChildren();
     const toolbar = document.createElement('div'); toolbar.className = 'bonsai-toolbar'; toolbar.style.cssText = 'display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0';
-    const label = document.createElement('label'); label.append('Tree layout ');
+    const label = document.createElement('label'); label.append('Layout ');
     const select = document.createElement('select'); select.setAttribute('aria-label', 'Bonsai tree layout'); label.append(select);
     const reset = document.createElement('button'); reset.textContent = 'Reset tree view';
     const download = document.createElement('button'); download.textContent = 'Download colored SVG';
