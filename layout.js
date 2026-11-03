@@ -53,7 +53,12 @@
   document.querySelector('.plot-column').classList.toggle('is-overview',!key);tools.hidden=!key;
   resize();
  }
- window.AtlasExplorer={feature,showScreen,refresh:resize,setBusy(busy){$('resetPlot').disabled=busy;$('savePlot').disabled=busy},get featured(){return featured}};
+ function showSection(section){
+  if(expanded&&!expanded.contains(section))restore();
+  if(section.tagName==='DETAILS')section.open=true;
+  section.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+ }
+ window.AtlasExplorer={feature,showScreen,showSection,refresh:resize,setBusy(busy){$('resetPlot').disabled=busy;$('savePlot').disabled=busy},get featured(){return featured}};
  window.addEventListener('atlas:cohort', event => {
   const { current, base } = event.detail;currentTarget=current.target;
   const baseCounts=new Map();base.methods.forEach(method=>baseCounts.set(method,(baseCounts.get(method)||0)+1));
