@@ -48,9 +48,9 @@ The fixed-budget MCMC chains have observed mixing limitations. In the additional
 The three SR215 masks retain their saved fine-clustering arrays. Completed
 Bonsai and medoid-grid supplements for the third mask are preserved. PaT90's
 new 24–91 range includes saved PCA/UMAP/t-SNE, Primary and HDBSCAN labels, and
-TM-state selections. Fine-cluster representative coordinates, Bonsai and medoid
-grids were not generated for that new range and are explicitly unavailable;
-its state ensemble downloads remain available. The older PaT90 8–91 analysis
+TM-state selections. Bonsai and selected-cluster ensemble PDB/PyMOL downloads are now available
+for both views of that range, alongside complete medoid TM grids and saved distance summaries.
+State ensemble downloads are preserved. The older PaT90 8–91 analysis
 is preserved separately. Static preparation performs no sampling, scoring,
 clustering or structure fitting. No automatic/K=2–20 choices or private residue
 planner are published.
@@ -108,4 +108,29 @@ The loader verifies the supplement hash, exact source-view bytes, ordered model
 identities and saved medoids before attaching either figure. Raw analysis files
 and the existing metric, saved-selection and TM-state bindings remain unchanged.
 The supplements record the approved run, source revision, feature hash and residue
-scope; coordinate ensemble/PSE availability remains that of the original result.
+scope. Separate ensemble supplements now add coordinate/PSE downloads while
+preserving those frozen figure bindings.
+
+### Cluster ensemble completion
+
+All 16 published target/range/clustering views now have Bonsai and cluster
+ensemble PDB/PyMOL downloads. These selected cluster ensembles contain at most
+five models and are separate from the 50-model MCMC/DISCO state ensembles.
+The new sessions passed native atom/coordinate/residue-selection/camera round trips.
+Sixteen identical existing ensembles reuse their PDBs and receive palette-only
+PyMOL exports matching their HDBSCAN cluster colors. Original saved arrays and
+state ensembles are unchanged. Bonsai notes are consolidated under Methods.
+
+Cluster links point to physical gzip artifacts so copied URLs work; ordinary
+clicks verify hashes and deliver the original uncompressed PDB/PSE bytes.
+The combined scientific and palette provenance is recorded in the supplement
+catalog and publication provenance.
+
+### Supplemental figure coverage
+
+All 16 available target/range/clustering configurations include a complete medoid
+TM grid, median Cα distances and Cα distance variance. PaT90 24–91 reuses the
+approved selected-ensemble medoids and saved 11,000-model distance summaries.
+Its 34×34 Primary and 130×130 HDBSCAN grids use mean bidirectional US-align
+TM-scores with average-length normalization on canonical residues 24–91.
+The published-coverage test requires all figures in every available configuration.
