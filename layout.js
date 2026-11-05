@@ -79,6 +79,7 @@
   $('bonsaiPanel').hidden=!available;$('bonsaiTab').hidden=!available;
   if(featured==='bonsai'&&!available)feature('umap');
  });
+ window.addEventListener('atlas:bonsai',event=>{const available=!!event.detail.available;$('bonsaiPanel').hidden=!available;$('bonsaiTab').hidden=!available;if(featured==='bonsai'&&!available)feature('umap')});
  document.addEventListener('DOMContentLoaded',()=>{
   for(const button of document.querySelectorAll('[data-feature]'))button.addEventListener('click',()=>{
    const view=button.dataset.feature;

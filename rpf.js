@@ -3,7 +3,7 @@
 const TARGET='SR215_bmr6366',COHORT='afsample3-bioemu2';
 const SEQUENCE='7ab896059b4577bbcfc7cf9db00493b1bc9cea4bee282239195085658fe77f13';
 const METRICS=[['recall','Recall'],['precision','Precision'],['dp','DP']];
-const NOTE='RPF scores each prepared model independently against the same full-construct SR215 NMR inputs. These are not ensemble scores or prediction-confidence values. The same scores are reused across residue selections and projections; gray points have no RPF observation. Both methods use the established proton-addition convention without minimization.';
+const NOTE='Reduce baseline: RPF scores each prepared model independently against the same full-construct SR215 NMR inputs. These are not ensemble scores or prediction-confidence values. The same scores are reused across residue selections and projections; gray points have no RPF observation. Both methods use the established proton-addition convention without minimization.';
 const need=(condition,message)=>{if(!condition)throw Error(message);};
 const digest=value=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);
 const finite=value=>typeof value==='number'&&Number.isFinite(value);
@@ -29,7 +29,7 @@ function enrich(data,payload,binding){
  need(Array.isArray(data.models)&&new Set(data.models).size===data.models.length,'Saved analysis model identities are ambiguous.');
  const lookup=new Map(payload.models.map(row=>[row.model_id,row])),matched=data.models.filter(id=>lookup.has(id)).length;
  need(matched>0&&matched===binding.scored_models,'RPF coverage differs from the verified analysis binding.');
- const added=METRICS.map(([key,label])=>({key:'rpf_'+key,name:'RPF '+label+' · full construct',short_name:'RPF '+label+' (full)',type:'continuous',colorscale:'Viridis',
+ const added=METRICS.map(([key,label])=>({key:'rpf_'+key,name:'RPF '+label+' · Reduce · full construct',short_name:'RPF '+label+' · Reduce',type:'continuous',colorscale:'Viridis',
   range:colorRange(payload,key),values:data.models.map(id=>lookup.get(id)?.[key]??null),metric_note:NOTE,
   score_context:'independent_single_model',scale_scope:'All 2,000 scored SR215 models; identical bounds across residue selections and clustering views.'}));
  need(!added.some(s=>data.schemes.some(old=>old.key===s.key)),'RPF metric key collides with an existing observation.');
@@ -85,7 +85,7 @@ function ptmRange(payload){const values=payload.models.filter(row=>row.method===
 async function renderScatters(container,data,render,onSelect){
  if(!container)return;container.hidden=data.target!==TARGET||data.rpf_overlay_status!=='available';if(container.hidden)return;
  const payload=data.rpf_payload,n=payload.models.filter(row=>row.method==='afsample3'&&finite(row.ptm)).length;
- const note=container.querySelector('[data-rpf-note]');if(note)note.textContent=n.toLocaleString()+' / 1,000 AFSample3 models with source-verified native pTM. Axes focus on the observed score ranges; native pTM is on a 0–1 scale. Each circle is an exact printed-score pair; circle area shows the number of coincident models. No jitter or score substitution is applied. The same full-construct observations are reused across residue selections.';
+ const note=container.querySelector('[data-rpf-note]');if(note)note.textContent='Reduce baseline · '+n.toLocaleString()+' / 1,000 AFSample3 models with source-verified native pTM. Axes focus on the observed score ranges; native pTM is on a 0–1 scale. Each circle is an exact printed-score pair; circle area shows the number of coincident models. No jitter or score substitution is applied. The same full-construct observations are reused across residue selections.';
  const active=container.dataset.rpfView||'distributions';
  for(const body of container.querySelectorAll('[data-rpf-body]'))body.hidden=body.dataset.rpfBody!==active;
  const buttons=[...container.querySelectorAll('[data-rpf-panel]')];
@@ -98,7 +98,7 @@ async function renderScatters(container,data,render,onSelect){
   const colors=data.schemes.find(s=>s.key==='ais_method')?.colors||{};
   for(const [key,label]of METRICS){const node=container.querySelector('[data-rpf-violin="'+key+'"]');if(!node)continue;
    await render(node,distributionTraces(payload,key,colors),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:60,r:20,t:20,b:60},showlegend:false,
-    yaxis:{title:{text:'Full-construct RPF '+label},gridcolor:'#edf1f2'},xaxis:{type:'category'},font:{family:'Arial, sans-serif',size:12,color:'#344f5b'},uirevision:'sr215-rpf-distribution-'+key},
+    yaxis:{title:{text:'RPF '+label+' · Reduce (full 139)'},gridcolor:'#edf1f2'},xaxis:{type:'category'},font:{family:'Arial, sans-serif',size:12,color:'#344f5b'},uirevision:'sr215-rpf-distribution-'+key},
     {responsive:true,displaylogo:false,toImageButtonOptions:{format:'svg',filename:'SR215_RPF_'+label+'_distributions'}});
   }
   return;
@@ -106,7 +106,7 @@ async function renderScatters(container,data,render,onSelect){
  for(const [key,label]of METRICS){
   const node=container.querySelector('[data-rpf-scatter="'+key+'"]');if(!node)continue;
   await render(node,scatterTraces(payload,key),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:60,r:20,t:20,b:55},showlegend:false,
-   xaxis:{title:{text:'AFSample3 native pTM (0–1)'},range:ptmRange(payload),gridcolor:'#edf1f2'},yaxis:{title:{text:'Full-construct RPF '+label},gridcolor:'#edf1f2'},
+   xaxis:{title:{text:'AFSample3 native pTM (0–1)'},range:ptmRange(payload),gridcolor:'#edf1f2'},yaxis:{title:{text:'RPF '+label+' · Reduce (full 139)'},gridcolor:'#edf1f2'},
    font:{family:'Arial, sans-serif',size:12,color:'#344f5b'},uirevision:'sr215-ptm-rpf-'+key},
    {responsive:true,displaylogo:false,toImageButtonOptions:{format:'svg',filename:'SR215_AFSample3_pTM_RPF_'+label}});
   node.removeAllListeners?.('plotly_click');node.on?.('plotly_click',event=>{const id=event.points?.[0]?.customdata?.[2];if(id&&onSelect)onSelect(id);});
