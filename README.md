@@ -170,3 +170,41 @@ Focused source checks: `python3 -m unittest discover -s tests -p test_rpf_export
 and `node tests/rpf-overlays.test.cjs`, plus the existing clustering-default,
 shared-legend and responsive-layout checks. Full saved-data coverage tests run
 against the generated reviewed site, not a sparse code-only worktree.
+
+
+Pooled SR215 model annotations and cluster ensembles
+
+The pooled AFSample3/BioEMU2 views use a dedicated `pooled-overlays.json` catalog.
+Source-bound scalar annotations restore ProteinEBM model 6 energy at t=0.10,
+native AFSample3 pTM and all-atom mean pLDDT, and the saved fixed-residue 5–95
+reference TM score. Missing native confidence remains null for BioEMU2. All
+pooled display bounds are fixed over the same 2,000 models across masks, views
+and selected-model Bonsai trees; original 11,000-model bounds stay unchanged.
+
+Reduce and phenix.reduce RPF colors have separate keys and preparation identities.
+The original Reduce payload and static comparison figures remain unchanged.
+Phenix BUILD/nuclear preparation can move heavy atoms, and its saved native RPF
+engine also differs; these are descriptive annotations, not a preparation-only
+causal comparison or runtime promotion. The comparison panels explicitly retain
+the Reduce baseline.
+
+`selections_ready=false` is an explicit colors-only phase. It issues no native
+selection/tree fetches and exposes no placeholder ensembles. After independent
+review, the saved-artifact exporter can make the narrow pending-to-ready catalog
+transition while retaining the same scalar/source bindings. HDBSCAN clusters
+remain distinct from legacy TM states and original-cohort selections. Eligible
+clusters expose exact saved MCMC50/DISCO50 subsets; clusters below 50 expose one
+All members artifact with their actual count. Noise remains in the projections.
+
+There are six newly fitted method-overview Bonsai trees (three masks × two
+methods). Each contains exactly that method's selected-cluster union, including
+All members of small clusters. Choosing a cluster changes highlights within that
+fixed method geometry; choosing a method changes the saved overview tree. No
+old full-cohort tree is substituted or pruned into a new scientific result.
+
+`scripts/build_pooled_overlays.py --colors-only` copies only the reviewed scalar
+and Phenix payloads and six existing source bindings. Its full mode admits only
+manifest-selected saved native outputs. PDB/PyMOL delivery uses deterministic
+gzip and the existing packed registry, verifies every uncompressed restore hash,
+preserves every old registry entry, and checks configured site/free-space limits.
+No scoring, sampling, fitting or coordinate conversion occurs in this exporter.
