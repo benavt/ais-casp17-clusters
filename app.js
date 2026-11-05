@@ -162,7 +162,9 @@ function updateHDBControls(){
  const select=$('hdbStateSelect');select.replaceChildren(Object.assign(document.createElement('option'),{value:'none',textContent:'None'}),...(states.length?[Object.assign(document.createElement('option'),{value:'all',textContent:'All HDBSCAN clusters'})]:[]),...states.map(state=>Object.assign(document.createElement('option'),{value:state.id,textContent:state.cluster_label.split(':').at(-1)+' · '+state.model_count+' members'+(state.eligible_50?'':' · All members')})));
  select.value=hdbStatePreference.state_id;select.disabled=!available;
  for(const [id,method]of [['hdbStateMCMC','mcmc50'],['hdbStateDisco','disco50']]){$(id).disabled=!available;$(id).setAttribute('aria-pressed',String(hdbStateHighlight.active&&hdbStatePreference.method===method));}
- $('hdbStateStatus').textContent=selectionLoading?'Loading verified HDBSCAN subsets…':hdbStateHighlight.active?hdbStateHighlight.note:hdbStateResult.note||'Choose MCMC50 or DISCO50 to show saved subsets and their exact selected-model Bonsai tree.';
+ const groups=hdbStateHighlight.groups||[],procedure=groups.every(g=>g.small)?'All members':(hdbStateHighlight.method==='mcmc50'?'MCMC50':'DISCO50')+(groups.some(g=>g.small)?' + All members':'');
+ $('hdbStateStatus').textContent=selectionLoading?'Loading verified HDBSCAN subsets…':hdbStateHighlight.active?procedure+' · '+hdbStateHighlight.models.length.toLocaleString()+' selected · '+groups.length+' cluster'+(groups.length===1?'':'s')+(groups.some(g=>g.degenerate)?' · one possible subset':''):hdbStateResult.note||'Choose a procedure to inspect saved subsets and their Bonsai overview.';
+ $('hdbStateSelectionDetails').textContent=hdbStateHighlight.active?hdbStateHighlight.note:'';
  $('hdbStateCoverage').textContent=hdbStatePayload?states.length+' structural clusters · '+states.filter(s=>s.eligible_50).length+' support 50-model procedures · '+states.filter(s=>!s.eligible_50).length+' use All members. Full-construct ProteinEBM model 6, t=0.10; no sampling is performed by this page.':'';
  renderHDBDownloads(available);
 }
