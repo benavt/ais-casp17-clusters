@@ -38,7 +38,7 @@ test('pooled cohort is a distinct, complete three-mask selection while existing 
 test('paired violins retain all 2,000 native scores, their source identities and negative DP',()=>{
  const saved=payload(),traces=api.distributionTraces(saved,'dp',{'AFSample3':'#112233'});
  assert.equal(traces.length,2);assert.equal(traces[0].line.color,'#112233');
- for(let i=0;i<2;i++){assert.equal(traces[i].y.length,1000);assert.equal(traces[i].customdata.length,1000);assert.equal(traces[i].spanmode,'hard');assert.equal(traces[i].points,false);}
+ for(let i=0;i<2;i++){assert.equal(traces[i].y.length,1000);assert.equal(traces[i].customdata.length,1000);assert.equal(traces[i].spanmode,'hard');assert.equal(traces[i].bandwidth,.005);assert.equal(traces[i].points,false);}
  assert.equal(traces[1].y[999],-.2);assert.equal(traces[1].customdata[999],saved.models[1999].model_id);
 });
 test('comparison tabs render only the visible plots and retain focused exact-score axes',async()=>{

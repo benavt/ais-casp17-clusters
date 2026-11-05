@@ -77,7 +77,7 @@ function distributionTraces(payload,key,colors={}){
  return [['afsample3','AFSample3','#0072b2'],['bioemu2','BioEMU2','#d55e00']].map(([method,label,fallback])=>{
   const rows=payload.models.filter(row=>row.method===method);return {type:'violin',name:label+' · n='+rows.length,x:rows.map(()=>label),y:rows.map(row=>row[key]),
    customdata:rows.map(row=>row.model_id),line:{color:colors[label]||fallback,width:1.4},fillcolor:colors[label]||fallback,opacity:.75,
-   box:{visible:true},meanline:{visible:false},points:false,spanmode:'hard',scalemode:'width',scalegroup:key,
+   box:{visible:true},meanline:{visible:false},points:false,spanmode:'hard',bandwidth:.005,scalemode:'width',scalegroup:key,
    hovertemplate:'%{y:.2f}<extra>'+label+' · '+rows.length+' saved models</extra>'};
  });
 }
