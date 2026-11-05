@@ -1,4 +1,5 @@
 import copy, gzip, hashlib, importlib.util, json, tempfile, unittest
+from unittest.mock import patch
 from pathlib import Path
 SPEC=importlib.util.spec_from_file_location('pooled_export',Path(__file__).resolve().parents[1]/'scripts/build_pooled_overlays.py')
 mod=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(mod)
@@ -40,9 +41,13 @@ class ExportTests(unittest.TestCase):
  def test_native_gzip_delivery_restores_every_byte_and_preserves_original_assets(self):
   out=self.build();self.assertEqual(out['native_artifacts'],188);self.assertEqual(out['bonsai_descriptors'],6);self.assertEqual((self.site/'old/structure.pdb.gz').read_bytes(),self.old_native);registry=json.loads((self.site/'packed-assets.json').read_bytes());self.assertEqual(registry['files']['old/structure.pdb'],self.old_registry['files']['old/structure.pdb'])
   for name,entry in self.manifest.items():
-   if name.endswith(('.pdb','.pse')):
+   if name.endswith(('.pdb','.pse')) or name.startswith('hdbscan-bonsai/'):
     self.assertFalse((self.site/name).exists());body=gzip.decompress((self.site/(name+'.gz')).read_bytes());self.assertEqual(sha(body),entry['sha256']);self.assertEqual(len(body),entry['bytes']);self.assertEqual(registry['files'][name]['sha256'],entry['sha256'])
-  self.assertTrue(out['storage']['all_native_restore_hashes_verified']);self.assertTrue(out['storage']['no_raw_native_duplicates_published'])
+  self.assertEqual(out['packed_delivery_files'],194);self.assertEqual(len(registry['files']),195);self.assertTrue(out['storage']['all_native_restore_hashes_verified']);self.assertTrue(out['storage']['all_bonsai_restore_hashes_verified']);self.assertTrue(out['storage']['no_raw_native_duplicates_published'])
+  trees=[name for name in self.manifest if name.startswith('hdbscan-bonsai/')];self.assertEqual(len(trees),6)
+  for name in trees:self.assertEqual(registry['files'][name]['content_type'],'application/json')
+  self.assertEqual(out['storage']['bonsai_uncompressed_bytes'],sum(self.manifest[name]['bytes'] for name in trees))
+  for name in trees:self.assertEqual((self.site/(name+'.gz')).read_bytes(),mod.packed_bytes((self.native/name).read_bytes()))
  def test_bad_native_hash_and_quota_fail_without_mutating_old_served_assets(self):
   native=next(name for name in self.manifest if name.endswith('.pdb'));(self.native/native).write_bytes(b'changed');before=(self.site/'packed-assets.json').read_bytes()
   with self.assertRaisesRegex(ValueError,'changed'):self.build()
@@ -50,6 +55,16 @@ class ExportTests(unittest.TestCase):
  def test_export_quota_is_checked_before_new_public_files_are_written(self):
   with self.assertRaisesRegex(ValueError,'quota'):self.build(max_site_bytes=1)
   self.assertFalse((self.site/'hdbscan-ensembles').exists());self.assertFalse(self.receipt.exists())
+ def test_source_mutation_between_manifest_validation_and_staging_preserves_served_site(self):
+  target=next(name for name in self.manifest if name.endswith('.pdb'));before={str(p.relative_to(self.site)):p.read_bytes() for p in self.site.rglob('*') if p.is_file()};pack=mod.packed_bytes;mutated=False
+  def mutate_then_pack(body):
+   nonlocal mutated
+   if not mutated:
+    source=self.native/target;source.write_bytes(source.read_bytes()+b'changed after validation');mutated=True
+   return pack(body)
+  with patch.object(mod,'packed_bytes',mutate_then_pack):
+   with self.assertRaisesRegex(ValueError,'changed after manifest verification'):self.build()
+  self.assertTrue(mutated);self.assertEqual({str(p.relative_to(self.site)):p.read_bytes() for p in self.site.rglob('*') if p.is_file()},before);self.assertFalse(self.receipt.exists())
  def test_colors_only_phase_has_no_native_paths_or_reads_and_keeps_original_bytes(self):
   before_registry=(self.site/'packed-assets.json').read_bytes();baseline=(self.site/'metrics/sr215-rpf.json').read_bytes()
   out=mod.build_colors(self.site,self.scalar,self.phenix,self.receipt,min_free_bytes=0);catalog=json.loads((self.site/'pooled-overlays.json').read_bytes())

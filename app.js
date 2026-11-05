@@ -162,7 +162,9 @@ function updateHDBControls(){
  const select=$('hdbStateSelect');select.replaceChildren(Object.assign(document.createElement('option'),{value:'none',textContent:'None'}),...(states.length?[Object.assign(document.createElement('option'),{value:'all',textContent:'All HDBSCAN clusters'})]:[]),...states.map(state=>Object.assign(document.createElement('option'),{value:state.id,textContent:state.cluster_label.split(':').at(-1)+' · '+state.model_count+' members'+(state.eligible_50?'':' · All members')})));
  select.value=hdbStatePreference.state_id;select.disabled=!available;
  for(const [id,method]of [['hdbStateMCMC','mcmc50'],['hdbStateDisco','disco50']]){$(id).disabled=!available;$(id).setAttribute('aria-pressed',String(hdbStateHighlight.active&&hdbStatePreference.method===method));}
- $('hdbStateStatus').textContent=selectionLoading?'Loading verified HDBSCAN subsets…':hdbStateHighlight.active?hdbStateHighlight.note:hdbStateResult.note||'Choose MCMC50 or DISCO50 to show saved subsets and their exact selected-model Bonsai tree.';
+ const groups=hdbStateHighlight.groups||[],procedure=groups.every(g=>g.small)?'All members':(hdbStateHighlight.method==='mcmc50'?'MCMC50':'DISCO50')+(groups.some(g=>g.small)?' + All members':'');
+ $('hdbStateStatus').textContent=selectionLoading?'Loading verified HDBSCAN subsets…':hdbStateHighlight.active?procedure+' · '+hdbStateHighlight.models.length.toLocaleString()+' selected · '+groups.length+' cluster'+(groups.length===1?'':'s')+(groups.some(g=>g.degenerate)?' · one possible subset':''):hdbStateResult.note||'Choose a procedure to inspect saved subsets and their Bonsai overview.';
+ $('hdbStateSelectionDetails').textContent=hdbStateHighlight.active?hdbStateHighlight.note:'';
  $('hdbStateCoverage').textContent=hdbStatePayload?states.length+' structural clusters · '+states.filter(s=>s.eligible_50).length+' support 50-model procedures · '+states.filter(s=>!s.eligible_50).length+' use All members. Full-construct ProteinEBM model 6, t=0.10; no sampling is performed by this page.':'';
  renderHDBDownloads(available);
 }
@@ -187,16 +189,16 @@ function renderHDBDownloads(available){
   const methods=state.eligible_50?['mcmc50','disco50']:['allmembers'];
   for(const method of methods){const saved=state.selections[method],tr=document.createElement('tr');
    for(const text of [state.cluster_label.split(':').at(-1),String(state.model_count),method==='allmembers'?'All members · fewer than 50':(method==='mcmc50'?'MCMC50':'DISCO50')+(state.model_count===50?' · all 50 members':''),String(saved.models_count)]){const td=document.createElement('td');td.textContent=text;tr.append(td)}
-   const cell=document.createElement('td');for(const format of ['pdb','pse']){const a=format==='pdb'?saved.ensemble:saved.session,link=document.createElement('a');link.href=a.file+'.gz';link.download=a.file.split('/').pop()+'.gz';link.textContent=format==='pdb'?'PDB':'PyMOL';link.dataset.hdbState=state.id;link.dataset.method=method;link.dataset.format=format;link.setAttribute('aria-label',data.target+' '+data.range_id+' '+state.id+' '+method+' '+saved.models_count+'-model '+(format==='pdb'?'PDB':'PyMOL'));link.setAttribute('aria-disabled',String(hdbDownloadBusy));link.onclick=e=>{e.preventDefault();if(!hdbDownloadBusy)downloadHDBState(state.id,method,format).catch(fail)};cell.append(link)}tr.append(cell);rows.append(tr);
+   const cell=document.createElement('td');for(const format of ['pdb','pse']){const a=format==='pdb'?saved.ensemble:saved.session,link=document.createElement('a');link.href=a.file+'.gz';link.download=data.target+'_'+data.range_id+'_'+state.id+'_'+method+'_'+saved.models_count+'.'+format;link.textContent=format==='pdb'?'PDB':'PyMOL';link.dataset.packedFile=a.file;link.dataset.appManagedDownload='true';link.dataset.hdbState=state.id;link.dataset.method=method;link.dataset.format=format;link.setAttribute('aria-label',data.target+' '+data.range_id+' '+state.id+' '+method+' '+saved.models_count+'-model '+(format==='pdb'?'PDB':'PyMOL'));link.setAttribute('aria-disabled',String(hdbDownloadBusy));link.onclick=e=>{e.preventDefault();if(!hdbDownloadBusy)downloadHDBState(state.id,method,format).catch(fail)};cell.append(link)}tr.append(cell);rows.append(tr);
   }
  }
 }
 async function downloadHDBState(stateId,method,format){
  const state=hdbStatePayload?.states.find(s=>s.id===stateId),saved=state?.selections?.[method];if(!saved)return;
- const artifact=format==='pdb'?saved.ensemble:saved.session,request=targetRequest,serial=++hdbDownloadSerial,payload=hdbStatePayload;hdbDownloadBusy=true;updateHDBControls();
+ const artifact=format==='pdb'?saved.ensemble:saved.session,request=targetRequest,serial=++hdbDownloadSerial,payload=hdbStatePayload;let downloadError='';hdbDownloadBusy=true;updateHDBControls();
  try{const bytes=await AISExplorerHDBStates.readArtifact(artifact);if(request!==targetRequest||serial!==hdbDownloadSerial||payload!==hdbStatePayload)return;const url=URL.createObjectURL(new Blob([bytes],{type:format==='pdb'?'chemical/x-pdb':'application/octet-stream'})),a=document.createElement('a');a.href=url;a.download=data.target+'_'+data.range_id+'_'+stateId+'_'+method+'_'+saved.models_count+'.'+format;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
- catch(error){if(request===targetRequest)$('hdbStateStatus').textContent='Saved ensemble unavailable: '+error.message}
- finally{if(request===targetRequest&&serial===hdbDownloadSerial){hdbDownloadBusy=false;updateHDBControls()}}
+ catch(error){if(request===targetRequest&&serial===hdbDownloadSerial&&payload===hdbStatePayload)downloadError='Saved ensemble unavailable: '+error.message}
+ finally{if(request===targetRequest&&serial===hdbDownloadSerial&&payload===hdbStatePayload){hdbDownloadBusy=false;updateHDBControls();if(downloadError)$('hdbStateStatus').textContent=downloadError}}
 }
 async function drawHDBBonsai(serial,current){
  const selection=hdbStateHighlight,caption=$('hdbBonsaiStatus');caption.hidden=false;
@@ -210,7 +212,7 @@ async function drawHDBBonsai(serial,current){
   if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#methods'});
   const selectedClusters=new Set(selection.geometry_models.map(id=>current.clusters[current.models.indexOf(id)]));const representatives=current.representatives.filter(r=>selectedClusters.has(r.cluster));
   bonsaiPanel.update({...current,representatives},payload,scheme(),$('pca'),hiddenProjectionCategories,new Set(selection.models));hdbBonsaiDisplayed=key;if(selected)bonsaiPanel.select(selected);
- }catch(error){if(serial===bonsaiSerial&&data===current){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}$('bonsai').textContent='Saved selected-model Bonsai unavailable: '+error.message;caption.textContent=selection.note+' No full-cohort tree is substituted.';}}
+ }catch(error){if(serial===bonsaiSerial&&data===current&&hdbStateHighlight.bonsai?.sha256===descriptor.sha256){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}$('bonsai').textContent='Saved selected-model Bonsai unavailable: '+error.message;caption.textContent=selection.note+' No full-cohort tree is substituted.';}}
 }
 
 function clusteringResidues(current=data){

@@ -5,41 +5,44 @@
   "cohort_id": "afsample3-bioemu2",
   "sequence_sha256": "7ab896059b4577bbcfc7cf9db00493b1bc9cea4bee282239195085658fe77f13",
   "source_identity_sha256": "78792320d884f646b792c0c02f2f390a0249c42dc068e004f102843b0f725a9a",
-  "selections_ready": false,
+  "selections_ready": true,
   "model_metrics": {
     "file": "metrics/sr215-pooled-model-metrics.json",
     "sha256": "90beabf46a1e0b2c062aa0b3f223c731d9c9a5815cd5b46ab55be6c792f07676",
     "model_count": 2000
   },
+  "ranges": {
+    "all": {
+      "file": "hdbscan-states/SR215_bmr6366/afsample3-bioemu2/all.json",
+      "sha256": "b05693dbcf4d4710656a90cbc9a2c80b5665dabe2b16a9ee80ec7f8c4b62c15d",
+      "source_density_sha256": "942cdc64319e6913b9094f03249e93720d193145ba563b36d24b90503286e9b3",
+      "view_bindings": {
+        "primary": "1036aedd707e0e7c151098e1b840aa8edca208d21a8adc8add6b4b7eaf7e3727",
+        "density": "942cdc64319e6913b9094f03249e93720d193145ba563b36d24b90503286e9b3"
+      }
+    },
+    "res5-95": {
+      "file": "hdbscan-states/SR215_bmr6366/afsample3-bioemu2/res5-95.json",
+      "sha256": "910f419ace85e62cd8014d05b3c80e86ca63b285d09e73b43f480204fd96d980",
+      "source_density_sha256": "360ba0fd96280ab716d299fa435d9c58401133c84548f3ee7e760d2f078b78ba",
+      "view_bindings": {
+        "primary": "7b82d30ab2367aaef22e207883bb16acbf993653aa3866e0bbb1bbd0d010b0de",
+        "density": "360ba0fd96280ab716d299fa435d9c58401133c84548f3ee7e760d2f078b78ba"
+      }
+    },
+    "res32-47-plus78-99": {
+      "file": "hdbscan-states/SR215_bmr6366/afsample3-bioemu2/res32-47-plus78-99.json",
+      "sha256": "7e423148b1046252195abe7b4c5c534be06fbd35c5b4d495182f92c0b0ca45e8",
+      "source_density_sha256": "d88e1cbd18d50c8976f82c51d99d76a87373722983b7e1765a129c6c06e6e453",
+      "view_bindings": {
+        "primary": "a0dc4e633ea7fb701e8b5aa784eb9a6fc946c79083c908e0f0168c47c7af950a",
+        "density": "d88e1cbd18d50c8976f82c51d99d76a87373722983b7e1765a129c6c06e6e453"
+      }
+    }
+  },
   "phenix_rpf": {
     "file": "metrics/sr215-rpf-phenix.json",
     "sha256": "327731fe2820e57f868b29e5833aa872ecbc8d5dcd89d32146b17cf7c6432248",
     "model_count": 2000
-  },
-  "ranges": {
-    "all": {
-      "available": false,
-      "view_bindings": {
-        "primary": "1036aedd707e0e7c151098e1b840aa8edca208d21a8adc8add6b4b7eaf7e3727",
-        "density": "942cdc64319e6913b9094f03249e93720d193145ba563b36d24b90503286e9b3"
-      },
-      "source_density_sha256": "942cdc64319e6913b9094f03249e93720d193145ba563b36d24b90503286e9b3"
-    },
-    "res5-95": {
-      "available": false,
-      "view_bindings": {
-        "primary": "7b82d30ab2367aaef22e207883bb16acbf993653aa3866e0bbb1bbd0d010b0de",
-        "density": "360ba0fd96280ab716d299fa435d9c58401133c84548f3ee7e760d2f078b78ba"
-      },
-      "source_density_sha256": "360ba0fd96280ab716d299fa435d9c58401133c84548f3ee7e760d2f078b78ba"
-    },
-    "res32-47-plus78-99": {
-      "available": false,
-      "view_bindings": {
-        "primary": "a0dc4e633ea7fb701e8b5aa784eb9a6fc946c79083c908e0f0168c47c7af950a",
-        "density": "d88e1cbd18d50c8976f82c51d99d76a87373722983b7e1765a129c6c06e6e453"
-      },
-      "source_density_sha256": "d88e1cbd18d50c8976f82c51d99d76a87373722983b7e1765a129c6c06e6e453"
-    }
   }
 }

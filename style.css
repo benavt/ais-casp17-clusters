@@ -156,3 +156,7 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .rpf-comparison{margin:30px 0;padding:20px 0;border-top:1px solid #e5e5de}.rpf-scatter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.rpf-scatter-grid section{min-width:0}.rpf-scatter-grid h3{font-size:14px;margin:8px 0}.rpf-scatter{height:340px;min-width:0}@media(max-width:900px){.rpf-scatter-grid{grid-template-columns:1fr}.rpf-scatter{height:360px}}
 
 .rpf-view-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.rpf-view-tabs button{border:1px solid #d8ddd7;border-radius:6px;background:#fff;padding:8px 12px;font:inherit;font-size:12px;cursor:pointer}.rpf-view-tabs button[aria-selected=true]{background:#edf2ed;border-color:#789584;color:#213e30}.rpf-figure-links{font-size:12px}
+
+.hdb-bonsai-overview{flex:none;margin:5px 8px;font-size:10px;color:var(--muted)}
+.hdb-bonsai-overview:has(>p[hidden]){display:none}
+.hdb-bonsai-overview summary{cursor:pointer}.hdb-bonsai-overview p{margin:6px 0}
