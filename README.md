@@ -138,3 +138,35 @@ The published-coverage test requires all figures in every available configuratio
 HDBSCAN is the default clustering in every range. UMAP KNN is the alternative
 and fallback when a verified HDBSCAN result is unavailable. Explicit saved-view
 links keep the requested clustering. This preference changes no scientific data.
+# SR215 RPF annotations and pooled comparison
+
+The RPF extension adds source-verified full-construct Recall, Precision and DP
+colors for exactly 1,000 AFSample3 and 1,000 BioEMU2 models. Other methods remain
+unscored and gray. The same observed color bounds apply across residue masks and
+clustering views; RPF and native pTM never enter clustering features or weights.
+
+The SR215 Models selector preserves the original all-method analyses and offers
+a separate pooled 2,000-model comparison for all residues, 5–95, and 32–47 + 78–99.
+Pooled projections, labels, PCA variance and distance summaries are freshly fit
+or calculated for that cohort; original full-cohort metadata are not substituted.
+Feature-centroid representatives are labeled explicitly and are not described as
+all-model structural medoids.
+
+The comparison panel contains paired method violins and AFSample3 native-pTM
+scatter plots. Native printed scores have ties, so scatter circles aggregate exact
+positions with area proportional to the coincident model count. No jitter or
+confidence substitution changes the values. CSV downloads retain all 2,000 model
+records and source identities. Figure downloads provide the reviewed SVG and PNG.
+
+`scripts/build_rpf_overlay.py` is a saved-artifact exporter, not a scientific
+runner. It consumes the pinned scalar payload in `config/sr215-rpf-source.json`
+and a reviewed manifest of newly generated pooled views, verifies identities,
+copies only those selected artifacts, and binds the optional `rpf-overlays.json`
+catalog to each original/new view's exact bytes. It refuses differing existing
+outputs. Public privacy and full-route checks remain required before publication.
+No source-migration cutover, native rerun or automatic publication is triggered.
+
+Focused source checks: `python3 -m unittest discover -s tests -p test_rpf_export.py`
+and `node tests/rpf-overlays.test.cjs`, plus the existing clustering-default,
+shared-legend and responsive-layout checks. Full saved-data coverage tests run
+against the generated reviewed site, not a sparse code-only worktree.

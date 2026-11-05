@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "target": "SR215_bmr6366",
+  "score_context": "independent_single_model",
+  "models": 2000,
+  "models_per_method": 1000,
+  "source_payload_sha256": "bd09553a7e06bf1a8ed21d901ea36a1303d4706b39ff972928c30300e701a4b4",
+  "rpf_snapshot_sha256": "e4f9b8101991bf393be2474d94887a01b2a9d91546a4cd88a2056242150db8fe",
+  "scientific_review_sha256": "f758a1c1ac1b71b8a06ebc6457a306649cf5ed7a09780f3e19847947df911533",
+  "native_rpf_binary_sha256": "6df9b7d211e769de2cdbb477c9aecea4bccfa21035cd2ca4966fe72e8f532217",
+  "source_selection_sha256": "6b839415844dab8f824b2ba25bbd2c8c94bf947c8348c0da795bd473246df45f",
+  "scope": "Full-construct standalone RPF annotations on the exact existing SR215 AFSample3 and BioEMU2 models. Native pTM is available only for AFSample3. Neither scalar enters clustering features, weights or model selection."
+}
