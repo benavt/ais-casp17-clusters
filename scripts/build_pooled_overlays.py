@@ -118,6 +118,7 @@ def build(site,scalar,native_root,native_manifest,expected_native_sha,receipt,ph
   staged=[]
   for name in sorted(selected):
    body=(native_root/name).read_bytes()
+   if len(body)!=observed[name]['bytes'] or sha(body)!=observed[name]['sha256']:raise ValueError('Native artifact changed after manifest verification: '+name)
    if name in packed_paths:
     if len(body)>67108864:raise ValueError('Native artifact exceeds the reviewed 64 MiB delivery bound')
     descriptor={'sha256':sha(body),'bytes':len(body),'content_type':'chemical/x-pdb' if name.endswith('.pdb') else 'application/json' if name in tree_paths else 'application/octet-stream'}

@@ -1,4 +1,5 @@
 import copy, gzip, hashlib, importlib.util, json, tempfile, unittest
+from unittest.mock import patch
 from pathlib import Path
 SPEC=importlib.util.spec_from_file_location('pooled_export',Path(__file__).resolve().parents[1]/'scripts/build_pooled_overlays.py')
 mod=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(mod)
@@ -54,6 +55,16 @@ class ExportTests(unittest.TestCase):
  def test_export_quota_is_checked_before_new_public_files_are_written(self):
   with self.assertRaisesRegex(ValueError,'quota'):self.build(max_site_bytes=1)
   self.assertFalse((self.site/'hdbscan-ensembles').exists());self.assertFalse(self.receipt.exists())
+ def test_source_mutation_between_manifest_validation_and_staging_preserves_served_site(self):
+  target=next(name for name in self.manifest if name.endswith('.pdb'));before={str(p.relative_to(self.site)):p.read_bytes() for p in self.site.rglob('*') if p.is_file()};pack=mod.packed_bytes;mutated=False
+  def mutate_then_pack(body):
+   nonlocal mutated
+   if not mutated:
+    source=self.native/target;source.write_bytes(source.read_bytes()+b'changed after validation');mutated=True
+   return pack(body)
+  with patch.object(mod,'packed_bytes',mutate_then_pack):
+   with self.assertRaisesRegex(ValueError,'changed after manifest verification'):self.build()
+  self.assertTrue(mutated);self.assertEqual({str(p.relative_to(self.site)):p.read_bytes() for p in self.site.rglob('*') if p.is_file()},before);self.assertFalse(self.receipt.exists())
  def test_colors_only_phase_has_no_native_paths_or_reads_and_keeps_original_bytes(self):
   before_registry=(self.site/'packed-assets.json').read_bytes();baseline=(self.site/'metrics/sr215-rpf.json').read_bytes()
   out=mod.build_colors(self.site,self.scalar,self.phenix,self.receipt,min_free_bytes=0);catalog=json.loads((self.site/'pooled-overlays.json').read_bytes())
