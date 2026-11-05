@@ -195,6 +195,11 @@ transition while retaining the same scalar/source bindings. HDBSCAN clusters
 remain distinct from legacy TM states and original-cohort selections. Eligible
 clusters expose exact saved MCMC50/DISCO50 subsets; clusters below 50 expose one
 All members artifact with their actual count. Noise remains in the projections.
+MCMC50 uses the saved chain 0 under the fixed-cardinality product-weight law;
+DISCO50 uses one minimum-energy seed and energy-weighted sampling without
+replacement. PDB/PyMOL exports retain original AIS full-construct coordinates
+with rigid alignment on the clustering mask. RPF preparation variants remain
+passive per-model annotations, rather than ensemble coordinate sources or scores.
 
 There are six newly fitted method-overview Bonsai trees (three masks × two
 methods). Each contains exactly that method's selected-cluster union, including
@@ -204,7 +209,11 @@ old full-cohort tree is substituted or pruned into a new scientific result.
 
 `scripts/build_pooled_overlays.py --colors-only` copies only the reviewed scalar
 and Phenix payloads and six existing source bindings. Its full mode admits only
-manifest-selected saved native outputs. PDB/PyMOL delivery uses deterministic
-gzip and the existing packed registry, verifies every uncompressed restore hash,
+manifest-selected saved native outputs. All 188 PDB/PyMOL artifacts and six
+Bonsai JSONs use deterministic gzip and the existing packed registry. The
+exporter verifies all 194 uncompressed restore hashes,
 preserves every old registry entry, and checks configured site/free-space limits.
+HDBSCAN download links use their own busy/route-aware handler with verified
+packed fetches and actual-count native filenames; the generic legacy capture
+handler skips only explicitly marked app-managed links.
 No scoring, sampling, fitting or coordinate conversion occurs in this exporter.

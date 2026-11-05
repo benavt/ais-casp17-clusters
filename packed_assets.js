@@ -16,7 +16,7 @@
  // navigation is canceled before its default action, including keyboard clicks.
  manifest.then(index=>{
   document.addEventListener('click',event=>{
-   const anchor=event.target.closest?.('a[download]');if(!anchor||event.defaultPrevented||anchor.href.startsWith('blob:'))return;
+   const anchor=event.target.closest?.('a[download]');if(!anchor||event.defaultPrevented||anchor.href.startsWith('blob:')||anchor.dataset.appManagedDownload==='true')return;
    const url=new URL(anchor.href);if(url.origin!==base.origin||!url.pathname.startsWith(base.pathname))return;
    const requestKey=decodeURIComponent(url.pathname.slice(base.pathname.length)),key=anchor.dataset.packedFile||requestKey,record=index.files[key];if(!record||(requestKey!==key&&requestKey!==key+'.gz'))return;
    event.preventDefault();event.stopImmediatePropagation();

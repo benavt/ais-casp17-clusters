@@ -109,7 +109,8 @@ def build(site,scalar,native_root,native_manifest,expected_native_sha,receipt,ph
    tree_paths.append(name)
  if set(catalog['ranges'])!=set(RANGES):raise ValueError('All three pooled masks are required')
  if len(tree_paths)!=6 or len(native_paths)!=188:raise ValueError('Expected six method-overview descriptors and 94 native ensemble pairs')
- if any((site/name).exists() for name in native_paths):raise ValueError('Preserve raw native duplicates and select a fresh served export destination')
+ packed_paths=set(native_paths+tree_paths)
+ if any((site/name).exists() for name in packed_paths):raise ValueError('Preserve raw native duplicates and select a fresh served export destination')
  registry_path=site/'packed-assets.json';old_registry=read_json(registry_path);registry=copy.deepcopy(old_registry);files=registry['files'];writes=[]
  # Stage only compressed/native-delivery bytes. Raw scientific files remain on
  # their existing host/path and never get duplicated into the served namespace.
@@ -117,14 +118,14 @@ def build(site,scalar,native_root,native_manifest,expected_native_sha,receipt,ph
   staged=[]
   for name in sorted(selected):
    body=(native_root/name).read_bytes()
-   if name.endswith(('.pdb','.pse')):
+   if name in packed_paths:
     if len(body)>67108864:raise ValueError('Native artifact exceeds the reviewed 64 MiB delivery bound')
-    descriptor={'sha256':sha(body),'bytes':len(body),'content_type':'chemical/x-pdb' if name.endswith('.pdb') else 'application/octet-stream'}
+    descriptor={'sha256':sha(body),'bytes':len(body),'content_type':'chemical/x-pdb' if name.endswith('.pdb') else 'application/json' if name in tree_paths else 'application/octet-stream'}
     if name in files and files[name]!=descriptor:raise ValueError('Existing packed native entry differs')
     files[name]=descriptor;physical=name+'.gz';delivery=packed_bytes(body)
     restored=gzip.decompress(delivery)
     if len(restored)!=len(body) or sha(restored)!=sha(body):raise ValueError('Packed native bytes failed exact restore verification')
-    info={'path':physical,'bytes':len(delivery),'sha256':sha(delivery),'native_sha256':sha(body),'native_bytes':len(body)}
+    info={'path':physical,'bytes':len(delivery),'sha256':sha(delivery),'logical_file':name,'logical_sha256':sha(body),'logical_bytes':len(body),'packed_kind':'bonsai_overview' if name in tree_paths else 'native_ensemble'}
    else:physical=name;delivery=body;info={'path':name,**observed[name]}
    stage=Path(temp_dir)/physical;stage.parent.mkdir(parents=True,exist_ok=True);stage.write_bytes(delivery);staged.append((physical,stage,info))
    if shutil.disk_usage(site).free<min_free_bytes:raise ValueError('Export free-space guard failed during compressed staging')
@@ -139,9 +140,9 @@ def build(site,scalar,native_root,native_manifest,expected_native_sha,receipt,ph
   if projected>max_site_bytes or shutil.disk_usage(site).free<added_bytes+min_free_bytes:raise ValueError('Packed site would exceed export quota/free-space reserve')
   for physical,stage,info in staged:
    delivery=stage.read_bytes() if stage else info['body'];write_catalog(site,catalog) if physical=='pooled-overlays.json' else write_new(site,physical,delivery)
-   if physical.endswith(('.pdb.gz','.pse.gz')):
+   if info.get('logical_file'):
     restored=gzip.decompress((site/physical).read_bytes())
-    if sha(restored)!=info['native_sha256'] or len(restored)!=info['native_bytes']:raise ValueError('Written native delivery failed exact restore verification')
+    if sha(restored)!=info['logical_sha256'] or len(restored)!=info['logical_bytes']:raise ValueError('Written native delivery failed exact restore verification')
    writes.append({k:v for k,v in info.items() if k!='body'} if stage else {'path':physical,'bytes':len(delivery),'sha256':sha(delivery)})
   if registry_path.is_symlink():raise ValueError('Packed registry is a symlink')
   temp=registry_path.with_name('.packed-assets.export.tmp')
@@ -149,7 +150,7 @@ def build(site,scalar,native_root,native_manifest,expected_native_sha,receipt,ph
   os.replace(temp,registry_path)
  site_after=sum(p.stat().st_size for p in site.rglob('*') if p.is_file());free_after=shutil.disk_usage(site).free
  if site_after>max_site_bytes or free_after<min_free_bytes:raise ValueError('Final packed-site quota/free-space guard failed')
- proof={'status':'exported_saved_artifacts_only','scientific_execution':False,'scalar_payload_sha256':SCALAR_SHA,'original_reduce_payload_sha256':REDUCE_SHA,'accepted_native_manifest_sha256':expected_native_sha,'logical_native_ensembles':94,'native_artifacts':188,'bonsai_descriptors':6,'selected_native_source_files':sorted(selected),'unreferenced_manifest_files_not_published':sorted(set(manifest)-selected),'writes':writes,'original_packed_entries_preserved':len(old_registry['files']),'packed_registry_before_sha256':old_hash,'packed_registry_after_sha256':sha(registry_body),'storage':{'site_before_bytes':site_before,'site_after_bytes':site_after,'max_site_bytes':max_site_bytes,'free_before_bytes':free_before,'free_after_bytes':free_after,'min_free_bytes':min_free_bytes,'native_uncompressed_bytes':sum(w.get('native_bytes',0) for w in writes),'native_delivery_gzip_bytes':sum(w['bytes'] for w in writes if 'native_bytes' in w),'no_raw_native_duplicates_published':True,'all_native_restore_hashes_verified':True}}
+ proof={'status':'exported_saved_artifacts_only','scientific_execution':False,'scalar_payload_sha256':SCALAR_SHA,'original_reduce_payload_sha256':REDUCE_SHA,'accepted_native_manifest_sha256':expected_native_sha,'logical_native_ensembles':94,'native_artifacts':188,'bonsai_descriptors':6,'packed_delivery_files':194,'selected_native_source_files':sorted(selected),'unreferenced_manifest_files_not_published':sorted(set(manifest)-selected),'writes':writes,'original_packed_entries_preserved':len(old_registry['files']),'packed_registry_before_sha256':old_hash,'packed_registry_after_sha256':sha(registry_body),'storage':{'site_before_bytes':site_before,'site_after_bytes':site_after,'max_site_bytes':max_site_bytes,'free_before_bytes':free_before,'free_after_bytes':free_after,'min_free_bytes':min_free_bytes,'native_uncompressed_bytes':sum(w.get('logical_bytes',0) for w in writes if w.get('packed_kind')=='native_ensemble'),'native_delivery_gzip_bytes':sum(w['bytes'] for w in writes if w.get('packed_kind')=='native_ensemble'),'bonsai_uncompressed_bytes':sum(w.get('logical_bytes',0) for w in writes if w.get('packed_kind')=='bonsai_overview'),'bonsai_delivery_gzip_bytes':sum(w['bytes'] for w in writes if w.get('packed_kind')=='bonsai_overview'),'no_raw_native_duplicates_published':True,'all_native_restore_hashes_verified':True,'all_bonsai_restore_hashes_verified':True}}
  receipt.parent.mkdir(parents=True,exist_ok=True)
  with receipt.open('x') as f:json.dump(proof,f,indent=2);f.write('\n')
  return proof
