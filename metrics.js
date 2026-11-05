@@ -68,7 +68,7 @@ function populateSelect(select,schemes){
  const options=visible.map(scheme=>{const option=document.createElement('option');option.value=scheme.key;option.textContent=scheme.name+(scheme.unavailable?' — unavailable':'');option.disabled=!!scheme.unavailable;return option;});
  select.replaceChildren(...options);return visible;
 }
-function note(data,key){const s=data.schemes.find(s=>s.key===key);return s?.metric_note?'ProteinEBM · t='+s.time_value.toFixed(2)+' · full construct ('+s.metric_scope_count+' residues) · arbitrary units · lower is better.':data.metric_overlay_status==='unavailable'?data.metric_overlay_note:'';}
+function note(data,key){const s=data.schemes.find(s=>s.key===key);return s?.metric_note&&s.key!=='protein_ebm_energy_t10'?s.metric_note:s?.metric_note?'ProteinEBM · t='+s.time_value.toFixed(2)+' · full construct ('+s.metric_scope_count+' residues) · arbitrary units · lower is better.':data.metric_overlay_status==='unavailable'?data.metric_overlay_note:'';}
 const api={createLoader,populateSelect,note,cleanSchemes,targetIdentity,RETIRED,SCOPE_NOTE};root.AISExplorerMetrics=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
