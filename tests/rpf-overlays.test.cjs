@@ -40,6 +40,8 @@ test('paired violins retain all 2,000 native scores, their source identities and
  assert.equal(traces.length,2);assert.equal(traces[0].line.color,'#112233');
  for(let i=0;i<2;i++){assert.equal(traces[i].y.length,1000);assert.equal(traces[i].customdata.length,1000);assert.equal(traces[i].spanmode,'hard');assert.equal(traces[i].bandwidth,.005);assert.equal(traces[i].points,false);}
  assert.equal(traces[1].y[999],-.2);assert.equal(traces[1].customdata[999],saved.models[1999].model_id);
+ const pooled=api.distributionTraces(saved,'dp',{afsample3:'#009988',bioemu2:'#994400'});
+ assert.deepEqual(pooled.map(trace=>trace.line.color),['#009988','#994400']);assert.deepEqual(pooled.map(trace=>trace.fillcolor),['#009988','#994400']);
 });
 test('comparison tabs render only the visible plots and retain focused exact-score axes',async()=>{
  const plots=[],bodies=['distributions','ptm'].map(name=>({dataset:{rpfBody:name}}));
