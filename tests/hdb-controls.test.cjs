@@ -29,6 +29,18 @@ test('a late previous-method Bonsai cannot replace the current exact union; boun
  f.run("changeHDBState('mcmc50');bonsaiSerial=1");const old=f.run('drawHDBBonsai(1,data)');f.run("changeHDBState('disco50');bonsaiSerial=2");const current=f.run('drawHDBBonsai(2,data)');pending.get('disco50.json')();await current;pending.get('mcmc50.json')();await old;assert.equal(f.renders.length,1);assert.deepEqual(f.renders[0].models,f.payload.all_states.disco50.models);assert.deepEqual(f.renders[0].range,[3000,5000]);
 });
 
+test('an old rejected native download cannot overwrite the new method status in the same target',async()=>{
+ const f=fixture();let rejectOld;f.context.AISExplorerHDBStates.readArtifact=()=>new Promise((resolve,reject)=>{rejectOld=reject});const old=f.links().find(a=>a.dataset.hdbState==='H01'&&a.dataset.method==='mcmc50'&&a.dataset.format==='pdb');old.onclick({preventDefault(){}});
+ f.run("changeHDBState('disco50')");const current=f.nodes.get('hdbStateStatus').textContent;rejectOld(Error('old method rejected'));await new Promise(resolve=>setImmediate(resolve));assert.equal(f.nodes.get('hdbStateStatus').textContent,current);assert.equal(f.run('hdbDownloadBusy'),false);
+ f.context.AISExplorerHDBStates.readArtifact=async()=>{throw Error('current method rejected')};f.links().find(a=>a.dataset.hdbState==='H01'&&a.dataset.method==='disco50'&&a.dataset.format==='pdb').onclick({preventDefault(){}});await new Promise(resolve=>setImmediate(resolve));assert.match(f.nodes.get('hdbStateStatus').textContent,/Saved ensemble unavailable: current method rejected/);
+});
+
+test('an old Bonsai rejection cannot clear the chosen method before the queued render serial advances',async()=>{
+ const f=fixture(),pending=new Map();f.context.AISExplorerHDBStates.readBonsai=(d,models)=>new Promise((resolve,reject)=>pending.set(d.file,{resolve:()=>resolve({models:models.map(model=>({model}))}),reject}));
+ f.run("changeHDBState('mcmc50');bonsaiSerial=1");const old=f.run('drawHDBBonsai(1,data)');f.run("changeHDBState('disco50')");f.nodes.get('bonsai').textContent='Current method queued';f.nodes.get('hdbBonsaiStatus').textContent='Current method overview';pending.get('mcmc50.json').reject(Error('old tree rejected'));await old;
+ assert.equal(f.nodes.get('bonsai').textContent,'Current method queued');assert.equal(f.nodes.get('hdbBonsaiStatus').textContent,'Current method overview');const current=f.run('drawHDBBonsai(1,data)');pending.get('disco50.json').resolve();await current;assert.equal(f.renders.length,1);assert.deepEqual(f.renders[0].models,f.payload.all_states.disco50.models);
+});
+
 test('colors-only pending state hides every native control/link and clears a stale tree without fetching',()=>{
  const f=fixture();f.run("data.bonsai={file:'old-full-cohort.json'};hdbStatePayload=null;hdbStateResult={status:'pending',note:'Native artifacts are pending verification'};refreshHDBHighlight()");assert.equal(f.nodes.get('hdbPendingStatus').hidden,false);assert.equal(f.nodes.get('hdbStateControls').hidden,true);assert.equal(f.nodes.get('hdbStateEnsembles').hidden,true);assert.equal(f.nodes.get('hdbStateMCMC').disabled,true);assert.equal(f.nodes.get('hdbStateDisco').disabled,true);assert.equal(f.links().length,0);assert.equal(f.data.bonsai,undefined);assert.equal(f.reads.length,0);
 });

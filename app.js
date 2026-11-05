@@ -193,10 +193,10 @@ function renderHDBDownloads(available){
 }
 async function downloadHDBState(stateId,method,format){
  const state=hdbStatePayload?.states.find(s=>s.id===stateId),saved=state?.selections?.[method];if(!saved)return;
- const artifact=format==='pdb'?saved.ensemble:saved.session,request=targetRequest,serial=++hdbDownloadSerial,payload=hdbStatePayload;hdbDownloadBusy=true;updateHDBControls();
+ const artifact=format==='pdb'?saved.ensemble:saved.session,request=targetRequest,serial=++hdbDownloadSerial,payload=hdbStatePayload;let downloadError='';hdbDownloadBusy=true;updateHDBControls();
  try{const bytes=await AISExplorerHDBStates.readArtifact(artifact);if(request!==targetRequest||serial!==hdbDownloadSerial||payload!==hdbStatePayload)return;const url=URL.createObjectURL(new Blob([bytes],{type:format==='pdb'?'chemical/x-pdb':'application/octet-stream'})),a=document.createElement('a');a.href=url;a.download=data.target+'_'+data.range_id+'_'+stateId+'_'+method+'_'+saved.models_count+'.'+format;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
- catch(error){if(request===targetRequest)$('hdbStateStatus').textContent='Saved ensemble unavailable: '+error.message}
- finally{if(request===targetRequest&&serial===hdbDownloadSerial){hdbDownloadBusy=false;updateHDBControls()}}
+ catch(error){if(request===targetRequest&&serial===hdbDownloadSerial&&payload===hdbStatePayload)downloadError='Saved ensemble unavailable: '+error.message}
+ finally{if(request===targetRequest&&serial===hdbDownloadSerial&&payload===hdbStatePayload){hdbDownloadBusy=false;updateHDBControls();if(downloadError)$('hdbStateStatus').textContent=downloadError}}
 }
 async function drawHDBBonsai(serial,current){
  const selection=hdbStateHighlight,caption=$('hdbBonsaiStatus');caption.hidden=false;
@@ -210,7 +210,7 @@ async function drawHDBBonsai(serial,current){
   if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#methods'});
   const selectedClusters=new Set(selection.geometry_models.map(id=>current.clusters[current.models.indexOf(id)]));const representatives=current.representatives.filter(r=>selectedClusters.has(r.cluster));
   bonsaiPanel.update({...current,representatives},payload,scheme(),$('pca'),hiddenProjectionCategories,new Set(selection.models));hdbBonsaiDisplayed=key;if(selected)bonsaiPanel.select(selected);
- }catch(error){if(serial===bonsaiSerial&&data===current){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}$('bonsai').textContent='Saved selected-model Bonsai unavailable: '+error.message;caption.textContent=selection.note+' No full-cohort tree is substituted.';}}
+ }catch(error){if(serial===bonsaiSerial&&data===current&&hdbStateHighlight.bonsai?.sha256===descriptor.sha256){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}$('bonsai').textContent='Saved selected-model Bonsai unavailable: '+error.message;caption.textContent=selection.note+' No full-cohort tree is substituted.';}}
 }
 
 function clusteringResidues(current=data){
