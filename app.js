@@ -156,6 +156,18 @@ async function downloadTMState(method,format='pdb',stateId=tmStateHighlight.pane
  finally{if(request===targetRequest&&serial===tmDownloadSerial){tmDownloadBusy=false;updateTMStateControls()}}
 }
 function clusteringResidues(current=data){
+ if(current.cohort_id==='afsample3-bioemu2'){
+  const binding=current.views?.find(row=>row.id===(current.policy_view_id||current.view_id)),positions=current.clustering_positions;
+  const sequence=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.SEQUENCE:null;
+  if(current.target!=='SR215_bmr6366'||current.rpf_overlay_status!=='available'||!sequence||current.rpf_payload?.sequence_sha256!==sequence||
+     !/^[a-f0-9]{64}$/.test(current._source_sha||'')||binding?.source_data_sha256!==current._source_sha||
+     !Array.isArray(positions)||!positions.length||positions.some(p=>!Number.isInteger(p)||p<1||p>139)||new Set(positions).size!==positions.length||
+     JSON.stringify(positions)!==JSON.stringify(current.canonical_positions)||JSON.stringify(positions)!==JSON.stringify(binding.canonical_positions))return null;
+  return {chain:'A',expected_ca_count:139,sequence_sha256:sequence,canonical_positions:[...positions],
+   reference_ranges:current.range_name||'Saved pooled clustering residues',analysis_uses_full_construct:positions.length===139,
+   scope_note:'The displayed clustering residues use this pooled 2,000-model analysis mask. Display settings do not change the original coordinates.',
+   regions:[],regions_verified:false};
+ }
  const target=clusteringResidueCatalog.targets?.[current.target],range=current.range_id||'all',entry=target?.ranges?.[range]?.views?.[current.view_id||'whole']||(range==='all'?target?.views?.[current.view_id||'whole']:null);
  if(!entry||typeof entry.chain!=='string'||!Number.isInteger(entry.expected_ca_count)||entry.expected_ca_count<1||!Array.isArray(entry.canonical_positions)||!entry.canonical_positions.length)return null;
  const positions=entry.canonical_positions;
@@ -515,6 +527,20 @@ function clearStructure(title='Select a cluster',note=''){
  for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}
  notifyInspectedStructure();
 }
+async function applySavedFigureSupplements(current){
+ // Pooled views own their summaries and representatives; full-cohort figures
+ // remain bound to the original saved bytes in the existing strict loader.
+ if(current.cohort_id==='afsample3-bioemu2')return current;
+ return figureSupplementLoader?figureSupplementLoader.enrich(current):current;
+}
+async function applySavedModelOverlays(current,source){
+ if(current.cohort_id==='afsample3-bioemu2')return [current,
+  {status:'unavailable',payload:null,note:'Saved selection highlights were not calculated for this pooled cohort.'},
+  {status:'unavailable',payload:null,note:'TM-state subsets were not calculated for this pooled cohort.'}];
+ return Promise.all([metricOverlayLoader?metricOverlayLoader.enrich(current):withoutUnavailableRefolds(current),
+  selectionLoader?selectionLoader.load(source):{status:'unavailable',payload:null,note:'No saved selection highlights are available for this analysis.'},
+  tmStateLoader?tmStateLoader.load(source):{status:'unavailable',payload:null,note:'No completed TM-state subsets are available for this analysis.'}]);
+}
 async function load(target,viewId='',rangeId='all',cohortId='all'){
  const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();clearTMStateHighlight();setAnalysisLoading(true);try{
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
@@ -522,7 +548,7 @@ async function load(target,viewId='',rangeId='all',cohortId='all'){
  if(cohortId==='afsample3-bioemu2'&&typeof AISExplorerRPF==='undefined')throw Error('The requested pooled RPF cohort is unavailable.');
  const original=atlas.targets.find(x=>x.id===target)||atlas.targets[0],found=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.cohortTarget(original,rpfCatalog,cohortId):original,ranges=savedResidueRanges(found),range=ranges.find(r=>r.id===rangeId&&availableResidueRange(r))||ranges.find(r=>r.id==='all'&&availableResidueRange(r));
  if(!range)throw Error('No verified residue-range analysis is available for this target.');
- const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const scoped={...loaded,cohort_id:found.cohort_id||'all'};const withFigures=figureSupplementLoader?await figureSupplementLoader.enrich(scoped):scoped,withRPF=rpfMetricLoader?await rpfMetricLoader.enrich(withFigures):withFigures;const [enriched,highlightResult,tmResult]=await Promise.all([metricOverlayLoader?metricOverlayLoader.enrich(withRPF):withoutUnavailableRefolds(withRPF),selectionLoader?selectionLoader.load(loaded):{status:'unavailable',payload:null,note:'No saved selection highlights are available for this analysis.'},tmStateLoader?tmStateLoader.load(loaded):{status:'unavailable',payload:null,note:'No completed TM-state subsets are available for this analysis.'}]);if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;selectionResult=highlightResult;selectionPayload=highlightResult.payload;tmStateResult=tmResult;tmStatePayload=tmResult.payload;selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureModelCohortControls(original,found);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
+ const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const scoped={...loaded,cohort_id:found.cohort_id||'all'};const withFigures=await applySavedFigureSupplements(scoped),withRPF=rpfMetricLoader?await rpfMetricLoader.enrich(withFigures):withFigures;const [enriched,highlightResult,tmResult]=await applySavedModelOverlays(withRPF,loaded);if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;selectionResult=highlightResult;selectionPayload=highlightResult.payload;tmStateResult=tmResult;tmStatePayload=tmResult.payload;selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureModelCohortControls(original,found);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
  const previousColor=$('color').value,requestedColor=new URLSearchParams(location.search).get('color');
  $('analysisViewLabel').hidden=false;$('analysisView').replaceChildren(...(base.views||[]).map(x=>Object.assign(document.createElement('option'),{value:x.id,textContent:x.name+(x.available===false?' — '+(x.status||'awaiting verified results'):''),disabled:x.available===false})));$('analysisView').value=view?.id||'whole';
  $('title').textContent=data.target;$('summary').textContent=`${data.models.length.toLocaleString()} models · ${data.representatives.length} clusters${data.clusters.some(x=>x.endsWith('.unassigned'))?' · '+data.clusters.filter(x=>x.endsWith('.unassigned')).length.toLocaleString()+' unassigned':''}`;

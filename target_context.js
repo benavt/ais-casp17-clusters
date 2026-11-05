@@ -29,7 +29,7 @@
   document.getElementById('targetContext').dataset.target=target;
  }
  window.addEventListener('atlas:cohort',async event=>{
-  const current=event.detail.current,target=current.target;currentTarget=target;const sequence=current.provenance?.sequence_sha256||current.provenance?.original_parent_provenance?.sequence_sha256;
+  const current=event.detail.current,target=current.target;currentTarget=target;const sequence=current.provenance?.sequence_sha256||current.provenance?.original_parent_provenance?.sequence_sha256||(current.cohort_id==='afsample3-bioemu2'&&current.rpf_overlay_status==='available'?current.rpf_payload?.sequence_sha256:null);
   content.replaceChildren(element('h3',target.split('_')[0]),element('p','Loading…'));
   try{const metadata=await records;if(currentTarget!==target)return;const entry=metadata.targets[target];if(!entry)throw Error('Target context unavailable');const recorded=entry.provenance?.analysis_sequence_sha256;if(!sequence||!recorded||sequence!==recorded)throw Error('Target sequence does not match the context record');render(target,entry,metadata.verified_on)}
   catch(error){if(currentTarget===target)content.replaceChildren(element('h3',target.split('_')[0]+' · Target context'),element('p','No reference records available.'))}
