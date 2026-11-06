@@ -192,6 +192,8 @@ persists across tabs and views; `?rpf_preparation=phenix` shares the Phenix view
 Both panels retain the full matched model pool. Violin axes span both preparations
 and both methods; pTM axes and color limits span both preparations' AFSample3
 scores, with unchanged native pTM and no BioEMU2 confidence imputation.
+One bubble area-per-model scale is shared across both preparations and all three
+pTM panels, so equal model counts retain equal displayed area while toggling.
 
 Violin figure downloads compare both preparations side by side. pTM downloads
 follow the selected preparation with matched axes. The four original figure URLs

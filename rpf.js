@@ -76,7 +76,12 @@ function matchedPreparations(baseline,phenix){
   bounds.violin[key]=[Math.min(...all.map(row=>row[key])),Math.max(...all.map(row=>row[key]))];
   bounds.ptm[key]=[Math.min(...af.map(row=>row[key])),Math.max(...af.map(row=>row[key]))];
  }
- return {status:'available',payloads:{reduce:baseline,phenix:variant},bounds,native_ptm_range:ptmRange(baseline),note:COMPARISON_NOTE};
+ let maximumCoincident=0;
+ for(const payload of [baseline,variant])for(const [key]of METRICS){
+  const counts=new Map();for(const row of payload.models.filter(r=>r.method==='afsample3'&&finite(r.ptm))){const id=JSON.stringify([row.ptm,row[key]]);counts.set(id,(counts.get(id)||0)+1);}
+  maximumCoincident=Math.max(maximumCoincident,...counts.values());
+ }
+ return {status:'available',payloads:{reduce:baseline,phenix:variant},bounds,native_ptm_range:ptmRange(baseline),bubble_maximum_coincident_models:maximumCoincident,bubble_sizeref:2*Math.max(maximumCoincident,1)/(34*34),note:COMPARISON_NOTE};
 }
 function createComparisonLoader(catalog,reader=readPayload){
  const cache=new Map();return {async load(data){
@@ -102,7 +107,7 @@ function scatterTraces(payload,key,options={}){
  const pairs=[...groups.values()].sort((a,b)=>a[0].ptm-b[0].ptm||a[0][key]-b[0][key]),counts=pairs.map(group=>group.length);
  return [{type:'scattergl',mode:'markers',name:'AFSample3',x:pairs.map(group=>group[0].ptm),y:pairs.map(group=>group[0][key]),
   customdata:pairs.map(group=>[group.length,group.slice(0,5).map(row=>row.model_id).join('<br>')+(group.length>5?'<br>…':''),group.length===1?group[0].model_id:null]),
-  marker:{size:counts,sizemode:'area',sizeref:2*Math.max(...counts,1)/(34*34),opacity:.7,color:pairs.map(group=>group[0][key]),colorscale:'Viridis',cmin:range[0],cmax:range[1],showscale:false,line:{width:.5,color:'#ffffff'}},
+  marker:{size:counts,sizemode:'area',sizeref:options.sizeref??2*Math.max(...counts,1)/(34*34),opacity:.7,color:pairs.map(group=>group[0][key]),colorscale:'Viridis',cmin:range[0],cmax:range[1],showscale:false,line:{width:.5,color:'#ffffff'}},
   hovertemplate:'Native pTM: %{x:.2f}<br>Full-construct RPF '+METRICS.find(([metric])=>metric===key)[1]+(options.preparation?' · '+options.preparation:'')+': %{y:.2f}<br>%{customdata[0]} models at this exact score pair<br>%{customdata[1]}<extra></extra>',
   meta:{models:rows.length,exact_positions:pairs.length,maximum_coincident_models:Math.max(...counts,0),size_definition:'Circle area is proportional to the number of models at this exact printed-score pair; no jitter.'}}];
 }
@@ -134,10 +139,10 @@ async function renderScatters(container,data,render,onSelect,comparisonLoader=nu
   choice.onchange=()=>{if(!choice.checked)return;container.dataset.rpfPreparation=key;rememberPreparation(key);return renderScatters(container,data,render,onSelect,comparisonLoader);};
  }
  const distributionCaption=container.querySelector('[data-rpf-distribution-note]');
- if(distributionCaption)distributionCaption.textContent=label+' · all 1,000 AFSample3 and 1,000 BioEMU2 matched models, scored independently on the full 139-residue construct. The shared y axes include both preparations and methods. Violins retain exact saved scores; white boxes show median/IQR, and fixed 0.005 smoothing stays within each observed range. The downloadable preparation comparison shows both preparations together. These model pools are not biological populations.';
+ if(distributionCaption)distributionCaption.textContent=available?label+' · all 1,000 AFSample3 and 1,000 BioEMU2 matched models, scored independently on the full 139-residue construct. The shared y axes include both preparations and methods. Violins retain exact saved scores; white boxes show median/IQR, and fixed 0.005 smoothing stays within each observed range. The downloadable preparation comparison shows both preparations together. These model pools are not biological populations.':payload?'Reduce baseline only · all 1,000 AFSample3 and 1,000 BioEMU2 scores. Paired preparation data are unavailable; these axes and original figure downloads describe only the Reduce baseline. Violins retain the saved scores, white median/IQR boxes and observed-range smoothing. These model pools are not biological populations.':'Selected preparation data are unavailable.';
  for(const format of ['svg','png']){
-  const violin=container.querySelector('[data-rpf-distribution-download="'+format+'"]');if(violin){violin.href='metrics/sr215-rpf-preparation-violin.'+format;violin.textContent='Preparation comparison · '+format.toUpperCase();}
-  const scatter=container.querySelector('[data-rpf-ptm-download="'+format+'"]');if(scatter){scatter.href='metrics/sr215-afsample3-ptm-rpf-'+(preparation==='reduce'?'reduce-matched':'phenix')+'.'+format;scatter.textContent=label+' pTM comparison · '+format.toUpperCase();}
+  const violin=container.querySelector('[data-rpf-distribution-download="'+format+'"]');if(violin){violin.href='metrics/sr215-rpf-'+(available?'preparation-violin':'violin')+'.'+format;violin.textContent=(available?'Preparation comparison':'Reduce baseline distribution')+' · '+format.toUpperCase();}
+  const scatter=container.querySelector('[data-rpf-ptm-download="'+format+'"]');if(scatter){scatter.href='metrics/sr215-afsample3-ptm-rpf'+(available?'-'+(preparation==='reduce'?'reduce-matched':'phenix'):'')+'.'+format;scatter.textContent=(available?label+' pTM comparison':'Reduce baseline pTM comparison')+' · '+format.toUpperCase();}
  }
  for(const body of container.querySelectorAll('[data-rpf-body]'))body.hidden=!payload||body.dataset.rpfBody!==active;
  const buttons=[...container.querySelectorAll('[data-rpf-panel]')];
@@ -148,7 +153,7 @@ async function renderScatters(container,data,render,onSelect,comparisonLoader=nu
  }
  if(!payload)return;
  const n=payload.models.filter(row=>row.method==='afsample3'&&finite(row.ptm)).length;
- const scatterNote=container.querySelector('[data-rpf-note]');if(scatterNote)scatterNote.textContent=label+' · '+n.toLocaleString()+' / 1,000 AFSample3 models with unchanged, source-verified native pTM. BioEMU2 has no native pTM and is excluded. Axes focus on the observed score ranges; native pTM is on a 0–1 scale. Shared y and color bounds include both preparations’ AFSample3 scores. Each circle is an exact printed-score pair; circle area shows the number of coincident models. No jitter or score substitution is applied.';
+ const scatterNote=container.querySelector('[data-rpf-note]');if(scatterNote)scatterNote.textContent=(available?label:'Reduce baseline only')+' · '+n.toLocaleString()+' / 1,000 AFSample3 models with unchanged, source-verified native pTM. BioEMU2 has no native pTM and is excluded. Axes focus on the observed score ranges; native pTM is on a 0–1 scale. '+(available?'Shared y/color bounds and area-per-model scaling include both preparations’ AFSample3 panels.':'Paired data are unavailable; these axes and original figure downloads describe only Reduce baseline scores.')+' Each circle is an exact printed-score pair; circle area shows the number of coincident models. No jitter or score substitution is applied.';
  if(active==='distributions'){
   const colors=data.schemes.find(s=>s.key==='ais_method')?.colors||{};
   for(const [key,metric]of METRICS){
@@ -164,7 +169,7 @@ async function renderScatters(container,data,render,onSelect,comparisonLoader=nu
   if(Number(container.dataset.rpfSerial)!==serial)return;
   const node=container.querySelector('[data-rpf-scatter="'+key+'"]');if(!node)continue;
   const bounds=available?comparison.bounds.ptm[key]:null;
-  await render(node,scatterTraces(payload,key,{...(bounds?{range:bounds}:{}),preparation:label}),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:60,r:20,t:20,b:55},showlegend:false,
+  await render(node,scatterTraces(payload,key,{...(bounds?{range:bounds,sizeref:comparison.bubble_sizeref}:{}),preparation:label}),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:60,r:20,t:20,b:55},showlegend:false,
    xaxis:{title:{text:'AFSample3 native pTM (0–1)'},range:available?comparison.native_ptm_range:ptmRange(payload),gridcolor:'#edf1f2'},yaxis:{title:{text:'RPF '+metric+' · '+label+' (full 139)'},...(bounds?{range:axisRange(bounds,'ptm')}:{}),gridcolor:'#edf1f2'},
    font:{family:'Arial, sans-serif',size:12,color:'#344f5b'},uirevision:'sr215-ptm-rpf-'+key},
    {responsive:true,displaylogo:false,toImageButtonOptions:{format:'svg',filename:'SR215_AFSample3_pTM_RPF_'+preparation+'_'+metric}});

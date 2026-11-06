@@ -39,6 +39,15 @@ test('native confidence is never deduplicated or imputed; exact-position bubble 
  assert(result.payloads.phenix.models.filter(r=>r.method==='bioemu2').every(r=>r.ptm===null));
 });
 
+test('equal coincident counts keep equal area across all six scatter panels and preparation toggles',()=>{
+ const p=pair(),seen=new Map();let repeats=0;assert.equal(p.bubble_maximum_coincident_models,237);assert.equal(p.bubble_sizeref,2*237/(34*34));
+ for(const prep of ['reduce','phenix'])for(const [key]of api.METRICS){
+  const t=api.scatterTraces(p.payloads[prep],key,{range:p.bounds.ptm[key],sizeref:p.bubble_sizeref})[0];assert.equal(t.marker.sizemode,'area');assert.equal(t.marker.sizeref,p.bubble_sizeref);
+  for(const count of t.marker.size){const area=count/t.marker.sizeref;if(seen.has(count)){assert.equal(area,seen.get(count));repeats++;}else seen.set(count,area);}
+ }
+ assert(repeats>10,'Expected real shared count values across the six panels');
+});
+
 test('cached comparison loading works in both cohorts and rejects mismatched source/prepared/engine identities',async()=>{
  let reads=0;const loader=api.createComparisonLoader(catalog,async(file,sha)=>{reads++;assert.equal(file,'metrics/sr215-rpf-phenix.json');assert.equal(sha,'327731fe2820e57f868b29e5833aa872ecbc8d5dcd89d32146b17cf7c6432248');return phenix});
  for(const cohort of ['all','afsample3-bioemu2']){const data={...context(),cohort_id:cohort,models:Array(cohort==='all'?11000:2000).fill('view model')};assert.equal((await loader.load(data)).status,'available')}
@@ -65,8 +74,8 @@ test('one independent preparation choice changes both panels, exact arrays, labe
  await api.renderScatters(f.c,data,render,null,loader);assert.equal(f.c.dataset.rpfPreparation,'reduce');assert.deepEqual(plots[0].traces[0].y,baseline.models.filter(r=>r.method==='afsample3').map(r=>r.recall));const violinRange=plots[2].layout.yaxis.range;
  f.choices[1].checked=true;await f.choices[1].onchange();assert.equal(f.c.dataset.rpfPreparation,'phenix');assert.match(f.notes.title.textContent,/phenix.reduce/);assert.match(f.notes.preparation.textContent,/different recorded RPF scorers/);assert.match(f.notes.preparation.textContent,/cannot be attributed solely/);assert.equal(f.links.observations.href,'metrics/sr215-rpf-phenix.json');assert.match(f.links.observations.textContent,/phenix.reduce.*JSON/);
  assert.deepEqual(plots[3].traces[0].y,p.payloads.phenix.models.filter(r=>r.method==='afsample3').map(r=>r.recall));assert.deepEqual(plots[5].layout.yaxis.range,violinRange);assert.match(f.links['distribution-svg'].href,/sr215-rpf-preparation-violin.svg$/);
- await f.tabs[1].onclick();assert.equal(f.c.dataset.rpfPreparation,'phenix');const scatterRange=plots.at(-1).layout.yaxis.range;assert.match(f.links['ptm-svg'].href,/sr215-afsample3-ptm-rpf-phenix.svg$/);assert.match(f.links['ptm-svg'].textContent,/phenix.reduce/);assert.match(f.notes.scatter.textContent,/BioEMU2.*excluded/);
- f.choices[0].checked=true;await f.choices[0].onchange();assert.equal(f.c.dataset.rpfView,'ptm');assert.deepEqual(plots.at(-1).layout.yaxis.range,scatterRange);assert.match(f.links['ptm-png'].href,/reduce-matched.png$/);assert.equal(f.links.observations.href,'metrics/sr215-rpf.json');
+ await f.tabs[1].onclick();assert.equal(f.c.dataset.rpfPreparation,'phenix');const scatterRange=plots.at(-1).layout.yaxis.range;assert(plots.slice(-3).every(row=>row.traces[0].marker.sizeref===p.bubble_sizeref));assert.match(f.links['ptm-svg'].href,/sr215-afsample3-ptm-rpf-phenix.svg$/);assert.match(f.links['ptm-svg'].textContent,/phenix.reduce/);assert.match(f.notes.scatter.textContent,/BioEMU2.*excluded/);
+ f.choices[0].checked=true;await f.choices[0].onchange();assert.equal(f.c.dataset.rpfView,'ptm');assert.deepEqual(plots.at(-1).layout.yaxis.range,scatterRange);assert(plots.slice(-3).every(row=>row.traces[0].marker.sizeref===p.bubble_sizeref));assert.match(f.links['ptm-png'].href,/reduce-matched.png$/);assert.equal(f.links.observations.href,'metrics/sr215-rpf.json');
  f.choices[1].checked=true;await f.choices[1].onchange();await api.renderScatters(f.c,{...data,range_id:'res5-95',models:data.models.slice(0,50)},render,null,loader);assert.equal(f.c.dataset.rpfPreparation,'phenix');assert.equal(plots.at(-1).traces[0].meta.models,1000);assert.equal(JSON.stringify(data),before);
 });
 
@@ -82,4 +91,10 @@ test('a stale async render cannot replace a newer choice; unmatched Phenix never
  const f=controls(),p=pair(),pending=[],plots=[],loader={load:()=>new Promise(resolve=>pending.push(resolve))},render=async(node,traces)=>plots.push(traces);
  const old=api.renderScatters(f.c,context(),render,null,loader);f.c.dataset.rpfPreparation='phenix';const current=api.renderScatters(f.c,context(),render,null,loader);pending[1](p);await current;pending[0](p);await old;assert.equal(plots.length,3);
  const unavailable=controls();unavailable.c.dataset.rpfPreparation='phenix';await api.renderScatters(unavailable.c,context(),()=>assert.fail('Foreign Phenix values rendered'),null,{load:async()=>({status:'unavailable',note:'Preparation comparison unavailable: source mismatch'})});assert(unavailable.bodies.every(b=>b.hidden));assert(unavailable.choices[1].disabled);assert.match(unavailable.notes.preparation.textContent,/source mismatch/);
+});
+
+test('an unavailable pair leaves Reduce captions and downloads explicitly baseline-only',async()=>{
+ const f=controls(),plots=[],loader={load:async()=>({status:'unavailable',note:'Preparation comparison unavailable: source mismatch'})};
+ await api.renderScatters(f.c,context(),async(node,traces,layout)=>plots.push({node,traces,layout}),null,loader);assert.equal(plots.length,3);assert.match(f.notes.distribution.textContent,/Reduce baseline only/);assert(!f.notes.distribution.textContent.includes('shared y axes'));assert.equal(f.links['distribution-svg'].href,'metrics/sr215-rpf-violin.svg');assert.match(f.links['distribution-svg'].textContent,/Reduce baseline/);assert.equal(f.links.observations.href,'metrics/sr215-rpf.json');assert(f.choices[1].disabled);
+ await f.tabs[1].onclick();assert.match(f.notes.scatter.textContent,/Reduce baseline only/);assert(!f.notes.scatter.textContent.includes('Shared y/color'));assert.equal(f.links['ptm-png'].href,'metrics/sr215-afsample3-ptm-rpf.png');assert.match(f.links['ptm-png'].textContent,/Reduce baseline/);assert.equal(plots.at(-1).traces[0].meta.models,1000);
 });
