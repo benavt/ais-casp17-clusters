@@ -1,3 +1,4 @@
+let structureMetrics=null;
 /* Shared population stays fixed; filters select medoid rows and fade plot points. */
 let familyPrefix='',chosenClusters=null,filterCSV=null,pairSelecting=false,pairViewers=[],pairSerial=0;
 function visibleCluster(label){return (!familyPrefix||label===familyPrefix||label.startsWith(familyPrefix+'.'))&&(!chosenClusters||chosenClusters.has(label))}
@@ -240,7 +241,7 @@ async function showActiveStateEnsemble(){
  let bytes;try{if(!stateEnsembleCache.has(saved.ensemble.sha256))stateEnsembleCache.set(saved.ensemble.sha256,AISExplorerHDBStates.readArtifact(saved.ensemble).catch(e=>{stateEnsembleCache.delete(saved.ensemble.sha256);throw e}));bytes=await stateEnsembleCache.get(saved.ensemble.sha256)}catch(error){if(valid())throw error;return;}
  if(!valid())return;
  const text=new TextDecoder().decode(bytes),methodName=method==='mcmc50'?'MCMC50':'DISCO50',first=text.includes('ENDMDL')?text.slice(0,text.indexOf('ENDMDL'))+'END\n':text;
- viewer.spin(false);viewer.removeAllModels();viewer._aisModels=viewer.addModels(text,'pdb');viewer._aisDescriptor={_stateEnsemble:true,cluster:state.id,model:saved.models[0],color:state.color,format:'pdb',coordinate_text:first,ensemble_text:text};viewer._aisEnsemble=true;
+ viewer.spin(false);viewer.removeAllModels();viewer._aisModels=viewer.addModels(text,'pdb');viewer._aisDescriptor={_stateEnsemble:true,_frameBindings:saved.models.map((model_id,i)=>({model_id,source_sha256:saved.source_sha256[i]})),cluster:state.id,model:saved.models[0],color:state.color,format:'pdb',coordinate_text:first,ensemble_text:text};viewer._aisEnsemble=true;
  selected=state.id;$('clusterSelect').hidden=true;if($('modelMode').parentElement)$('modelMode').parentElement.hidden=true;
  alignStructureToSetView();styleSavedStructure(viewer,state.color,.62);frameSelectedStructure();viewer.spin(spinning);notifyInspectedStructure();updateStructureViewControls();
  $('modelTitle').textContent=state.id+' · '+methodName+' ensemble';$('modelInfo').textContent='50 sampled models · '+state.model_count.toLocaleString()+' state members';$('structure').hidden=true;
@@ -325,18 +326,20 @@ function canonicalRainbow(position,count){
  return rgb.reduce((out,c)=>(out<<8)+Math.round(c*255),0);
 }
 function styleSavedStructure(target,color,opacity=1){
+ const metrics=typeof structureMetrics!=='undefined'?structureMetrics:null;if(target===viewer){metrics?.prepare();if(target._aisEnsemble)opacity=metrics?.opacity()??opacity;}
  const meta=clusteringResidues(),scope=$('structureScope').value||'full',mode=$('structureColor').value||'cluster',regions=verifiedRegions(meta),models=target._aisModels?.filter(Boolean);
  if(!models?.length){if(scope==='clustering'||mode!=='cluster'){target.setStyle({},{});structureMappingError='Frame handles are unavailable, so the verified residue selection cannot be applied. Choose Full saved structure with Cluster color.';updateStructureScopeNote();return false}target.setStyle({},{cartoon:{color,opacity}});return true}
  const mappingNeeded=scope==='clustering'||mode!=='cluster';let maps=[];
  try{if(mappingNeeded){if(!meta)throw Error('No verified canonical residue map is available.');if(mode==='regions'&&!regions.length)throw Error('No verified structural-variance regions are available.');maps=models.map(model=>canonicalResidueMap(model,meta))}}
  catch(error){models.forEach(model=>model.setStyle({},{}));structureMappingError=error.message+' Choose Full saved structure with Cluster color to inspect the original coordinates.';updateStructureScopeNote();return false}
- const kept=new Set(meta?.canonical_positions||[]);
+ const metricStyle=metrics?.style(target,maps),kept=new Set(meta?.canonical_positions||[]);
  for(const [i,model]of models.entries()){
   const positions=maps[i],cartoon={color,opacity};
-  if(mode!=='cluster')cartoon.colorfunc=atom=>{const position=positions.get(residueIdentity(atom));if(position===undefined)return '#aebbc1';if(mode==='rainbow')return canonicalRainbow(position,meta.expected_ca_count);return regions.find(r=>position>=r.start&&position<=r.end)?.color||'#aebbc1'};
+  if(metricStyle)cartoon.colorfunc=atom=>metricStyle.colorfunc(i,atom);
+  else if(mode!=='cluster')cartoon.colorfunc=atom=>{const position=positions.get(residueIdentity(atom));if(position===undefined)return '#aebbc1';if(mode==='rainbow')return canonicalRainbow(position,meta.expected_ca_count);return regions.find(r=>position>=r.start&&position<=r.end)?.color||'#aebbc1'};
   model.setStyle({},{});model.setStyle(scope==='clustering'?{predicate:atom=>kept.has(positions.get(residueIdentity(atom)))}:{},{cartoon});
  }
- structureMappingError='';updateStructureScopeNote();return true;
+ metrics?.visibility(target);structureMappingError='';updateStructureScopeNote();return true;
 }
 function fitVisibleStructure(target){target.zoomTo({predicate:atom=>!!atom.style?.cartoon});target.render()}
 let structureViewAnchor=null,structureViewMessage='';
@@ -430,7 +433,7 @@ function frameMedoidPair(){
  fitVisibleStructure(pairViewers[0]);const common=pairViewers[0].getView();pairViewers[0].removeModel(ghost);pairViewers.forEach(v=>{v.setView(common);v.render()});$('pairReset').onclick=()=>pairViewers.forEach(v=>{v.setView(common);v.render()});
 }
 function restyleStructureViews(){
- if(viewer._aisDescriptor){const camera=structureViewAnchor?structureCamera():null;styleSavedStructure(viewer,viewer._aisDescriptor.color,viewer._aisEnsemble ? .62 : 1);frameSelectedStructure(camera)}
+ if(viewer._aisDescriptor){const camera=structureCamera();styleSavedStructure(viewer,viewer._aisDescriptor.color,viewer._aisEnsemble ? .62 : 1);viewer.setSlab(camera.slab.near,camera.slab.far);viewer.setView(camera.view);if(structureViewAnchor)structureViewAnchor.activeCamera=camera;viewer.render();updateStructureViewControls()}
  for(const v of pairViewers)if(!$('pairSection').hidden&&v._aisDescriptor){styleSavedStructure(v,v._aisDescriptor.color);fitVisibleStructure(v)}
  if(!$('pairSection').hidden)frameMedoidPair();updateStructureScopeNote();
 }
@@ -621,7 +624,7 @@ function clearStructure(title='Select a cluster',note=''){
  $('modelTitle').textContent=title;$('modelInfo').textContent=note;
  for(const id of ['structure','ensemblePdb','ensemblePse']){$(id).removeAttribute('href');$(id).hidden=true}
  $('pairSection').hidden=true;if(bonsaiPanel)bonsaiPanel.select(null);
- updateStructureViewControls();
+ updateStructureViewControls();if(typeof structureMetrics!=='undefined'){structureMetrics?.prepare();structureMetrics?.clearLegend()}
  for(const tr of $('clusterRows').children){tr.classList.remove('selected');tr.setAttribute('aria-selected','false')}
  notifyInspectedStructure();
 }
@@ -672,7 +675,8 @@ async function start(){
  document.addEventListener('click',navigateSavedSection);
  const loaded=await Promise.all([json('atlas.json'),fetchClusteringResidues(),fetchOptionalJSON('residue-ranges.json'),fetchOptionalJSON('projection-metadata.json'),fetchOptionalJSON('supplementary-metadata.json'),fetchOptionalJSON('metric-overlays.json'),fetchOptionalJSON('selection-highlights.json'),fetchOptionalJSON('tm-states.json'),fetchOptionalJSON('figure-supplements.json'),fetchOptionalJSON('rpf-overlays.json'),fetchOptionalJSON('pooled-overlays.json')]);pooledCatalog=loaded[10];rpfComparisonLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createComparisonLoader(pooledCatalog):null;pooledMetricLoader=typeof AISExplorerPooledMetrics!=='undefined'?AISExplorerPooledMetrics.createLoader(pooledCatalog):null;phenixRPFLoader=typeof AISExplorerPhenixRPF!=='undefined'?AISExplorerPhenixRPF.createLoader(pooledCatalog):null;hdbStateLoader=typeof AISExplorerHDBStates!=='undefined'?AISExplorerHDBStates.createLoader(pooledCatalog):null;rpfCatalog=loaded[9];rpfMetricLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createLoader(rpfCatalog):null;figureSupplementLoader=typeof AISExplorerFigures!=='undefined'?AISExplorerFigures.createLoader(loaded[8]):null;metricOverlayLoader=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.createLoader(loaded[5]):null;selectionLoader=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.createLoader(loaded[6]):null;tmStateLoader=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.createLoader(loaded[7]):null;atlas=loaded[0];clusteringResidueCatalog=loaded[1];projectionMetadataCatalog=loaded[3];supplementaryMetadataCatalog=loaded[4];const rangeCatalog=loaded[2];atlas={...atlas,targets:atlas.targets.map(target=>({...target,residue_ranges:rangeCatalog.targets?.[target.id]?.residue_ranges||target.residue_ranges}))};for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id.split('_bmr')[0];a.title=t.id;a.setAttribute('aria-label',t.id);a.dataset.target=t.id;$('targets').append(a)}
  viewer=$3Dmol.createViewer($('molecule'),{backgroundColor:'white',antialias:true});$('clusterSelect').onchange=()=>{if($('clusterSelect').value)choose($('clusterSelect').value).catch(fail)};
- $('structureScope').onchange=()=>{structureScopePreference=$('structureScope').value;restyleStructureViews()};$('structureColor').onchange=restyleStructureViews;
+ structureMetrics=AISStructureMetrics.bind({document,getData:()=>data,getViewer:()=>viewer,restyle:restyleStructureViews});
+ $('structureScope').onchange=()=>{structureScopePreference=$('structureScope').value;restyleStructureViews()};$('structureColor').onchange=()=>{structureMetrics.prepare();restyleStructureViews()};
  $('modelMode').onchange=()=>{if(selected)choose(selected).catch(fail)};$('color').onchange=()=>{updateMetricOverlayNote();scheduleDraw().catch(fail)};$('projection').onchange=showProjection;$('clear').onclick=()=>{clearStructure();for(const m of ['pca','umap','tsne'])Plotly.relayout($(m),{annotations:[],'xaxis.autorange':true,'yaxis.autorange':true})};
  for(const id of ['selectionMethod','selectionBalance','selectionPressure','selectionReplicate'])if($(id))$(id).onchange=changeSavedSelection;
  for(const id of ['tmStateSelect','tmStateMethod'])if($(id))$(id).onchange=changeTMState;

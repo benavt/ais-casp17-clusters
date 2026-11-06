@@ -164,3 +164,7 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .rpf-preparation{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 8px;padding:0;border:0;font-size:12px}
 .rpf-preparation legend{font-weight:700;margin-bottom:6px}.rpf-preparation label{display:flex;align-items:center;gap:6px;cursor:pointer}
 .rpf-preparation input{accent-color:var(--red);margin:0}
+
+/* Metric controls stay with the structure; the canvas retains the flexible space. */
+.structure-frame-controls,.structure-opacity,.structure-metric-legend{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;font-size:11px;margin:4px 0;flex-shrink:0}
+.structure-frame-controls label{display:flex;align-items:center;gap:.35rem}.structure-frame-controls label:first-child{min-width:180px;flex:1}.structure-frame-controls label>span{white-space:nowrap}.structure-frame-controls select{max-width:100%;min-width:0;width:100%}.structure-focus{white-space:nowrap}.structure-opacity input{width:65px}.structure-frame-controls .structure-opacity{white-space:nowrap}.structure-metric-legend .structure-metric-scale{display:inline-block;width:7rem;height:.55rem;border:1px solid #ddd}.structure-metric-legend i{display:inline-block;width:.6rem;height:.6rem;margin-right:.25rem}.structure-metric-legend[hidden],.structure-frame-controls[hidden],.structure-opacity[hidden]{display:none}
