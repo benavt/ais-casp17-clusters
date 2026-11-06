@@ -24,7 +24,7 @@ SHA-256 and checks its palettes and native-color behavior. `structure_metrics.js
 is the thin adapter for verified CASP17 frame IDs, controls and legends.
 
 The selected state PDB is verified before loading. Each GLModel is bound to the
-saved frame order and original source hash. Annotation changes, isolation and
+saved frame order and original source hash. The explicit Single model / State ensemble control switches visibility; choosing a model selects single-model mode. The mode persists across state and method changes. Annotation changes, visibility and
 opacity do not alter coordinates, saved state selections or download bytes.
 Ensembles start opaque, matching the RPF viewer. Coloring preserves the camera.
 Unbound legacy comparison ensembles cannot inherit per-model annotations.

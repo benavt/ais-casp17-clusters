@@ -48,7 +48,7 @@ function plan({data,descriptor,count,mode,preparation='reduce',residues=null,col
   value:()=>null};
 }
 function bind({document,getData,getViewer,restyle}){
- const $=id=>document.getElementById(id),colors=root.RpfStructure.colors;let residuePayload=null,pending=null,configured=false,frameKey='';
+ const $=id=>document.getElementById(id),colors=root.RpfStructure.colors;let residuePayload=null,pending=null,configured=false,frameKey='',displayMode='ensemble',hasFrameChoices=false;
  const select=$('structureColor');
  const group=document.createElement('optgroup');group.label='RPF';
  for(const [value,label] of Object.entries(LABELS)){const option=document.createElement('option');option.value=value;option.textContent=label;group.append(option)}select.append(group);
@@ -59,8 +59,9 @@ function bind({document,getData,getViewer,restyle}){
   if(!ok&&isMetric(select.value))select.value='cluster';if(!isMetric(select.value))legend(null);
   $('structureMetricPreparationBox').hidden=!isMetric(select.value);const residue=isResidue(select.value),phenix=$('structureMetricPreparation').querySelector('option[value="phenix"]');phenix.disabled=residue||current?.phenix_rpf_status!=='available';if(residue)$('structureMetricPreparation').value='reduce';
   const viewer=getViewer(),models=viewer?._aisModels||[],descriptor=viewer?._aisDescriptor;let rows=[];try{if(ok)rows=records(current,descriptor,models.length)}catch{}
-  const key=rows.map(r=>r.model_id).join('|');if(key!==frameKey){frameKey=key;$('structureFrame').replaceChildren(...rows.map((r,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=(i+1)+' · '+r.model_id.replace(/^SR215_bmr6366__/, '').replaceAll('__',' · ');return o}));$('structureFocus').checked=false}
-  $('structureFrameControls').hidden=models.length<2;$('structureFrameLabel').hidden=rows.length<2;$('structureFocusBox').hidden=rows.length<2;$('structureOpacityBox').hidden=models.length<2;
+  const key=rows.map(r=>r.model_id).join('|');if(key!==frameKey){frameKey=key;$('structureFrame').replaceChildren(...rows.map((r,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=(i+1)+' · '+r.model_id.replace(/^SR215_bmr6366__/, '').replaceAll('__',' · ');return o}))}
+  hasFrameChoices=rows.length>=2;$('structureFrameControls').hidden=models.length<2;$('structureFrameLabel').hidden=rows.length<2;$('structureDisplayMode').hidden=rows.length<2;$('structureOpacityBox').hidden=models.length<2||hasFrameChoices&&displayMode==='single';
+  $('structureSingle').setAttribute('aria-pressed',String(displayMode==='single'));$('structureEnsemble').setAttribute('aria-pressed',String(displayMode==='ensemble'));$('structureEnsemble').textContent=(descriptor?._stateEnsemble?'State ensemble':'Ensemble')+' ('+models.length+')';
   if(ok&&!residuePayload&&!pending){pending=load().then(payload=>{residuePayload=validateResidues(payload,getData());prepare();if(isResidue(select.value))restyle()}).catch(error=>{$('structureMetricStatus').textContent='Residue diagnostics unavailable: '+error.message}).finally(()=>{pending=null})}
  }
  async function load(){
@@ -90,12 +91,18 @@ function bind({document,getData,getViewer,restyle}){
  }
  function visibility(target){
   if(target!==getViewer())return;
-  const focus=$('structureFocus').checked,index=Number($('structureFrame').value||0);
-  target._aisModels?.forEach((model,i)=>{if(focus&&i!==index)model.hide();else model.show()});
+  applyDisplay(target._aisModels,hasFrameChoices?displayMode:'ensemble',Number($('structureFrame').value||0));
  }
  select.addEventListener('change',()=>{prepare();if(!isMetric(select.value))legend(null)});
- for(const id of ['structureMetricPreparation','structureFrame','structureFocus','structureOpacity'])$(id).addEventListener(id==='structureOpacity'?'input':'change',()=>{prepare();$('structureOpacityValue').textContent=$('structureOpacity').value+'%';restyle()});
- return {prepare,style,visibility,isMetric,opacity:()=>Number($('structureOpacity').value)/100,clearLegend:()=>legend(null)};
+ for(const [id,mode] of [['structureSingle','single'],['structureEnsemble','ensemble']])$(id).addEventListener('click',()=>{displayMode=mode;prepare();restyle()});
+ for(const id of ['structureMetricPreparation','structureFrame','structureOpacity'])$(id).addEventListener(id==='structureOpacity'?'input':'change',()=>{if(id==='structureFrame')displayMode='single';prepare();$('structureOpacityValue').textContent=$('structureOpacity').value+'%';restyle()});
+ return {prepare,style,visibility,isMetric,opacity:()=>hasFrameChoices&&displayMode==='single'?1:Number($('structureOpacity').value)/100,clearLegend:()=>legend(null)};
 }
-const api={RESIDUE_IDS,LABELS,isMetric,isResidue,records,validateResidues,plan,bind};root.AISStructureMetrics=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+function applyDisplay(models,mode,index){
+ need(mode==='single'||mode==='ensemble','Unknown structure display mode.');
+ if(!models?.length)return;
+ need(mode!=='single'||Number.isInteger(index)&&index>=0&&index<models.length,'Selected model is outside this ensemble.');
+ models.forEach((model,i)=>{if(mode==='single'&&i!==index)model.hide();else model.show()});
+}
+const api={applyDisplay,RESIDUE_IDS,LABELS,isMetric,isResidue,records,validateResidues,plan,bind};root.AISStructureMetrics=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

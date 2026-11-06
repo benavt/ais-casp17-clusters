@@ -51,3 +51,11 @@ test('unmodified public RPF viewer pin keeps palette, missing values and native 
  assert.equal(crypto.createHash('sha256').update(body).digest('hex'),'4078aca642fe3a59cb2b7ce7d7ff3530fcba6e3970872ff59fd2b861648fd650');
  assert.deepEqual(Array.from(colors.VIRIDIS),['#440154','#3b528b','#21918c','#5ec962','#fde725']);assert.equal(colors.MISSING,'#b9bec7');assert.throws(()=>colors.residueColor({value:1},{id:'legacy_rpf_heat'},[0,370],colors.VIRIDIS),/Native RPF/);
 });
+
+test('explicit single/ensemble switch shows one selected frame or all saved frames without changing coordinates',()=>{
+ const models=Array.from({length:50},(_,i)=>({coordinates:[i,1,2],hidden:false,hide(){this.hidden=true},show(){this.hidden=false}})),before=JSON.stringify(models.map(m=>m.coordinates));
+ api.applyDisplay(models,'single',12);assert.equal(models.filter(m=>!m.hidden).length,1);assert.equal(models[12].hidden,false);
+ api.applyDisplay(models,'single',30);assert.equal(models[12].hidden,true);assert.equal(models[30].hidden,false);
+ api.applyDisplay(models,'ensemble',30);assert(models.every(m=>!m.hidden));assert.equal(JSON.stringify(models.map(m=>m.coordinates)),before);
+ assert.throws(()=>api.applyDisplay(models,'single',50),/outside/);assert.throws(()=>api.applyDisplay(models,'unknown',0),/Unknown/);
+});
