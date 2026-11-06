@@ -1,7 +1,8 @@
 /* Saved HDBSCAN-cluster subsets/trees for the pooled cohort. No browser fitting. */
 (function(root){'use strict';
 const TARGET='SR215_bmr6366',COHORT='afsample3-bioemu2',METHODS=['mcmc50','disco50'],DEFAULTS={state_id:'none',method:'mcmc50'};
-const hash=v=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v),id=v=>typeof v==='string'&&/^H[0-9]{2,4}$/.test(v),need=(v,m)=>{if(!v)throw Error(m)};
+const hash=v=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v),id=v=>typeof v==='string'&&/^(?:H[0-9]{2,4}|S[123])$/.test(v),need=(v,m)=>{if(!v)throw Error(m)};
+const structural=p=>p?.schema_version===2&&p.kind==='pooled_tm_state_selection_payload';
 const digest=value=>root.AISExplorerTMStates.sha256(new TextEncoder().encode(JSON.stringify(value)));
 function unique(indices,n,count=null){need(Array.isArray(indices)&&(count===null||indices.length===count)&&indices.every((v,i)=>Number.isInteger(v)&&v>=0&&v<n&&(i===0||v>indices[i-1])),'Saved cluster indices are not unique canonical source order.');}
 function sourceBinding(data,catalog){const range=catalog?.ranges?.[data.range_id],view=data.policy_view_id||data.view_id,binding=data.views?.find(v=>v.id===view);need(data.cohort_id===COHORT&&data.target===TARGET&&data.visible_view_policy===true&&hash(data._source_sha)&&binding?.source_data_sha256===data._source_sha&&range?.view_bindings?.[view]===data._source_sha,'HDBSCAN subset view binding differs.');return range;}
@@ -21,13 +22,14 @@ function choice(value,p,members,count,method,state){
 function selectionFor(state,method){need(METHODS.includes(method),'Unknown HDBSCAN sampling method.');return state.selections[state.eligible_50?method:'allmembers'];}
 function validatePayload(p,entry,catalog,data){
  const binding=sourceBinding(data,catalog),n=2000;
- need(p?.schema_version===1&&p.kind==='hdbscan_cluster_selection_payload'&&p.target===TARGET&&p.cohort_id===COHORT&&p.range_id===data.range_id&&p.construct_residues===139&&p.sequence_sha256===data.rpf_payload?.sequence_sha256,'HDBSCAN subset scope differs.');
+ need(((p?.schema_version===1&&p.kind==='hdbscan_cluster_selection_payload')||structural(p))&&p.target===TARGET&&p.cohort_id===COHORT&&p.range_id===data.range_id&&p.construct_residues===139&&p.sequence_sha256===data.rpf_payload?.sequence_sha256,'Saved subset scope differs.');
  need(hash(p.source_density_sha256)&&p.source_density_sha256===binding.source_density_sha256&&p.source_density_sha256===p.view_bindings?.density&&['primary','density'].every(v=>p.view_bindings[v]===binding.view_bindings[v]),'HDBSCAN density-source binding differs.');
  need(JSON.stringify(p.canonical_positions)===JSON.stringify(data.clustering_positions),'HDBSCAN clustering mask differs.');
  need(data.pooled_metric_status==='available'&&p.energy?.scheme_key==='protein_ebm_energy_t10'&&p.energy.model_version===6&&p.energy.conditioning_t===.1&&p.energy.energy_scope==='full_construct'&&p.energy.scoring_residues===139&&p.energy.model_metrics_sha256===catalog.model_metrics.sha256,'Sampled energy source differs from the verified scalar annotations.');
  need(Array.isArray(p.models)&&p.models.length===n&&p.models.every((m,i)=>m===data.models[i])&&p.model_order_sha256===digest(p.models)&&Array.isArray(p.source_sha256)&&p.source_sha256.length===n,'HDBSCAN model order differs.');
  const identity=new Map(data.rpf_payload.models.map(r=>[r.model_id,r.source_sha256]));need(p.source_sha256.every((h,i)=>hash(h)&&identity.get(p.models[i])===h),'HDBSCAN original coordinate identity differs.');
  need(p.bonsai_policy?.geometry_scope==='method_selected_union'&&p.bonsai_policy.state_highlighting===true,'Bonsai geometry must use the saved active-method selection union.');
+ if(structural(p))return validateStructural(p,data);
  need(Array.isArray(p.states)&&p.states.length>0,'No saved HDBSCAN cluster subsets.');const used=new Set(),ids=new Set();
  for(const state of p.states){
   need(id(state.id)&&!ids.has(state.id)&&typeof state.cluster_label==='string'&&state.cluster_label.startsWith(`RPF2K:${p.range_id}:density:`)&&!state.cluster_label.endsWith('.unassigned'),'HDBSCAN state namespace differs.');ids.add(state.id);
@@ -42,17 +44,42 @@ function validatePayload(p,entry,catalog,data){
  for(const method of METHODS){const expected=p.states.flatMap(s=>selectionFor(s,method).indices).sort((a,b)=>a-b);const all=choice(p.all_states?.[method],p,used,expected.length,method,null);need(all.indices.every((v,i)=>v===expected[i]),'All-state Bonsai union differs from active selected subsets.');}
  return p;
 }
+function validateStructural(p,data){
+ const core=p.range_id==='res32-47-plus78-99'?Array.from({length:16},(_,i)=>i+32):Array.from({length:58},(_,i)=>i+15);
+ need(p.tm_threshold===.8&&JSON.stringify(p.tm_positions)===JSON.stringify(core),'Structural-state TM core differs.');
+ const prior=p.selection_prior;
+ need(prior?.procedure==='HDBSCAN'&&prior.alpha===.5&&prior.tau===127.4222412109375&&prior.cohort_models===2000&&prior.subset_size===50&&prior.production_chain===0&&prior.production_iteration===10000&&prior.subset_law==='product-weight','Structural-state ProteinEBM prior differs.');
+ need(Array.isArray(p.states)&&p.states.length<=3,'At most three supported structural states are allowed.');
+ const used=new Set();
+ for(const [ordinal,state]of p.states.entries()){
+  need(state.id==='S'+(ordinal+1)&&state.cluster_label===state.id&&state.eligible_50===true&&/^#[a-f0-9]{6}$/i.test(state.color),'Invalid structural state identity.');
+  unique(state.member_indices,2000);need(state.model_count===state.member_indices.length&&state.model_count>=50,'Unsupported structural state.');
+  need(Array.isArray(state.member_tm_scores)&&state.member_tm_scores.length===state.model_count&&state.member_tm_scores.every(v=>Number.isFinite(v)&&v>=.8&&v<=1),'Missing native TM membership certificates.');
+  for(const i of state.member_indices){need(!used.has(i),'Structural state memberships overlap.');used.add(i);}
+  need(state.representative&&state.member_indices.includes(state.representative.index)&&state.representative.model===p.models[state.representative.index],'State representative differs.');
+  need(Object.keys(state.selections).sort().join(',')==='disco50,mcmc50','Both state-level procedures are required.');
+  for(const method of METHODS)choice(state.selections[method],p,new Set(state.member_indices),50,method,state.id);
+ }
+ need(p.unassigned_models===2000-used.size,'Structural state coverage differs.');
+ if(data.view_id==='density')need(p.noise_models===data.clusters.filter(v=>v.endsWith('.unassigned')).length,'Original fine HDBSCAN noise differs.');
+ for(const method of METHODS){
+  if(!p.states.length){need(!p.all_states?.[method],'Empty states cannot expose a sampled union.');continue;}
+  const expected=p.states.flatMap(s=>s.selections[method].indices).sort((a,b)=>a-b),all=choice(p.all_states?.[method],p,used,50*p.states.length,method,null);
+  need(all.indices.every((v,i)=>v===expected[i]),'State-level Bonsai union differs from saved panels.');
+ }
+ return p;
+}
 function settings(value={}){const s={...DEFAULTS,...value};need((['none','all'].includes(s.state_id)||id(s.state_id))&&METHODS.includes(s.method),'Invalid HDBSCAN subset link.');return s;}
 function parseSettings(params){try{return settings({state_id:params.get('hdb_state')||'none',method:params.get('hdb_method')||'mcmc50'})}catch{return{...DEFAULTS,invalid:true}}}
 function routeParams(value){const s=settings(value);return s.state_id==='none'?'':new URLSearchParams({hdb_state:s.state_id,hdb_method:s.method}).toString();}
 function select(payload,value={}){
  if(!payload||value.invalid)return{active:false,indices:new Set(),orderedIndices:[],groups:[],panels:[],note:value.invalid?'Invalid HDBSCAN subset link.':''};
  const s=settings(value);if(s.state_id==='none')return{active:false,indices:new Set(),orderedIndices:[],groups:[],panels:[],note:'Saved HDBSCAN subset highlights are off.'};
- const states=s.state_id==='all'?payload.states:payload.states.filter(row=>row.id===s.state_id);need(states.length>0,'Requested HDBSCAN cluster is unavailable.');
+ const states=s.state_id==='all'?payload.states:payload.states.filter(row=>row.id===s.state_id);if(structural(payload)&&!states.length)return{active:false,indices:new Set(),orderedIndices:[],groups:[],panels:[],note:payload.states.length?'This per-cluster link has been replaced by structural states; choose a state.':'No supported state met the fixed TM criterion.'};need(states.length>0,'Requested HDBSCAN cluster is unavailable.');
  const groups=states.map(state=>{const saved=selectionFor(state,s.method);return {state_id:state.id,cluster_label:state.cluster_label,color:state.color||'#196a8b',indices:saved.indices,small:!state.eligible_50,degenerate:state.model_count===50,models_count:saved.models_count,method:state.eligible_50?s.method:'allmembers',choice:saved}});
  const indices=groups.flatMap(g=>g.indices).sort((a,b)=>a-b),tree=payload.all_states[s.method],smallOnly=groups.every(g=>g.small),label=smallOnly?'All members':(s.method==='mcmc50'?'MCMC50':'DISCO50')+(groups.some(g=>g.small)?' plus All members of small clusters':'');
  return {active:true,indices:new Set(indices),orderedIndices:indices,groups,panels:groups,method:s.method,state_id:s.state_id,bonsai:tree.bonsai,models:indices.map(i=>payload.models[i]),geometry_models:tree.models,geometry_scope:'method_selected_union',
-  note:`${label} · ${indices.length.toLocaleString()} selected models · ${states.length} HDBSCAN cluster${states.length===1?'':'s'}.`+(groups.some(g=>g.small)?' Clusters below 50 use all members, with their actual counts.':'')+(groups.some(g=>g.degenerate)?' Exactly 50-member clusters have one possible subset.':'')+' Noise remains in the projections and has no state ensemble.'};
+  note:structural(payload)?`${label} · ${indices.length.toLocaleString()} models · 50 per structural state.`:`${label} · ${indices.length.toLocaleString()} selected models · ${states.length} HDBSCAN cluster${states.length===1?'':'s'}.`+(groups.some(g=>g.small)?' Clusters below 50 use all members, with their actual counts.':'')+(groups.some(g=>g.degenerate)?' Exactly 50-member clusters have one possible subset.':'')+' Noise remains in the projections and has no state ensemble.'};
 }
 async function checkedBytes(file,sha,bytes){return root.AISExplorerPooledMetrics.checkedBytes(file,sha,bytes);}
 function createLoader(catalog,reader=async(file,sha)=>JSON.parse(new TextDecoder().decode(await checkedBytes(file,sha,null)))){
@@ -65,5 +92,5 @@ function createLoader(catalog,reader=async(file,sha)=>JSON.parse(new TextDecoder
 }
 async function readBonsai(descriptor,models){const p=JSON.parse(new TextDecoder().decode(await checkedBytes(descriptor.file,descriptor.sha256,descriptor.bytes)));need(p.schema_version===1&&Array.isArray(p.models)&&p.models.length===models.length&&p.models.every((r,i)=>r.model===models[i])&&digest(p.models.map(r=>r.model))===descriptor.model_order_sha256,'Loaded Bonsai tree does not match the exact active selected models.');if(root.BonsaiEnsemble)root.BonsaiEnsemble.validate(p,models);return p;}
 async function readArtifact(a){need(hash(a?.sha256)&&Number.isInteger(a?.bytes)&&a.bytes>0&&a.bytes<=67108864&&typeof a.file==='string'&&a.file.startsWith(`hdbscan-ensembles/${TARGET}/${COHORT}/`)&&/^[A-Za-z0-9_./-]+\.(?:pdb|pse)$/.test(a.file)&&!a.file.split('/').includes('..'),'Unverified HDBSCAN artifact.');return checkedBytes(a.file,a.sha256,a.bytes);}
-const api={TARGET,COHORT,METHODS,DEFAULTS,validatePayload,sourceBinding,selectionFor,settings,parseSettings,routeParams,select,createLoader,readBonsai,readArtifact};root.AISExplorerHDBStates=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+const api={TARGET,COHORT,METHODS,DEFAULTS,structural,validatePayload,sourceBinding,selectionFor,settings,parseSettings,routeParams,select,createLoader,readBonsai,readArtifact};root.AISExplorerHDBStates=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
