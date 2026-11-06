@@ -172,3 +172,5 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .structure-display-mode{display:inline-flex;flex-shrink:0;gap:0}.structure-display-mode button{font-size:11px;padding:5px 8px;border-radius:0}.structure-display-mode button+button{border-left:0}.structure-display-mode button[aria-pressed=true]{background:#fff0f2;color:var(--red);border-color:var(--red)}.structure-frame-controls #structureFrameLabel{flex:1 1 180px;min-width:0}.structure-display-mode[hidden]{display:none}
 
 .explorer-clear-actions{display:flex;flex-wrap:wrap;gap:5px;align-items:end;min-width:0}.explorer-clear-actions button{white-space:nowrap}
+
+[data-state-sample-hover=true] .hoverlayer .hovertext path{stroke-width:2px!important}[data-state-sample-hover=true] .nsewdrag{cursor:pointer!important}

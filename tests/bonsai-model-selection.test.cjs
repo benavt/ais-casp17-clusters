@@ -22,3 +22,5 @@ test('pooled MCMC/DISCO buttons toggle off an active method and switch on the ot
  await f.run("changeHDBState('mcmc50')");assert.equal(f.run('hdbStatePreference.state_id'),'all');assert.equal(f.run('hdbStatePreference.method'),'mcmc50');
  await f.run("changeHDBState('mcmc50')");assert.equal(f.run('hdbStatePreference.state_id'),'none');
 });
+
+test('clicking a sampled projection point selects the same exact frame as Bonsai',async()=>{const f=fixture();f.run("data.models=['a','b','c'];data.clusters=['C1','C1','C2'];hdbStatePayload.states[0].member_indices=[0,1,2];hdbStateHighlight.active=true");await f.run('inspectProjectionPoint(1)');assert.deepEqual(JSON.parse(JSON.stringify(f.calls)),[['model','b']]);assert.equal(f.pending.length,0)});
