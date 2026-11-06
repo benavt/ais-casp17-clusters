@@ -89,6 +89,11 @@ function bind({document,getData,getViewer,restyle}){
    if(target===getViewer())legend(result);return {colorfunc:(i,atom)=>result.scope==='model'?result.frameColor(i):result.residueColor(i,maps[i].get(String(atom.chain??'')+'|'+String(atom.resi)+'|'+String(atom.icode??'').trim()))};
   }catch(error){if(target===getViewer())legend(null,error.message);return {colorfunc:()=>colors.MISSING}}
  }
+ function selectModel(model){
+  prepare();const target=getViewer(),rows=records(getData(),target?._aisDescriptor,target?._aisModels?.length||0),index=rows.findIndex(row=>row.model_id===model);
+  if(index<0)return false;
+  $('structureFrame').value=String(index);restyle();return true;
+ }
  function visibility(target){
   if(target!==getViewer())return;
   applyDisplay(target._aisModels,hasFrameChoices?displayMode:'ensemble',Number($('structureFrame').value||0));
@@ -96,7 +101,7 @@ function bind({document,getData,getViewer,restyle}){
  select.addEventListener('change',()=>{prepare();if(!isMetric(select.value))legend(null)});
  for(const [id,mode] of [['structureSingle','single'],['structureEnsemble','ensemble']])$(id).addEventListener('click',()=>{displayMode=mode;prepare();restyle()});
  for(const id of ['structureMetricPreparation','structureFrame','structureOpacity'])$(id).addEventListener(id==='structureOpacity'?'input':'change',()=>{if(id==='structureFrame')displayMode='single';prepare();$('structureOpacityValue').textContent=$('structureOpacity').value+'%';restyle()});
- return {prepare,style,visibility,isMetric,opacity:()=>hasFrameChoices&&displayMode==='single'?1:Number($('structureOpacity').value)/100,clearLegend:()=>legend(null)};
+ return {prepare,style,visibility,selectModel,isMetric,opacity:()=>hasFrameChoices&&displayMode==='single'?1:Number($('structureOpacity').value)/100,clearLegend:()=>legend(null)};
 }
 function applyDisplay(models,mode,index){
  need(mode==='single'||mode==='ensemble','Unknown structure display mode.');

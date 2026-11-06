@@ -139,7 +139,7 @@ function renderTMStateDownloads(available){
  }
 }
 function changeTMStateMethod(method){
- $('tmStateMethod').value=method;if($('tmStateSelect').value==='none')$('tmStateSelect').value='all';changeTMState();
+ const state=$('tmStateSelect');state.value=state.value!=='none'&&$('tmStateMethod').value===method?'none':state.value==='none'?'all':state.value;$('tmStateMethod').value=method;changeTMState();
 }
 function refreshTMStateHighlight(){
  try{tmStateHighlight=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.select(tmStatePayload,tmStatePreference):{active:false,indices:new Set(),orderedIndices:[]}}
@@ -186,10 +186,10 @@ function refreshHDBHighlight(){
  updateHDBControls();
 }
 function changeHDBState(method=null){
- const previousGeometry=data.bonsai?.file+'|'+data.bonsai?.sha256,state=$('hdbStateSelect');if(method&&state.value==='none')state.value='all';
+ const previousGeometry=data.bonsai?.file+'|'+data.bonsai?.sha256,state=$('hdbStateSelect');if(method)state.value=state.value!=='none'&&hdbStatePreference.method===method?'none':state.value==='none'?'all':state.value;
  hdbStatePreference={state_id:state.value,method:method||hdbStatePreference.method,range_id:data.range_id};++hdbDownloadSerial;hdbDownloadBusy=false;refreshHDBHighlight();
  if(previousGeometry!==data.bonsai?.file+'|'+data.bonsai?.sha256){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}hdbBonsaiDisplayed='';}
- window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));scheduleSelectionDraw().then(()=>showActiveStateEnsemble()).catch(fail);
+ window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));return scheduleSelectionDraw().then(()=>showActiveStateEnsemble()).catch(fail);
 }
 function stateDownloadName(stateId,method,count,format){return data.target+'_'+(data.cohort_id||'all')+'_'+data.range_id+'_'+stateId+'_'+method+'_'+count+'.'+format}
 function bindStateDownload(link,state,method,format){
@@ -224,7 +224,7 @@ async function drawHDBBonsai(serial,current){
  try{
   if(!hdbBonsaiCache.has(key))hdbBonsaiCache.set(key,AISExplorerHDBStates.readBonsai(descriptor,selection.geometry_models));const payload=await hdbBonsaiCache.get(key);
   if(serial!==bonsaiSerial||data!==current||hdbStateHighlight.bonsai?.sha256!==descriptor.sha256)return;
-  if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>{const i=data.models.indexOf(model);(structuralStates()&&i>=0?inspectProjectionPoint(i):choose(cluster)).catch(fail)},detailsHref:'#methods'});
+  if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>inspectBonsaiPoint(cluster,model).catch(fail),detailsHref:'#methods'});
   const selectedClusters=new Set(selection.geometry_models.map(id=>current.clusters[current.models.indexOf(id)]));const representatives=current.representatives.filter(r=>selectedClusters.has(r.cluster));
   bonsaiPanel.update({...current,representatives},payload,scheme(),$('pca'),hiddenProjectionCategories,new Set(selection.models));hdbBonsaiDisplayed=key;if(selected)bonsaiPanel.select(selected);
  }catch(error){if(serial===bonsaiSerial&&data===current&&hdbStateHighlight.bonsai?.sha256===descriptor.sha256){if(bonsaiPanel){bonsaiPanel.clear();bonsaiPanel=null}$('bonsai').textContent='Saved selected-model Bonsai unavailable: '+error.message;caption.textContent=selection.note+' No full-cohort tree is substituted.';}}
@@ -241,11 +241,23 @@ async function showActiveStateEnsemble(){
  let bytes;try{if(!stateEnsembleCache.has(saved.ensemble.sha256))stateEnsembleCache.set(saved.ensemble.sha256,AISExplorerHDBStates.readArtifact(saved.ensemble).catch(e=>{stateEnsembleCache.delete(saved.ensemble.sha256);throw e}));bytes=await stateEnsembleCache.get(saved.ensemble.sha256)}catch(error){if(valid())throw error;return;}
  if(!valid())return;
  const text=new TextDecoder().decode(bytes),methodName=method==='mcmc50'?'MCMC50':'DISCO50',first=text.includes('ENDMDL')?text.slice(0,text.indexOf('ENDMDL'))+'END\n':text;
- viewer.spin(false);viewer.removeAllModels();viewer._aisModels=viewer.addModels(text,'pdb');viewer._aisDescriptor={_stateEnsemble:true,_frameBindings:saved.models.map((model_id,i)=>({model_id,source_sha256:saved.source_sha256[i]})),cluster:state.id,model:saved.models[0],color:state.color,format:'pdb',coordinate_text:first,ensemble_text:text};viewer._aisEnsemble=true;
+ viewer.spin(false);viewer.removeAllModels();viewer._aisModels=viewer.addModels(text,'pdb');viewer._aisDescriptor={_stateEnsemble:true,_ensembleSha256:saved.ensemble.sha256,_frameBindings:saved.models.map((model_id,i)=>({model_id,source_sha256:saved.source_sha256[i]})),cluster:state.id,model:saved.models[0],color:state.color,format:'pdb',coordinate_text:first,ensemble_text:text};viewer._aisEnsemble=true;
  selected=state.id;$('clusterSelect').hidden=true;if($('modelMode').parentElement)$('modelMode').parentElement.hidden=true;
  alignStructureToSetView();styleSavedStructure(viewer,state.color,.62);frameSelectedStructure();viewer.spin(spinning);notifyInspectedStructure();updateStructureViewControls();
  $('modelTitle').textContent=state.id+' · '+methodName+' ensemble';$('modelInfo').textContent='50 sampled models · '+state.model_count.toLocaleString()+' state members';$('structure').hidden=true;
  for(const [id,format]of [['ensemblePdb','pdb'],['ensemblePse','pse']]){const link=$(id);if(!link.dataset.normalText)link.dataset.normalText=link.textContent;link.textContent=format==='pdb'?'State ensemble PDB':'State PyMOL session';link.hidden=false;bindStateDownload(link,state,method,format);}
+}
+let bonsaiInspectionSerial=0;
+async function inspectBonsaiPoint(cluster,model){
+ const serial=++bonsaiInspectionSerial;
+ if(!structuralStates())return choose(cluster);
+ const current=data,payload=hdbStatePayload,method=hdbStatePreference.method;
+ const state=payload.states.find(s=>s.selections[method]?.models.includes(model));
+ if(!state)return; // Stale geometry must not select a model from another procedure.
+ const saved=state.selections[method];
+ if(viewer?._aisDescriptor?._ensembleSha256!==saved.ensemble.sha256)await choose(state.id);
+ if(serial!==bonsaiInspectionSerial||data!==current||hdbStatePayload!==payload||hdbStatePreference.method!==method||viewer?._aisDescriptor?._ensembleSha256!==saved.ensemble.sha256)return;
+ structureMetrics?.selectModel(model);
 }
 function inspectProjectionPoint(i){
  if(structuralStates()){const state=hdbStatePayload.states.find(s=>s.member_indices.includes(i));if(state)return choose(state.id);}
@@ -528,7 +540,7 @@ async function drawViolins(){
 }
 function showProjection(){if(window.AtlasExplorer)window.AtlasExplorer.feature($('projection').value);}
 async function choose(label){
- if(structuralStates()&&hdbStatePayload.states.some(s=>s.id===label)){$('hdbStateSelect').value=label;changeHDBState();return;}
+ if(structuralStates()&&hdbStatePayload.states.some(s=>s.id===label)){$('hdbStateSelect').value=label;return changeHDBState();}
  $('clusterSelect').hidden=false;if($('modelMode').parentElement)$('modelMode').parentElement.hidden=false;
  for(const id of ['ensemblePdb','ensemblePse']){const link=$(id);if(link.dataset?.appManagedDownload){link.onclick=null;delete link.dataset.appManagedDownload;for(const key of ['hdbState','method','format'])delete link.dataset[key];}if(link.dataset?.normalText)link.textContent=link.dataset.normalText;}
  if(structureViewAnchor&&viewer._aisDescriptor)structureViewAnchor.activeCamera=structureCamera();
@@ -722,7 +734,7 @@ async function drawBonsai(){
  const serial=++bonsaiSerial,current=data;if(current.cohort_id==='afsample3-bioemu2')return drawHDBBonsai(serial,current);if($('hdbBonsaiStatus'))$('hdbBonsaiStatus').hidden=true;$('bonsaiPanel').hidden=!current.bonsai;if(!current.bonsai)return;
  if(!current.bonsaiPayload){const response=await fetch(current.bonsai.file,{cache:'no-cache'});if(!response.ok)throw Error('Saved Bonsai layout unavailable');const bytes=await response.arrayBuffer(),digest=globalThis.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(x=>x.toString(16).padStart(2,'0')).join(''):typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.sha256(new Uint8Array(bytes)):null;if(digest!==null&&digest!==current.bonsai.sha256)throw Error('Saved Bonsai layout hash mismatch');current.bonsaiPayload=JSON.parse(new TextDecoder().decode(bytes));}
  if(serial!==bonsaiSerial||data!==current)return;
- if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>choose(cluster).catch(fail),detailsHref:'#methods'});
+ if(!bonsaiPanel)bonsaiPanel=BonsaiEnsemble.create($('bonsai'),{onChoose:(cluster,model)=>inspectBonsaiPoint(cluster,model).catch(fail),detailsHref:'#methods'});
  const representatives=current.representatives.filter(c=>visibleCluster(c.cluster));
  const models=current.bonsaiPayload.models.filter(r=>visibleCluster(current.clusters[current.models.indexOf(r.model)])),key=models.map(r=>r.model).join('\0');if(current.filteredBonsai?.key!==key)current.filteredBonsai={key,payload:{...current.bonsaiPayload,models}};const filtered=current.filteredBonsai.payload;bonsaiPanel.update({...current,representatives},filtered,scheme(),$('pca'),hiddenProjectionCategories,effectiveSelectionHighlight().active?new Set(effectiveSelectionHighlight().orderedIndices.map(i=>current.models[i])):null);if(selected)bonsaiPanel.select(selected);observeTMStateBonsai();
 }
