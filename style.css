@@ -160,3 +160,7 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .hdb-bonsai-overview{flex:none;margin:5px 8px;font-size:10px;color:var(--muted)}
 .hdb-bonsai-overview:has(>p[hidden]){display:none}
 .hdb-bonsai-overview summary{cursor:pointer}.hdb-bonsai-overview p{margin:6px 0}
+
+.rpf-preparation{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 8px;padding:0;border:0;font-size:12px}
+.rpf-preparation legend{font-weight:700;margin-bottom:6px}.rpf-preparation label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.rpf-preparation input{accent-color:var(--red);margin:0}

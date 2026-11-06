@@ -185,8 +185,36 @@ Reduce and phenix.reduce RPF colors have separate keys and preparation identitie
 The original Reduce payload and static comparison figures remain unchanged.
 Phenix BUILD/nuclear preparation can move heavy atoms, and its saved native RPF
 engine also differs; these are descriptive annotations, not a preparation-only
-causal comparison or runtime promotion. The comparison panels explicitly retain
-the Reduce baseline.
+causal comparison or runtime promotion. The comparison panels default to Reduce.
+Their shared **Preparation** control changes both method violins and native-pTM
+plots, independently of point colors, HDBSCAN subsets and Bonsai. The selection
+persists across tabs and views; `?rpf_preparation=phenix` shares the Phenix view.
+Both panels retain the full matched model pool. Violin axes span both preparations
+and both methods; pTM axes and color limits span both preparations' AFSample3
+scores, with unchanged native pTM and no BioEMU2 confidence imputation.
+One bubble area-per-model scale is shared across both preparations and all three
+pTM panels, so equal model counts retain equal displayed area while toggling.
+
+Violin figure downloads compare both preparations side by side. pTM downloads
+follow the selected preparation with matched axes. The four original figure URLs
+and both source JSON payloads remain byte-identical. Preparation and scorer both
+differ, so this descriptive comparison does not isolate preparation effects.
+
+Manual figure regeneration uses the two exact hash-pinned, source-matched public
+JSON payloads; it never prepares coordinates or scores models:
+
+```bash
+python3 scripts/render_rpf_preparation_figures.py \
+  --baseline metrics/sr215-rpf.json \
+  --phenix metrics/sr215-rpf-phenix.json \
+  --output PATH_TO_FRESH_OUTPUT_DIRECTORY
+```
+
+The renderer requires NumPy and Matplotlib (the reviewed figures used 2.3.5 and
+3.10.5, respectively). It validates all 2,000 original IDs/source hashes,
+baseline-prepared lineage, native confidence and six experimental-input hashes,
+and records preparation/scorer provenance and image hashes in its output manifest.
+Rendering is manual; CI does not execute it or install a plotting runtime.
 
 `selections_ready=false` is an explicit colors-only phase. It issues no native
 selection/tree fetches and exposes no placeholder ensembles. After independent
