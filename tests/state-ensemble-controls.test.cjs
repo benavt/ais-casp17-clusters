@@ -54,3 +54,8 @@ test('changing target/range clears old links immediately and suppresses any stal
 test('an unavailable catalog exposes no stale state or procedure download links',()=>{
  const f=fixture();f.run('tmStateLoader={enabled:false};updateTMStateControls()');assert.equal(f.nodes.get('tmStateControls').hidden,true);assert.equal(f.nodes.get('tmStateEnsembles').hidden,true);assert.equal(f.links().length,0);
 });
+
+test('clicking an active procedure clears its selection and rings; either procedure can be re-enabled',()=>{
+ const f=fixture();f.run("changeTMStateMethod('mcmc50');changeTMStateMethod('mcmc50')");assert.equal(f.run('tmStatePreference.state_id'),'none');assert.equal(f.run('tmStateHighlight.active'),false);assert.equal(f.nodes.get('tmStateMCMC').getAttribute('aria-pressed'),'false');
+ f.run("changeTMStateMethod('disco50')");assert.equal(f.run('tmStatePreference.state_id'),'all');assert.equal(f.run('tmStateHighlight.active'),true);f.run("changeTMStateMethod('disco50')");assert.equal(f.run('tmStateHighlight.active'),false);
+});
