@@ -32,3 +32,27 @@ test('Bonsai reader accepts only the exact active selected model set and order, 
 });
 
 test('pending verified selections never request native files or expose an original tree',async()=>{const f=fixture();f.catalog.selections_ready=false;let reads=0;const loader=api.createLoader(f.catalog,()=>{reads++;throw Error('No pending native read')});assert.equal(loader.enabled,false);const result=await loader.load(f.data);assert.equal(result.status,'pending');assert.equal(result.payload,null);assert.equal(reads,0);assert.equal(api.select(result.payload,{state_id:'all',method:'mcmc50'}).active,false);});
+
+function structuralFixture(view='density'){
+ const f=fixture(view),p=f.p;
+ p.schema_version=2;p.kind='pooled_tm_state_selection_payload';p.tm_threshold=.8;p.tm_positions=Array.from({length:58},(_,i)=>i+15);
+ p.selection_prior={procedure:'HDBSCAN',alpha:.5,tau:127.4222412109375,cohort_models:2000,subset_size:50,production_chain:0,production_iteration:10000,subset_law:'product-weight'};
+ const original=p.states[0].selections.mcmc50;
+ function choice(indices,method,state){const c=structuredClone(original);c.indices=indices;c.models=indices.map(i=>p.models[i]);c.source_sha256=indices.map(i=>p.source_sha256[i]);c.models_count=indices.length;for(const [key,ext]of [['ensemble','pdb'],['session','pse']])c[key]={file:`hdbscan-ensembles/${api.TARGET}/${api.COHORT}/all/${state}/${method}.${ext}`,sha256:'f'.repeat(64),bytes:100,models_count:indices.length};return c;}
+ const a=[...Array.from({length:60},(_,i)=>i),1950,1951,1952,1953,1954],b=Array.from({length:50},(_,i)=>i+60);
+ p.states=[a,b].map((indices,j)=>{const id='S'+(j+1);return{id,cluster_label:id,color:j?'#ff8000':'#0080ff',member_indices:indices,member_tm_scores:indices.map((_,i)=>i?.9:1),model_count:indices.length,eligible_50:true,representative:{index:indices[0],model:p.models[indices[0]]},selections:{mcmc50:choice(indices.slice(0,50),'mcmc50',id),disco50:choice(indices.slice(-50),'disco50',id)}}});
+ p.unassigned_models=2000-a.length-b.length;
+ const old=p.all_states;p.all_states={};
+ for(const method of api.METHODS){const indices=p.states.flatMap(s=>s.selections[method].indices).sort((a,b)=>a-b),c=choice(indices,method,'all');c.bonsai={...old[method].bonsai,models_count:indices.length,model_order_sha256:sha(c.models),selected_set_sha256:sha([...c.models].sort())};p.all_states[method]=c;}
+ return f;
+}
+test('TM-certified states span fine clusters and original noise; exactly50 per state on both views',()=>{
+ for(const view of ['primary','density']){const f=structuralFixture(view);assert.equal(api.validatePayload(f.p,f.entry,f.catalog,f.data),f.p);for(const method of api.METHODS){const selected=api.select(f.p,{state_id:'all',method});assert.equal(selected.models.length,100);assert.equal(selected.geometry_models.length,100);assert.equal(selected.groups.length,2);assert(selected.groups.every(g=>g.indices.length===50));assert.match(selected.note,/50 per structural state/);}assert(api.select(f.p,{state_id:'S1',method:'disco50'}).orderedIndices.includes(1954));}
+});
+test('state TM, global prior, quota, namespace and union bindings fail closed',()=>{
+ for(const mutate of [f=>f.p.tm_positions.pop(),f=>f.p.selection_prior.tau=1,f=>f.p.selection_prior.cohort_models=11000,f=>f.p.states[0].member_tm_scores[1]=.79,f=>f.p.states[1].id='S1',f=>f.p.states.push(...f.p.states),f=>f.p.states[0].selections.mcmc50.ensemble.file=f.p.states[0].selections.mcmc50.ensemble.file.replace('/S1/','/H01/'),f=>f.p.unassigned_models--,f=>f.p.all_states.disco50.indices.pop()]){const f=structuralFixture();mutate(f);assert.throws(()=>api.validatePayload(f.p,f.entry,f.catalog,f.data));}
+});
+test('obsolete per-cluster links never map silently onto a TM state; empty searches do not pad',()=>{
+ const f=structuralFixture();assert.deepEqual(api.parseSettings(new URLSearchParams('hdb_state=S2&hdb_method=disco50')),{state_id:'S2',method:'disco50'});assert.equal(api.select(f.p,{state_id:'H01',method:'mcmc50'}).active,false);
+ f.p.states=[];f.p.all_states={};f.p.unassigned_models=2000;assert.equal(api.validatePayload(f.p,f.entry,f.catalog,f.data),f.p);const s=api.select(f.p,{state_id:'all',method:'mcmc50'});assert.equal(s.active,false);assert.match(s.note,/No supported state/);
+});
