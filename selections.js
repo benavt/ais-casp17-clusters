@@ -1,7 +1,7 @@
 /* Optional saved finite-pool selections. This module never samples or scores. */
 (function(root){'use strict';
 const METHODS=['none','uniform','panel','exact','mh','disco'];
-const DEFAULTS={method:'panel',alpha:.5,tau_multiplier:1,replicate:1};
+const DEFAULTS={method:'none',alpha:.5,tau_multiplier:1,replicate:1};
 const ALPHAS=[0,.5,1],PRESSURES=[.5,1,2];
 function need(value,message){if(!value)throw Error(message);}
 function hash(v){return typeof v==='string'&&/^[a-f0-9]{64}$/.test(v);}
