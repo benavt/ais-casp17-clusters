@@ -97,7 +97,19 @@ function clearAllSelectionHighlights(){
  return scheduleSelectionDraw().then(()=>showActiveStateEnsemble()).catch(fail);
 }
 function clearSamplingHighlight(){selectionPayload=null;selectionHighlight={active:false,indices:new Set(),orderedIndices:[]};selectionResult={status:'loading',note:''};++selectionRenderSerial;}
-function selectionProjectionTraces(method){const rows=traces(method);if(hdbStateHighlight.active&&typeof AISExplorerSelections!=='undefined'){return [...rows,...hdbStateHighlight.groups.map(group=>{const t=AISExplorerSelections.overlayTrace(data,method,{active:true,orderedIndices:group.indices},scheme(),visibleCluster,hiddenProjectionCategories);return {...t,name:group.state_id+' · '+group.method,meta:{...t.meta,hdbStateHighlight:true,state_id:group.state_id}}})]}if(tmStateHighlight.active&&typeof AISExplorerTMStates!=='undefined')return [...rows,...AISExplorerTMStates.overlayTraces(data,method,tmStateHighlight,scheme(),visibleCluster,hiddenProjectionCategories)];if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,selectionHighlight,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...rows,overlay]:rows;}
+function baseSelectionProjectionTraces(method){const rows=traces(method);if(hdbStateHighlight.active&&typeof AISExplorerSelections!=='undefined'){return [...rows,...hdbStateHighlight.groups.map(group=>{const t=AISExplorerSelections.overlayTrace(data,method,{active:true,orderedIndices:group.indices},scheme(),visibleCluster,hiddenProjectionCategories);return {...t,name:group.state_id+' · '+group.method,meta:{...t.meta,hdbStateHighlight:true,state_id:group.state_id}}})]}if(tmStateHighlight.active&&typeof AISExplorerTMStates!=='undefined')return [...rows,...AISExplorerTMStates.overlayTraces(data,method,tmStateHighlight,scheme(),visibleCluster,hiddenProjectionCategories)];if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,selectionHighlight,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...rows,overlay]:rows;}
+function selectionProjectionTraces(method){
+ const rows=baseSelectionProjectionTraces(method),highlight=hdbStateHighlight.active?hdbStateHighlight:tmStateHighlight;
+ const sampler=hdbStateHighlight.active?hdbStatePreference.method:tmStatePreference.method;
+ if(!highlight.active||!['mcmc50','disco50'].includes(sampler)||typeof AISProjectionHover==='undefined')return rows;
+ return rows.map(trace=>{
+  if(!trace.meta?.hdbStateHighlight&&!trace.meta?.tmStateHighlight)return trace;
+  const group=highlight.groups.find(g=>g.state_id===trace.meta.state_id);if(group.method&&!['mcmc50','disco50'].includes(group.method))return trace;
+  const color=group.color||trace.marker.line?.color||trace.marker.color||'#151515';
+  return AISProjectionHover.decorate(trace,data,scheme(),{state_id:group.state_id,method:sampler,color});
+ });
+}
+
 function scheduleSelectionDraw(){const request=targetRequest,serial=++selectionRenderSerial;renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest||serial!==selectionRenderSerial)return;await drawProjections();if(request===targetRequest&&serial===selectionRenderSerial)await drawBonsai()});return renderQueue;}
 function readSelectionRoute(){if(typeof AISExplorerHDBStates!=='undefined'){const parts=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(parts[1]||'');hdbStatePreference={...AISExplorerHDBStates.parseSettings(params),range_id:params.get('range')||'all'}}if(typeof AISExplorerSelections!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';selectionPreference=AISExplorerSelections.parseSettings(new URLSearchParams(query),selectionPreference)}if(typeof AISExplorerTMStates!=='undefined'){const query=decodeURIComponent(location.hash.slice(1)).split('?')[1]||'';tmStatePreference=AISExplorerTMStates.parseSettings(new URLSearchParams(query),tmStatePreference)}}
 function changeSavedSelection(){
@@ -271,7 +283,7 @@ async function inspectBonsaiPoint(cluster,model){
  structureMetrics?.selectModel(model);
 }
 function inspectProjectionPoint(i){
- if(structuralStates()){const state=hdbStatePayload.states.find(s=>s.member_indices.includes(i));if(state)return choose(state.id);}
+ if(structuralStates()){const state=hdbStatePayload.states.find(s=>s.member_indices.includes(i));if(state){if(hdbStateHighlight.active&&state.selections[hdbStatePreference.method]?.models.includes(data.models[i]))return inspectBonsaiPoint(state.id,data.models[i]);return choose(state.id);}}
  return choose(data.clusters[i]);
 }
 function clusteringResidues(current=data){
@@ -508,7 +520,7 @@ function changeProjectionCategory(event,isolate=false){
 async function drawProjections(){
  const key=data.target+'|'+(data.cohort_id||'all')+'|'+(data.range_id||'all')+'|'+(data.view_id||'whole')+'|'+scheme().key;
  if(projectionLegendKey!==key){projectionLegendKey=key;hiddenProjectionCategories.clear()}
- await Promise.all(['pca','umap','tsne'].map(async method=>{const p=data.projections[method],axes=projectionAxisTitles(method,p);await AtlasResponsive.react($(method),selectionProjectionTraces(method),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:52,r:25,t:16,b:58},showlegend:false,hovermode:'closest',font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{title:{text:axes[0]},zeroline:false,gridcolor:'#edf1f2'},yaxis:{title:{text:axes[1]},zeroline:false,gridcolor:'#edf1f2'},uirevision:data.target+'-'+(data.cohort_id||'all')+'-'+(data.range_id||'all')+'-'+(data.view_id||'whole')+'-'+method},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d']});$(method).removeAllListeners('plotly_click');$(method).on('plotly_click',e=>{const i=e.points[0].customdata;if(Number.isInteger(i)&&i>=0&&i<data.models.length)inspectProjectionPoint(i).catch(fail)})}));
+ await Promise.all(['pca','umap','tsne'].map(async method=>{const p=data.projections[method],axes=projectionAxisTitles(method,p);await AtlasResponsive.react($(method),selectionProjectionTraces(method),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:52,r:25,t:16,b:58},showlegend:false,hovermode:'closest',font:{family:'Arial, sans-serif',size:11,color:'#344f5b'},xaxis:{title:{text:axes[0]},zeroline:false,gridcolor:'#edf1f2'},yaxis:{title:{text:axes[1]},zeroline:false,gridcolor:'#edf1f2'},uirevision:data.target+'-'+(data.cohort_id||'all')+'-'+(data.range_id||'all')+'-'+(data.view_id||'whole')+'-'+method},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d']});const hover=typeof AISProjectionHover!=='undefined'?AISProjectionHover.bind($(method)):null;$(method).removeAllListeners('plotly_click');$(method).on('plotly_click',e=>{const i=hover?.pick(e.event)?.index??e.points[0].customdata;if(Number.isInteger(i)&&i>=0&&i<data.models.length)inspectProjectionPoint(i).catch(fail)})}));
  const legend=$('projectionLegend');const legendCount=projectionLegendTraces().length;const panel=$('legendPanel');if(panel.dataset.legendKey!==key){panel.dataset.legendKey=key;panel.open=legendCount<=16}$('legendSummary').textContent='Legend';
  await AtlasResponsive.react(legend,projectionLegendTraces(),{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:8,r:8,t:8,b:8},xaxis:{visible:false,range:[1,2],fixedrange:true},yaxis:{visible:false,range:[1,2],fixedrange:true},showlegend:true,legend:{orientation:'h',font:{size:12}},uirevision:projectionLegendKey},{displayModeBar:false,displaylogo:false,staticPlot:false});
  legend.removeAllListeners('plotly_legendclick');legend.removeAllListeners('plotly_legenddoubleclick');
