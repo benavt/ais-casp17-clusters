@@ -174,3 +174,19 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .explorer-clear-actions{display:flex;flex-wrap:wrap;gap:5px;align-items:end;min-width:0}.explorer-clear-actions button{white-space:nowrap}
 
 [data-state-sample-hover=true] .hoverlayer .hovertext path{stroke-width:2px!important}[data-state-sample-hover=true] .nsewdrag{cursor:pointer!important}
+
+.current-sr215 .structure-display-controls,
+.current-sr215 #structureScopeNote,
+.current-sr215 #structureHint,
+.current-sr215 .structure-downloads,
+.current-sr215 #bonsaiTab,
+.current-sr215 #bonsaiPanel,
+.current-sr215 .archived-view-copy,
+.current-sr215 #ensembleDownloadsHeading,
+.current-sr215 #clusterRows td:last-child {display:none}
+.current-sr215 #comparisonScreen .molecular {height:auto;position:relative}
+.current-sr215 #comparisonScreen #molecule {
+ position:absolute;top:0;left:0;width:2px;height:2px;min-height:2px;visibility:hidden;pointer-events:none;
+}
+.current-view-copy {display:none}
+.current-sr215 .current-view-copy {display:block}
