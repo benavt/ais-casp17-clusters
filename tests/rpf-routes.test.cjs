@@ -48,3 +48,30 @@ test('pooled native data cannot enter original energy, selection or TM adapters'
  const pooled={cohort_id:'afsample3-bioemu2',schemes:[{key:'rpf_dp',values:[.8]}],models:['pooled-a']};f.context.input=pooled;f.context.raw={old:false};const out=await f.run('applySavedModelOverlays(input,raw)');assert.equal(out[0],pooled);assert.equal(out[1].payload,null);assert.equal(out[2].payload,null);assert.deepEqual(calls,[]);
  f.context.input={...pooled,cohort_id:'all'};const original=await f.run('applySavedModelOverlays(input,raw)');assert.equal(original[0].energy,true);assert.equal(original[1].payload,f.context.raw);assert.equal(original[2].payload,f.context.raw);assert.deepEqual(calls,['energy','selection','tm']);
 });
+test('plain SR215 opens the current cohort while historical deep links remain archived',()=>{
+ const f=fixture();
+ f.context.location.hash='#SR215_bmr6366';
+ assert.equal(f.run('hashSelection().cohort'),'all');
+ f.run('currentSR215Catalog={available:true}');
+ assert.equal(f.run('hashSelection().cohort'),'current-12104');
+ for(const query of ['cohort=all','range=res5-95&view=primary']){
+  f.context.location.hash='#SR215_bmr6366?'+query;
+  assert.equal(f.run('hashSelection().cohort'),'all');
+ }
+ f.context.location.hash='#SR215_bmr6366?cohort=current-12104&range=res5-95';
+ assert.equal(f.run('hashSelection().range'),'res5-95');
+ assert.equal(f.run('hashSelection().cohort'),'current-12104');
+});
+test('the current cohort resolves only audited native views and cannot receive historical overlays',async()=>{
+ const f=fixture(),id='current-12104',positions=['all','res5-95','res32-47-plus78-99'];
+ f.context.input={target:'SR215_bmr6366',cohort_id:id,range_id:'all',view_id:'primary',models:Array(12104).fill('fixture'),representatives:[]};
+ f.context.catalog={id,available:true,models:12104,residue_ranges:positions.map(key=>({id:key,data:'primary.json',views:[{id:'primary',source_view_id:'primary',data:'primary.json',source_data_sha256:'verified'}]}))};
+ f.context.target={id:'SR215_bmr6366'};
+ f.run("figureSupplementLoader={enrich(){throw Error('archived figures used')}};metricOverlayLoader=figureSupplementLoader;json=async()=>({...input,_source_sha:'verified'})");
+ const loaded=await f.run("savedViewSelection(currentCohortTarget(target,catalog),catalog.residue_ranges[0],'primary')");
+ assert.equal(loaded.loaded.models.length,12104);
+ assert.equal(await f.run('applySavedFigureSupplements(input)'),f.context.input);
+ assert.equal((await f.run('applySavedModelOverlays(input,input)'))[0],f.context.input);
+ f.run("json=async()=>({...input,_source_sha:'wrong'})");
+ await assert.rejects(f.run("savedViewSelection(currentCohortTarget(target,catalog),catalog.residue_ranges[0],'primary')"),/audited catalog/);
+});

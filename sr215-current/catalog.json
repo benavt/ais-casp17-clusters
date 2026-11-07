@@ -1,0 +1,85 @@
+{
+  "id": "current-12104",
+  "available": true,
+  "models": 12104,
+  "residue_ranges": [
+    {
+      "id": "all",
+      "name": "All residues (1\u2013139)",
+      "available": true,
+      "data": "sr215-current/all/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-current/all/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-current/all",
+          "source_data_sha256": "ca5a9dc78d250437653542375c2380c10ba19785f7fcc8d2a5fe74ff33405df7"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-current/all/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-current/all",
+          "source_data_sha256": "ae18cf846ee374243a03716b88c1aa58b307da00b2062b8b39ad306ad4276011"
+        }
+      ]
+    },
+    {
+      "id": "res5-95",
+      "name": "Residues 5\u201395",
+      "available": true,
+      "data": "sr215-current/res5-95/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-current/res5-95/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-current/res5-95",
+          "source_data_sha256": "753f019078d2e27c34976e43a3f3776a96341310cfc6218243f78dbd76e474ef"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-current/res5-95/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-current/res5-95",
+          "source_data_sha256": "ecce9579a507ad20cb92fda3343fea178ad3d1e466fafaddcdef020cff0983d2"
+        }
+      ]
+    },
+    {
+      "id": "res32-47-plus78-99",
+      "name": "Residues 32\u201347 and 78\u201399",
+      "available": true,
+      "data": "sr215-current/res32-47-plus78-99/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-current/res32-47-plus78-99/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-current/res32-47-plus78-99",
+          "source_data_sha256": "610f2aa45dfe041817cf6f6b65ec8729ef7c81ce8407eaf045731bfa0707a766"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-current/res32-47-plus78-99/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-current/res32-47-plus78-99",
+          "source_data_sha256": "d37d101af1f1092e4cff2701e52f9e6213355d9e39e68e61b7454a7a71c78477"
+        }
+      ]
+    }
+  ]
+}

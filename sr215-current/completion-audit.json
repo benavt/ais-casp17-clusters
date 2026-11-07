@@ -1,0 +1,56 @@
+{
+  "status": "validated",
+  "models": 12104,
+  "masks": {
+    "all": {
+      "models": 12104,
+      "feature_pairs": 9591,
+      "clusters": {
+        "primary": 35,
+        "density": 156
+      },
+      "public_files": {
+        "primary-memberships.csv": "3a698b334b31c84d9b28f83296e296ef53588d445fe60aa3dbba8fca812a3c06",
+        "primary.json.gz": "806c31079d75fbfdb9064a31e1adf8b308383cfb8c9432ce3ed6a29d5ebe0425",
+        "density-memberships.csv": "f0b8863cf490543ff73f1543db32dad3ff926c5f1cde7bd5150dfff8e6877d9b",
+        "density.json.gz": "1e3ce61933277051fb2de696a4140c2b968018ef6fa40bdfdab4f2c1b6167554"
+      }
+    },
+    "res5-95": {
+      "models": 12104,
+      "feature_pairs": 4095,
+      "clusters": {
+        "primary": 33,
+        "density": 151
+      },
+      "public_files": {
+        "primary-memberships.csv": "c46c755b299836c25554fab6ef0bb127e1c48b50e5719dd096d2a46dd89b63a9",
+        "primary.json.gz": "342393a7f243779807d1493417c6a675e6d4089076d9ca555f05b1fb51c69985",
+        "density-memberships.csv": "bbbd78a0822b387473ccab0cd80148ae6cf230fae471f91d6de0e673423ce404",
+        "density.json.gz": "af9697f1e01b13333e0f4df42a939de7fc9de6121f65375d194c53c92438619c"
+      }
+    },
+    "res32-47-plus78-99": {
+      "models": 12104,
+      "feature_pairs": 703,
+      "clusters": {
+        "primary": 45,
+        "density": 152
+      },
+      "public_files": {
+        "primary-memberships.csv": "a82ec4a3ba9198de94a406ac5acf5facfe7ba06d4d308f382a824516f74a03b4",
+        "primary.json.gz": "b346bebe789799a16df88c1bcb137df6c1c47fbd3b28a9162911e2bfd9689094",
+        "density-memberships.csv": "a168f93e187e25b6af73bbc3f922217ded811f9ff31ecc3534b65a3c5da94515",
+        "density.json.gz": "ea7ff25a523923ed8da63a94fdfb894d71ac67b74945d4ca81d4d5f86a7903d9"
+      }
+    }
+  },
+  "source_audits": [
+    "22854",
+    "23257",
+    "23605",
+    "24185"
+  ],
+  "snapshot_sha256": "4ce90a81931a4b1fb7ab0af9bc2be87a109ae84c4655180d4156bf8621e0ef1c",
+  "no_scores_used_for_clustering": true
+}
