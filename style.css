@@ -190,3 +190,11 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 }
 .current-view-copy {display:none}
 .current-sr215 .current-view-copy {display:block}
+
+.seed-comparison .panel-body {padding:16px}
+.seed-comparison h2 {margin:0 0 .5rem}
+.seed-comparison-controls {display:flex;flex-wrap:wrap;gap:.65rem 1rem}
+.seed-comparison-controls label {display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}
+.seed-comparison-table caption {text-align:left;font-weight:650;padding:.5rem .65rem}
+.seed-comparison-table td {font-variant-numeric:tabular-nums}
+.seed-comparison-table th,.seed-comparison-table td {white-space:nowrap}

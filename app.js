@@ -46,8 +46,10 @@ async function chooseMedoidPair(left,right,value){
 
 'use strict';
 let atlas,data,viewer,selected=null,spinning=false,loadSerial=0,targetRequest=0,modelDownloadURL=null,ensembleDownloadURL=null;
-const CURRENT_SR215='current-12104';
-let currentSR215Catalog={};
+const CURRENT_SR215='current-12104', FILTERED_SR215='no-afcluster-11104';
+const auditedSR215Counts={[CURRENT_SR215]:12104,[FILTERED_SR215]:11104};
+const isAuditedSR215=id=>Object.hasOwn(auditedSR215Counts,id);
+let currentSR215Catalog={}, filteredSR215Catalog={};
 let figureSupplementLoader=null,rpfMetricLoader=null,rpfComparisonLoader=null,rpfCatalog={},pooledMetricLoader=null,phenixRPFLoader=null,hdbStateLoader=null,pooledCatalog={};
 let hdbStatePayload=null,hdbStatePreference={state_id:'none',method:'mcmc50'},hdbStateHighlight={active:false,indices:new Set(),orderedIndices:[],groups:[],panels:[]},hdbStateResult={status:'unavailable',note:''},hdbDownloadSerial=0,hdbDownloadBusy=false,hdbBonsaiDisplayed='',hdbBonsaiCache=new Map();
 let projectionLegendKey='',renderQueue=Promise.resolve(),metricOverlayLoader=null;
@@ -289,7 +291,7 @@ function inspectProjectionPoint(i){
  return choose(data.clusters[i]);
 }
 function clusteringResidues(current=data){
- if(current.cohort_id===CURRENT_SR215){
+ if(isAuditedSR215(current.cohort_id)){
   const positions=current.clustering_positions;
   if(!Array.isArray(positions)||!positions.length)return null;
   return {canonical_positions:positions,expected_ca_count:139,reference_ranges:canonicalPositionLabel(positions),
@@ -483,7 +485,7 @@ function restyleStructureViews(){
 let projectionMetadataCatalog={schema_version:1,targets:{}};
 function projectionAxisTitles(method,projection,current=data){
  if(method!=='pca')return projection.axes;
- const range=current.range_id||'all',saved=current.cohort_id==='afsample3-bioemu2'||current.cohort_id===CURRENT_SR215?null:projectionMetadataCatalog.targets?.[current.target]?.ranges?.[range]?.views?.[current.view_id||'whole']?.pca;
+ const range=current.range_id||'all',saved=current.cohort_id==='afsample3-bioemu2'||isAuditedSR215(current.cohort_id)?null:projectionMetadataCatalog.targets?.[current.target]?.ranges?.[range]?.views?.[current.view_id||'whole']?.pca;
  let ratio=saved?.explained_variance_ratio??projection.explained_variance_ratio;
  const scope=saved?.scope_label||projection.scope_label||projection.axes?.[0]?.split(' · ').slice(1).join(' · ');
  if(ratio===undefined||ratio===null){
@@ -546,7 +548,7 @@ function canonicalPositionLabel(positions){
  ranges.push([start,end]);return ranges.map(([a,b])=>a===b?String(a):a+'–'+b).join(', ');
 }
 function configureDistanceMaps(){
- const entry=data.cohort_id==='afsample3-bioemu2'||data.cohort_id===CURRENT_SR215?data.distance_summary:supplementaryMetadataCatalog.targets?.[data.target]?.ranges?.[data.range_id||'all'];savedHeatmapSpecs=[];
+ const entry=data.cohort_id==='afsample3-bioemu2'||isAuditedSR215(data.cohort_id)?data.distance_summary:supplementaryMetadataCatalog.targets?.[data.target]?.ranges?.[data.range_id||'all'];savedHeatmapSpecs=[];
  if(entry?.views?.[data.view_id||'whole']){
   const caption=document.createElement('p');caption.className='hint';caption.textContent=entry.sample_count.toLocaleString()+' models · canonical residues '+canonicalPositionLabel(entry.positions)+'. '+entry.note;
   const plots=[['median_matrix','Median Cα distance (Å)','Viridis'],['variance_matrix','Cα distance variance (Å²)','Magma']].map(([key,name,scale])=>{const section=document.createElement('section'),title=document.createElement('h3'),node=document.createElement('div');title.textContent=name;node.id='saved-'+key;section.append(title,node);savedHeatmapSpecs.push({node,entry,key,name,scale});return section});
@@ -571,7 +573,7 @@ async function drawViolins(){
 }
 function showProjection(){if(window.AtlasExplorer)window.AtlasExplorer.feature($('projection').value);}
 async function choose(label){
- if(data?.cohort_id===CURRENT_SR215){
+ if(isAuditedSR215(data?.cohort_id)){
   const c=data.representatives.find(item=>item.cluster===label);
   if(!c)return;
   selected=label;$('clusterSelect').value=label;
@@ -596,8 +598,8 @@ async function choose(label){
  $('modelTitle').textContent=ensemble?'Ensemble':'Structure';$('modelInfo').textContent=`${cluster.model} · ${cluster.method} · ${cluster.count.toLocaleString()} ${cluster.count===1?'model':'models'} (${population(cluster.count)})${Number.isFinite(referenceSimilarity(cluster))?' · TM (5–95): '+referenceSimilarity(cluster).toFixed(3):''}`;if(modelDownloadURL)URL.revokeObjectURL(modelDownloadURL);modelDownloadURL=URL.createObjectURL(new Blob([coordinate],{type:'text/plain'}));$('structure').hidden=false;$('structure').href=modelDownloadURL;$('structure').download=cluster.file.split('/').pop();if(ensembleDownloadURL)URL.revokeObjectURL(ensembleDownloadURL);$('ensemblePdb').hidden=!cluster.ensemble_file;if(cluster.ensemble_file)setPackedDownload($('ensemblePdb'),cluster.ensemble_file);$('ensemblePse').hidden=!cluster.ensemble_pse;if(cluster.ensemble_text){ensembleDownloadURL=URL.createObjectURL(new Blob([cluster.ensemble_text],{type:'text/plain'}));$('ensemblePdb').href=ensembleDownloadURL;$('ensemblePdb').download=cluster.ensemble_file.split('/').pop()}if(cluster.ensemble_pse)setPackedDownload($('ensemblePse'),cluster.ensemble_pse);
  for(const method of ['pca','umap','tsne']){const p=data.projections[method].xy,indices=data.clusters.map((x,i)=>x===label?i:-1).filter(i=>i>=0),valid=indices.filter(i=>Number.isFinite(p[i][0]));const x=valid.reduce((a,i)=>a+p[i][0],0)/valid.length,y=valid.reduce((a,i)=>a+p[i][1],0)/valid.length;Plotly.relayout($(method),{annotations:[{x,y,text:label,showarrow:true,arrowhead:2,ax:25,ay:-30,font:{size:11,color:'#153f4d'},bgcolor:'#ffffffdd'}]})}
 }
-function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||'',cohort:['all','afsample3-bioemu2',CURRENT_SR215].includes(params.get('cohort'))?params.get('cohort'):(target==='SR215_bmr6366'&&!query&&currentSR215Catalog.available===true?CURRENT_SR215:'all')}}
-function analysisHash(target,range,view,cohort=data?.cohort_id||'all'){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');const hdb=cohort==='afsample3-bioemu2'&&hdbStatePreference.range_id===(range||'all')&&typeof AISExplorerHDBStates!=='undefined'?AISExplorerHDBStates.routeParams(hdbStatePreference):'';const tm=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.routeParams(tmStatePreference):'';return base+(hdb?'&'+hdb:'')+(cohort==='afsample3-bioemu2'||cohort===CURRENT_SR215||target==='SR215_bmr6366'&&currentSR215Catalog.available===true?'&cohort='+encodeURIComponent(cohort):'')+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')+(tm?'&'+tm:'')}
+function hashSelection(){const [target,query='']=decodeURIComponent(location.hash.slice(1)).split('?'),params=new URLSearchParams(query);return {target,range:params.get('range')||'all',view:params.get('view')||'',cohort:['all','afsample3-bioemu2',CURRENT_SR215,FILTERED_SR215].includes(params.get('cohort'))?params.get('cohort'):(target==='SR215_bmr6366'&&!query&&currentSR215Catalog.available===true?CURRENT_SR215:'all')}}
+function analysisHash(target,range,view,cohort=data?.cohort_id||'all'){const base=encodeURIComponent(target)+'?range='+encodeURIComponent(range||'all')+'&view='+encodeURIComponent(view||'whole');const hdb=cohort==='afsample3-bioemu2'&&hdbStatePreference.range_id===(range||'all')&&typeof AISExplorerHDBStates!=='undefined'?AISExplorerHDBStates.routeParams(hdbStatePreference):'';const tm=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.routeParams(tmStatePreference):'';return base+(hdb?'&'+hdb:'')+(cohort==='afsample3-bioemu2'||isAuditedSR215(cohort)||target==='SR215_bmr6366'&&currentSR215Catalog.available===true?'&cohort='+encodeURIComponent(cohort):'')+(typeof AISExplorerSelections!=='undefined'?'&'+AISExplorerSelections.routeParams(selectionPreference):'')+(tm?'&'+tm:'')}
 function navigateSavedSection(event){
  const anchor=event.target.closest?.('a[href^="#"]');if(!anchor||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
  const fragment=anchor.getAttribute('href').slice(1);let id;try{id=decodeURIComponent(fragment)}catch{return}
@@ -644,7 +646,7 @@ async function savedViewSelection(target,range,requested){
   async function read(binding){
    const raw=await json(binding.data);
    if(raw.target!==target.id||raw.view_id!==binding.source_view_id)throw Error('Saved analysis differs from the verified view catalog.');
-   if(target.cohort_id===CURRENT_SR215&&(raw.cohort_id!==CURRENT_SR215||raw.models?.length!==12104||
+   if(isAuditedSR215(target.cohort_id)&&(raw.cohort_id!==target.cohort_id||raw.models?.length!==auditedSR215Counts[target.cohort_id]||
       raw.range_id!==range.id||raw._source_sha!==binding.source_data_sha256))throw Error('Current SR215 analysis does not match the audited catalog.');
    const current=prepareRangeAnalysis(raw,{...range,asset_root:binding.asset_root||''});
    return {...current,views,policy_view_id:binding.id,visible_view_policy:true,
@@ -663,17 +665,20 @@ function configureResidueRangeControls(target,selectedRange,requested){
 
 function configureModelCohortControls(original,selectedTarget){
  const label=$('modelCohortLabel'),select=$('modelCohort');if(!label||!select)return;
- label.hidden=original.id!=='SR215_bmr6366'||(rpfCatalog?.cohort?.available!==true&&currentSR215Catalog.available!==true);
- const current=Array.from(select.options).find(option=>option.value===CURRENT_SR215);
- if(current)current.disabled=currentSR215Catalog.available!==true;
+ label.hidden=original.id!=='SR215_bmr6366'||(rpfCatalog?.cohort?.available!==true&&currentSR215Catalog.available!==true&&filteredSR215Catalog.available!==true);
+ for(const option of select.options){
+  if(isAuditedSR215(option.value))option.disabled=(option.value===CURRENT_SR215?currentSR215Catalog:filteredSR215Catalog).available!==true;
+ }
  select.value=selectedTarget.cohort_id||'all';
  const status=$('sr215CohortStatus');if(status){status.hidden=label.hidden;
   $('sr215CohortNote').textContent=selectedTarget.cohort_id===CURRENT_SR215?
-   'Current cohort · TR 2026-11-06 v1 · 12,104 matched models. Scores are full-construct annotations.':
+   'Original audited cohort · 12,104 matched models. Scores are full-construct annotations.':
+   selectedTarget.cohort_id===FILTERED_SR215?'No AF-Cluster · 11,104 matched models. Scores are full-construct annotations.':
    'Archived SR215 analysis · its original cohort, input lists and preparation are preserved.';}
 }
 function setAnalysisLoading(loading){
  if(loading&&$('rpfComparison'))$('rpfComparison').hidden=true;
+ if(loading&&typeof AISSeedComparison!=='undefined')AISSeedComparison.show(null);
  selectionLoading=loading;tmStateLoading=loading;updateTMStateControls();updateSelectionControls();updateHDBControls();
  $('clusterExplorer').setAttribute('aria-busy',String(loading));
  for(const id of ['residueRange','analysisView','color','clear','clearHighlights','family','clusterSubset','allClusters','clusterSelect','modelMode','structureScope','structureColor','setStructureView'])$(id).disabled=loading;
@@ -692,11 +697,11 @@ function clearStructure(title='Select a cluster',note=''){
 async function applySavedFigureSupplements(current){
  // Pooled views own their summaries and representatives; full-cohort figures
  // remain bound to the original saved bytes in the existing strict loader.
- if(current.cohort_id==='afsample3-bioemu2'||current.cohort_id===CURRENT_SR215)return current;
+ if(current.cohort_id==='afsample3-bioemu2'||isAuditedSR215(current.cohort_id))return current;
  return figureSupplementLoader?figureSupplementLoader.enrich(current):current;
 }
 async function applySavedModelOverlays(current,source){
- if(current.cohort_id===CURRENT_SR215){const status={status:'unavailable',payload:null,note:'Archived selections belong to their original cohort.'};return [current,status,status];}
+ if(isAuditedSR215(current.cohort_id)){const status={status:'unavailable',payload:null,note:'Archived selections belong to their original cohort.'};return [current,status,status];}
  if(current.cohort_id==='afsample3-bioemu2'){const metrics=pooledMetricLoader?await pooledMetricLoader.enrich(current):current;return [phenixRPFLoader?await phenixRPFLoader.enrich(metrics):metrics,
   {status:'unavailable',payload:null,note:'Saved selection highlights were not calculated for this pooled cohort.'},
   {status:'unavailable',payload:null,note:'TM-state subsets were not calculated for this pooled cohort.'}];}
@@ -704,11 +709,11 @@ async function applySavedModelOverlays(current,source){
   selectionLoader?selectionLoader.load(source):{status:'unavailable',payload:null,note:'No saved selection highlights are available for this analysis.'},
   tmStateLoader?tmStateLoader.load(source):{status:'unavailable',payload:null,note:'No completed TM-state subsets are available for this analysis.'}]);
 }
-function currentCohortTarget(target,catalog){
+function currentCohortTarget(target,catalog,cohortId=CURRENT_SR215){
  const ids=['all','res5-95','res32-47-plus78-99'];
- if(target.id!=='SR215_bmr6366'||catalog.id!==CURRENT_SR215||catalog.available!==true||catalog.models!==12104||
+ if(target.id!=='SR215_bmr6366'||!isAuditedSR215(cohortId)||catalog.id!==cohortId||catalog.available!==true||catalog.models!==auditedSR215Counts[cohortId]||
     JSON.stringify(catalog.residue_ranges?.map(r=>r.id))!==JSON.stringify(ids))throw Error('The audited current SR215 cohort is unavailable.');
- return {...target,cohort_id:CURRENT_SR215,residue_ranges:catalog.residue_ranges};
+ return {...target,cohort_id:cohortId,residue_ranges:catalog.residue_ranges};
 }
 async function load(target,viewId='',rangeId='all',cohortId='all'){
  const request=++targetRequest;++loadSerial;++pairSerial;clearSamplingHighlight();clearTMStateHighlight();clearHDBHighlights();setAnalysisLoading(true);try{
@@ -716,15 +721,16 @@ async function load(target,viewId='',rangeId='all',cohortId='all'){
  $('modelTitle').textContent='Loading analysis…';$('modelInfo').textContent='';$('structure').removeAttribute('href');$('ensemblePdb').hidden=true;$('ensemblePse').hidden=true;viewer.spin(false);viewer.removeAllModels();viewer._aisModels=[];viewer._aisDescriptor=null;viewer.render();notifyInspectedStructure();
  if(cohortId==='afsample3-bioemu2'&&typeof AISExplorerRPF==='undefined')throw Error('The requested pooled RPF cohort is unavailable.');
  const original=atlas.targets.find(x=>x.id===target)||atlas.targets[0];
- const found=cohortId===CURRENT_SR215?currentCohortTarget(original,currentSR215Catalog):
+ const found=isAuditedSR215(cohortId)?currentCohortTarget(original,cohortId===CURRENT_SR215?currentSR215Catalog:filteredSR215Catalog,cohortId):
   typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.cohortTarget(original,rpfCatalog,cohortId):original;
  const ranges=savedResidueRanges(found),range=ranges.find(r=>r.id===rangeId&&availableResidueRange(r))||ranges.find(r=>r.id==='all'&&availableResidueRange(r));
  if(!range)throw Error('No verified residue-range analysis is available for this target.');
- const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const scoped={...loaded,cohort_id:found.cohort_id||'all'};const withFigures=await applySavedFigureSupplements(scoped),withRPF=rpfMetricLoader&&scoped.cohort_id!==CURRENT_SR215?await rpfMetricLoader.enrich(withFigures):withFigures;const [enriched,highlightResult,tmResult]=await applySavedModelOverlays(withRPF,loaded);const hdbResult=hdbStateLoader?await hdbStateLoader.load(enriched):{status:'unavailable',payload:null,note:'No saved HDBSCAN cluster subsets are available.'};if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;document.body.classList.toggle('current-sr215',data.cohort_id===CURRENT_SR215);selectionResult=highlightResult;selectionPayload=highlightResult.payload;tmStateResult=tmResult;tmStatePayload=tmResult.payload;hdbStateResult=hdbResult;hdbStatePayload=hdbResult.payload;refreshHDBHighlight();selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureModelCohortControls(original,found);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
+ const {base,loaded,view}=await savedViewSelection(found,range,viewId);if(request!==targetRequest)return;const scoped={...loaded,cohort_id:found.cohort_id||'all'};const withFigures=await applySavedFigureSupplements(scoped),withRPF=rpfMetricLoader&&!isAuditedSR215(scoped.cohort_id)?await rpfMetricLoader.enrich(withFigures):withFigures;const [enriched,highlightResult,tmResult]=await applySavedModelOverlays(withRPF,loaded);const hdbResult=hdbStateLoader?await hdbStateLoader.load(enriched):{status:'unavailable',payload:null,note:'No saved HDBSCAN cluster subsets are available.'};if(request!==targetRequest)return;return await (renderQueue=renderQueue.catch(()=>{}).then(async()=>{if(request!==targetRequest)return;data=enriched;document.body.classList.toggle('current-sr215',isAuditedSR215(data.cohort_id));selectionResult=highlightResult;selectionPayload=highlightResult.payload;tmStateResult=tmResult;tmStatePayload=tmResult.payload;hdbStateResult=hdbResult;hdbStatePayload=hdbResult.payload;refreshHDBHighlight();selected=null;if(data.visible_view_policy&&(view.id!==viewId||range.id!==rangeId||found.id!==target))window.history?.replaceState(null,'','#'+analysisHash(found.id,range.id,view.id));configureResidueRangeControls(found,range,rangeId);configureModelCohortControls(original,found);configureRefinementControls();configureStructureControls();configureModelMode();window.dispatchEvent(new CustomEvent('atlas:cohort',{detail:{current:data,base,range}}));
+ if(typeof AISSeedComparison!=='undefined')AISSeedComparison.show(isAuditedSR215(data.cohort_id)?data:null,filteredSR215Catalog.comparison,json);
  const previousColor=$('color').value,requestedColor=new URLSearchParams(location.search).get('color');
  $('analysisViewLabel').hidden=false;$('analysisView').replaceChildren(...(base.views||[]).map(x=>Object.assign(document.createElement('option'),{value:x.id,textContent:x.name+(x.available===false?' — '+(x.status||'awaiting verified results'):''),disabled:x.available===false})));$('analysisView').value=view?.id||'whole';
  $('title').textContent=data.target;$('summary').textContent=`${data.models.length.toLocaleString()} models · ${data.representatives.length} clusters${data.clusters.some(x=>x.endsWith('.unassigned'))?' · '+data.clusters.filter(x=>x.endsWith('.unassigned')).length.toLocaleString()+' unassigned':''}`;
- if($('representativeMethodTitle'))$('representativeMethodTitle').textContent=data.representative_type==='feature-centroid'?'Representative method':'Medoid method';if($('medoidTMSection'))$('medoidTMSection').hidden=(data.cohort_id==='afsample3-bioemu2'||data.cohort_id===CURRENT_SR215)&&!data.medoid_tm;
+ if($('representativeMethodTitle'))$('representativeMethodTitle').textContent=data.representative_type==='feature-centroid'?'Representative method':'Medoid method';if($('medoidTMSection'))$('medoidTMSection').hidden=(data.cohort_id==='afsample3-bioemu2'||isAuditedSR215(data.cohort_id))&&!data.medoid_tm;
  $('representativePolicy').textContent=data.representative_policy||'One exact structural medoid per cluster, selected by mean pairwise rigid-fit Cα RMSD. Medoids are structural representatives, independently of confidence.';
  $('clusterMethod').textContent=data.clustering_method_note||'All projections use the same retained, sequence-aligned Cα distance features and the default terminal-variance mask. Clusters preserve disconnected components of the seed-42 UMAP 15-neighbor graph; candidate subdivisions require feature silhouette ≥ 0.15 and agreement ≥ 0.80 with seeds 7 and 123. Cluster colors identify the same memberships in every projection.';
  $('metricNote').hidden=!data.metric_note;$('metricNote').textContent=data.metric_note||'';$('tmColumn').hidden=!data.metric_note;
@@ -744,7 +750,7 @@ async function load(target,viewId='',rangeId='all',cohortId='all'){
 }
 async function start(){
  document.addEventListener('click',navigateSavedSection);
- const loaded=await Promise.all([json('atlas.json'),fetchClusteringResidues(),fetchOptionalJSON('residue-ranges.json'),fetchOptionalJSON('projection-metadata.json'),fetchOptionalJSON('supplementary-metadata.json'),fetchOptionalJSON('metric-overlays.json'),fetchOptionalJSON('selection-highlights.json'),fetchOptionalJSON('tm-states.json'),fetchOptionalJSON('figure-supplements.json'),fetchOptionalJSON('rpf-overlays.json'),fetchOptionalJSON('pooled-overlays.json'),fetchOptionalJSON('sr215-current/catalog.json')]);currentSR215Catalog=loaded[11];pooledCatalog=loaded[10];rpfComparisonLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createComparisonLoader(pooledCatalog):null;pooledMetricLoader=typeof AISExplorerPooledMetrics!=='undefined'?AISExplorerPooledMetrics.createLoader(pooledCatalog):null;phenixRPFLoader=typeof AISExplorerPhenixRPF!=='undefined'?AISExplorerPhenixRPF.createLoader(pooledCatalog):null;hdbStateLoader=typeof AISExplorerHDBStates!=='undefined'?AISExplorerHDBStates.createLoader(pooledCatalog):null;rpfCatalog=loaded[9];rpfMetricLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createLoader(rpfCatalog):null;figureSupplementLoader=typeof AISExplorerFigures!=='undefined'?AISExplorerFigures.createLoader(loaded[8]):null;metricOverlayLoader=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.createLoader(loaded[5]):null;selectionLoader=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.createLoader(loaded[6]):null;tmStateLoader=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.createLoader(loaded[7]):null;atlas=loaded[0];clusteringResidueCatalog=loaded[1];projectionMetadataCatalog=loaded[3];supplementaryMetadataCatalog=loaded[4];const rangeCatalog=loaded[2];atlas={...atlas,targets:atlas.targets.map(target=>({...target,residue_ranges:rangeCatalog.targets?.[target.id]?.residue_ranges||target.residue_ranges}))};for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id.split('_bmr')[0];a.title=t.id;a.setAttribute('aria-label',t.id);a.dataset.target=t.id;$('targets').append(a)}
+ const loaded=await Promise.all([json('atlas.json'),fetchClusteringResidues(),fetchOptionalJSON('residue-ranges.json'),fetchOptionalJSON('projection-metadata.json'),fetchOptionalJSON('supplementary-metadata.json'),fetchOptionalJSON('metric-overlays.json'),fetchOptionalJSON('selection-highlights.json'),fetchOptionalJSON('tm-states.json'),fetchOptionalJSON('figure-supplements.json'),fetchOptionalJSON('rpf-overlays.json'),fetchOptionalJSON('pooled-overlays.json'),fetchOptionalJSON('sr215-current/catalog.json'),fetchOptionalJSON('sr215-no-afcluster/catalog.json')]);filteredSR215Catalog=loaded[12];currentSR215Catalog=loaded[11];pooledCatalog=loaded[10];rpfComparisonLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createComparisonLoader(pooledCatalog):null;pooledMetricLoader=typeof AISExplorerPooledMetrics!=='undefined'?AISExplorerPooledMetrics.createLoader(pooledCatalog):null;phenixRPFLoader=typeof AISExplorerPhenixRPF!=='undefined'?AISExplorerPhenixRPF.createLoader(pooledCatalog):null;hdbStateLoader=typeof AISExplorerHDBStates!=='undefined'?AISExplorerHDBStates.createLoader(pooledCatalog):null;rpfCatalog=loaded[9];rpfMetricLoader=typeof AISExplorerRPF!=='undefined'?AISExplorerRPF.createLoader(rpfCatalog):null;figureSupplementLoader=typeof AISExplorerFigures!=='undefined'?AISExplorerFigures.createLoader(loaded[8]):null;metricOverlayLoader=typeof AISExplorerMetrics!=='undefined'?AISExplorerMetrics.createLoader(loaded[5]):null;selectionLoader=typeof AISExplorerSelections!=='undefined'?AISExplorerSelections.createLoader(loaded[6]):null;tmStateLoader=typeof AISExplorerTMStates!=='undefined'?AISExplorerTMStates.createLoader(loaded[7]):null;atlas=loaded[0];clusteringResidueCatalog=loaded[1];projectionMetadataCatalog=loaded[3];supplementaryMetadataCatalog=loaded[4];const rangeCatalog=loaded[2];atlas={...atlas,targets:atlas.targets.map(target=>({...target,residue_ranges:rangeCatalog.targets?.[target.id]?.residue_ranges||target.residue_ranges}))};for(const t of atlas.targets){const a=document.createElement('a');a.href='#'+encodeURIComponent(t.id);a.textContent=t.id.split('_bmr')[0];a.title=t.id;a.setAttribute('aria-label',t.id);a.dataset.target=t.id;$('targets').append(a)}
  viewer=$3Dmol.createViewer($('molecule'),{backgroundColor:'white',antialias:true});$('clusterSelect').onchange=()=>{if($('clusterSelect').value)choose($('clusterSelect').value).catch(fail)};
  structureMetrics=AISStructureMetrics.bind({document,getData:()=>data,getViewer:()=>viewer,restyle:restyleStructureViews});
  $('structureScope').onchange=()=>{structureScopePreference=$('structureScope').value;restyleStructureViews()};$('structureColor').onchange=()=>{structureMetrics.prepare();restyleStructureViews()};

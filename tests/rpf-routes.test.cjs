@@ -75,3 +75,19 @@ test('the current cohort resolves only audited native views and cannot receive h
  f.run("json=async()=>({...input,_source_sha:'wrong'})");
  await assert.rejects(f.run("savedViewSelection(currentCohortTarget(target,catalog),catalog.residue_ranges[0],'primary')"),/audited catalog/);
 });
+test('filtered SR215 links select the audited model count and retain their range and clustering view',async()=>{
+ const f=fixture(),id='no-afcluster-11104',ranges=['all','res5-95','res32-47-plus78-99'];
+ f.context.location.hash='#SR215_bmr6366?cohort=no-afcluster-11104&range=res32-47-plus78-99&view=density';
+ const selection=f.run('hashSelection()');assert.equal(selection.cohort,id);assert.equal(selection.range,ranges[2]);assert.equal(selection.view,'density');
+ f.context.target={id:'SR215_bmr6366'};
+ f.context.catalog={id,available:true,models:11104,residue_ranges:ranges.map(key=>({id:key,data:'primary.json',views:[
+  {id:'primary',source_view_id:'primary',data:'primary.json',source_data_sha256:'verified'}
+ ]}))};
+ f.context.input={target:'SR215_bmr6366',cohort_id:id,range_id:ranges[2],view_id:'primary',models:Array(11104).fill('fixture'),representatives:[]};
+ f.run("json=async()=>({...input,_source_sha:'verified'});metricOverlayLoader={enrich(){throw Error('legacy overlay')}}");
+ const result=await f.run("savedViewSelection(currentCohortTarget(target,catalog,FILTERED_SR215),catalog.residue_ranges[2],'primary')");
+ assert.equal(result.loaded.models.length,11104);
+ assert.equal((await f.run('applySavedModelOverlays(input,input)'))[0],f.context.input);
+ f.context.input.cohort_id='current-12104';
+ await assert.rejects(f.run("savedViewSelection(currentCohortTarget(target,catalog,FILTERED_SR215),catalog.residue_ranges[2],'primary')"),/audited catalog/);
+});

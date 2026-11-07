@@ -1,0 +1,89 @@
+{
+  "id": "no-afcluster-11104",
+  "available": true,
+  "models": 11104,
+  "comparison": {
+    "path": "sr215-no-afcluster/seed-comparison.json",
+    "sha256": "0d5f150f42b6c146e6d29c2ee49ba9674632d0964ad566b516c71aca1c04acbe"
+  },
+  "residue_ranges": [
+    {
+      "id": "all",
+      "name": "All residues (1\u2013139)",
+      "available": true,
+      "data": "sr215-no-afcluster/all/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-no-afcluster/all/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-no-afcluster/all",
+          "source_data_sha256": "5bc4406a6857851b9f45a742683aad2e66e2bccf723b0e0aac2517c923325f1b"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-no-afcluster/all/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-no-afcluster/all",
+          "source_data_sha256": "645ea9f05f96ce26e7bafb22040e53de9b329e16a145e67a8b11a94b0a2a3da4"
+        }
+      ]
+    },
+    {
+      "id": "res5-95",
+      "name": "Residues 5\u201395",
+      "available": true,
+      "data": "sr215-no-afcluster/res5-95/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-no-afcluster/res5-95/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-no-afcluster/res5-95",
+          "source_data_sha256": "8dcce31f1759b8220744f0af0720daa6637af650468f078456efc013bd107629"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-no-afcluster/res5-95/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-no-afcluster/res5-95",
+          "source_data_sha256": "83ea926fec357dac01c2b433fb8399ab35f85475a86d16f7d64b0eb24551e5f3"
+        }
+      ]
+    },
+    {
+      "id": "res32-47-plus78-99",
+      "name": "Residues 32\u201347 and 78\u201399",
+      "available": true,
+      "data": "sr215-no-afcluster/res32-47-plus78-99/primary.json",
+      "views": [
+        {
+          "id": "primary",
+          "name": "UMAP KNN",
+          "data": "sr215-no-afcluster/res32-47-plus78-99/primary.json",
+          "available": true,
+          "source_view_id": "primary",
+          "asset_root": "sr215-no-afcluster/res32-47-plus78-99",
+          "source_data_sha256": "5b8a92c130b69e421f7fea78743840b887f1f99521371be975f162127e78fc24"
+        },
+        {
+          "id": "density",
+          "name": "HDBSCAN",
+          "data": "sr215-no-afcluster/res32-47-plus78-99/density.json",
+          "available": true,
+          "source_view_id": "density",
+          "asset_root": "sr215-no-afcluster/res32-47-plus78-99",
+          "source_data_sha256": "d39763156621a6f6d86c2d5264dbe52a67ddff1af3c7fb8ab1486430fd5530cf"
+        }
+      ]
+    }
+  ]
+}

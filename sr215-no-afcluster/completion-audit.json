@@ -1,0 +1,58 @@
+{
+  "status": "validated",
+  "models": 11104,
+  "excluded_models": 1000,
+  "excluded_method": "afcluster",
+  "masks": {
+    "all": {
+      "models": 11104,
+      "feature_pairs": 9591,
+      "clusters": {
+        "primary": 15,
+        "density": 129
+      },
+      "public_files": {
+        "primary-memberships.csv": "2493729cf98d9ee9b65a723b06fc24b7102eb8622c101ef72692d1f213d8d495",
+        "primary.json.gz": "e9ac2b819d137b626a455d6ca7b403dc42d9801a77b8533700097e3a2d70e15a",
+        "density-memberships.csv": "2edda31b719ee6d0821f07675c0072e0d0aca87ff5f0b397c9f941fc9bc0d161",
+        "density.json.gz": "589652396f85619ed55d3d555114335df946fbf24afc2c8b023490cf068d7b3e"
+      }
+    },
+    "res5-95": {
+      "models": 11104,
+      "feature_pairs": 4095,
+      "clusters": {
+        "primary": 21,
+        "density": 133
+      },
+      "public_files": {
+        "primary-memberships.csv": "e216b345a292bc858de54e416e102d373c9abab83d37d1eac5c5e35ba2168628",
+        "primary.json.gz": "c9bc3c9e307854291a32a04201c019f334e332df2114d252570bdd88eceee489",
+        "density-memberships.csv": "909136f1031ddae7b3765127831c92f3f5acdb64d36c2777b60fe12140d1a3a9",
+        "density.json.gz": "f87c9e785570b9021d09c59710dfec2b6338e9944f637c9e0ce61600ca1731ce"
+      }
+    },
+    "res32-47-plus78-99": {
+      "models": 11104,
+      "feature_pairs": 703,
+      "clusters": {
+        "primary": 19,
+        "density": 132
+      },
+      "public_files": {
+        "primary-memberships.csv": "305291d61b6a1797902f72f3521ab7a7732e032c0f953d26cfd6def02c601548",
+        "primary.json.gz": "9de3e64f5e38afafe89752a3015c0477d3308440f90f42af9d98317eedc38c93",
+        "density-memberships.csv": "f3b295e468efbbb8f88728140b26b19eed073e9c60ebfbb271677fc00bc4e62c",
+        "density.json.gz": "acf6ddfb561b03d842e2fb0c2298234d40148c6de6f6442dc4b48f99a054ea41"
+      }
+    }
+  },
+  "source_audits": [
+    "22854",
+    "23257",
+    "23605",
+    "24185"
+  ],
+  "snapshot_sha256": "0e68e7d064af70070b5e54aa9faf80bb83c27863f7441481cd379c65ec16ce25",
+  "no_scores_used_for_clustering": true
+}
