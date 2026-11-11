@@ -16,7 +16,7 @@
           "available": true,
           "source_view_id": "primary",
           "asset_root": "sr215-current/all",
-          "source_data_sha256": "ca5a9dc78d250437653542375c2380c10ba19785f7fcc8d2a5fe74ff33405df7"
+          "source_data_sha256": "cc5d2fde10a54cd6da6663fea3711a98de552e1bc07d28596662230cf087119c"
         },
         {
           "id": "density",
@@ -25,7 +25,7 @@
           "available": true,
           "source_view_id": "density",
           "asset_root": "sr215-current/all",
-          "source_data_sha256": "ae18cf846ee374243a03716b88c1aa58b307da00b2062b8b39ad306ad4276011"
+          "source_data_sha256": "6fb320d7bc29109a9186dd2c535b649379e23bdfa7eb872bed16a6d8956c309e"
         }
       ]
     },
@@ -42,7 +42,7 @@
           "available": true,
           "source_view_id": "primary",
           "asset_root": "sr215-current/res5-95",
-          "source_data_sha256": "753f019078d2e27c34976e43a3f3776a96341310cfc6218243f78dbd76e474ef"
+          "source_data_sha256": "366a5b2435bfc6b09791fa76c03b42c25b74f6ce95c4891657522501ed4073c0"
         },
         {
           "id": "density",
@@ -51,7 +51,7 @@
           "available": true,
           "source_view_id": "density",
           "asset_root": "sr215-current/res5-95",
-          "source_data_sha256": "ecce9579a507ad20cb92fda3343fea178ad3d1e466fafaddcdef020cff0983d2"
+          "source_data_sha256": "ba9272b4c16f5f84d32a156a59c68562cd4d1204ced2dc4693e794a1f0a5153a"
         }
       ]
     },
@@ -68,7 +68,7 @@
           "available": true,
           "source_view_id": "primary",
           "asset_root": "sr215-current/res32-47-plus78-99",
-          "source_data_sha256": "610f2aa45dfe041817cf6f6b65ec8729ef7c81ce8407eaf045731bfa0707a766"
+          "source_data_sha256": "2fc89898599e870afbe645d25bc674e99b96492d70c37dc953da98a12d508644"
         },
         {
           "id": "density",
@@ -77,7 +77,7 @@
           "available": true,
           "source_view_id": "density",
           "asset_root": "sr215-current/res32-47-plus78-99",
-          "source_data_sha256": "d37d101af1f1092e4cff2701e52f9e6213355d9e39e68e61b7454a7a71c78477"
+          "source_data_sha256": "3f56602e9c391da4e5cfac6111936f1fe0ec6c32c4e8b7e258c41414f25c0d7a"
         }
       ]
     }

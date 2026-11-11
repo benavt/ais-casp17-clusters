@@ -1,0 +1,40 @@
+{
+  "plan_sha256": "0e557f9c4b275c8dd54f6c9b88d86d89c31e8c41f243769ffb62cd837e4c7276",
+  "models": 12104,
+  "residues": [
+    1,
+    139
+  ],
+  "rpf_calls": 100,
+  "tm_directional_calls": 24208,
+  "references": [
+    {
+      "state": "260_state1",
+      "ordinal": 3,
+      "RPF_DP": 0.78,
+      "RPF_Recall": 0.96,
+      "RPF_Precision": 0.92,
+      "tied_ordinals": [
+        3,
+        8,
+        18,
+        21,
+        34,
+        39,
+        49
+      ],
+      "original_sha256": "d936176e094e410c14519710d15cd894a0b5a94108e59ae1158a284cd1dc1da0"
+    },
+    {
+      "state": "260_state2",
+      "ordinal": 32,
+      "RPF_DP": 0.78,
+      "RPF_Recall": 0.95,
+      "RPF_Precision": 0.92,
+      "tied_ordinals": [
+        32
+      ],
+      "original_sha256": "12509db808c6fe177868af803af7b65893ef1a7d661c8df3c927c960ded197c0"
+    }
+  ]
+}
