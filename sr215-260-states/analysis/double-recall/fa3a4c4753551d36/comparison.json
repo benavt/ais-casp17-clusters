@@ -1,0 +1,3067 @@
+{
+  "semantics": "legacy-v1",
+  "scientific": {
+    "a_violations_explained_by_b": {
+      "candidates": [
+        "-> peak:   362 (hx1)1.832 (hx2)1.743 (x1)38.246  11104 (label)362",
+        "-> peak:   863 (hx1)1.214 (hx2)1.588 (x1)27.6   4187 (label)863",
+        "-> peak:  1344 (hx1)2.78  (hx2)2.914 (x1)38.688  2381 (label)1344",
+        "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+        "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+        "-> peak:  2152 (hx1)1.567 (hx2)0.849 (x1)29.209  1033 (label)2152",
+        "-> peak:  2194 (hx1)1.742 (hx2)4.343 (x1)27     999 (label)2194",
+        "-> peak:  2345 (hx1)2.813 (hx2)4.553 (x1)41.951  858 (label)2345",
+        "-> peak:  2353 (hx1)2.379 (hx2)4.378 (x1)35.559  848 (label)2353",
+        "-> peak:  2398 (hx1)1.835 (hx2)8.579 (x1)38.238  819 (label)2398",
+        "-> peak:  2501 (hx1)1.693 (hx2)4.127 (x1)32.785  737 (label)2501",
+        "-> peak:  2516 (hx1)1.051 (hx2)4.677 (x1)24.326  723 (label)2516",
+        "-> peak:  2547 (hx1)2.334 (hx2)4.549 (x1)36     699 (label)2547",
+        "-> peak:  2674 (hx1)0.844 (hx2)7.023 (x1)25.159  618 (label)2674",
+        "-> peak:  2749 (hx1)2.474 (hx2)1.157 (x1)41.188  562 (label)2749",
+        "-> peak:  2761 (hx1)2.607 (hx2)1.714 (x1)41.188  553 (label)2761",
+        "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+        "-> peak:  2803 (hx1)2.607 (hx2)1.15  (x1)41.188  517 (label)2803",
+        "-> peak:  2846 (hx1)1.693 (hx2)2.589 (x1)32.785  473 (label)2846",
+        "-> peak:  2854 (hx1)2.474 (hx2)1.721 (x1)41.188  466 (label)2854",
+        "-> peak:  2964 (hx1)2.505 (hx2)0.269 (x1)41.706  259 (label)2964",
+        "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+        "-> peak:  3116 (hx1)0.763 (hx2)8.689 (x1)13.505  -591 (label)3116",
+        "-> peak:  3139 (hx1)6.798 (hx2)1.693 (x1)117.461  -607 (label)3139",
+        "-> peak:  3144 (hx1)4.127 (hx2)1.693 (x1)60.999  -614 (label)3144",
+        "-> peak:  3176 (hx1)6.798 (hx2)1.567 (x1)117.461  -636 (label)3176",
+        "-> peak:  3344 (hx1)3.941 (hx2)1.847 (x1)70.045  -792 (label)3344",
+        "-> peak:  3378 (hx1)4.414 (hx2)7.096 (x1)56.108  -833 (label)3378",
+        "-> peak:  3676 (hx1)4.127 (hx2)8.385 (x1)62.805  -1244 (label)3676",
+        "-> peak:  4012 (hx1)0.837 (hx2)4.797 (x1)17.557  -1966 (label)4012",
+        "-> peak:   137 (hx1)8.277 (hx2)4.858 (x1)110.2  555 (label)137",
+        "-> peak:   231 (hx1)8.324 (hx2)7.053 (x1)112.274  998 (label)231",
+        "-> peak:   472 (hx1)8.077 (hx2)8.299 (x1)116.366  4619 (label)472",
+        "-> peak:   816 (hx1)8.593 (hx2)8.304 (x1)118.68  1013 (label)816",
+        "-> peak:   820 (hx1)8.524 (hx2)1.747 (x1)118.8  2656 (label)820",
+        "-> peak:  1023 (hx1)8.031 (hx2)6.714 (x1)119.978  1016 (label)1023",
+        "-> peak:  1034 (hx1)7.992 (hx2)4.076 (x1)120.2  2083 (label)1034",
+        "-> peak:  1265 (hx1)8.361 (hx2)1.89  (x1)121.516  1130 (label)1265",
+        "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335"
+      ],
+      "explained_records": [
+        "-> peak:   137 (hx1)8.277 (hx2)4.858 (x1)110.2  555 (label)137",
+        "-> peak:   231 (hx1)8.324 (hx2)7.053 (x1)112.274  998 (label)231",
+        "-> peak:   362 (hx1)1.832 (hx2)1.743 (x1)38.246  11104 (label)362",
+        "-> peak:   472 (hx1)8.077 (hx2)8.299 (x1)116.366  4619 (label)472",
+        "-> peak:   816 (hx1)8.593 (hx2)8.304 (x1)118.68  1013 (label)816",
+        "-> peak:   820 (hx1)8.524 (hx2)1.747 (x1)118.8  2656 (label)820",
+        "-> peak:   863 (hx1)1.214 (hx2)1.588 (x1)27.6   4187 (label)863",
+        "-> peak:  1023 (hx1)8.031 (hx2)6.714 (x1)119.978  1016 (label)1023",
+        "-> peak:  1034 (hx1)7.992 (hx2)4.076 (x1)120.2  2083 (label)1034",
+        "-> peak:  1265 (hx1)8.361 (hx2)1.89  (x1)121.516  1130 (label)1265",
+        "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+        "-> peak:  1344 (hx1)2.78  (hx2)2.914 (x1)38.688  2381 (label)1344",
+        "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+        "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+        "-> peak:  2152 (hx1)1.567 (hx2)0.849 (x1)29.209  1033 (label)2152",
+        "-> peak:  2194 (hx1)1.742 (hx2)4.343 (x1)27     999 (label)2194",
+        "-> peak:  2345 (hx1)2.813 (hx2)4.553 (x1)41.951  858 (label)2345",
+        "-> peak:  2353 (hx1)2.379 (hx2)4.378 (x1)35.559  848 (label)2353",
+        "-> peak:  2398 (hx1)1.835 (hx2)8.579 (x1)38.238  819 (label)2398",
+        "-> peak:  2501 (hx1)1.693 (hx2)4.127 (x1)32.785  737 (label)2501",
+        "-> peak:  2516 (hx1)1.051 (hx2)4.677 (x1)24.326  723 (label)2516",
+        "-> peak:  2547 (hx1)2.334 (hx2)4.549 (x1)36     699 (label)2547",
+        "-> peak:  2674 (hx1)0.844 (hx2)7.023 (x1)25.159  618 (label)2674",
+        "-> peak:  2749 (hx1)2.474 (hx2)1.157 (x1)41.188  562 (label)2749",
+        "-> peak:  2761 (hx1)2.607 (hx2)1.714 (x1)41.188  553 (label)2761",
+        "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+        "-> peak:  2803 (hx1)2.607 (hx2)1.15  (x1)41.188  517 (label)2803",
+        "-> peak:  2846 (hx1)1.693 (hx2)2.589 (x1)32.785  473 (label)2846",
+        "-> peak:  2854 (hx1)2.474 (hx2)1.721 (x1)41.188  466 (label)2854",
+        "-> peak:  2964 (hx1)2.505 (hx2)0.269 (x1)41.706  259 (label)2964",
+        "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+        "-> peak:  3116 (hx1)0.763 (hx2)8.689 (x1)13.505  -591 (label)3116",
+        "-> peak:  3139 (hx1)6.798 (hx2)1.693 (x1)117.461  -607 (label)3139",
+        "-> peak:  3144 (hx1)4.127 (hx2)1.693 (x1)60.999  -614 (label)3144",
+        "-> peak:  3176 (hx1)6.798 (hx2)1.567 (x1)117.461  -636 (label)3176",
+        "-> peak:  3344 (hx1)3.941 (hx2)1.847 (x1)70.045  -792 (label)3344",
+        "-> peak:  3378 (hx1)4.414 (hx2)7.096 (x1)56.108  -833 (label)3378",
+        "-> peak:  3676 (hx1)4.127 (hx2)8.385 (x1)62.805  -1244 (label)3676",
+        "-> peak:  4012 (hx1)0.837 (hx2)4.797 (x1)17.557  -1966 (label)4012"
+      ],
+      "hx1": [
+        "93L-HD1",
+        "55E-QG",
+        "64L-HD1",
+        "88D-HB2",
+        "88D-HB2",
+        "88D-HB3",
+        "88D-HB3",
+        "88D-HB3",
+        "88D-HB3",
+        "88D-HB2",
+        "88D-HB2",
+        "83T-HA",
+        "83T-HA",
+        "77I-HD1",
+        "91Y-QE",
+        "78I-HA",
+        "91Y-QE",
+        "92T-HB",
+        "79K-HA",
+        "112V-HA",
+        "80G-H",
+        "87G-H",
+        "92T-H",
+        "92T-H",
+        "89Y-H",
+        "88D-H",
+        "116D-H",
+        "57V-H",
+        "57V-H"
+      ],
+      "pairs": [
+        [
+          "86I-HB",
+          "85K-HB3"
+        ],
+        [
+          "122I-HG13",
+          "119L-HG"
+        ],
+        [
+          "89Y-HB2",
+          "79K-HE3"
+        ],
+        [
+          "86I-HB",
+          "87G-HA3"
+        ],
+        [
+          "78I-HB",
+          "92T-HB"
+        ],
+        [
+          "93L-HD1",
+          "77I-HA"
+        ],
+        [
+          "79K-HD3",
+          "77I-HG2"
+        ],
+        [
+          "113K-HD2",
+          "119L-HD1"
+        ],
+        [
+          "129R-HG3",
+          "130S-HA"
+        ],
+        [
+          "79K-HE2",
+          "89Y-HA"
+        ],
+        [
+          "55E-QG",
+          "54P-HA"
+        ],
+        [
+          "78I-HB",
+          "92T-H"
+        ],
+        [
+          "79K-HB3",
+          "78I-HA"
+        ],
+        [
+          "64L-HD1",
+          "103D-HA"
+        ],
+        [
+          "16E-QG",
+          "15F-HA"
+        ],
+        [
+          "31L-HD2",
+          "28Q-H"
+        ],
+        [
+          "88D-HB2",
+          "82T-HG2"
+        ],
+        [
+          "88D-HB2",
+          "83T-HG2"
+        ],
+        [
+          "88D-HB3",
+          "85K-HB2"
+        ],
+        [
+          "88D-HB3",
+          "85K-HB3"
+        ],
+        [
+          "77I-HG12",
+          "74D-H"
+        ],
+        [
+          "88D-HB3",
+          "82T-HG2"
+        ],
+        [
+          "88D-HB3",
+          "83T-HG2"
+        ],
+        [
+          "85K-HB2",
+          "88D-HB3"
+        ],
+        [
+          "88D-HB2",
+          "85K-HB2"
+        ],
+        [
+          "88D-HB2",
+          "85K-HB3"
+        ],
+        [
+          "74D-HB2",
+          "70L-HD1"
+        ],
+        [
+          "83T-HA",
+          "84E-HG2"
+        ],
+        [
+          "83T-HA",
+          "84E-HG3"
+        ],
+        [
+          "77I-HD1",
+          "72N-H"
+        ],
+        [
+          "91Y-QE",
+          "79K-HB3"
+        ],
+        [
+          "78I-HA",
+          "79K-HB3"
+        ],
+        [
+          "91Y-QE",
+          "79K-HD3"
+        ],
+        [
+          "92T-HB",
+          "78I-HB"
+        ],
+        [
+          "79K-HA",
+          "91Y-QD"
+        ],
+        [
+          "112V-HA",
+          "41V-H"
+        ],
+        [
+          "77I-HG2",
+          "91Y-HA"
+        ],
+        [
+          "78I-HG2",
+          "91Y-HA"
+        ],
+        [
+          "80G-H",
+          "91Y-HA"
+        ],
+        [
+          "87G-H",
+          "81Y-QD"
+        ],
+        [
+          "90S-H",
+          "80G-H"
+        ],
+        [
+          "92T-H",
+          "80G-H"
+        ],
+        [
+          "92T-H",
+          "78I-H"
+        ],
+        [
+          "30I-H",
+          "31L-HG"
+        ],
+        [
+          "89Y-H",
+          "89Y-QE"
+        ],
+        [
+          "88D-H",
+          "86I-HA"
+        ],
+        [
+          "116D-H",
+          "113K-HB2"
+        ],
+        [
+          "57V-H",
+          "53L-HD1"
+        ],
+        [
+          "57V-H",
+          "53L-HD2"
+        ]
+      ],
+      "pair_records": [
+        {
+          "record": "-> peak:   362 (hx1)1.832 (hx2)1.743 (x1)38.246  11104 (label)362",
+          "h1": "86I-HB",
+          "h2": "85K-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   863 (hx1)1.214 (hx2)1.588 (x1)27.6   4187 (label)863",
+          "h1": "122I-HG13",
+          "h2": "119L-HG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1344 (hx1)2.78  (hx2)2.914 (x1)38.688  2381 (label)1344",
+          "h1": "89Y-HB2",
+          "h2": "79K-HE3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+          "h1": "86I-HB",
+          "h2": "87G-HA3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+          "h1": "78I-HB",
+          "h2": "92T-HB",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+          "h1": "93L-HD1",
+          "h2": "77I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2152 (hx1)1.567 (hx2)0.849 (x1)29.209  1033 (label)2152",
+          "h1": "79K-HD3",
+          "h2": "77I-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2152 (hx1)1.567 (hx2)0.849 (x1)29.209  1033 (label)2152",
+          "h1": "113K-HD2",
+          "h2": "119L-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2194 (hx1)1.742 (hx2)4.343 (x1)27     999 (label)2194",
+          "h1": "129R-HG3",
+          "h2": "130S-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2345 (hx1)2.813 (hx2)4.553 (x1)41.951  858 (label)2345",
+          "h1": "79K-HE2",
+          "h2": "89Y-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2353 (hx1)2.379 (hx2)4.378 (x1)35.559  848 (label)2353",
+          "h1": "55E-QG",
+          "h2": "54P-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2398 (hx1)1.835 (hx2)8.579 (x1)38.238  819 (label)2398",
+          "h1": "78I-HB",
+          "h2": "92T-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2501 (hx1)1.693 (hx2)4.127 (x1)32.785  737 (label)2501",
+          "h1": "79K-HB3",
+          "h2": "78I-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2516 (hx1)1.051 (hx2)4.677 (x1)24.326  723 (label)2516",
+          "h1": "64L-HD1",
+          "h2": "103D-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2547 (hx1)2.334 (hx2)4.549 (x1)36     699 (label)2547",
+          "h1": "16E-QG",
+          "h2": "15F-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2674 (hx1)0.844 (hx2)7.023 (x1)25.159  618 (label)2674",
+          "h1": "31L-HD2",
+          "h2": "28Q-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2749 (hx1)2.474 (hx2)1.157 (x1)41.188  562 (label)2749",
+          "h1": "88D-HB2",
+          "h2": "82T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2749 (hx1)2.474 (hx2)1.157 (x1)41.188  562 (label)2749",
+          "h1": "88D-HB2",
+          "h2": "83T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2761 (hx1)2.607 (hx2)1.714 (x1)41.188  553 (label)2761",
+          "h1": "88D-HB3",
+          "h2": "85K-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2761 (hx1)2.607 (hx2)1.714 (x1)41.188  553 (label)2761",
+          "h1": "88D-HB3",
+          "h2": "85K-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+          "h1": "77I-HG12",
+          "h2": "74D-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2803 (hx1)2.607 (hx2)1.15  (x1)41.188  517 (label)2803",
+          "h1": "88D-HB3",
+          "h2": "82T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2803 (hx1)2.607 (hx2)1.15  (x1)41.188  517 (label)2803",
+          "h1": "88D-HB3",
+          "h2": "83T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2846 (hx1)1.693 (hx2)2.589 (x1)32.785  473 (label)2846",
+          "h1": "85K-HB2",
+          "h2": "88D-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2854 (hx1)2.474 (hx2)1.721 (x1)41.188  466 (label)2854",
+          "h1": "88D-HB2",
+          "h2": "85K-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2854 (hx1)2.474 (hx2)1.721 (x1)41.188  466 (label)2854",
+          "h1": "88D-HB2",
+          "h2": "85K-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2964 (hx1)2.505 (hx2)0.269 (x1)41.706  259 (label)2964",
+          "h1": "74D-HB2",
+          "h2": "70L-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "h1": "83T-HA",
+          "h2": "84E-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "h1": "83T-HA",
+          "h2": "84E-HG3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3116 (hx1)0.763 (hx2)8.689 (x1)13.505  -591 (label)3116",
+          "h1": "77I-HD1",
+          "h2": "72N-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3139 (hx1)6.798 (hx2)1.693 (x1)117.461  -607 (label)3139",
+          "h1": "91Y-QE",
+          "h2": "79K-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3144 (hx1)4.127 (hx2)1.693 (x1)60.999  -614 (label)3144",
+          "h1": "78I-HA",
+          "h2": "79K-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3176 (hx1)6.798 (hx2)1.567 (x1)117.461  -636 (label)3176",
+          "h1": "91Y-QE",
+          "h2": "79K-HD3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3344 (hx1)3.941 (hx2)1.847 (x1)70.045  -792 (label)3344",
+          "h1": "92T-HB",
+          "h2": "78I-HB",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3378 (hx1)4.414 (hx2)7.096 (x1)56.108  -833 (label)3378",
+          "h1": "79K-HA",
+          "h2": "91Y-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3676 (hx1)4.127 (hx2)8.385 (x1)62.805  -1244 (label)3676",
+          "h1": "112V-HA",
+          "h2": "41V-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  4012 (hx1)0.837 (hx2)4.797 (x1)17.557  -1966 (label)4012",
+          "h1": "77I-HG2",
+          "h2": "91Y-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  4012 (hx1)0.837 (hx2)4.797 (x1)17.557  -1966 (label)4012",
+          "h1": "78I-HG2",
+          "h2": "91Y-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   137 (hx1)8.277 (hx2)4.858 (x1)110.2  555 (label)137",
+          "h1": "80G-H",
+          "h2": "91Y-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   231 (hx1)8.324 (hx2)7.053 (x1)112.274  998 (label)231",
+          "h1": "87G-H",
+          "h2": "81Y-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   472 (hx1)8.077 (hx2)8.299 (x1)116.366  4619 (label)472",
+          "h1": "90S-H",
+          "h2": "80G-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   816 (hx1)8.593 (hx2)8.304 (x1)118.68  1013 (label)816",
+          "h1": "92T-H",
+          "h2": "80G-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   816 (hx1)8.593 (hx2)8.304 (x1)118.68  1013 (label)816",
+          "h1": "92T-H",
+          "h2": "78I-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   820 (hx1)8.524 (hx2)1.747 (x1)118.8  2656 (label)820",
+          "h1": "30I-H",
+          "h2": "31L-HG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1023 (hx1)8.031 (hx2)6.714 (x1)119.978  1016 (label)1023",
+          "h1": "89Y-H",
+          "h2": "89Y-QE",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1034 (hx1)7.992 (hx2)4.076 (x1)120.2  2083 (label)1034",
+          "h1": "88D-H",
+          "h2": "86I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1265 (hx1)8.361 (hx2)1.89  (x1)121.516  1130 (label)1265",
+          "h1": "116D-H",
+          "h2": "113K-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "h1": "57V-H",
+          "h2": "53L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "h1": "57V-H",
+          "h2": "53L-HD2",
+          "unique_hx1": true
+        }
+      ],
+      "evidence": [
+        {
+          "record": "-> peak:   362 (hx1)1.832 (hx2)1.743 (x1)38.246  11104 (label)362",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 361,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "86I-HB",
+              "85K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   863 (hx1)1.214 (hx2)1.588 (x1)27.6   4187 (label)863",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 862,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "122I-HG13",
+              "119L-HG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1344 (hx1)2.78  (hx2)2.914 (x1)38.688  2381 (label)1344",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 1343,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "89Y-HB2",
+              "79K-HE3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 1359,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "86I-HB",
+              "87G-HA3"
+            ],
+            [
+              "78I-HB",
+              "92T-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 1866,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "77I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2152 (hx1)1.567 (hx2)0.849 (x1)29.209  1033 (label)2152",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2151,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "79K-HD3",
+              "77I-HG2"
+            ],
+            [
+              "113K-HD2",
+              "119L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2194 (hx1)1.742 (hx2)4.343 (x1)27     999 (label)2194",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2193,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "129R-HG3",
+              "130S-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2345 (hx1)2.813 (hx2)4.553 (x1)41.951  858 (label)2345",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2344,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "79K-HE2",
+              "89Y-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2353 (hx1)2.379 (hx2)4.378 (x1)35.559  848 (label)2353",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2352,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "55E-QG",
+              "54P-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2398 (hx1)1.835 (hx2)8.579 (x1)38.238  819 (label)2398",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2397,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "78I-HB",
+              "92T-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2501 (hx1)1.693 (hx2)4.127 (x1)32.785  737 (label)2501",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2500,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "79K-HB3",
+              "78I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2516 (hx1)1.051 (hx2)4.677 (x1)24.326  723 (label)2516",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2515,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "64L-HD1",
+              "103D-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2547 (hx1)2.334 (hx2)4.549 (x1)36     699 (label)2547",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2546,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "16E-QG",
+              "15F-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2674 (hx1)0.844 (hx2)7.023 (x1)25.159  618 (label)2674",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2673,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "31L-HD2",
+              "28Q-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2749 (hx1)2.474 (hx2)1.157 (x1)41.188  562 (label)2749",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2748,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "88D-HB2",
+              "82T-HG2"
+            ],
+            [
+              "88D-HB2",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2761 (hx1)2.607 (hx2)1.714 (x1)41.188  553 (label)2761",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2760,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "88D-HB3",
+              "85K-HB2"
+            ],
+            [
+              "88D-HB3",
+              "85K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2790,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HG12",
+              "74D-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2803 (hx1)2.607 (hx2)1.15  (x1)41.188  517 (label)2803",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2802,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "88D-HB3",
+              "82T-HG2"
+            ],
+            [
+              "88D-HB3",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2846 (hx1)1.693 (hx2)2.589 (x1)32.785  473 (label)2846",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2845,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "85K-HB2",
+              "88D-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2854 (hx1)2.474 (hx2)1.721 (x1)41.188  466 (label)2854",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2853,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "88D-HB2",
+              "85K-HB2"
+            ],
+            [
+              "88D-HB2",
+              "85K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2964 (hx1)2.505 (hx2)0.269 (x1)41.706  259 (label)2964",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 2963,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "74D-HB2",
+              "70L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3106,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "83T-HA",
+              "84E-HG2"
+            ],
+            [
+              "83T-HA",
+              "84E-HG3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3116 (hx1)0.763 (hx2)8.689 (x1)13.505  -591 (label)3116",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3115,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "77I-HD1",
+              "72N-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3139 (hx1)6.798 (hx2)1.693 (x1)117.461  -607 (label)3139",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3138,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "79K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3144 (hx1)4.127 (hx2)1.693 (x1)60.999  -614 (label)3144",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3143,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "78I-HA",
+              "79K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3176 (hx1)6.798 (hx2)1.567 (x1)117.461  -636 (label)3176",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3175,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "79K-HD3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3344 (hx1)3.941 (hx2)1.847 (x1)70.045  -792 (label)3344",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3343,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "92T-HB",
+              "78I-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3378 (hx1)4.414 (hx2)7.096 (x1)56.108  -833 (label)3378",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3377,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "79K-HA",
+              "91Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3676 (hx1)4.127 (hx2)8.385 (x1)62.805  -1244 (label)3676",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 3675,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "112V-HA",
+              "41V-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4012 (hx1)0.837 (hx2)4.797 (x1)17.557  -1966 (label)4012",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 4011,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HG2",
+              "91Y-HA"
+            ],
+            [
+              "78I-HG2",
+              "91Y-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   137 (hx1)8.277 (hx2)4.858 (x1)110.2  555 (label)137",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5052,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "80G-H",
+              "91Y-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   231 (hx1)8.324 (hx2)7.053 (x1)112.274  998 (label)231",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5146,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "87G-H",
+              "81Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   472 (hx1)8.077 (hx2)8.299 (x1)116.366  4619 (label)472",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5387,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "90S-H",
+              "80G-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   816 (hx1)8.593 (hx2)8.304 (x1)118.68  1013 (label)816",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5731,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "92T-H",
+              "80G-H"
+            ],
+            [
+              "92T-H",
+              "78I-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   820 (hx1)8.524 (hx2)1.747 (x1)118.8  2656 (label)820",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5735,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "30I-H",
+              "31L-HG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1023 (hx1)8.031 (hx2)6.714 (x1)119.978  1016 (label)1023",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5938,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "89Y-H",
+              "89Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1034 (hx1)7.992 (hx2)4.076 (x1)120.2  2083 (label)1034",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 5949,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "88D-H",
+              "86I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1265 (hx1)8.361 (hx2)1.89  (x1)121.516  1130 (label)1265",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 6180,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-H",
+              "113K-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "explaining_result": "medoid:260_state3",
+          "first_block": 6250,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "57V-H",
+              "53L-HD1"
+            ],
+            [
+              "57V-H",
+              "53L-HD2"
+            ]
+          ]
+        }
+      ],
+      "points": [
+        [
+          86,
+          85
+        ],
+        [
+          122,
+          119
+        ],
+        [
+          89,
+          79
+        ],
+        [
+          86,
+          87
+        ],
+        [
+          78,
+          92
+        ],
+        [
+          93,
+          77
+        ],
+        [
+          79,
+          77
+        ],
+        [
+          113,
+          119
+        ],
+        [
+          129,
+          130
+        ],
+        [
+          79,
+          89
+        ],
+        [
+          55,
+          54
+        ],
+        [
+          78,
+          92
+        ],
+        [
+          79,
+          78
+        ],
+        [
+          64,
+          103
+        ],
+        [
+          16,
+          15
+        ],
+        [
+          31,
+          28
+        ],
+        [
+          88,
+          82
+        ],
+        [
+          88,
+          83
+        ],
+        [
+          88,
+          85
+        ],
+        [
+          88,
+          85
+        ],
+        [
+          77,
+          74
+        ],
+        [
+          88,
+          82
+        ],
+        [
+          88,
+          83
+        ],
+        [
+          85,
+          88
+        ],
+        [
+          88,
+          85
+        ],
+        [
+          88,
+          85
+        ],
+        [
+          74,
+          70
+        ],
+        [
+          83,
+          84
+        ],
+        [
+          83,
+          84
+        ],
+        [
+          77,
+          72
+        ],
+        [
+          91,
+          79
+        ],
+        [
+          78,
+          79
+        ],
+        [
+          91,
+          79
+        ],
+        [
+          92,
+          78
+        ],
+        [
+          79,
+          91
+        ],
+        [
+          112,
+          41
+        ],
+        [
+          77,
+          91
+        ],
+        [
+          78,
+          91
+        ],
+        [
+          80,
+          91
+        ],
+        [
+          87,
+          81
+        ],
+        [
+          90,
+          80
+        ],
+        [
+          92,
+          80
+        ],
+        [
+          92,
+          78
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          89,
+          89
+        ],
+        [
+          88,
+          86
+        ],
+        [
+          116,
+          113
+        ],
+        [
+          57,
+          53
+        ],
+        [
+          57,
+          53
+        ]
+      ],
+      "hx1_indices": [
+        93,
+        55,
+        64,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        83,
+        83,
+        77,
+        91,
+        78,
+        91,
+        92,
+        79,
+        112,
+        80,
+        87,
+        92,
+        92,
+        89,
+        88,
+        116,
+        57,
+        57
+      ],
+      "counts": {
+        "candidate_rows": 39,
+        "explained_qr_records": 39,
+        "h_h_pairs": 49,
+        "long_range_pairs": 24,
+        "long_range_unique_h1": 22
+      }
+    },
+    "b_violations_explained_by_a": {
+      "candidates": [
+        "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+        "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+        "-> peak:  1782 (hx1)1.468 (hx2)2.38  (x1)21.735  1449 (label)1782",
+        "-> peak:  2144 (hx1)2.379 (hx2)4.111 (x1)35.559  1037 (label)2144",
+        "-> peak:  2222 (hx1)1.833 (hx2)6.79  (x1)27     973 (label)2222",
+        "-> peak:  2458 (hx1)1.639 (hx2)3.849 (x1)27.015  768 (label)2458",
+        "-> peak:  2492 (hx1)1.721 (hx2)3.851 (x1)27.015  742 (label)2492",
+        "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+        "-> peak:  2538 (hx1)1.833 (hx2)7.062 (x1)27     705 (label)2538",
+        "-> peak:  2571 (hx1)2.531 (hx2)1.392 (x1)41.307  687 (label)2571",
+        "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+        "-> peak:  2582 (hx1)2.035 (hx2)1.117 (x1)30.064  680 (label)2582",
+        "-> peak:  2597 (hx1)1.917 (hx2)1.137 (x1)30.064  668 (label)2597",
+        "-> peak:  2601 (hx1)0.96  (hx2)8.241 (x1)23.033  664 (label)2601",
+        "-> peak:  2611 (hx1)2.379 (hx2)7.977 (x1)35.559  659 (label)2611",
+        "-> peak:  2863 (hx1)2.035 (hx2)0.859 (x1)30.064  457 (label)2863",
+        "-> peak:  2904 (hx1)1.909 (hx2)0.033 (x1)38.1   420 (label)2904",
+        "-> peak:  3041 (hx1)1.131 (hx2)7.032 (x1)21     -513 (label)3041",
+        "-> peak:  3109 (hx1)0.763 (hx2)8.756 (x1)13.505  -581 (label)3109",
+        "-> peak:  3174 (hx1)3.782 (hx2)0.862 (x1)59.785  -633 (label)3174",
+        "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+        "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+        "-> peak:  3228 (hx1)4.423 (hx2)8.404 (x1)61.258  -695 (label)3228",
+        "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+        "-> peak:  3288 (hx1)3.848 (hx2)0.827 (x1)57.55  -748 (label)3288",
+        "-> peak:  3296 (hx1)6.751 (hx2)1.712 (x1)117.589  -752 (label)3296",
+        "-> peak:  3371 (hx1)6.752 (hx2)1.662 (x1)117.302  -828 (label)3371",
+        "-> peak:  3675 (hx1)4.32  (hx2)0.826 (x1)61.876  -1244 (label)3675",
+        "-> peak:  3752 (hx1)0.275 (hx2)1.543 (x1)14.08  -1350 (label)3752",
+        "-> peak:  3851 (hx1)4.414 (hx2)8.072 (x1)56.108  -1551 (label)3851",
+        "-> peak:    12 (hx1)7.659 (hx2)2.34  (x1)104.042  818 (label)12",
+        "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+        "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+        "-> peak:   595 (hx1)7.42  (hx2)2.061 (x1)117.388  982 (label)595",
+        "-> peak:   936 (hx1)7.9   (hx2)1.518 (x1)119.49  635 (label)936",
+        "-> peak:   947 (hx1)8.091 (hx2)8.421 (x1)119.712  1638 (label)947",
+        "-> peak:   958 (hx1)8.179 (hx2)8.52  (x1)119.936  2088 (label)958",
+        "-> peak:   967 (hx1)8.038 (hx2)3.667 (x1)119.95  682 (label)967",
+        "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+        "-> peak:  1394 (hx1)8.768 (hx2)0.734 (x1)122.562  968 (label)1394"
+      ],
+      "explained_records": [
+        "-> peak:    12 (hx1)7.659 (hx2)2.34  (x1)104.042  818 (label)12",
+        "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+        "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+        "-> peak:   595 (hx1)7.42  (hx2)2.061 (x1)117.388  982 (label)595",
+        "-> peak:   936 (hx1)7.9   (hx2)1.518 (x1)119.49  635 (label)936",
+        "-> peak:   947 (hx1)8.091 (hx2)8.421 (x1)119.712  1638 (label)947",
+        "-> peak:   958 (hx1)8.179 (hx2)8.52  (x1)119.936  2088 (label)958",
+        "-> peak:   967 (hx1)8.038 (hx2)3.667 (x1)119.95  682 (label)967",
+        "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+        "-> peak:  1394 (hx1)8.768 (hx2)0.734 (x1)122.562  968 (label)1394",
+        "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+        "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+        "-> peak:  1782 (hx1)1.468 (hx2)2.38  (x1)21.735  1449 (label)1782",
+        "-> peak:  2144 (hx1)2.379 (hx2)4.111 (x1)35.559  1037 (label)2144",
+        "-> peak:  2222 (hx1)1.833 (hx2)6.79  (x1)27     973 (label)2222",
+        "-> peak:  2458 (hx1)1.639 (hx2)3.849 (x1)27.015  768 (label)2458",
+        "-> peak:  2492 (hx1)1.721 (hx2)3.851 (x1)27.015  742 (label)2492",
+        "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+        "-> peak:  2538 (hx1)1.833 (hx2)7.062 (x1)27     705 (label)2538",
+        "-> peak:  2571 (hx1)2.531 (hx2)1.392 (x1)41.307  687 (label)2571",
+        "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+        "-> peak:  2582 (hx1)2.035 (hx2)1.117 (x1)30.064  680 (label)2582",
+        "-> peak:  2597 (hx1)1.917 (hx2)1.137 (x1)30.064  668 (label)2597",
+        "-> peak:  2601 (hx1)0.96  (hx2)8.241 (x1)23.033  664 (label)2601",
+        "-> peak:  2611 (hx1)2.379 (hx2)7.977 (x1)35.559  659 (label)2611",
+        "-> peak:  2863 (hx1)2.035 (hx2)0.859 (x1)30.064  457 (label)2863",
+        "-> peak:  2904 (hx1)1.909 (hx2)0.033 (x1)38.1   420 (label)2904",
+        "-> peak:  3041 (hx1)1.131 (hx2)7.032 (x1)21     -513 (label)3041",
+        "-> peak:  3109 (hx1)0.763 (hx2)8.756 (x1)13.505  -581 (label)3109",
+        "-> peak:  3174 (hx1)3.782 (hx2)0.862 (x1)59.785  -633 (label)3174",
+        "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+        "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+        "-> peak:  3228 (hx1)4.423 (hx2)8.404 (x1)61.258  -695 (label)3228",
+        "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+        "-> peak:  3288 (hx1)3.848 (hx2)0.827 (x1)57.55  -748 (label)3288",
+        "-> peak:  3296 (hx1)6.751 (hx2)1.712 (x1)117.589  -752 (label)3296",
+        "-> peak:  3371 (hx1)6.752 (hx2)1.662 (x1)117.302  -828 (label)3371",
+        "-> peak:  3675 (hx1)4.32  (hx2)0.826 (x1)61.876  -1244 (label)3675",
+        "-> peak:  3752 (hx1)0.275 (hx2)1.543 (x1)14.08  -1350 (label)3752",
+        "-> peak:  3851 (hx1)4.414 (hx2)8.072 (x1)56.108  -1551 (label)3851"
+      ],
+      "hx1": [
+        "55E-QG",
+        "55E-QG",
+        "56T-HG2",
+        "55E-QG",
+        "84E-HG2",
+        "84E-HG2",
+        "55E-QG",
+        "82T-HG2",
+        "77I-HD1",
+        "32E-HA",
+        "32E-HA",
+        "82T-HG2",
+        "82T-HA",
+        "61L-HA",
+        "61L-HA",
+        "83T-HA",
+        "71I-HD1",
+        "79K-HA",
+        "20T-H",
+        "80G-H",
+        "80G-H",
+        "24E-H",
+        "36D-H",
+        "126V-H",
+        "120E-H",
+        "89Y-H",
+        "85K-H",
+        "91Y-H"
+      ],
+      "pairs": [
+        [
+          "55E-QG",
+          "59L-HD2"
+        ],
+        [
+          "55E-QG",
+          "59L-HD1"
+        ],
+        [
+          "59L-HD2",
+          "55E-QG"
+        ],
+        [
+          "56T-HG2",
+          "55E-QG"
+        ],
+        [
+          "55E-QG",
+          "56T-HA"
+        ],
+        [
+          "64L-HG",
+          "68Y-QE"
+        ],
+        [
+          "129R-HG2",
+          "126V-HA"
+        ],
+        [
+          "129R-HG3",
+          "126V-HA"
+        ],
+        [
+          "84E-HG2",
+          "82T-HG2"
+        ],
+        [
+          "84E-HG2",
+          "92T-HG2"
+        ],
+        [
+          "64L-HG",
+          "68Y-QD"
+        ],
+        [
+          "116D-HB2",
+          "115A-HB"
+        ],
+        [
+          "84E-HG3",
+          "82T-HG2"
+        ],
+        [
+          "84E-HG3",
+          "92T-HG2"
+        ],
+        [
+          "84E-HB3",
+          "86I-HG12"
+        ],
+        [
+          "84E-HB2",
+          "86I-HG12"
+        ],
+        [
+          "18V-HG2",
+          "66Q-H"
+        ],
+        [
+          "55E-QG",
+          "59L-H"
+        ],
+        [
+          "84E-HB3",
+          "86I-HD1"
+        ],
+        [
+          "84E-HB3",
+          "86I-HG2"
+        ],
+        [
+          "77I-HB",
+          "71I-HG2"
+        ],
+        [
+          "82T-HG2",
+          "81Y-QD"
+        ],
+        [
+          "77I-HD1",
+          "93L-H"
+        ],
+        [
+          "32E-HA",
+          "31L-HD2"
+        ],
+        [
+          "32E-HA",
+          "31L-HD1"
+        ],
+        [
+          "82T-HG2",
+          "84E-H"
+        ],
+        [
+          "78I-HD1",
+          "79K-H"
+        ],
+        [
+          "82T-HA",
+          "84E-H"
+        ],
+        [
+          "84E-HA",
+          "86I-HG12"
+        ],
+        [
+          "84E-HA",
+          "83T-HG2"
+        ],
+        [
+          "61L-HA",
+          "4I-HG2"
+        ],
+        [
+          "61L-HA",
+          "104V-HG1"
+        ],
+        [
+          "81Y-QE",
+          "79K-HB3"
+        ],
+        [
+          "81Y-QE",
+          "79K-HB3"
+        ],
+        [
+          "83T-HA",
+          "77I-HG2"
+        ],
+        [
+          "71I-HD1",
+          "101K-HD3"
+        ],
+        [
+          "79K-HA",
+          "81Y-H"
+        ],
+        [
+          "20T-H",
+          "16E-QG"
+        ],
+        [
+          "80G-H",
+          "77I-HA"
+        ],
+        [
+          "80G-H",
+          "78I-HA"
+        ],
+        [
+          "24E-H",
+          "27K-HE2"
+        ],
+        [
+          "36D-H",
+          "37I-HB"
+        ],
+        [
+          "126V-H",
+          "125K-HG3"
+        ],
+        [
+          "81Y-H",
+          "79K-H"
+        ],
+        [
+          "120E-H",
+          "123E-H"
+        ],
+        [
+          "89Y-H",
+          "90S-QB"
+        ],
+        [
+          "85K-H",
+          "86I-HG13"
+        ],
+        [
+          "91Y-H",
+          "99L-HD1"
+        ]
+      ],
+      "pair_records": [
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "h1": "55E-QG",
+          "h2": "59L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "h1": "55E-QG",
+          "h2": "59L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+          "h1": "59L-HD2",
+          "h2": "55E-QG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1782 (hx1)1.468 (hx2)2.38  (x1)21.735  1449 (label)1782",
+          "h1": "56T-HG2",
+          "h2": "55E-QG",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2144 (hx1)2.379 (hx2)4.111 (x1)35.559  1037 (label)2144",
+          "h1": "55E-QG",
+          "h2": "56T-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2222 (hx1)1.833 (hx2)6.79  (x1)27     973 (label)2222",
+          "h1": "64L-HG",
+          "h2": "68Y-QE",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2458 (hx1)1.639 (hx2)3.849 (x1)27.015  768 (label)2458",
+          "h1": "129R-HG2",
+          "h2": "126V-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2492 (hx1)1.721 (hx2)3.851 (x1)27.015  742 (label)2492",
+          "h1": "129R-HG3",
+          "h2": "126V-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+          "h1": "84E-HG2",
+          "h2": "82T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+          "h1": "84E-HG2",
+          "h2": "92T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2538 (hx1)1.833 (hx2)7.062 (x1)27     705 (label)2538",
+          "h1": "64L-HG",
+          "h2": "68Y-QD",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2571 (hx1)2.531 (hx2)1.392 (x1)41.307  687 (label)2571",
+          "h1": "116D-HB2",
+          "h2": "115A-HB",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+          "h1": "84E-HG3",
+          "h2": "82T-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+          "h1": "84E-HG3",
+          "h2": "92T-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2582 (hx1)2.035 (hx2)1.117 (x1)30.064  680 (label)2582",
+          "h1": "84E-HB3",
+          "h2": "86I-HG12",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2597 (hx1)1.917 (hx2)1.137 (x1)30.064  668 (label)2597",
+          "h1": "84E-HB2",
+          "h2": "86I-HG12",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2601 (hx1)0.96  (hx2)8.241 (x1)23.033  664 (label)2601",
+          "h1": "18V-HG2",
+          "h2": "66Q-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2611 (hx1)2.379 (hx2)7.977 (x1)35.559  659 (label)2611",
+          "h1": "55E-QG",
+          "h2": "59L-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2863 (hx1)2.035 (hx2)0.859 (x1)30.064  457 (label)2863",
+          "h1": "84E-HB3",
+          "h2": "86I-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2863 (hx1)2.035 (hx2)0.859 (x1)30.064  457 (label)2863",
+          "h1": "84E-HB3",
+          "h2": "86I-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2904 (hx1)1.909 (hx2)0.033 (x1)38.1   420 (label)2904",
+          "h1": "77I-HB",
+          "h2": "71I-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3041 (hx1)1.131 (hx2)7.032 (x1)21     -513 (label)3041",
+          "h1": "82T-HG2",
+          "h2": "81Y-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3109 (hx1)0.763 (hx2)8.756 (x1)13.505  -581 (label)3109",
+          "h1": "77I-HD1",
+          "h2": "93L-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3174 (hx1)3.782 (hx2)0.862 (x1)59.785  -633 (label)3174",
+          "h1": "32E-HA",
+          "h2": "31L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3174 (hx1)3.782 (hx2)0.862 (x1)59.785  -633 (label)3174",
+          "h1": "32E-HA",
+          "h2": "31L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+          "h1": "82T-HG2",
+          "h2": "84E-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+          "h1": "78I-HD1",
+          "h2": "79K-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3228 (hx1)4.423 (hx2)8.404 (x1)61.258  -695 (label)3228",
+          "h1": "82T-HA",
+          "h2": "84E-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+          "h1": "84E-HA",
+          "h2": "86I-HG12",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+          "h1": "84E-HA",
+          "h2": "83T-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3288 (hx1)3.848 (hx2)0.827 (x1)57.55  -748 (label)3288",
+          "h1": "61L-HA",
+          "h2": "4I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3288 (hx1)3.848 (hx2)0.827 (x1)57.55  -748 (label)3288",
+          "h1": "61L-HA",
+          "h2": "104V-HG1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3296 (hx1)6.751 (hx2)1.712 (x1)117.589  -752 (label)3296",
+          "h1": "81Y-QE",
+          "h2": "79K-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3371 (hx1)6.752 (hx2)1.662 (x1)117.302  -828 (label)3371",
+          "h1": "81Y-QE",
+          "h2": "79K-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3675 (hx1)4.32  (hx2)0.826 (x1)61.876  -1244 (label)3675",
+          "h1": "83T-HA",
+          "h2": "77I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3752 (hx1)0.275 (hx2)1.543 (x1)14.08  -1350 (label)3752",
+          "h1": "71I-HD1",
+          "h2": "101K-HD3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3851 (hx1)4.414 (hx2)8.072 (x1)56.108  -1551 (label)3851",
+          "h1": "79K-HA",
+          "h2": "81Y-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:    12 (hx1)7.659 (hx2)2.34  (x1)104.042  818 (label)12",
+          "h1": "20T-H",
+          "h2": "16E-QG",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+          "h1": "80G-H",
+          "h2": "77I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+          "h1": "80G-H",
+          "h2": "78I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+          "h1": "24E-H",
+          "h2": "27K-HE2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   595 (hx1)7.42  (hx2)2.061 (x1)117.388  982 (label)595",
+          "h1": "36D-H",
+          "h2": "37I-HB",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   936 (hx1)7.9   (hx2)1.518 (x1)119.49  635 (label)936",
+          "h1": "126V-H",
+          "h2": "125K-HG3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   947 (hx1)8.091 (hx2)8.421 (x1)119.712  1638 (label)947",
+          "h1": "81Y-H",
+          "h2": "79K-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   958 (hx1)8.179 (hx2)8.52  (x1)119.936  2088 (label)958",
+          "h1": "120E-H",
+          "h2": "123E-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   967 (hx1)8.038 (hx2)3.667 (x1)119.95  682 (label)967",
+          "h1": "89Y-H",
+          "h2": "90S-QB",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+          "h1": "85K-H",
+          "h2": "86I-HG13",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1394 (hx1)8.768 (hx2)0.734 (x1)122.562  968 (label)1394",
+          "h1": "91Y-H",
+          "h2": "99L-HD1",
+          "unique_hx1": true
+        }
+      ],
+      "evidence": [
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 1465,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "55E-QG",
+              "59L-HD2"
+            ],
+            [
+              "55E-QG",
+              "59L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 1505,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "59L-HD2",
+              "55E-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1782 (hx1)1.468 (hx2)2.38  (x1)21.735  1449 (label)1782",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 1781,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "56T-HG2",
+              "55E-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2144 (hx1)2.379 (hx2)4.111 (x1)35.559  1037 (label)2144",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2143,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "55E-QG",
+              "56T-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2222 (hx1)1.833 (hx2)6.79  (x1)27     973 (label)2222",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2221,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "64L-HG",
+              "68Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2458 (hx1)1.639 (hx2)3.849 (x1)27.015  768 (label)2458",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2457,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "129R-HG2",
+              "126V-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2492 (hx1)1.721 (hx2)3.851 (x1)27.015  742 (label)2492",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2491,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "129R-HG3",
+              "126V-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2528,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "84E-HG2",
+              "82T-HG2"
+            ],
+            [
+              "84E-HG2",
+              "92T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2538 (hx1)1.833 (hx2)7.062 (x1)27     705 (label)2538",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2537,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "64L-HG",
+              "68Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2571 (hx1)2.531 (hx2)1.392 (x1)41.307  687 (label)2571",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2570,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "116D-HB2",
+              "115A-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2572,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HG3",
+              "82T-HG2"
+            ],
+            [
+              "84E-HG3",
+              "92T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2582 (hx1)2.035 (hx2)1.117 (x1)30.064  680 (label)2582",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2581,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HB3",
+              "86I-HG12"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2597 (hx1)1.917 (hx2)1.137 (x1)30.064  668 (label)2597",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2596,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HB2",
+              "86I-HG12"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2601 (hx1)0.96  (hx2)8.241 (x1)23.033  664 (label)2601",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2600,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "18V-HG2",
+              "66Q-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2611 (hx1)2.379 (hx2)7.977 (x1)35.559  659 (label)2611",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2610,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "55E-QG",
+              "59L-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2863 (hx1)2.035 (hx2)0.859 (x1)30.064  457 (label)2863",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2862,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HB3",
+              "86I-HD1"
+            ],
+            [
+              "84E-HB3",
+              "86I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2904 (hx1)1.909 (hx2)0.033 (x1)38.1   420 (label)2904",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 2903,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HB",
+              "71I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3041 (hx1)1.131 (hx2)7.032 (x1)21     -513 (label)3041",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3040,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "82T-HG2",
+              "81Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3109 (hx1)0.763 (hx2)8.756 (x1)13.505  -581 (label)3109",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3108,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "77I-HD1",
+              "93L-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3174 (hx1)3.782 (hx2)0.862 (x1)59.785  -633 (label)3174",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3173,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "32E-HA",
+              "31L-HD2"
+            ],
+            [
+              "32E-HA",
+              "31L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3222,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "82T-HG2",
+              "84E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3224,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "78I-HD1",
+              "79K-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3228 (hx1)4.423 (hx2)8.404 (x1)61.258  -695 (label)3228",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3227,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "82T-HA",
+              "84E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3265,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HA",
+              "86I-HG12"
+            ],
+            [
+              "84E-HA",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3288 (hx1)3.848 (hx2)0.827 (x1)57.55  -748 (label)3288",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3287,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "61L-HA",
+              "4I-HG2"
+            ],
+            [
+              "61L-HA",
+              "104V-HG1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3296 (hx1)6.751 (hx2)1.712 (x1)117.589  -752 (label)3296",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3295,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "81Y-QE",
+              "79K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3371 (hx1)6.752 (hx2)1.662 (x1)117.302  -828 (label)3371",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3370,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "81Y-QE",
+              "79K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3675 (hx1)4.32  (hx2)0.826 (x1)61.876  -1244 (label)3675",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3674,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "83T-HA",
+              "77I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3752 (hx1)0.275 (hx2)1.543 (x1)14.08  -1350 (label)3752",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3751,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "71I-HD1",
+              "101K-HD3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3851 (hx1)4.414 (hx2)8.072 (x1)56.108  -1551 (label)3851",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 3850,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "79K-HA",
+              "81Y-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:    12 (hx1)7.659 (hx2)2.34  (x1)104.042  818 (label)12",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 4927,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "20T-H",
+              "16E-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5065,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "80G-H",
+              "77I-HA"
+            ],
+            [
+              "80G-H",
+              "78I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5366,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "24E-H",
+              "27K-HE2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   595 (hx1)7.42  (hx2)2.061 (x1)117.388  982 (label)595",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5510,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "36D-H",
+              "37I-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   936 (hx1)7.9   (hx2)1.518 (x1)119.49  635 (label)936",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5851,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "126V-H",
+              "125K-HG3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   947 (hx1)8.091 (hx2)8.421 (x1)119.712  1638 (label)947",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5862,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "81Y-H",
+              "79K-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   958 (hx1)8.179 (hx2)8.52  (x1)119.936  2088 (label)958",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5873,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "120E-H",
+              "123E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   967 (hx1)8.038 (hx2)3.667 (x1)119.95  682 (label)967",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 5882,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "89Y-H",
+              "90S-QB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 6059,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "85K-H",
+              "86I-HG13"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1394 (hx1)8.768 (hx2)0.734 (x1)122.562  968 (label)1394",
+          "explaining_result": "medoid:260_state2",
+          "first_block": 6309,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-H",
+              "99L-HD1"
+            ]
+          ]
+        }
+      ],
+      "points": [
+        [
+          55,
+          59
+        ],
+        [
+          55,
+          59
+        ],
+        [
+          59,
+          55
+        ],
+        [
+          56,
+          55
+        ],
+        [
+          55,
+          56
+        ],
+        [
+          64,
+          68
+        ],
+        [
+          129,
+          126
+        ],
+        [
+          129,
+          126
+        ],
+        [
+          84,
+          82
+        ],
+        [
+          84,
+          92
+        ],
+        [
+          64,
+          68
+        ],
+        [
+          116,
+          115
+        ],
+        [
+          84,
+          82
+        ],
+        [
+          84,
+          92
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          18,
+          66
+        ],
+        [
+          55,
+          59
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          77,
+          71
+        ],
+        [
+          82,
+          81
+        ],
+        [
+          77,
+          93
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          82,
+          84
+        ],
+        [
+          78,
+          79
+        ],
+        [
+          82,
+          84
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          61,
+          4
+        ],
+        [
+          61,
+          104
+        ],
+        [
+          81,
+          79
+        ],
+        [
+          81,
+          79
+        ],
+        [
+          83,
+          77
+        ],
+        [
+          71,
+          101
+        ],
+        [
+          79,
+          81
+        ],
+        [
+          20,
+          16
+        ],
+        [
+          80,
+          77
+        ],
+        [
+          80,
+          78
+        ],
+        [
+          24,
+          27
+        ],
+        [
+          36,
+          37
+        ],
+        [
+          126,
+          125
+        ],
+        [
+          81,
+          79
+        ],
+        [
+          120,
+          123
+        ],
+        [
+          89,
+          90
+        ],
+        [
+          85,
+          86
+        ],
+        [
+          91,
+          99
+        ]
+      ],
+      "hx1_indices": [
+        55,
+        55,
+        56,
+        55,
+        84,
+        84,
+        55,
+        82,
+        77,
+        32,
+        32,
+        82,
+        82,
+        61,
+        61,
+        83,
+        71,
+        79,
+        20,
+        80,
+        80,
+        24,
+        36,
+        126,
+        120,
+        89,
+        85,
+        91
+      ],
+      "counts": {
+        "candidate_rows": 40,
+        "explained_qr_records": 40,
+        "h_h_pairs": 48,
+        "long_range_pairs": 10,
+        "long_range_unique_h1": 9
+      }
+    },
+    "denominators": [
+      {
+        "id": "medoid:260_state2",
+        "status": "available",
+        "inconsistent1": 1804,
+        "total1": 4861,
+        "inconsistent2": 529,
+        "total2": 1636,
+        "denominator": 2333
+      }
+    ],
+    "legacy_a_denominator": {
+      "inconsistent1": 1804,
+      "inconsistent2": 529,
+      "denominator": 2333
+    },
+    "plot": {
+      "a": {
+        "x": [
+          55,
+          55,
+          59,
+          56,
+          55,
+          64,
+          129,
+          129,
+          84,
+          84,
+          64,
+          116,
+          84,
+          84,
+          84,
+          84,
+          18,
+          55,
+          84,
+          84,
+          77,
+          82,
+          77,
+          32,
+          32,
+          82,
+          78,
+          82,
+          84,
+          84,
+          61,
+          61,
+          81,
+          81,
+          83,
+          71,
+          79,
+          20,
+          80,
+          80,
+          24,
+          36,
+          126,
+          81,
+          120,
+          89,
+          85,
+          91
+        ],
+        "y": [
+          59,
+          59,
+          55,
+          55,
+          56,
+          68,
+          126,
+          126,
+          82,
+          92,
+          68,
+          115,
+          82,
+          92,
+          86,
+          86,
+          66,
+          59,
+          86,
+          86,
+          71,
+          81,
+          93,
+          31,
+          31,
+          84,
+          79,
+          84,
+          86,
+          83,
+          4,
+          104,
+          79,
+          79,
+          77,
+          101,
+          81,
+          16,
+          77,
+          78,
+          27,
+          37,
+          125,
+          79,
+          123,
+          90,
+          86,
+          99
+        ]
+      },
+      "b": {
+        "x": [
+          86,
+          122,
+          89,
+          86,
+          78,
+          93,
+          79,
+          113,
+          129,
+          79,
+          55,
+          78,
+          79,
+          64,
+          16,
+          31,
+          88,
+          88,
+          88,
+          88,
+          77,
+          88,
+          88,
+          85,
+          88,
+          88,
+          74,
+          83,
+          83,
+          77,
+          91,
+          78,
+          91,
+          92,
+          79,
+          112,
+          77,
+          78,
+          80,
+          87,
+          90,
+          92,
+          92,
+          30,
+          89,
+          88,
+          116,
+          57,
+          57
+        ],
+        "y": [
+          85,
+          119,
+          79,
+          87,
+          92,
+          77,
+          77,
+          119,
+          130,
+          89,
+          54,
+          92,
+          78,
+          103,
+          15,
+          28,
+          82,
+          83,
+          85,
+          85,
+          74,
+          82,
+          83,
+          88,
+          85,
+          85,
+          70,
+          84,
+          84,
+          72,
+          79,
+          79,
+          79,
+          78,
+          91,
+          41,
+          91,
+          91,
+          91,
+          81,
+          80,
+          80,
+          78,
+          31,
+          89,
+          86,
+          113,
+          53,
+          53
+        ]
+      },
+      "a_histogram": [
+        55,
+        55,
+        56,
+        55,
+        84,
+        84,
+        55,
+        82,
+        77,
+        32,
+        32,
+        82,
+        82,
+        61,
+        61,
+        83,
+        71,
+        79,
+        20,
+        80,
+        80,
+        24,
+        36,
+        126,
+        120,
+        89,
+        85,
+        91
+      ],
+      "b_histogram": [
+        93,
+        55,
+        64,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        88,
+        83,
+        83,
+        77,
+        91,
+        78,
+        91,
+        92,
+        79,
+        112,
+        80,
+        87,
+        92,
+        92,
+        89,
+        88,
+        116,
+        57,
+        57
+      ]
+    }
+  },
+  "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+  "presentation": {
+    "a_name": "260 state 2 \u00b7 structural medoid MODEL 40",
+    "b_name": "260 state 3 \u00b7 structural medoid MODEL 42",
+    "a_color": "blue",
+    "b_color": "orange",
+    "length": 139,
+    "max_h1": 10
+  },
+  "context": {
+    "kind": "medoid-pair",
+    "mask": "all",
+    "repeat": null,
+    "a_label": "260 state 2 \u00b7 structural medoid MODEL 40",
+    "b_label": "260 state 3 \u00b7 structural medoid MODEL 42"
+  },
+  "source_scientific_json_sha256": "127d597ecef02e8092b141e6ce6038f8ef8e9d4381854954f829eda1118be0cf",
+  "source_report_manifest_sha256": "595a388f5023dac65f5928e633a61c4b557c6890abcfd431f8663d13f49b7ef1",
+  "plan_sha256": "4ff8717175a052cdc1b36ff8c558333e57ad857c28b3b348687214ac77750c7a",
+  "inputs": {
+    "a": [
+      {
+        "id": "medoid:260_state2",
+        "format": "directory",
+        "raw_hashes": {
+          "sr215_DP.QR": "8059e54757d50009c7d0ba8c16d3e0afccc8b03ccc1a74d7faccb2c0c89a33b0",
+          "cnoe.peaks_match.gz": "bce791a588a96b216c83a36cab08e8d37ca79b9b9f3c0edafbf360c90f96e9b0",
+          "nnoe.peaks_match.gz": "1b9bbaf4f8bd5010e676bdf4ce4d8ba916c419ca119de5188f832299eaaae8b0",
+          "sr215_DP.ovw": "8730eafb30a6eafe55e9cd92de8195b70a174f08060be53fd0a6ba2089a29efd"
+        },
+        "logical_sha256": {
+          "sr215_DP.QR": "8059e54757d50009c7d0ba8c16d3e0afccc8b03ccc1a74d7faccb2c0c89a33b0",
+          "cnoe.peaks_match.gz": "b17e8a0ba7380563feacc5d9b68a814d07f0993f2436527995483bc3be53ef2a",
+          "nnoe.peaks_match.gz": "c22333061c16d612c3fd0b02247470c46d44d1b82cc4bd3c4f4a7c2d307a8355",
+          "sr215_DP.ovw": "8730eafb30a6eafe55e9cd92de8195b70a174f08060be53fd0a6ba2089a29efd"
+        },
+        "match_order": [
+          "cnoe.peaks_match.gz",
+          "nnoe.peaks_match.gz"
+        ],
+        "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+        "coordinate_sha256": "044947b18a1d95f32c3a3825c80fe68825781bd2b5205b72cd04c59e3f9d7fb2",
+        "context": "standalone",
+        "members": [
+          "SR215_bmr6366__260State2__0040"
+        ]
+      }
+    ],
+    "b": [
+      {
+        "id": "medoid:260_state3",
+        "format": "directory",
+        "raw_hashes": {
+          "sr215_DP.QR": "5912730957057f80519e078ac0b67674fc82c08844ac2d31b9cca4f2eb618c1a",
+          "cnoe.peaks_match.gz": "3dbf730415d591f325f1c0ef3a9b806f7ca1f09551d22ec25f3be2f98f395613",
+          "nnoe.peaks_match.gz": "5b768fb14cfc139c3028e4d3e0e8396c3036e71b6d58ebe18bf92e0885b3d8da",
+          "sr215_DP.ovw": "f70391836c5835acd6d51a4ad15a5fbd4de8c83111c3521c259622c8abdbf739"
+        },
+        "logical_sha256": {
+          "sr215_DP.QR": "5912730957057f80519e078ac0b67674fc82c08844ac2d31b9cca4f2eb618c1a",
+          "cnoe.peaks_match.gz": "746b8571cf79c7a03533e7560c9d00bfa96de31b03e321d89d4df6e61b2acbda",
+          "nnoe.peaks_match.gz": "9ba3cfe6a10e2eb8449763fa6c4ff377328aa358c2ee423c2c8b9901a651fba2",
+          "sr215_DP.ovw": "f70391836c5835acd6d51a4ad15a5fbd4de8c83111c3521c259622c8abdbf739"
+        },
+        "match_order": [
+          "cnoe.peaks_match.gz",
+          "nnoe.peaks_match.gz"
+        ],
+        "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+        "coordinate_sha256": "fb11d3012d2ef47ba20929e38cb93ce18185ba6345c017b40796098256c61466",
+        "context": "standalone",
+        "members": [
+          "SR215_bmr6366__260State3__0042"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "cohort_id": "afsample3-bioemu2-260-states-2150",
+  "models": 2150,
+  "scopes": {
+    "all": {
+      "bonsai_models": 450,
+      "views": {
+        "primary": {
+          "clusters": 1,
+          "unassigned": 0,
+          "payload_sha256": "d7b9e6a73e74a00d49419133f1f973f8ce0dab2360f5d10f4feabda42a38ddd1",
+          "membership_sha256": "3ccda15b4505e92b772927fe94327de81864e06fe208c078ac28ad71c4ce16fe",
+          "representative_bundle_sha256": "ac7ecc0ca9a55ae8d474c74ce8431bed114819152f725163e004f7e1d873f477"
+        },
+        "density": {
+          "clusters": 24,
+          "unassigned": 1109,
+          "payload_sha256": "64e6238a912c8fc55dabac06cfb0f4988981259c76f57b77d2df8b5c5127f579",
+          "membership_sha256": "6bd245746737c33da414b07fec42cf722643edb6e54e1705e1164b05aa5a8062",
+          "representative_bundle_sha256": "182294292cb419e481c04720f6d2aa55b8edd6e33262619d51e5a8b96d211a47"
+        }
+      }
+    },
+    "res5-95": {
+      "bonsai_models": 450,
+      "views": {
+        "primary": {
+          "clusters": 3,
+          "unassigned": 0,
+          "payload_sha256": "8e6e67bb14b4b7d5e2acefb2c40b844d9465143f1c49c91f42640d496d1fc91e",
+          "membership_sha256": "f8f61f2b3515056104e22a65de963d7b49ce03fdcc6886fdf166de80f6ee3bcc",
+          "representative_bundle_sha256": "4d890dea3a004da74042c7fb39315b5a28a118b3a0d69b09ea118bf51ea9ff5c"
+        },
+        "density": {
+          "clusters": 23,
+          "unassigned": 1080,
+          "payload_sha256": "16e030803f5f62564d6d21b2d3e14d35e7f95e52f1c295079f742cbb7ebddf83",
+          "membership_sha256": "e293d1bb3ee157c387bc157327bc84289c024dd1f6de89dbff901cb064a94666",
+          "representative_bundle_sha256": "5b308f0703a78300fdd8fc627405c59199a9f94c95a215ccca13dfa9b3801fa9"
+        }
+      }
+    },
+    "res32-47-plus78-99": {
+      "bonsai_models": 450,
+      "views": {
+        "primary": {
+          "clusters": 2,
+          "unassigned": 0,
+          "payload_sha256": "858d859908ca6545fb00169c1f63cf0a98105779afdcd00def859c7de0c92ddb",
+          "membership_sha256": "5a80142268bbf68779be243aa742a64abff13c5ecd719ae1c2016e68dc143cc3",
+          "representative_bundle_sha256": "2096e7c529b4bbf0555c32cef25f6daa9eef03eda12676b5d9903d84a05c57e0"
+        },
+        "density": {
+          "clusters": 28,
+          "unassigned": 1120,
+          "payload_sha256": "8d60e8afc5ba264a9071801c91e25d17c05a4d684f6c2de473b0a86d1ff5a508",
+          "membership_sha256": "03a5ffb91a5f8a8ec6dd4504748153d346232ac2d288d7205d9d54d36157f78a",
+          "representative_bundle_sha256": "11a75e474e89271b6d45ef63eb212b59688c292beff8c026836746aa0370e9f6"
+        }
+      }
+    },
+    "res32-47-plus78-99-plus121-139": {
+      "bonsai_models": 450,
+      "views": {
+        "primary": {
+          "clusters": 1,
+          "unassigned": 0,
+          "payload_sha256": "708c7260bb5364d4778caaa9e4b47d9ac42d2919e14e53785e55aaf28fb52575",
+          "membership_sha256": "4327d1ac68aee5333d88c55b32d24e0d3d90178694caed8c0344afbcc2971ea8",
+          "representative_bundle_sha256": "2d83d1e6746048e4e3a48af5824ba02cc0d540ec6182318ed0a01fd6f836ea69"
+        },
+        "density": {
+          "clusters": 23,
+          "unassigned": 1125,
+          "payload_sha256": "a15ffe7a8b0fc6d9e8a31b2b260dec37bace4d463b5a20146b6d974b85ea7aa5",
+          "membership_sha256": "9d3dac4d208b2e2e52de98af687aefc5f87d761343f1ad5e4d9147308568991c",
+          "representative_bundle_sha256": "a8d474a5e4a95375eed79c0efbe77680f9a0d113465c92e738f27051bfa24dcc"
+        }
+      }
+    }
+  },
+  "downloads": {
+    "260_state1-50-model-ensemble.pdb": {
+      "bytes": 9095184,
+      "sha256": "4fedd67945bf73421e9404282308f117eed399792599f1391b09ee69d8c5e302"
+    },
+    "260_state2-50-model-ensemble.pdb": {
+      "bytes": 9095354,
+      "sha256": "745e1862e183b05ac705caa2d0119644690ffe16319b764f7b26d646ef99f6c8"
+    },
+    "260_state3-50-model-ensemble.pdb": {
+      "bytes": 9095354,
+      "sha256": "1c0ba79f583c2b3bdf9fc97c1356a34db7d7cf1af08bead11c5048b009f44d4c"
+    },
+    "protein-ebm-acceptance.json": {
+      "bytes": 756,
+      "sha256": "6090c2840f49875296d54a4ea23580e4a833ebfc85b341989e8ab091646a0010"
+    },
+    "protein-ebm-energy-rankings-2150.csv": {
+      "bytes": 1297348,
+      "sha256": "0d79fb0164aeede116e1a59cddd1fb62417808e2d6698bf2e51469bff0025739"
+    }
+  },
+  "catalog_sha256": "0d4e2a53c5978b3846487b4b6c70dc862e1d35a7ae3e652d6bdfcf7963a3bbaf",
+  "compaction": {
+    "status": "complete",
+    "plain_cluster_ensemble_files_removed": 105,
+    "plain_bytes_removed": 1233343633,
+    "compressed_ensemble_files_retained": 105,
+    "reason": "Preserve the project storage reserve while retaining exact downloadable PDB.gz ensembles."
+  }
+}

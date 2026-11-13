@@ -28,7 +28,7 @@
    next.showlegend=false;next.hovermode=featured?'closest':false;
    if(screen&&!featured)next.margin={l:38,r:8,t:7,b:36};
    for(const axis of ['xaxis','yaxis'])next[axis]={...layout[axis],visible:featured||!!screen,title:featured||screen?{...title(layout[axis]?.title),font:{size:11},standoff:8}:undefined,automargin:featured};
-   if(!featured)for(const trace of data)if(trace.marker)trace.marker.size=2.5;
+   if(!featured)for(const trace of data)if(trace.marker&&!trace.meta?.uploadedState&&!trace.meta?.cohortSamplingHighlight)trace.marker.size=2.5;
   }else if(matrix&&matrix.x?.length===matrix.y?.length){
    const labels=matrix.x,margin={l:small?52:88,r:small?14:38,t:layout.title?112:(small?82:104),b:small?72:92,autoexpand:false};
    const space=width-margin.l-margin.r,side=Math.max(100,Math.min(space,820,Math.max(160,viewport-margin.t-margin.b-(maximized?130:200))));
@@ -66,6 +66,14 @@
    }
    next.legend={...layout.legend,orientation:'h',x:0,xanchor:'left',y:1.02,yanchor:'bottom',font:{size:small?11:12},...(small?{entrywidth:.5,entrywidthmode:'fraction'}:{})};
    for(const trace of data)if(small&&trace.marker?.showscale)trace.marker.colorbar={...trace.marker.colorbar,orientation:'h',x:.5,xanchor:'center',y:1.13,yanchor:'bottom',len:.9,thickness:10,title:{...title(trace.marker.colorbar?.title),side:'top',font:{size:11}}};
+  }
+
+  // STATE2150 projection bounds come only from saved points, never annotations.
+  if(projection&&data.some(trace=>trace.meta?.uploadedState)){
+   for(const [axis,key]of [['x','xaxis'],['y','yaxis']]){
+    const values=data.flatMap(trace=>Array.isArray(trace[axis])?trace[axis]:[]).filter(Number.isFinite);
+    if(values.length){const lo=Math.min(...values),hi=Math.max(...values),pad=Math.max((hi-lo)*.065,1e-6);next[key]={...next[key],range:[lo-pad,hi+pad],autorange:false};}
+   }
   }
   node.style.height=next.height+'px';node.style.minWidth='0';
   return {data,layout:next,config:{...config,responsive:false,displayModeBar:projection||sharedLegend?false:!small,scrollZoom:false}};

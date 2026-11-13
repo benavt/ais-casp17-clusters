@@ -245,3 +245,11 @@ HDBSCAN download links use their own busy/route-aware handler with verified
 packed fetches and actual-count native filenames; the generic legacy capture
 handler skips only explicitly marked app-managed links.
 No scoring, sampling, fitting or coordinate conversion occurs in this exporter.
+
+## SR215 focused cohorts
+
+The main atlas includes the 2,000-model AFS3/BioEmu2 cohort and the 2,150-model cohort with the three uploaded 260 ensembles. Both offer four residue subsets, primary and HDBSCAN clustering, accepted MCMC/DISCO panel highlights by supported TM state and repeat, current RPF/DP and Double Recall reports, and representative-to-medoid TM comparisons. Reports are `cohort-2000-analysis.html` and `cohort-analysis.html`; their panel rows link directly to the selected atlas highlights. Uploaded conformers retain stars and their three medoids retain larger stars.
+
+Large new coordinate ensembles, selected-panel PDBs, representative models and Bonsai payloads retain their existing public storage at `https://benavt.github.io/sr215-cohort-atlas/`. Exact per-file transport records live in `external-assets.json` and `packed-assets.json`; bytes and SHA-256 are verified before use or download. Scientific logical paths, memberships, clustering data and scores are unchanged. All five atlas targets and existing historical/current cohorts remain native to this site.
+
+Run `node --test --test-concurrency=2 tests/*.test.cjs tests/*.test.mjs` and `node scripts/test_cohort_sampling.cjs` for atlas, transport and accepted-panel coverage checks.

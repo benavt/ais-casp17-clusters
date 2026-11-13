@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "canonical_repository": "benavt/ais-casp17-clusters",
+  "base_commit": "cdbf634",
+  "source_cohort_commit": "3a273ffe2094c82a21dfb5e0d7c73c11b59993e4",
+  "cohorts": [
+    2000,
+    2150
+  ],
+  "residue_subsets": 4,
+  "accepted_panels": 32,
+  "scientific_reruns": 0,
+  "external_asset_origin": "https://benavt.github.io/sr215-cohort-atlas/",
+  "external_asset_files": 284,
+  "local_scientific_files_added": 563,
+  "legacy_targets_and_cohorts_preserved": true
+}

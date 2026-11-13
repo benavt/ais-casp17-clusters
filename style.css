@@ -184,6 +184,8 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .current-sr215 .archived-view-copy,
 .current-sr215 #ensembleDownloadsHeading,
 .current-sr215 #clusterRows td:last-child {display:none}
+.current-sr215.private-state-cohort #bonsaiTab {display:block}
+.current-sr215.private-state-cohort #bonsaiPanel {display:flex}
 .current-sr215 #comparisonScreen .molecular {height:auto;position:relative}
 .current-sr215 #comparisonScreen #molecule {
  position:absolute;top:0;left:0;width:2px;height:2px;min-height:2px;visibility:hidden;pointer-events:none;
@@ -198,3 +200,5 @@ nav#targets{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin:0 0 14px
 .seed-comparison-table caption {text-align:left;font-weight:650;padding:.5rem .65rem}
 .seed-comparison-table td {font-variant-numeric:tabular-nums}
 .seed-comparison-table th,.seed-comparison-table td {white-space:nowrap}
+
+.current-sr215.private-state-cohort #ensembleDownloadsHeading,.current-sr215.private-state-cohort #clusterRows td:last-child{display:table-cell}

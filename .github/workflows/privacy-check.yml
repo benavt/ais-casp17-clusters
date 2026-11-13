@@ -17,5 +17,9 @@ jobs:
         run: python3 scripts/test_check_privacy.py
         env:
           CI: true
+      - name: Check atlas and cohort interfaces
+        run: |
+          node --test --test-concurrency=2 tests/*.test.cjs tests/*.test.mjs
+          node scripts/test_cohort_sampling.cjs
       - name: Run privacy checker on entire repository
         run: python3 scripts/check_privacy.py
