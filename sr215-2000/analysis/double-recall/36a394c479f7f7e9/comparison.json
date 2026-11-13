@@ -1,0 +1,4466 @@
+{
+  "semantics": "legacy-v1",
+  "scientific": {
+    "a_violations_explained_by_b": {
+      "candidates": [
+        "-> peak:   221 (hx1)1.914 (hx2)1.994 (x1)38.205  17339 (label)221",
+        "-> peak:   647 (hx1)0.735 (hx2)0.268 (x1)23     5713 (label)647",
+        "-> peak:   787 (hx1)0.812 (hx2)0.211 (x1)25.268  4619 (label)787",
+        "-> peak:   853 (hx1)0.812 (hx2)0.276 (x1)25.268  4233 (label)853",
+        "-> peak:   975 (hx1)0.735 (hx2)0.211 (x1)23     3642 (label)975",
+        "-> peak:   976 (hx1)0.735 (hx2)0.279 (x1)23     3631 (label)976",
+        "-> peak:  1016 (hx1)0.735 (hx2)0.041 (x1)23     3435 (label)1016",
+        "-> peak:  1239 (hx1)3.588 (hx2)1.204 (x1)44.94  2676 (label)1239",
+        "-> peak:  1244 (hx1)4.284 (hx2)1.199 (x1)44.94  2656 (label)1244",
+        "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+        "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+        "-> peak:  1546 (hx1)0.735 (hx2)1.387 (x1)23     1892 (label)1546",
+        "-> peak:  1576 (hx1)0.735 (hx2)3.688 (x1)23     1807 (label)1576",
+        "-> peak:  1678 (hx1)0.735 (hx2)1.353 (x1)23     1621 (label)1678",
+        "-> peak:  1779 (hx1)0.812 (hx2)3.861 (x1)25.268  1449 (label)1779",
+        "-> peak:  1780 (hx1)0.735 (hx2)2.505 (x1)23     1449 (label)1780",
+        "-> peak:  1848 (hx1)0.812 (hx2)7.252 (x1)25.268  1372 (label)1848",
+        "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+        "-> peak:  1937 (hx1)2.967 (hx2)6.751 (x1)41.8   1244 (label)1937",
+        "-> peak:  2293 (hx1)1.709 (hx2)2.94  (x1)44.772  907 (label)2293",
+        "-> peak:  2296 (hx1)0.695 (hx2)7.097 (x1)26.524  899 (label)2296",
+        "-> peak:  2331 (hx1)2.338 (hx2)1.458 (x1)36     874 (label)2331",
+        "-> peak:  2386 (hx1)0.695 (hx2)2.94  (x1)26.524  824 (label)2386",
+        "-> peak:  2460 (hx1)0.812 (hx2)8.276 (x1)25.268  766 (label)2460",
+        "-> peak:  2570 (hx1)0.935 (hx2)7.089 (x1)24.338  687 (label)2570",
+        "-> peak:  2631 (hx1)1.263 (hx2)2.012 (x1)26.21  649 (label)2631",
+        "-> peak:  2736 (hx1)2.631 (hx2)0.886 (x1)40.576  572 (label)2736",
+        "-> peak:  2745 (hx1)1.709 (hx2)2.783 (x1)44.772  564 (label)2745",
+        "-> peak:  2764 (hx1)1.263 (hx2)2.334 (x1)26.21  549 (label)2764",
+        "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+        "-> peak:  2799 (hx1)0.735 (hx2)7.245 (x1)23     519 (label)2799",
+        "-> peak:  2888 (hx1)2.114 (hx2)8.856 (x1)27.7   437 (label)2888",
+        "-> peak:  2893 (hx1)1.893 (hx2)0.584 (x1)33.373  433 (label)2893",
+        "-> peak:  2958 (hx1)3.822 (hx2)0.853 (x1)44.854  317 (label)2958",
+        "-> peak:  2990 (hx1)0.854 (hx2)8.539 (x1)13     -433 (label)2990",
+        "-> peak:  3032 (hx1)7.097 (hx2)0.046 (x1)132.374  -503 (label)3032",
+        "-> peak:  3073 (hx1)4.409 (hx2)8.374 (x1)54.339  -547 (label)3073",
+        "-> peak:  3080 (hx1)7.097 (hx2)1.693 (x1)132.374  -559 (label)3080",
+        "-> peak:  3154 (hx1)3.878 (hx2)0.818 (x1)63.659  -622 (label)3154",
+        "-> peak:  3164 (hx1)7.097 (hx2)0.278 (x1)132.374  -626 (label)3164",
+        "-> peak:  3170 (hx1)0.04  (hx2)2.795 (x1)17.996  -631 (label)3170",
+        "-> peak:  3181 (hx1)6.798 (hx2)0.056 (x1)117.461  -643 (label)3181",
+        "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+        "-> peak:  3303 (hx1)6.798 (hx2)0.275 (x1)117.461  -757 (label)3303",
+        "-> peak:  3313 (hx1)0.04  (hx2)2.942 (x1)17.996  -763 (label)3313",
+        "-> peak:  3415 (hx1)0.852 (hx2)6.751 (x1)17.52  -878 (label)3415",
+        "-> peak:  3416 (hx1)6.798 (hx2)1.464 (x1)117.461  -880 (label)3416",
+        "-> peak:  3489 (hx1)3.981 (hx2)0.812 (x1)63.659  -972 (label)3489",
+        "-> peak:  3813 (hx1)0.04  (hx2)6.798 (x1)17.996  -1477 (label)3813",
+        "-> peak:  3889 (hx1)0.837 (hx2)6.794 (x1)17.557  -1623 (label)3889",
+        "-> peak:  3951 (hx1)0.763 (hx2)2.796 (x1)13.505  -1770 (label)3951",
+        "-> peak:  4015 (hx1)0.763 (hx2)7.102 (x1)13.505  -1972 (label)4015",
+        "-> peak:  4061 (hx1)1.201 (hx2)4.296 (x1)21     -2131 (label)4061",
+        "-> peak:  4403 (hx1)1.201 (hx2)3.595 (x1)21     -3869 (label)4403",
+        "-> peak:    18 (hx1)7.656 (hx2)0.97  (x1)104.065  829 (label)18",
+        "-> peak:   107 (hx1)8.351 (hx2)1.878 (x1)109.183  1137 (label)107",
+        "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+        "-> peak:   573 (hx1)7.72  (hx2)4.398 (x1)116.885  948 (label)573",
+        "-> peak:   697 (hx1)8.275 (hx2)1.89  (x1)117.907  3142 (label)697",
+        "-> peak:   704 (hx1)8.271 (hx2)0.813 (x1)117.907  1485 (label)704",
+        "-> peak:   712 (hx1)8.276 (hx2)1.657 (x1)117.908  1467 (label)712",
+        "-> peak:   934 (hx1)7.899 (hx2)1.654 (x1)119.478  1144 (label)934",
+        "-> peak:  1021 (hx1)8.033 (hx2)6.819 (x1)119.969  890 (label)1021",
+        "-> peak:  1103 (hx1)7.581 (hx2)1.5   (x1)120.502  838 (label)1103",
+        "-> peak:  1284 (hx1)8.032 (hx2)0.716 (x1)121.938  868 (label)1284"
+      ],
+      "explained_records": [
+        "-> peak:    18 (hx1)7.656 (hx2)0.97  (x1)104.065  829 (label)18",
+        "-> peak:   107 (hx1)8.351 (hx2)1.878 (x1)109.183  1137 (label)107",
+        "-> peak:   221 (hx1)1.914 (hx2)1.994 (x1)38.205  17339 (label)221",
+        "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+        "-> peak:   573 (hx1)7.72  (hx2)4.398 (x1)116.885  948 (label)573",
+        "-> peak:   647 (hx1)0.735 (hx2)0.268 (x1)23     5713 (label)647",
+        "-> peak:   697 (hx1)8.275 (hx2)1.89  (x1)117.907  3142 (label)697",
+        "-> peak:   704 (hx1)8.271 (hx2)0.813 (x1)117.907  1485 (label)704",
+        "-> peak:   712 (hx1)8.276 (hx2)1.657 (x1)117.908  1467 (label)712",
+        "-> peak:   787 (hx1)0.812 (hx2)0.211 (x1)25.268  4619 (label)787",
+        "-> peak:   853 (hx1)0.812 (hx2)0.276 (x1)25.268  4233 (label)853",
+        "-> peak:   934 (hx1)7.899 (hx2)1.654 (x1)119.478  1144 (label)934",
+        "-> peak:   975 (hx1)0.735 (hx2)0.211 (x1)23     3642 (label)975",
+        "-> peak:   976 (hx1)0.735 (hx2)0.279 (x1)23     3631 (label)976",
+        "-> peak:  1016 (hx1)0.735 (hx2)0.041 (x1)23     3435 (label)1016",
+        "-> peak:  1021 (hx1)8.033 (hx2)6.819 (x1)119.969  890 (label)1021",
+        "-> peak:  1103 (hx1)7.581 (hx2)1.5   (x1)120.502  838 (label)1103",
+        "-> peak:  1239 (hx1)3.588 (hx2)1.204 (x1)44.94  2676 (label)1239",
+        "-> peak:  1244 (hx1)4.284 (hx2)1.199 (x1)44.94  2656 (label)1244",
+        "-> peak:  1284 (hx1)8.032 (hx2)0.716 (x1)121.938  868 (label)1284",
+        "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+        "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+        "-> peak:  1546 (hx1)0.735 (hx2)1.387 (x1)23     1892 (label)1546",
+        "-> peak:  1576 (hx1)0.735 (hx2)3.688 (x1)23     1807 (label)1576",
+        "-> peak:  1678 (hx1)0.735 (hx2)1.353 (x1)23     1621 (label)1678",
+        "-> peak:  1779 (hx1)0.812 (hx2)3.861 (x1)25.268  1449 (label)1779",
+        "-> peak:  1780 (hx1)0.735 (hx2)2.505 (x1)23     1449 (label)1780",
+        "-> peak:  1848 (hx1)0.812 (hx2)7.252 (x1)25.268  1372 (label)1848",
+        "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+        "-> peak:  1937 (hx1)2.967 (hx2)6.751 (x1)41.8   1244 (label)1937",
+        "-> peak:  2293 (hx1)1.709 (hx2)2.94  (x1)44.772  907 (label)2293",
+        "-> peak:  2296 (hx1)0.695 (hx2)7.097 (x1)26.524  899 (label)2296",
+        "-> peak:  2331 (hx1)2.338 (hx2)1.458 (x1)36     874 (label)2331",
+        "-> peak:  2386 (hx1)0.695 (hx2)2.94  (x1)26.524  824 (label)2386",
+        "-> peak:  2460 (hx1)0.812 (hx2)8.276 (x1)25.268  766 (label)2460",
+        "-> peak:  2570 (hx1)0.935 (hx2)7.089 (x1)24.338  687 (label)2570",
+        "-> peak:  2631 (hx1)1.263 (hx2)2.012 (x1)26.21  649 (label)2631",
+        "-> peak:  2736 (hx1)2.631 (hx2)0.886 (x1)40.576  572 (label)2736",
+        "-> peak:  2745 (hx1)1.709 (hx2)2.783 (x1)44.772  564 (label)2745",
+        "-> peak:  2764 (hx1)1.263 (hx2)2.334 (x1)26.21  549 (label)2764",
+        "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+        "-> peak:  2799 (hx1)0.735 (hx2)7.245 (x1)23     519 (label)2799",
+        "-> peak:  2888 (hx1)2.114 (hx2)8.856 (x1)27.7   437 (label)2888",
+        "-> peak:  2893 (hx1)1.893 (hx2)0.584 (x1)33.373  433 (label)2893",
+        "-> peak:  2958 (hx1)3.822 (hx2)0.853 (x1)44.854  317 (label)2958",
+        "-> peak:  2990 (hx1)0.854 (hx2)8.539 (x1)13     -433 (label)2990",
+        "-> peak:  3032 (hx1)7.097 (hx2)0.046 (x1)132.374  -503 (label)3032",
+        "-> peak:  3073 (hx1)4.409 (hx2)8.374 (x1)54.339  -547 (label)3073",
+        "-> peak:  3080 (hx1)7.097 (hx2)1.693 (x1)132.374  -559 (label)3080",
+        "-> peak:  3154 (hx1)3.878 (hx2)0.818 (x1)63.659  -622 (label)3154",
+        "-> peak:  3164 (hx1)7.097 (hx2)0.278 (x1)132.374  -626 (label)3164",
+        "-> peak:  3170 (hx1)0.04  (hx2)2.795 (x1)17.996  -631 (label)3170",
+        "-> peak:  3181 (hx1)6.798 (hx2)0.056 (x1)117.461  -643 (label)3181",
+        "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+        "-> peak:  3303 (hx1)6.798 (hx2)0.275 (x1)117.461  -757 (label)3303",
+        "-> peak:  3313 (hx1)0.04  (hx2)2.942 (x1)17.996  -763 (label)3313",
+        "-> peak:  3415 (hx1)0.852 (hx2)6.751 (x1)17.52  -878 (label)3415",
+        "-> peak:  3416 (hx1)6.798 (hx2)1.464 (x1)117.461  -880 (label)3416",
+        "-> peak:  3489 (hx1)3.981 (hx2)0.812 (x1)63.659  -972 (label)3489",
+        "-> peak:  3813 (hx1)0.04  (hx2)6.798 (x1)17.996  -1477 (label)3813",
+        "-> peak:  3889 (hx1)0.837 (hx2)6.794 (x1)17.557  -1623 (label)3889",
+        "-> peak:  3951 (hx1)0.763 (hx2)2.796 (x1)13.505  -1770 (label)3951",
+        "-> peak:  4015 (hx1)0.763 (hx2)7.102 (x1)13.505  -1972 (label)4015",
+        "-> peak:  4061 (hx1)1.201 (hx2)4.296 (x1)21     -2131 (label)4061",
+        "-> peak:  4403 (hx1)1.201 (hx2)3.595 (x1)21     -3869 (label)4403"
+      ],
+      "hx1": [
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "96G-HA3",
+        "96G-HA2",
+        "55E-QG",
+        "55E-QG",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "93L-HD1",
+        "99L-HB3",
+        "27K-HG2",
+        "99L-HB3",
+        "27K-HG2",
+        "93L-HD1",
+        "22P-HG2",
+        "80G-HA2",
+        "91Y-QD",
+        "91Y-QD",
+        "91Y-QD",
+        "71I-HG2",
+        "91Y-QE",
+        "91Y-QE",
+        "71I-HG2",
+        "91Y-QE",
+        "71I-HG2",
+        "77I-HD1",
+        "77I-HD1",
+        "92T-HG2",
+        "92T-HG2",
+        "20T-H",
+        "24E-H",
+        "95D-H",
+        "97S-H",
+        "97S-H",
+        "97S-H",
+        "126V-H",
+        "89Y-H"
+      ],
+      "pairs": [
+        [
+          "122I-HB",
+          "123E-QB"
+        ],
+        [
+          "93L-HD1",
+          "70L-HD1"
+        ],
+        [
+          "93L-HD1",
+          "71I-HD1"
+        ],
+        [
+          "93L-HD2",
+          "70L-HD2"
+        ],
+        [
+          "93L-HD2",
+          "70L-HD1"
+        ],
+        [
+          "93L-HD2",
+          "71I-HD1"
+        ],
+        [
+          "93L-HD1",
+          "70L-HD2"
+        ],
+        [
+          "93L-HD1",
+          "70L-HD1"
+        ],
+        [
+          "93L-HD1",
+          "71I-HD1"
+        ],
+        [
+          "93L-HD1",
+          "71I-HG2"
+        ],
+        [
+          "96G-HA3",
+          "92T-HG2"
+        ],
+        [
+          "96G-HA2",
+          "92T-HG2"
+        ],
+        [
+          "55E-QG",
+          "59L-HD2"
+        ],
+        [
+          "55E-QG",
+          "59L-HD1"
+        ],
+        [
+          "59L-HD2",
+          "55E-QG"
+        ],
+        [
+          "93L-HD1",
+          "99L-HB2"
+        ],
+        [
+          "93L-HD1",
+          "71I-HA"
+        ],
+        [
+          "93L-HD1",
+          "99L-HB2"
+        ],
+        [
+          "93L-HD2",
+          "97S-HB2"
+        ],
+        [
+          "93L-HD1",
+          "74D-HB2"
+        ],
+        [
+          "93L-HD2",
+          "15F-QE"
+        ],
+        [
+          "93L-HD1",
+          "77I-HA"
+        ],
+        [
+          "40K-QE",
+          "105Y-QE"
+        ],
+        [
+          "99L-HB3",
+          "91Y-HB3"
+        ],
+        [
+          "99L-HD1",
+          "91Y-QD"
+        ],
+        [
+          "123E-HG3",
+          "124A-HB"
+        ],
+        [
+          "99L-HD1",
+          "91Y-HB3"
+        ],
+        [
+          "93L-HD2",
+          "97S-H"
+        ],
+        [
+          "99L-HD2",
+          "91Y-QD"
+        ],
+        [
+          "27K-HG2",
+          "6P-HB2"
+        ],
+        [
+          "118D-HB2",
+          "119L-HD1"
+        ],
+        [
+          "99L-HB3",
+          "91Y-HB2"
+        ],
+        [
+          "27K-HG2",
+          "6P-HB3"
+        ],
+        [
+          "77I-HG12",
+          "74D-H"
+        ],
+        [
+          "93L-HD1",
+          "15F-QE"
+        ],
+        [
+          "22P-HG2",
+          "23D-H"
+        ],
+        [
+          "113K-HB2",
+          "41V-HG1"
+        ],
+        [
+          "80G-HA2",
+          "78I-HG2"
+        ],
+        [
+          "122I-HD1",
+          "123E-H"
+        ],
+        [
+          "91Y-QD",
+          "71I-HG2"
+        ],
+        [
+          "93L-HA",
+          "96G-H"
+        ],
+        [
+          "91Y-QD",
+          "99L-HB3"
+        ],
+        [
+          "97S-HB2",
+          "93L-HD2"
+        ],
+        [
+          "91Y-QD",
+          "71I-HD1"
+        ],
+        [
+          "71I-HG2",
+          "91Y-HB2"
+        ],
+        [
+          "91Y-QE",
+          "71I-HG2"
+        ],
+        [
+          "78I-HD1",
+          "79K-H"
+        ],
+        [
+          "91Y-QE",
+          "71I-HD1"
+        ],
+        [
+          "71I-HG2",
+          "91Y-HB3"
+        ],
+        [
+          "77I-HG2",
+          "91Y-QE"
+        ],
+        [
+          "91Y-QE",
+          "101K-HB3"
+        ],
+        [
+          "46S-HB3",
+          "3L-HD2"
+        ],
+        [
+          "97S-HB3",
+          "93L-HD2"
+        ],
+        [
+          "71I-HG2",
+          "91Y-QE"
+        ],
+        [
+          "77I-HG2",
+          "91Y-QE"
+        ],
+        [
+          "77I-HD1",
+          "91Y-HB2"
+        ],
+        [
+          "77I-HD1",
+          "91Y-QD"
+        ],
+        [
+          "92T-HG2",
+          "96G-HA2"
+        ],
+        [
+          "92T-HG2",
+          "96G-HA3"
+        ],
+        [
+          "20T-H",
+          "18V-HG2"
+        ],
+        [
+          "96G-H",
+          "93L-HB3"
+        ],
+        [
+          "24E-H",
+          "27K-HE2"
+        ],
+        [
+          "95D-H",
+          "93L-HA"
+        ],
+        [
+          "97S-H",
+          "93L-HB3"
+        ],
+        [
+          "97S-H",
+          "93L-HD2"
+        ],
+        [
+          "97S-H",
+          "93L-HB2"
+        ],
+        [
+          "126V-H",
+          "125K-QD"
+        ],
+        [
+          "89Y-H",
+          "91Y-QE"
+        ],
+        [
+          "74D-H",
+          "77I-HG12"
+        ],
+        [
+          "33A-H",
+          "61L-HD2"
+        ],
+        [
+          "33A-H",
+          "61L-HD1"
+        ]
+      ],
+      "pair_records": [
+        {
+          "record": "-> peak:   221 (hx1)1.914 (hx2)1.994 (x1)38.205  17339 (label)221",
+          "h1": "122I-HB",
+          "h2": "123E-QB",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   647 (hx1)0.735 (hx2)0.268 (x1)23     5713 (label)647",
+          "h1": "93L-HD1",
+          "h2": "70L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   647 (hx1)0.735 (hx2)0.268 (x1)23     5713 (label)647",
+          "h1": "93L-HD1",
+          "h2": "71I-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   787 (hx1)0.812 (hx2)0.211 (x1)25.268  4619 (label)787",
+          "h1": "93L-HD2",
+          "h2": "70L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   853 (hx1)0.812 (hx2)0.276 (x1)25.268  4233 (label)853",
+          "h1": "93L-HD2",
+          "h2": "70L-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   853 (hx1)0.812 (hx2)0.276 (x1)25.268  4233 (label)853",
+          "h1": "93L-HD2",
+          "h2": "71I-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   975 (hx1)0.735 (hx2)0.211 (x1)23     3642 (label)975",
+          "h1": "93L-HD1",
+          "h2": "70L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   976 (hx1)0.735 (hx2)0.279 (x1)23     3631 (label)976",
+          "h1": "93L-HD1",
+          "h2": "70L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   976 (hx1)0.735 (hx2)0.279 (x1)23     3631 (label)976",
+          "h1": "93L-HD1",
+          "h2": "71I-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1016 (hx1)0.735 (hx2)0.041 (x1)23     3435 (label)1016",
+          "h1": "93L-HD1",
+          "h2": "71I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1239 (hx1)3.588 (hx2)1.204 (x1)44.94  2676 (label)1239",
+          "h1": "96G-HA3",
+          "h2": "92T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1244 (hx1)4.284 (hx2)1.199 (x1)44.94  2656 (label)1244",
+          "h1": "96G-HA2",
+          "h2": "92T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "h1": "55E-QG",
+          "h2": "59L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "h1": "55E-QG",
+          "h2": "59L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+          "h1": "59L-HD2",
+          "h2": "55E-QG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1546 (hx1)0.735 (hx2)1.387 (x1)23     1892 (label)1546",
+          "h1": "93L-HD1",
+          "h2": "99L-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1576 (hx1)0.735 (hx2)3.688 (x1)23     1807 (label)1576",
+          "h1": "93L-HD1",
+          "h2": "71I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1678 (hx1)0.735 (hx2)1.353 (x1)23     1621 (label)1678",
+          "h1": "93L-HD1",
+          "h2": "99L-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1779 (hx1)0.812 (hx2)3.861 (x1)25.268  1449 (label)1779",
+          "h1": "93L-HD2",
+          "h2": "97S-HB2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1780 (hx1)0.735 (hx2)2.505 (x1)23     1449 (label)1780",
+          "h1": "93L-HD1",
+          "h2": "74D-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1848 (hx1)0.812 (hx2)7.252 (x1)25.268  1372 (label)1848",
+          "h1": "93L-HD2",
+          "h2": "15F-QE",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+          "h1": "93L-HD1",
+          "h2": "77I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1937 (hx1)2.967 (hx2)6.751 (x1)41.8   1244 (label)1937",
+          "h1": "40K-QE",
+          "h2": "105Y-QE",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2293 (hx1)1.709 (hx2)2.94  (x1)44.772  907 (label)2293",
+          "h1": "99L-HB3",
+          "h2": "91Y-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2296 (hx1)0.695 (hx2)7.097 (x1)26.524  899 (label)2296",
+          "h1": "99L-HD1",
+          "h2": "91Y-QD",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2331 (hx1)2.338 (hx2)1.458 (x1)36     874 (label)2331",
+          "h1": "123E-HG3",
+          "h2": "124A-HB",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2386 (hx1)0.695 (hx2)2.94  (x1)26.524  824 (label)2386",
+          "h1": "99L-HD1",
+          "h2": "91Y-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2460 (hx1)0.812 (hx2)8.276 (x1)25.268  766 (label)2460",
+          "h1": "93L-HD2",
+          "h2": "97S-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2570 (hx1)0.935 (hx2)7.089 (x1)24.338  687 (label)2570",
+          "h1": "99L-HD2",
+          "h2": "91Y-QD",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2631 (hx1)1.263 (hx2)2.012 (x1)26.21  649 (label)2631",
+          "h1": "27K-HG2",
+          "h2": "6P-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2736 (hx1)2.631 (hx2)0.886 (x1)40.576  572 (label)2736",
+          "h1": "118D-HB2",
+          "h2": "119L-HD1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2745 (hx1)1.709 (hx2)2.783 (x1)44.772  564 (label)2745",
+          "h1": "99L-HB3",
+          "h2": "91Y-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2764 (hx1)1.263 (hx2)2.334 (x1)26.21  549 (label)2764",
+          "h1": "27K-HG2",
+          "h2": "6P-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+          "h1": "77I-HG12",
+          "h2": "74D-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2799 (hx1)0.735 (hx2)7.245 (x1)23     519 (label)2799",
+          "h1": "93L-HD1",
+          "h2": "15F-QE",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2888 (hx1)2.114 (hx2)8.856 (x1)27.7   437 (label)2888",
+          "h1": "22P-HG2",
+          "h2": "23D-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2893 (hx1)1.893 (hx2)0.584 (x1)33.373  433 (label)2893",
+          "h1": "113K-HB2",
+          "h2": "41V-HG1",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2958 (hx1)3.822 (hx2)0.853 (x1)44.854  317 (label)2958",
+          "h1": "80G-HA2",
+          "h2": "78I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2990 (hx1)0.854 (hx2)8.539 (x1)13     -433 (label)2990",
+          "h1": "122I-HD1",
+          "h2": "123E-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3032 (hx1)7.097 (hx2)0.046 (x1)132.374  -503 (label)3032",
+          "h1": "91Y-QD",
+          "h2": "71I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3073 (hx1)4.409 (hx2)8.374 (x1)54.339  -547 (label)3073",
+          "h1": "93L-HA",
+          "h2": "96G-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3080 (hx1)7.097 (hx2)1.693 (x1)132.374  -559 (label)3080",
+          "h1": "91Y-QD",
+          "h2": "99L-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3154 (hx1)3.878 (hx2)0.818 (x1)63.659  -622 (label)3154",
+          "h1": "97S-HB2",
+          "h2": "93L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3164 (hx1)7.097 (hx2)0.278 (x1)132.374  -626 (label)3164",
+          "h1": "91Y-QD",
+          "h2": "71I-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3170 (hx1)0.04  (hx2)2.795 (x1)17.996  -631 (label)3170",
+          "h1": "71I-HG2",
+          "h2": "91Y-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3181 (hx1)6.798 (hx2)0.056 (x1)117.461  -643 (label)3181",
+          "h1": "91Y-QE",
+          "h2": "71I-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+          "h1": "78I-HD1",
+          "h2": "79K-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3303 (hx1)6.798 (hx2)0.275 (x1)117.461  -757 (label)3303",
+          "h1": "91Y-QE",
+          "h2": "71I-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3313 (hx1)0.04  (hx2)2.942 (x1)17.996  -763 (label)3313",
+          "h1": "71I-HG2",
+          "h2": "91Y-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3415 (hx1)0.852 (hx2)6.751 (x1)17.52  -878 (label)3415",
+          "h1": "77I-HG2",
+          "h2": "91Y-QE",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3416 (hx1)6.798 (hx2)1.464 (x1)117.461  -880 (label)3416",
+          "h1": "91Y-QE",
+          "h2": "101K-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3489 (hx1)3.981 (hx2)0.812 (x1)63.659  -972 (label)3489",
+          "h1": "46S-HB3",
+          "h2": "3L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3489 (hx1)3.981 (hx2)0.812 (x1)63.659  -972 (label)3489",
+          "h1": "97S-HB3",
+          "h2": "93L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3813 (hx1)0.04  (hx2)6.798 (x1)17.996  -1477 (label)3813",
+          "h1": "71I-HG2",
+          "h2": "91Y-QE",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3889 (hx1)0.837 (hx2)6.794 (x1)17.557  -1623 (label)3889",
+          "h1": "77I-HG2",
+          "h2": "91Y-QE",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3951 (hx1)0.763 (hx2)2.796 (x1)13.505  -1770 (label)3951",
+          "h1": "77I-HD1",
+          "h2": "91Y-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  4015 (hx1)0.763 (hx2)7.102 (x1)13.505  -1972 (label)4015",
+          "h1": "77I-HD1",
+          "h2": "91Y-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  4061 (hx1)1.201 (hx2)4.296 (x1)21     -2131 (label)4061",
+          "h1": "92T-HG2",
+          "h2": "96G-HA2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  4403 (hx1)1.201 (hx2)3.595 (x1)21     -3869 (label)4403",
+          "h1": "92T-HG2",
+          "h2": "96G-HA3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:    18 (hx1)7.656 (hx2)0.97  (x1)104.065  829 (label)18",
+          "h1": "20T-H",
+          "h2": "18V-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   107 (hx1)8.351 (hx2)1.878 (x1)109.183  1137 (label)107",
+          "h1": "96G-H",
+          "h2": "93L-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+          "h1": "24E-H",
+          "h2": "27K-HE2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   573 (hx1)7.72  (hx2)4.398 (x1)116.885  948 (label)573",
+          "h1": "95D-H",
+          "h2": "93L-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   697 (hx1)8.275 (hx2)1.89  (x1)117.907  3142 (label)697",
+          "h1": "97S-H",
+          "h2": "93L-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   704 (hx1)8.271 (hx2)0.813 (x1)117.907  1485 (label)704",
+          "h1": "97S-H",
+          "h2": "93L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   712 (hx1)8.276 (hx2)1.657 (x1)117.908  1467 (label)712",
+          "h1": "97S-H",
+          "h2": "93L-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   934 (hx1)7.899 (hx2)1.654 (x1)119.478  1144 (label)934",
+          "h1": "126V-H",
+          "h2": "125K-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1021 (hx1)8.033 (hx2)6.819 (x1)119.969  890 (label)1021",
+          "h1": "89Y-H",
+          "h2": "91Y-QE",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1103 (hx1)7.581 (hx2)1.5   (x1)120.502  838 (label)1103",
+          "h1": "74D-H",
+          "h2": "77I-HG12",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1284 (hx1)8.032 (hx2)0.716 (x1)121.938  868 (label)1284",
+          "h1": "33A-H",
+          "h2": "61L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1284 (hx1)8.032 (hx2)0.716 (x1)121.938  868 (label)1284",
+          "h1": "33A-H",
+          "h2": "61L-HD1",
+          "unique_hx1": false
+        }
+      ],
+      "evidence": [
+        {
+          "record": "-> peak:   221 (hx1)1.914 (hx2)1.994 (x1)38.205  17339 (label)221",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 220,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "122I-HB",
+              "123E-QB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   647 (hx1)0.735 (hx2)0.268 (x1)23     5713 (label)647",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 646,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "70L-HD1"
+            ],
+            [
+              "93L-HD1",
+              "71I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   787 (hx1)0.812 (hx2)0.211 (x1)25.268  4619 (label)787",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 786,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HD2",
+              "70L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   853 (hx1)0.812 (hx2)0.276 (x1)25.268  4233 (label)853",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 852,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HD2",
+              "70L-HD1"
+            ],
+            [
+              "93L-HD2",
+              "71I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   975 (hx1)0.735 (hx2)0.211 (x1)23     3642 (label)975",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 974,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "70L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   976 (hx1)0.735 (hx2)0.279 (x1)23     3631 (label)976",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 975,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "70L-HD1"
+            ],
+            [
+              "93L-HD1",
+              "71I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1016 (hx1)0.735 (hx2)0.041 (x1)23     3435 (label)1016",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1015,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "71I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1239 (hx1)3.588 (hx2)1.204 (x1)44.94  2676 (label)1239",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1238,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "96G-HA3",
+              "92T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1244 (hx1)4.284 (hx2)1.199 (x1)44.94  2656 (label)1244",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1243,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "96G-HA2",
+              "92T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1466 (hx1)2.379 (hx2)0.96  (x1)35.559  2077 (label)1466",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1465,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "55E-QG",
+              "59L-HD2"
+            ],
+            [
+              "55E-QG",
+              "59L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1506 (hx1)0.963 (hx2)2.372 (x1)23.008  2000 (label)1506",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1505,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "59L-HD2",
+              "55E-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1546 (hx1)0.735 (hx2)1.387 (x1)23     1892 (label)1546",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1545,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "99L-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1576 (hx1)0.735 (hx2)3.688 (x1)23     1807 (label)1576",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1575,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "71I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1678 (hx1)0.735 (hx2)1.353 (x1)23     1621 (label)1678",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1677,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "99L-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1779 (hx1)0.812 (hx2)3.861 (x1)25.268  1449 (label)1779",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1778,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HD2",
+              "97S-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1780 (hx1)0.735 (hx2)2.505 (x1)23     1449 (label)1780",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1779,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "74D-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1848 (hx1)0.812 (hx2)7.252 (x1)25.268  1372 (label)1848",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1847,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HD2",
+              "15F-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1867 (hx1)0.735 (hx2)4.126 (x1)23     1344 (label)1867",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1866,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "77I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1937 (hx1)2.967 (hx2)6.751 (x1)41.8   1244 (label)1937",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 1936,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "40K-QE",
+              "105Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2293 (hx1)1.709 (hx2)2.94  (x1)44.772  907 (label)2293",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2292,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "99L-HB3",
+              "91Y-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2296 (hx1)0.695 (hx2)7.097 (x1)26.524  899 (label)2296",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2295,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "99L-HD1",
+              "91Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2331 (hx1)2.338 (hx2)1.458 (x1)36     874 (label)2331",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2330,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "123E-HG3",
+              "124A-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2386 (hx1)0.695 (hx2)2.94  (x1)26.524  824 (label)2386",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2385,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "99L-HD1",
+              "91Y-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2460 (hx1)0.812 (hx2)8.276 (x1)25.268  766 (label)2460",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2459,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HD2",
+              "97S-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2570 (hx1)0.935 (hx2)7.089 (x1)24.338  687 (label)2570",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2569,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "99L-HD2",
+              "91Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2631 (hx1)1.263 (hx2)2.012 (x1)26.21  649 (label)2631",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2630,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "27K-HG2",
+              "6P-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2736 (hx1)2.631 (hx2)0.886 (x1)40.576  572 (label)2736",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2735,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "118D-HB2",
+              "119L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2745 (hx1)1.709 (hx2)2.783 (x1)44.772  564 (label)2745",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2744,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "99L-HB3",
+              "91Y-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2764 (hx1)1.263 (hx2)2.334 (x1)26.21  549 (label)2764",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2763,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "27K-HG2",
+              "6P-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2791 (hx1)1.492 (hx2)7.599 (x1)27.893  522 (label)2791",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2790,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HG12",
+              "74D-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2799 (hx1)0.735 (hx2)7.245 (x1)23     519 (label)2799",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2798,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "15F-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2888 (hx1)2.114 (hx2)8.856 (x1)27.7   437 (label)2888",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2887,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "22P-HG2",
+              "23D-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2893 (hx1)1.893 (hx2)0.584 (x1)33.373  433 (label)2893",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2892,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "113K-HB2",
+              "41V-HG1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2958 (hx1)3.822 (hx2)0.853 (x1)44.854  317 (label)2958",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2957,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "80G-HA2",
+              "78I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2990 (hx1)0.854 (hx2)8.539 (x1)13     -433 (label)2990",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 2989,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "122I-HD1",
+              "123E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3032 (hx1)7.097 (hx2)0.046 (x1)132.374  -503 (label)3032",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3031,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QD",
+              "71I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3073 (hx1)4.409 (hx2)8.374 (x1)54.339  -547 (label)3073",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3072,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "93L-HA",
+              "96G-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3080 (hx1)7.097 (hx2)1.693 (x1)132.374  -559 (label)3080",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3079,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QD",
+              "99L-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3154 (hx1)3.878 (hx2)0.818 (x1)63.659  -622 (label)3154",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3153,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "97S-HB2",
+              "93L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3164 (hx1)7.097 (hx2)0.278 (x1)132.374  -626 (label)3164",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3163,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QD",
+              "71I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3170 (hx1)0.04  (hx2)2.795 (x1)17.996  -631 (label)3170",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3169,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "71I-HG2",
+              "91Y-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3181 (hx1)6.798 (hx2)0.056 (x1)117.461  -643 (label)3181",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3180,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "71I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3225 (hx1)0.805 (hx2)8.455 (x1)12.531  -690 (label)3225",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3224,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "78I-HD1",
+              "79K-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3303 (hx1)6.798 (hx2)0.275 (x1)117.461  -757 (label)3303",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3302,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "71I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3313 (hx1)0.04  (hx2)2.942 (x1)17.996  -763 (label)3313",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3312,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "71I-HG2",
+              "91Y-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3415 (hx1)0.852 (hx2)6.751 (x1)17.52  -878 (label)3415",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3414,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HG2",
+              "91Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3416 (hx1)6.798 (hx2)1.464 (x1)117.461  -880 (label)3416",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3415,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "101K-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3489 (hx1)3.981 (hx2)0.812 (x1)63.659  -972 (label)3489",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3488,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "46S-HB3",
+              "3L-HD2"
+            ],
+            [
+              "97S-HB3",
+              "93L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3813 (hx1)0.04  (hx2)6.798 (x1)17.996  -1477 (label)3813",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3812,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "71I-HG2",
+              "91Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3889 (hx1)0.837 (hx2)6.794 (x1)17.557  -1623 (label)3889",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3888,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "77I-HG2",
+              "91Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3951 (hx1)0.763 (hx2)2.796 (x1)13.505  -1770 (label)3951",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 3950,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "77I-HD1",
+              "91Y-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4015 (hx1)0.763 (hx2)7.102 (x1)13.505  -1972 (label)4015",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 4014,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "77I-HD1",
+              "91Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4061 (hx1)1.201 (hx2)4.296 (x1)21     -2131 (label)4061",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 4060,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "92T-HG2",
+              "96G-HA2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4403 (hx1)1.201 (hx2)3.595 (x1)21     -3869 (label)4403",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 4402,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "92T-HG2",
+              "96G-HA3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:    18 (hx1)7.656 (hx2)0.97  (x1)104.065  829 (label)18",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 4933,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "20T-H",
+              "18V-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   107 (hx1)8.351 (hx2)1.878 (x1)109.183  1137 (label)107",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5022,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "96G-H",
+              "93L-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   451 (hx1)9.237 (hx2)2.818 (x1)115.864  795 (label)451",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5366,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "24E-H",
+              "27K-HE2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   573 (hx1)7.72  (hx2)4.398 (x1)116.885  948 (label)573",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5488,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "95D-H",
+              "93L-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   697 (hx1)8.275 (hx2)1.89  (x1)117.907  3142 (label)697",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5612,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "97S-H",
+              "93L-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   704 (hx1)8.271 (hx2)0.813 (x1)117.907  1485 (label)704",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5619,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "97S-H",
+              "93L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   712 (hx1)8.276 (hx2)1.657 (x1)117.908  1467 (label)712",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5627,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "97S-H",
+              "93L-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   934 (hx1)7.899 (hx2)1.654 (x1)119.478  1144 (label)934",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5849,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "126V-H",
+              "125K-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1021 (hx1)8.033 (hx2)6.819 (x1)119.969  890 (label)1021",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 5936,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "89Y-H",
+              "91Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1103 (hx1)7.581 (hx2)1.5   (x1)120.502  838 (label)1103",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 6018,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "74D-H",
+              "77I-HG12"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1284 (hx1)8.032 (hx2)0.716 (x1)121.938  868 (label)1284",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+          "first_block": 6199,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "33A-H",
+              "61L-HD2"
+            ],
+            [
+              "33A-H",
+              "61L-HD1"
+            ]
+          ]
+        }
+      ],
+      "points": [
+        [
+          122,
+          123
+        ],
+        [
+          93,
+          70
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          93,
+          70
+        ],
+        [
+          93,
+          70
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          93,
+          70
+        ],
+        [
+          93,
+          70
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          96,
+          92
+        ],
+        [
+          96,
+          92
+        ],
+        [
+          55,
+          59
+        ],
+        [
+          55,
+          59
+        ],
+        [
+          59,
+          55
+        ],
+        [
+          93,
+          99
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          93,
+          99
+        ],
+        [
+          93,
+          97
+        ],
+        [
+          93,
+          74
+        ],
+        [
+          93,
+          15
+        ],
+        [
+          93,
+          77
+        ],
+        [
+          40,
+          105
+        ],
+        [
+          99,
+          91
+        ],
+        [
+          99,
+          91
+        ],
+        [
+          123,
+          124
+        ],
+        [
+          99,
+          91
+        ],
+        [
+          93,
+          97
+        ],
+        [
+          99,
+          91
+        ],
+        [
+          27,
+          6
+        ],
+        [
+          118,
+          119
+        ],
+        [
+          99,
+          91
+        ],
+        [
+          27,
+          6
+        ],
+        [
+          77,
+          74
+        ],
+        [
+          93,
+          15
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          113,
+          41
+        ],
+        [
+          80,
+          78
+        ],
+        [
+          122,
+          123
+        ],
+        [
+          91,
+          71
+        ],
+        [
+          93,
+          96
+        ],
+        [
+          91,
+          99
+        ],
+        [
+          97,
+          93
+        ],
+        [
+          91,
+          71
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          91,
+          71
+        ],
+        [
+          78,
+          79
+        ],
+        [
+          91,
+          71
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          77,
+          91
+        ],
+        [
+          91,
+          101
+        ],
+        [
+          46,
+          3
+        ],
+        [
+          97,
+          93
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          77,
+          91
+        ],
+        [
+          77,
+          91
+        ],
+        [
+          77,
+          91
+        ],
+        [
+          92,
+          96
+        ],
+        [
+          92,
+          96
+        ],
+        [
+          20,
+          18
+        ],
+        [
+          96,
+          93
+        ],
+        [
+          24,
+          27
+        ],
+        [
+          95,
+          93
+        ],
+        [
+          97,
+          93
+        ],
+        [
+          97,
+          93
+        ],
+        [
+          97,
+          93
+        ],
+        [
+          126,
+          125
+        ],
+        [
+          89,
+          91
+        ],
+        [
+          74,
+          77
+        ],
+        [
+          33,
+          61
+        ],
+        [
+          33,
+          61
+        ]
+      ],
+      "hx1_indices": [
+        93,
+        93,
+        93,
+        93,
+        93,
+        93,
+        96,
+        96,
+        55,
+        55,
+        93,
+        93,
+        93,
+        93,
+        93,
+        99,
+        27,
+        99,
+        27,
+        93,
+        22,
+        80,
+        91,
+        91,
+        91,
+        71,
+        91,
+        91,
+        71,
+        91,
+        71,
+        77,
+        77,
+        92,
+        92,
+        20,
+        24,
+        95,
+        97,
+        97,
+        97,
+        126,
+        89
+      ],
+      "counts": {
+        "candidate_rows": 65,
+        "explained_qr_records": 65,
+        "h_h_pairs": 71,
+        "long_range_pairs": 41,
+        "long_range_unique_h1": 36
+      }
+    },
+    "b_violations_explained_by_a": {
+      "candidates": [
+        "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+        "-> peak:  1751 (hx1)2.779 (hx2)1.611 (x1)41.307  1491 (label)1751",
+        "-> peak:  2010 (hx1)2.779 (hx2)1.702 (x1)41.307  1161 (label)2010",
+        "-> peak:  2184 (hx1)0.735 (hx2)7.091 (x1)23     1007 (label)2184",
+        "-> peak:  2216 (hx1)1.602 (hx2)1.129 (x1)28.386  976 (label)2216",
+        "-> peak:  2251 (hx1)1.83  (hx2)4.276 (x1)38.337  942 (label)2251",
+        "-> peak:  2253 (hx1)1.831 (hx2)4.268 (x1)38.26  942 (label)2253",
+        "-> peak:  2269 (hx1)1.926 (hx2)8.164 (x1)38.193  932 (label)2269",
+        "-> peak:  2284 (hx1)2.531 (hx2)1.62  (x1)41.307  918 (label)2284",
+        "-> peak:  2300 (hx1)2.246 (hx2)0.831 (x1)36     897 (label)2300",
+        "-> peak:  2313 (hx1)0.735 (hx2)6.804 (x1)23     888 (label)2313",
+        "-> peak:  2324 (hx1)1.652 (hx2)2.33  (x1)27     881 (label)2324",
+        "-> peak:  2329 (hx1)2.391 (hx2)4.264 (x1)34.508  874 (label)2329",
+        "-> peak:  2395 (hx1)2.481 (hx2)1.484 (x1)30.6   821 (label)2395",
+        "-> peak:  2486 (hx1)2.246 (hx2)4.369 (x1)36     746 (label)2486",
+        "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+        "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+        "-> peak:  2584 (hx1)2.779 (hx2)4.304 (x1)41.307  677 (label)2584",
+        "-> peak:  2634 (hx1)2.538 (hx2)1.713 (x1)30.6   649 (label)2634",
+        "-> peak:  2808 (hx1)2.033 (hx2)4.248 (x1)34.508  509 (label)2808",
+        "-> peak:  2867 (hx1)2.531 (hx2)4.294 (x1)41.307  456 (label)2867",
+        "-> peak:  2910 (hx1)3.967 (hx2)0.927 (x1)45.668  410 (label)2910",
+        "-> peak:  3030 (hx1)6.798 (hx2)0.758 (x1)117.461  -500 (label)3030",
+        "-> peak:  3101 (hx1)3.934 (hx2)0.96  (x1)60.35  -576 (label)3101",
+        "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+        "-> peak:  3108 (hx1)3.908 (hx2)1.64  (x1)63.223  -581 (label)3108",
+        "-> peak:  3135 (hx1)3.882 (hx2)8.39  (x1)50.69  -604 (label)3135",
+        "-> peak:  3141 (hx1)0.8   (hx2)8.365 (x1)13.479  -611 (label)3141",
+        "-> peak:  3221 (hx1)4.214 (hx2)7.967 (x1)57.343  -683 (label)3221",
+        "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+        "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+        "-> peak:  3315 (hx1)4.35  (hx2)1.171 (x1)56.428  -764 (label)3315",
+        "-> peak:  3412 (hx1)4.299 (hx2)2.783 (x1)52.152  -874 (label)3412",
+        "-> peak:  3505 (hx1)4.35  (hx2)1.542 (x1)56.428  -996 (label)3505",
+        "-> peak:  3620 (hx1)0.763 (hx2)4.755 (x1)13.505  -1165 (label)3620",
+        "-> peak:  3649 (hx1)0.854 (hx2)4.277 (x1)13     -1208 (label)3649",
+        "-> peak:  3660 (hx1)4.35  (hx2)7.957 (x1)56.428  -1212 (label)3660",
+        "-> peak:  3684 (hx1)4.299 (hx2)2.54  (x1)52.152  -1256 (label)3684",
+        "-> peak:  3804 (hx1)3.93  (hx2)0.924 (x1)63.326  -1457 (label)3804",
+        "-> peak:  3844 (hx1)2.067 (hx2)4.149 (x1)16.8   -1537 (label)3844",
+        "-> peak:  4278 (hx1)0.825 (hx2)4.354 (x1)13.203  -3070 (label)4278",
+        "-> peak:  4550 (hx1)4.35  (hx2)0.845 (x1)56.428  -5094 (label)4550",
+        "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+        "-> peak:   448 (hx1)9.232 (hx2)1.908 (x1)115.858  2085 (label)448",
+        "-> peak:   734 (hx1)8.906 (hx2)7.65  (x1)117.919  746 (label)734",
+        "-> peak:   752 (hx1)8.036 (hx2)8.514 (x1)117.962  1169 (label)752",
+        "-> peak:   864 (hx1)8.179 (hx2)3.833 (x1)118.97  885 (label)864",
+        "-> peak:   873 (hx1)7.82  (hx2)1.619 (x1)119.3  1702 (label)873",
+        "-> peak:   962 (hx1)8.183 (hx2)2.764 (x1)119.943  979 (label)962",
+        "-> peak:   997 (hx1)7.02  (hx2)2.267 (x1)119.961  705 (label)997",
+        "-> peak:  1014 (hx1)8.177 (hx2)2.659 (x1)119.966  725 (label)1014",
+        "-> peak:  1141 (hx1)8.117 (hx2)1.166 (x1)120.994  1960 (label)1141",
+        "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+        "-> peak:  1156 (hx1)8.358 (hx2)0.951 (x1)121.435  1463 (label)1156",
+        "-> peak:  1162 (hx1)8.36  (hx2)4.392 (x1)121.475  2296 (label)1162",
+        "-> peak:  1289 (hx1)8.152 (hx2)4.113 (x1)122    2094 (label)1289",
+        "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+        "-> peak:  1401 (hx1)8.369 (hx2)0.808 (x1)123.029  2094 (label)1401"
+      ],
+      "explained_records": [
+        "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+        "-> peak:   448 (hx1)9.232 (hx2)1.908 (x1)115.858  2085 (label)448",
+        "-> peak:   734 (hx1)8.906 (hx2)7.65  (x1)117.919  746 (label)734",
+        "-> peak:   752 (hx1)8.036 (hx2)8.514 (x1)117.962  1169 (label)752",
+        "-> peak:   864 (hx1)8.179 (hx2)3.833 (x1)118.97  885 (label)864",
+        "-> peak:   873 (hx1)7.82  (hx2)1.619 (x1)119.3  1702 (label)873",
+        "-> peak:   962 (hx1)8.183 (hx2)2.764 (x1)119.943  979 (label)962",
+        "-> peak:   997 (hx1)7.02  (hx2)2.267 (x1)119.961  705 (label)997",
+        "-> peak:  1014 (hx1)8.177 (hx2)2.659 (x1)119.966  725 (label)1014",
+        "-> peak:  1141 (hx1)8.117 (hx2)1.166 (x1)120.994  1960 (label)1141",
+        "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+        "-> peak:  1156 (hx1)8.358 (hx2)0.951 (x1)121.435  1463 (label)1156",
+        "-> peak:  1162 (hx1)8.36  (hx2)4.392 (x1)121.475  2296 (label)1162",
+        "-> peak:  1289 (hx1)8.152 (hx2)4.113 (x1)122    2094 (label)1289",
+        "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+        "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+        "-> peak:  1401 (hx1)8.369 (hx2)0.808 (x1)123.029  2094 (label)1401",
+        "-> peak:  1751 (hx1)2.779 (hx2)1.611 (x1)41.307  1491 (label)1751",
+        "-> peak:  2010 (hx1)2.779 (hx2)1.702 (x1)41.307  1161 (label)2010",
+        "-> peak:  2184 (hx1)0.735 (hx2)7.091 (x1)23     1007 (label)2184",
+        "-> peak:  2216 (hx1)1.602 (hx2)1.129 (x1)28.386  976 (label)2216",
+        "-> peak:  2251 (hx1)1.83  (hx2)4.276 (x1)38.337  942 (label)2251",
+        "-> peak:  2253 (hx1)1.831 (hx2)4.268 (x1)38.26  942 (label)2253",
+        "-> peak:  2269 (hx1)1.926 (hx2)8.164 (x1)38.193  932 (label)2269",
+        "-> peak:  2284 (hx1)2.531 (hx2)1.62  (x1)41.307  918 (label)2284",
+        "-> peak:  2300 (hx1)2.246 (hx2)0.831 (x1)36     897 (label)2300",
+        "-> peak:  2313 (hx1)0.735 (hx2)6.804 (x1)23     888 (label)2313",
+        "-> peak:  2324 (hx1)1.652 (hx2)2.33  (x1)27     881 (label)2324",
+        "-> peak:  2329 (hx1)2.391 (hx2)4.264 (x1)34.508  874 (label)2329",
+        "-> peak:  2395 (hx1)2.481 (hx2)1.484 (x1)30.6   821 (label)2395",
+        "-> peak:  2486 (hx1)2.246 (hx2)4.369 (x1)36     746 (label)2486",
+        "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+        "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+        "-> peak:  2584 (hx1)2.779 (hx2)4.304 (x1)41.307  677 (label)2584",
+        "-> peak:  2634 (hx1)2.538 (hx2)1.713 (x1)30.6   649 (label)2634",
+        "-> peak:  2808 (hx1)2.033 (hx2)4.248 (x1)34.508  509 (label)2808",
+        "-> peak:  2867 (hx1)2.531 (hx2)4.294 (x1)41.307  456 (label)2867",
+        "-> peak:  2910 (hx1)3.967 (hx2)0.927 (x1)45.668  410 (label)2910",
+        "-> peak:  3030 (hx1)6.798 (hx2)0.758 (x1)117.461  -500 (label)3030",
+        "-> peak:  3101 (hx1)3.934 (hx2)0.96  (x1)60.35  -576 (label)3101",
+        "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+        "-> peak:  3108 (hx1)3.908 (hx2)1.64  (x1)63.223  -581 (label)3108",
+        "-> peak:  3135 (hx1)3.882 (hx2)8.39  (x1)50.69  -604 (label)3135",
+        "-> peak:  3141 (hx1)0.8   (hx2)8.365 (x1)13.479  -611 (label)3141",
+        "-> peak:  3221 (hx1)4.214 (hx2)7.967 (x1)57.343  -683 (label)3221",
+        "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+        "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+        "-> peak:  3315 (hx1)4.35  (hx2)1.171 (x1)56.428  -764 (label)3315",
+        "-> peak:  3412 (hx1)4.299 (hx2)2.783 (x1)52.152  -874 (label)3412",
+        "-> peak:  3505 (hx1)4.35  (hx2)1.542 (x1)56.428  -996 (label)3505",
+        "-> peak:  3620 (hx1)0.763 (hx2)4.755 (x1)13.505  -1165 (label)3620",
+        "-> peak:  3649 (hx1)0.854 (hx2)4.277 (x1)13     -1208 (label)3649",
+        "-> peak:  3660 (hx1)4.35  (hx2)7.957 (x1)56.428  -1212 (label)3660",
+        "-> peak:  3684 (hx1)4.299 (hx2)2.54  (x1)52.152  -1256 (label)3684",
+        "-> peak:  3804 (hx1)3.93  (hx2)0.924 (x1)63.326  -1457 (label)3804",
+        "-> peak:  3844 (hx1)2.067 (hx2)4.149 (x1)16.8   -1537 (label)3844",
+        "-> peak:  4278 (hx1)0.825 (hx2)4.354 (x1)13.203  -3070 (label)4278",
+        "-> peak:  4550 (hx1)4.35  (hx2)0.845 (x1)56.428  -5094 (label)4550"
+      ],
+      "hx1": [
+        "116D-HB3",
+        "116D-HB3",
+        "116D-HB3",
+        "93L-HD1",
+        "93L-HD1",
+        "52P-HB3",
+        "1M-HG2",
+        "84E-HG2",
+        "116D-HB3",
+        "52P-HB2",
+        "91Y-QE",
+        "63K-HA",
+        "63K-HA",
+        "83T-HA",
+        "83T-HA",
+        "114P-HD3",
+        "82T-HG2",
+        "128M-HA",
+        "115A-HA",
+        "128M-HA",
+        "77I-HD1",
+        "128M-HA",
+        "115A-HA",
+        "128M-HE",
+        "128M-HA",
+        "80G-H",
+        "24E-H",
+        "106A-H",
+        "128M-H",
+        "39L-H",
+        "112V-H",
+        "120E-H",
+        "85K-H",
+        "85K-H",
+        "85K-H",
+        "116D-H",
+        "116D-H",
+        "127R-H",
+        "127R-H",
+        "57V-H",
+        "57V-H"
+      ],
+      "pairs": [
+        [
+          "86I-HB",
+          "87G-HA3"
+        ],
+        [
+          "116D-HB3",
+          "119L-HB2"
+        ],
+        [
+          "116D-HB3",
+          "119L-HG"
+        ],
+        [
+          "116D-HB3",
+          "119L-HB3"
+        ],
+        [
+          "93L-HD1",
+          "91Y-QD"
+        ],
+        [
+          "40K-HD2",
+          "37I-HG12"
+        ],
+        [
+          "86I-HB",
+          "85K-HA"
+        ],
+        [
+          "86I-HB",
+          "85K-HA"
+        ],
+        [
+          "122I-HB",
+          "124A-H"
+        ],
+        [
+          "116D-HB2",
+          "119L-HB2"
+        ],
+        [
+          "116D-HB2",
+          "119L-HG"
+        ],
+        [
+          "133E-HG3",
+          "131I-HG2"
+        ],
+        [
+          "93L-HD1",
+          "91Y-QE"
+        ],
+        [
+          "25L-HG",
+          "24E-QG"
+        ],
+        [
+          "52P-HB3",
+          "51I-HA"
+        ],
+        [
+          "1M-HG2",
+          "2L-HB2"
+        ],
+        [
+          "84E-HG3",
+          "83T-HA"
+        ],
+        [
+          "84E-HG2",
+          "83T-HG2"
+        ],
+        [
+          "84E-HG3",
+          "83T-HG2"
+        ],
+        [
+          "116D-HB3",
+          "115A-HA"
+        ],
+        [
+          "1M-HG3",
+          "3L-HG"
+        ],
+        [
+          "52P-HB2",
+          "51I-HA"
+        ],
+        [
+          "116D-HB2",
+          "115A-HA"
+        ],
+        [
+          "121G-QA",
+          "119L-HD2"
+        ],
+        [
+          "91Y-QE",
+          "93L-HD1"
+        ],
+        [
+          "63K-HA",
+          "59L-HD2"
+        ],
+        [
+          "63K-HA",
+          "59L-HD1"
+        ],
+        [
+          "83T-HA",
+          "84E-HG2"
+        ],
+        [
+          "83T-HA",
+          "84E-HG3"
+        ],
+        [
+          "130S-QB",
+          "132L-HB3"
+        ],
+        [
+          "114P-HD3",
+          "115A-H"
+        ],
+        [
+          "51I-HD1",
+          "48A-H"
+        ],
+        [
+          "120E-HA",
+          "122I-H"
+        ],
+        [
+          "82T-HG2",
+          "84E-H"
+        ],
+        [
+          "84E-HA",
+          "83T-HG2"
+        ],
+        [
+          "128M-HA",
+          "131I-HG12"
+        ],
+        [
+          "115A-HA",
+          "116D-HB3"
+        ],
+        [
+          "128M-HA",
+          "131I-HG13"
+        ],
+        [
+          "77I-HD1",
+          "74D-HA"
+        ],
+        [
+          "122I-HD1",
+          "119L-HA"
+        ],
+        [
+          "128M-HA",
+          "131I-H"
+        ],
+        [
+          "115A-HA",
+          "116D-HB2"
+        ],
+        [
+          "130S-QB",
+          "132L-HD2"
+        ],
+        [
+          "128M-HE",
+          "125K-HA"
+        ],
+        [
+          "131I-HD1",
+          "128M-HA"
+        ],
+        [
+          "128M-HA",
+          "131I-HD1"
+        ],
+        [
+          "80G-H",
+          "78I-HA"
+        ],
+        [
+          "24E-H",
+          "27K-QB"
+        ],
+        [
+          "106A-H",
+          "109K-H"
+        ],
+        [
+          "125K-H",
+          "123E-H"
+        ],
+        [
+          "128M-H",
+          "126V-HA"
+        ],
+        [
+          "39L-H",
+          "40K-QG"
+        ],
+        [
+          "120E-H",
+          "118D-HB3"
+        ],
+        [
+          "112V-H",
+          "41V-HB"
+        ],
+        [
+          "120E-H",
+          "118D-HB2"
+        ],
+        [
+          "85K-H",
+          "86I-HG12"
+        ],
+        [
+          "85K-H",
+          "83T-HG2"
+        ],
+        [
+          "85K-H",
+          "86I-HG13"
+        ],
+        [
+          "116D-H",
+          "119L-HD2"
+        ],
+        [
+          "116D-H",
+          "114P-HA"
+        ],
+        [
+          "127R-H",
+          "124A-HA"
+        ],
+        [
+          "127R-H",
+          "125K-HA"
+        ],
+        [
+          "57V-H",
+          "53L-HD1"
+        ],
+        [
+          "57V-H",
+          "53L-HD2"
+        ],
+        [
+          "48A-H",
+          "51I-HD1"
+        ]
+      ],
+      "pair_records": [
+        {
+          "record": "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+          "h1": "86I-HB",
+          "h2": "87G-HA3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  1751 (hx1)2.779 (hx2)1.611 (x1)41.307  1491 (label)1751",
+          "h1": "116D-HB3",
+          "h2": "119L-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1751 (hx1)2.779 (hx2)1.611 (x1)41.307  1491 (label)1751",
+          "h1": "116D-HB3",
+          "h2": "119L-HG",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2010 (hx1)2.779 (hx2)1.702 (x1)41.307  1161 (label)2010",
+          "h1": "116D-HB3",
+          "h2": "119L-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2184 (hx1)0.735 (hx2)7.091 (x1)23     1007 (label)2184",
+          "h1": "93L-HD1",
+          "h2": "91Y-QD",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2216 (hx1)1.602 (hx2)1.129 (x1)28.386  976 (label)2216",
+          "h1": "40K-HD2",
+          "h2": "37I-HG12",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2251 (hx1)1.83  (hx2)4.276 (x1)38.337  942 (label)2251",
+          "h1": "86I-HB",
+          "h2": "85K-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2253 (hx1)1.831 (hx2)4.268 (x1)38.26  942 (label)2253",
+          "h1": "86I-HB",
+          "h2": "85K-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2269 (hx1)1.926 (hx2)8.164 (x1)38.193  932 (label)2269",
+          "h1": "122I-HB",
+          "h2": "124A-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2284 (hx1)2.531 (hx2)1.62  (x1)41.307  918 (label)2284",
+          "h1": "116D-HB2",
+          "h2": "119L-HB2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2284 (hx1)2.531 (hx2)1.62  (x1)41.307  918 (label)2284",
+          "h1": "116D-HB2",
+          "h2": "119L-HG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2300 (hx1)2.246 (hx2)0.831 (x1)36     897 (label)2300",
+          "h1": "133E-HG3",
+          "h2": "131I-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2313 (hx1)0.735 (hx2)6.804 (x1)23     888 (label)2313",
+          "h1": "93L-HD1",
+          "h2": "91Y-QE",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2324 (hx1)1.652 (hx2)2.33  (x1)27     881 (label)2324",
+          "h1": "25L-HG",
+          "h2": "24E-QG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2329 (hx1)2.391 (hx2)4.264 (x1)34.508  874 (label)2329",
+          "h1": "52P-HB3",
+          "h2": "51I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2395 (hx1)2.481 (hx2)1.484 (x1)30.6   821 (label)2395",
+          "h1": "1M-HG2",
+          "h2": "2L-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2486 (hx1)2.246 (hx2)4.369 (x1)36     746 (label)2486",
+          "h1": "84E-HG3",
+          "h2": "83T-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+          "h1": "84E-HG2",
+          "h2": "83T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+          "h1": "84E-HG3",
+          "h2": "83T-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2584 (hx1)2.779 (hx2)4.304 (x1)41.307  677 (label)2584",
+          "h1": "116D-HB3",
+          "h2": "115A-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2634 (hx1)2.538 (hx2)1.713 (x1)30.6   649 (label)2634",
+          "h1": "1M-HG3",
+          "h2": "3L-HG",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2808 (hx1)2.033 (hx2)4.248 (x1)34.508  509 (label)2808",
+          "h1": "52P-HB2",
+          "h2": "51I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  2867 (hx1)2.531 (hx2)4.294 (x1)41.307  456 (label)2867",
+          "h1": "116D-HB2",
+          "h2": "115A-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  2910 (hx1)3.967 (hx2)0.927 (x1)45.668  410 (label)2910",
+          "h1": "121G-QA",
+          "h2": "119L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3030 (hx1)6.798 (hx2)0.758 (x1)117.461  -500 (label)3030",
+          "h1": "91Y-QE",
+          "h2": "93L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3101 (hx1)3.934 (hx2)0.96  (x1)60.35  -576 (label)3101",
+          "h1": "63K-HA",
+          "h2": "59L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3101 (hx1)3.934 (hx2)0.96  (x1)60.35  -576 (label)3101",
+          "h1": "63K-HA",
+          "h2": "59L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "h1": "83T-HA",
+          "h2": "84E-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "h1": "83T-HA",
+          "h2": "84E-HG3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3108 (hx1)3.908 (hx2)1.64  (x1)63.223  -581 (label)3108",
+          "h1": "130S-QB",
+          "h2": "132L-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3135 (hx1)3.882 (hx2)8.39  (x1)50.69  -604 (label)3135",
+          "h1": "114P-HD3",
+          "h2": "115A-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3141 (hx1)0.8   (hx2)8.365 (x1)13.479  -611 (label)3141",
+          "h1": "51I-HD1",
+          "h2": "48A-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3221 (hx1)4.214 (hx2)7.967 (x1)57.343  -683 (label)3221",
+          "h1": "120E-HA",
+          "h2": "122I-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+          "h1": "82T-HG2",
+          "h2": "84E-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+          "h1": "84E-HA",
+          "h2": "83T-HG2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3315 (hx1)4.35  (hx2)1.171 (x1)56.428  -764 (label)3315",
+          "h1": "128M-HA",
+          "h2": "131I-HG12",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3412 (hx1)4.299 (hx2)2.783 (x1)52.152  -874 (label)3412",
+          "h1": "115A-HA",
+          "h2": "116D-HB3",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3505 (hx1)4.35  (hx2)1.542 (x1)56.428  -996 (label)3505",
+          "h1": "128M-HA",
+          "h2": "131I-HG13",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3620 (hx1)0.763 (hx2)4.755 (x1)13.505  -1165 (label)3620",
+          "h1": "77I-HD1",
+          "h2": "74D-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3649 (hx1)0.854 (hx2)4.277 (x1)13     -1208 (label)3649",
+          "h1": "122I-HD1",
+          "h2": "119L-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3660 (hx1)4.35  (hx2)7.957 (x1)56.428  -1212 (label)3660",
+          "h1": "128M-HA",
+          "h2": "131I-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3684 (hx1)4.299 (hx2)2.54  (x1)52.152  -1256 (label)3684",
+          "h1": "115A-HA",
+          "h2": "116D-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  3804 (hx1)3.93  (hx2)0.924 (x1)63.326  -1457 (label)3804",
+          "h1": "130S-QB",
+          "h2": "132L-HD2",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  3844 (hx1)2.067 (hx2)4.149 (x1)16.8   -1537 (label)3844",
+          "h1": "128M-HE",
+          "h2": "125K-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  4278 (hx1)0.825 (hx2)4.354 (x1)13.203  -3070 (label)4278",
+          "h1": "131I-HD1",
+          "h2": "128M-HA",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:  4550 (hx1)4.35  (hx2)0.845 (x1)56.428  -5094 (label)4550",
+          "h1": "128M-HA",
+          "h2": "131I-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+          "h1": "80G-H",
+          "h2": "78I-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   448 (hx1)9.232 (hx2)1.908 (x1)115.858  2085 (label)448",
+          "h1": "24E-H",
+          "h2": "27K-QB",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   734 (hx1)8.906 (hx2)7.65  (x1)117.919  746 (label)734",
+          "h1": "106A-H",
+          "h2": "109K-H",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   752 (hx1)8.036 (hx2)8.514 (x1)117.962  1169 (label)752",
+          "h1": "125K-H",
+          "h2": "123E-H",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   864 (hx1)8.179 (hx2)3.833 (x1)118.97  885 (label)864",
+          "h1": "128M-H",
+          "h2": "126V-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   873 (hx1)7.82  (hx2)1.619 (x1)119.3  1702 (label)873",
+          "h1": "39L-H",
+          "h2": "40K-QG",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:   962 (hx1)8.183 (hx2)2.764 (x1)119.943  979 (label)962",
+          "h1": "120E-H",
+          "h2": "118D-HB3",
+          "unique_hx1": false
+        },
+        {
+          "record": "-> peak:   997 (hx1)7.02  (hx2)2.267 (x1)119.961  705 (label)997",
+          "h1": "112V-H",
+          "h2": "41V-HB",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1014 (hx1)8.177 (hx2)2.659 (x1)119.966  725 (label)1014",
+          "h1": "120E-H",
+          "h2": "118D-HB2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1141 (hx1)8.117 (hx2)1.166 (x1)120.994  1960 (label)1141",
+          "h1": "85K-H",
+          "h2": "86I-HG12",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1141 (hx1)8.117 (hx2)1.166 (x1)120.994  1960 (label)1141",
+          "h1": "85K-H",
+          "h2": "83T-HG2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+          "h1": "85K-H",
+          "h2": "86I-HG13",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1156 (hx1)8.358 (hx2)0.951 (x1)121.435  1463 (label)1156",
+          "h1": "116D-H",
+          "h2": "119L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1162 (hx1)8.36  (hx2)4.392 (x1)121.475  2296 (label)1162",
+          "h1": "116D-H",
+          "h2": "114P-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1289 (hx1)8.152 (hx2)4.113 (x1)122    2094 (label)1289",
+          "h1": "127R-H",
+          "h2": "124A-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1289 (hx1)8.152 (hx2)4.113 (x1)122    2094 (label)1289",
+          "h1": "127R-H",
+          "h2": "125K-HA",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "h1": "57V-H",
+          "h2": "53L-HD1",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "h1": "57V-H",
+          "h2": "53L-HD2",
+          "unique_hx1": true
+        },
+        {
+          "record": "-> peak:  1401 (hx1)8.369 (hx2)0.808 (x1)123.029  2094 (label)1401",
+          "h1": "48A-H",
+          "h2": "51I-HD1",
+          "unique_hx1": false
+        }
+      ],
+      "evidence": [
+        {
+          "record": "-> peak:  1360 (hx1)1.838 (hx2)3.948 (x1)38.304  2321 (label)1360",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 1359,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "86I-HB",
+              "87G-HA3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1751 (hx1)2.779 (hx2)1.611 (x1)41.307  1491 (label)1751",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 1750,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-HB3",
+              "119L-HB2"
+            ],
+            [
+              "116D-HB3",
+              "119L-HG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2010 (hx1)2.779 (hx2)1.702 (x1)41.307  1161 (label)2010",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2009,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-HB3",
+              "119L-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2184 (hx1)0.735 (hx2)7.091 (x1)23     1007 (label)2184",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2183,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "91Y-QD"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2216 (hx1)1.602 (hx2)1.129 (x1)28.386  976 (label)2216",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2215,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "40K-HD2",
+              "37I-HG12"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2251 (hx1)1.83  (hx2)4.276 (x1)38.337  942 (label)2251",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2250,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "86I-HB",
+              "85K-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2253 (hx1)1.831 (hx2)4.268 (x1)38.26  942 (label)2253",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2252,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "86I-HB",
+              "85K-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2269 (hx1)1.926 (hx2)8.164 (x1)38.193  932 (label)2269",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2268,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "122I-HB",
+              "124A-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2284 (hx1)2.531 (hx2)1.62  (x1)41.307  918 (label)2284",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2283,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "116D-HB2",
+              "119L-HB2"
+            ],
+            [
+              "116D-HB2",
+              "119L-HG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2300 (hx1)2.246 (hx2)0.831 (x1)36     897 (label)2300",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2299,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "133E-HG3",
+              "131I-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2313 (hx1)0.735 (hx2)6.804 (x1)23     888 (label)2313",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2312,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "93L-HD1",
+              "91Y-QE"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2324 (hx1)1.652 (hx2)2.33  (x1)27     881 (label)2324",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2323,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "25L-HG",
+              "24E-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2329 (hx1)2.391 (hx2)4.264 (x1)34.508  874 (label)2329",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2328,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "52P-HB3",
+              "51I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2395 (hx1)2.481 (hx2)1.484 (x1)30.6   821 (label)2395",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2394,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "1M-HG2",
+              "2L-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2486 (hx1)2.246 (hx2)4.369 (x1)36     746 (label)2486",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2485,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HG3",
+              "83T-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2529 (hx1)2.215 (hx2)1.18  (x1)36     715 (label)2529",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2528,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "84E-HG2",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2573 (hx1)2.246 (hx2)1.18  (x1)36     687 (label)2573",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2572,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HG3",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2584 (hx1)2.779 (hx2)4.304 (x1)41.307  677 (label)2584",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2583,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-HB3",
+              "115A-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2634 (hx1)2.538 (hx2)1.713 (x1)30.6   649 (label)2634",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2633,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "1M-HG3",
+              "3L-HG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2808 (hx1)2.033 (hx2)4.248 (x1)34.508  509 (label)2808",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2807,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "52P-HB2",
+              "51I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2867 (hx1)2.531 (hx2)4.294 (x1)41.307  456 (label)2867",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2866,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "116D-HB2",
+              "115A-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  2910 (hx1)3.967 (hx2)0.927 (x1)45.668  410 (label)2910",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 2909,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "121G-QA",
+              "119L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3030 (hx1)6.798 (hx2)0.758 (x1)117.461  -500 (label)3030",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3029,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "91Y-QE",
+              "93L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3101 (hx1)3.934 (hx2)0.96  (x1)60.35  -576 (label)3101",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3100,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "63K-HA",
+              "59L-HD2"
+            ],
+            [
+              "63K-HA",
+              "59L-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3107 (hx1)4.32  (hx2)2.215 (x1)61.876  -581 (label)3107",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3106,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "83T-HA",
+              "84E-HG2"
+            ],
+            [
+              "83T-HA",
+              "84E-HG3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3108 (hx1)3.908 (hx2)1.64  (x1)63.223  -581 (label)3108",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3107,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "130S-QB",
+              "132L-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3135 (hx1)3.882 (hx2)8.39  (x1)50.69  -604 (label)3135",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3134,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "114P-HD3",
+              "115A-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3141 (hx1)0.8   (hx2)8.365 (x1)13.479  -611 (label)3141",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3140,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "51I-HD1",
+              "48A-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3221 (hx1)4.214 (hx2)7.967 (x1)57.343  -683 (label)3221",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3220,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "120E-HA",
+              "122I-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3223 (hx1)1.131 (hx2)8.414 (x1)21     -688 (label)3223",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3222,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "82T-HG2",
+              "84E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3266 (hx1)4.212 (hx2)1.177 (x1)57.06  -732 (label)3266",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3265,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "84E-HA",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3315 (hx1)4.35  (hx2)1.171 (x1)56.428  -764 (label)3315",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3314,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-HA",
+              "131I-HG12"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3412 (hx1)4.299 (hx2)2.783 (x1)52.152  -874 (label)3412",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3411,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "115A-HA",
+              "116D-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3505 (hx1)4.35  (hx2)1.542 (x1)56.428  -996 (label)3505",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3504,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-HA",
+              "131I-HG13"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3620 (hx1)0.763 (hx2)4.755 (x1)13.505  -1165 (label)3620",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3619,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "77I-HD1",
+              "74D-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3649 (hx1)0.854 (hx2)4.277 (x1)13     -1208 (label)3649",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3648,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "122I-HD1",
+              "119L-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3660 (hx1)4.35  (hx2)7.957 (x1)56.428  -1212 (label)3660",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3659,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-HA",
+              "131I-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3684 (hx1)4.299 (hx2)2.54  (x1)52.152  -1256 (label)3684",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3683,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "115A-HA",
+              "116D-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3804 (hx1)3.93  (hx2)0.924 (x1)63.326  -1457 (label)3804",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3803,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "130S-QB",
+              "132L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  3844 (hx1)2.067 (hx2)4.149 (x1)16.8   -1537 (label)3844",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 3843,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-HE",
+              "125K-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4278 (hx1)0.825 (hx2)4.354 (x1)13.203  -3070 (label)4278",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 4277,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "131I-HD1",
+              "128M-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  4550 (hx1)4.35  (hx2)0.845 (x1)56.428  -5094 (label)4550",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 4549,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-HA",
+              "131I-HD1"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   150 (hx1)8.276 (hx2)4.107 (x1)110.204  897 (label)150",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5065,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "80G-H",
+              "78I-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   448 (hx1)9.232 (hx2)1.908 (x1)115.858  2085 (label)448",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5363,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "24E-H",
+              "27K-QB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   734 (hx1)8.906 (hx2)7.65  (x1)117.919  746 (label)734",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5649,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "106A-H",
+              "109K-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   752 (hx1)8.036 (hx2)8.514 (x1)117.962  1169 (label)752",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5667,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "125K-H",
+              "123E-H"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   864 (hx1)8.179 (hx2)3.833 (x1)118.97  885 (label)864",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5779,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "128M-H",
+              "126V-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   873 (hx1)7.82  (hx2)1.619 (x1)119.3  1702 (label)873",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5788,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "39L-H",
+              "40K-QG"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   962 (hx1)8.183 (hx2)2.764 (x1)119.943  979 (label)962",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5877,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "120E-H",
+              "118D-HB3"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:   997 (hx1)7.02  (hx2)2.267 (x1)119.961  705 (label)997",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5912,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "112V-H",
+              "41V-HB"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1014 (hx1)8.177 (hx2)2.659 (x1)119.966  725 (label)1014",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 5929,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "120E-H",
+              "118D-HB2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1141 (hx1)8.117 (hx2)1.166 (x1)120.994  1960 (label)1141",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6056,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "85K-H",
+              "86I-HG12"
+            ],
+            [
+              "85K-H",
+              "83T-HG2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1144 (hx1)8.117 (hx2)1.447 (x1)121.151  965 (label)1144",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6059,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "85K-H",
+              "86I-HG13"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1156 (hx1)8.358 (hx2)0.951 (x1)121.435  1463 (label)1156",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6071,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-H",
+              "119L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1162 (hx1)8.36  (hx2)4.392 (x1)121.475  2296 (label)1162",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6077,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "116D-H",
+              "114P-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1289 (hx1)8.152 (hx2)4.113 (x1)122    2094 (label)1289",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6204,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "127R-H",
+              "124A-HA"
+            ],
+            [
+              "127R-H",
+              "125K-HA"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1335 (hx1)6.769 (hx2)0.649 (x1)122.019  1467 (label)1335",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6250,
+          "unique_hx1": true,
+          "pairs": [
+            [
+              "57V-H",
+              "53L-HD1"
+            ],
+            [
+              "57V-H",
+              "53L-HD2"
+            ]
+          ]
+        },
+        {
+          "record": "-> peak:  1401 (hx1)8.369 (hx2)0.808 (x1)123.029  2094 (label)1401",
+          "explaining_result": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+          "first_block": 6316,
+          "unique_hx1": false,
+          "pairs": [
+            [
+              "48A-H",
+              "51I-HD1"
+            ]
+          ]
+        }
+      ],
+      "points": [
+        [
+          86,
+          87
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          93,
+          91
+        ],
+        [
+          40,
+          37
+        ],
+        [
+          86,
+          85
+        ],
+        [
+          86,
+          85
+        ],
+        [
+          122,
+          124
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          133,
+          131
+        ],
+        [
+          93,
+          91
+        ],
+        [
+          25,
+          24
+        ],
+        [
+          52,
+          51
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          116,
+          115
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          52,
+          51
+        ],
+        [
+          116,
+          115
+        ],
+        [
+          121,
+          119
+        ],
+        [
+          91,
+          93
+        ],
+        [
+          63,
+          59
+        ],
+        [
+          63,
+          59
+        ],
+        [
+          83,
+          84
+        ],
+        [
+          83,
+          84
+        ],
+        [
+          130,
+          132
+        ],
+        [
+          114,
+          115
+        ],
+        [
+          51,
+          48
+        ],
+        [
+          120,
+          122
+        ],
+        [
+          82,
+          84
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          128,
+          131
+        ],
+        [
+          115,
+          116
+        ],
+        [
+          128,
+          131
+        ],
+        [
+          77,
+          74
+        ],
+        [
+          122,
+          119
+        ],
+        [
+          128,
+          131
+        ],
+        [
+          115,
+          116
+        ],
+        [
+          130,
+          132
+        ],
+        [
+          128,
+          125
+        ],
+        [
+          131,
+          128
+        ],
+        [
+          128,
+          131
+        ],
+        [
+          80,
+          78
+        ],
+        [
+          24,
+          27
+        ],
+        [
+          106,
+          109
+        ],
+        [
+          125,
+          123
+        ],
+        [
+          128,
+          126
+        ],
+        [
+          39,
+          40
+        ],
+        [
+          120,
+          118
+        ],
+        [
+          112,
+          41
+        ],
+        [
+          120,
+          118
+        ],
+        [
+          85,
+          86
+        ],
+        [
+          85,
+          83
+        ],
+        [
+          85,
+          86
+        ],
+        [
+          116,
+          119
+        ],
+        [
+          116,
+          114
+        ],
+        [
+          127,
+          124
+        ],
+        [
+          127,
+          125
+        ],
+        [
+          57,
+          53
+        ],
+        [
+          57,
+          53
+        ],
+        [
+          48,
+          51
+        ]
+      ],
+      "hx1_indices": [
+        116,
+        116,
+        116,
+        93,
+        93,
+        52,
+        1,
+        84,
+        116,
+        52,
+        91,
+        63,
+        63,
+        83,
+        83,
+        114,
+        82,
+        128,
+        115,
+        128,
+        77,
+        128,
+        115,
+        128,
+        128,
+        80,
+        24,
+        106,
+        128,
+        39,
+        112,
+        120,
+        85,
+        85,
+        85,
+        116,
+        116,
+        127,
+        127,
+        57,
+        57
+      ],
+      "counts": {
+        "candidate_rows": 58,
+        "explained_qr_records": 58,
+        "h_h_pairs": 65,
+        "long_range_pairs": 1,
+        "long_range_unique_h1": 1
+      }
+    },
+    "denominators": [
+      {
+        "id": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+        "status": "available",
+        "inconsistent1": 1804,
+        "total1": 4861,
+        "inconsistent2": 529,
+        "total2": 1636,
+        "denominator": 2333
+      }
+    ],
+    "legacy_a_denominator": {
+      "inconsistent1": 1804,
+      "inconsistent2": 529,
+      "denominator": 2333
+    },
+    "plot": {
+      "a": {
+        "x": [
+          86,
+          116,
+          116,
+          116,
+          93,
+          40,
+          86,
+          86,
+          122,
+          116,
+          116,
+          133,
+          93,
+          25,
+          52,
+          1,
+          84,
+          84,
+          84,
+          116,
+          1,
+          52,
+          116,
+          121,
+          91,
+          63,
+          63,
+          83,
+          83,
+          130,
+          114,
+          51,
+          120,
+          82,
+          84,
+          128,
+          115,
+          128,
+          77,
+          122,
+          128,
+          115,
+          130,
+          128,
+          131,
+          128,
+          80,
+          24,
+          106,
+          125,
+          128,
+          39,
+          120,
+          112,
+          120,
+          85,
+          85,
+          85,
+          116,
+          116,
+          127,
+          127,
+          57,
+          57,
+          48
+        ],
+        "y": [
+          87,
+          119,
+          119,
+          119,
+          91,
+          37,
+          85,
+          85,
+          124,
+          119,
+          119,
+          131,
+          91,
+          24,
+          51,
+          2,
+          83,
+          83,
+          83,
+          115,
+          3,
+          51,
+          115,
+          119,
+          93,
+          59,
+          59,
+          84,
+          84,
+          132,
+          115,
+          48,
+          122,
+          84,
+          83,
+          131,
+          116,
+          131,
+          74,
+          119,
+          131,
+          116,
+          132,
+          125,
+          128,
+          131,
+          78,
+          27,
+          109,
+          123,
+          126,
+          40,
+          118,
+          41,
+          118,
+          86,
+          83,
+          86,
+          119,
+          114,
+          124,
+          125,
+          53,
+          53,
+          51
+        ]
+      },
+      "b": {
+        "x": [
+          122,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          96,
+          96,
+          55,
+          55,
+          59,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          93,
+          40,
+          99,
+          99,
+          123,
+          99,
+          93,
+          99,
+          27,
+          118,
+          99,
+          27,
+          77,
+          93,
+          22,
+          113,
+          80,
+          122,
+          91,
+          93,
+          91,
+          97,
+          91,
+          71,
+          91,
+          78,
+          91,
+          71,
+          77,
+          91,
+          46,
+          97,
+          71,
+          77,
+          77,
+          77,
+          92,
+          92,
+          20,
+          96,
+          24,
+          95,
+          97,
+          97,
+          97,
+          126,
+          89,
+          74,
+          33,
+          33
+        ],
+        "y": [
+          123,
+          70,
+          71,
+          70,
+          70,
+          71,
+          70,
+          70,
+          71,
+          71,
+          92,
+          92,
+          59,
+          59,
+          55,
+          99,
+          71,
+          99,
+          97,
+          74,
+          15,
+          77,
+          105,
+          91,
+          91,
+          124,
+          91,
+          97,
+          91,
+          6,
+          119,
+          91,
+          6,
+          74,
+          15,
+          23,
+          41,
+          78,
+          123,
+          71,
+          96,
+          99,
+          93,
+          71,
+          91,
+          71,
+          79,
+          71,
+          91,
+          91,
+          101,
+          3,
+          93,
+          91,
+          91,
+          91,
+          91,
+          96,
+          96,
+          18,
+          93,
+          27,
+          93,
+          93,
+          93,
+          93,
+          125,
+          91,
+          77,
+          61,
+          61
+        ]
+      },
+      "a_histogram": [
+        116,
+        116,
+        116,
+        93,
+        93,
+        52,
+        1,
+        84,
+        116,
+        52,
+        91,
+        63,
+        63,
+        83,
+        83,
+        114,
+        82,
+        128,
+        115,
+        128,
+        77,
+        128,
+        115,
+        128,
+        128,
+        80,
+        24,
+        106,
+        128,
+        39,
+        112,
+        120,
+        85,
+        85,
+        85,
+        116,
+        116,
+        127,
+        127,
+        57,
+        57
+      ],
+      "b_histogram": [
+        93,
+        93,
+        93,
+        93,
+        93,
+        93,
+        96,
+        96,
+        55,
+        55,
+        93,
+        93,
+        93,
+        93,
+        93,
+        99,
+        27,
+        99,
+        27,
+        93,
+        22,
+        80,
+        91,
+        91,
+        91,
+        71,
+        91,
+        91,
+        71,
+        91,
+        71,
+        77,
+        77,
+        92,
+        92,
+        20,
+        24,
+        95,
+        97,
+        97,
+        97,
+        126,
+        89
+      ]
+    }
+  },
+  "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+  "presentation": {
+    "a_name": "32\u201347 plus 78\u201399 plus 121\u2013139 \u00b7 S1 \u00b7 MCMC50 \u00b7 repeat 1",
+    "b_name": "32\u201347 plus 78\u201399 plus 121\u2013139 \u00b7 S1 \u00b7 DISCO50 \u00b7 repeat 1",
+    "a_color": "blue",
+    "b_color": "orange",
+    "length": 139,
+    "max_h1": 10
+  },
+  "context": {
+    "kind": "selector-pair",
+    "mask": "res32-47-plus78-99-plus121-139",
+    "repeat": 1,
+    "a_label": "32\u201347 plus 78\u201399 plus 121\u2013139 \u00b7 S1 \u00b7 MCMC50 \u00b7 repeat 1",
+    "b_label": "32\u201347 plus 78\u201399 plus 121\u2013139 \u00b7 S1 \u00b7 DISCO50 \u00b7 repeat 1"
+  },
+  "source_scientific_json_sha256": "36c6f0c7a8435634d8e4adf1b058b0e40c8e17567df35c9dd7810085fca73c76",
+  "source_report_manifest_sha256": "902c91b346779c5e6da78569c5342a240f862db7073c43f8a7e336d5b13533d5",
+  "plan_sha256": "72cb0bb2a6ee5a1700414178c3fecdf59f199e36b10a5c1bb6aaf36e95bcccbe",
+  "inputs": {
+    "a": [
+      {
+        "id": "sr215-2000:res32-47-plus78-99-plus121-139:S1:mcmc50:r1",
+        "format": "directory",
+        "raw_hashes": {
+          "sr215_DP.QR": "8ee18ae214124224b9f41734dbd99726497aa28dfec7d6452e7d937f615baaf3",
+          "cnoe.peaks_match.gz": "7d2f4bc7048b55dcb7c736a20f2f801b392399f9f55e111f88ab43f96e4a14dc",
+          "nnoe.peaks_match.gz": "d34c99e88f7d3fcb9ce0cd7a8e3af5a39edf7b402b6e254f1e6f3eebc7abb43a",
+          "sr215_DP.ovw": "5d5eee9d5a3120eb06460281f46527fcdd330ea03f717f69115019837199a757"
+        },
+        "logical_sha256": {
+          "sr215_DP.QR": "8ee18ae214124224b9f41734dbd99726497aa28dfec7d6452e7d937f615baaf3",
+          "cnoe.peaks_match.gz": "ccc1d8230251a6e5f91bfaaec6478da8a3e3546c110d82b7082f02a7b274ea81",
+          "nnoe.peaks_match.gz": "ee1c81af1bd688d914d6f2cf78d5daded2565751ed3a7d8b744deba08341f397",
+          "sr215_DP.ovw": "5d5eee9d5a3120eb06460281f46527fcdd330ea03f717f69115019837199a757"
+        },
+        "match_order": [
+          "cnoe.peaks_match.gz",
+          "nnoe.peaks_match.gz"
+        ],
+        "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+        "coordinate_sha256": "3ace09beea2ecbbfb410441454edac4599fa28739ac0fc743719b1591edce6fe",
+        "context": "native-ensemble",
+        "members": [
+          "SR215_bmr6366__AFSample3__0049",
+          "SR215_bmr6366__AFSample3__0064",
+          "SR215_bmr6366__AFSample3__0067",
+          "SR215_bmr6366__AFSample3__0082",
+          "SR215_bmr6366__AFSample3__0084",
+          "SR215_bmr6366__AFSample3__0123",
+          "SR215_bmr6366__AFSample3__0134",
+          "SR215_bmr6366__AFSample3__0151",
+          "SR215_bmr6366__AFSample3__0153",
+          "SR215_bmr6366__AFSample3__0170",
+          "SR215_bmr6366__AFSample3__0171",
+          "SR215_bmr6366__AFSample3__0193",
+          "SR215_bmr6366__AFSample3__0202",
+          "SR215_bmr6366__AFSample3__0299",
+          "SR215_bmr6366__AFSample3__0318",
+          "SR215_bmr6366__AFSample3__0361",
+          "SR215_bmr6366__AFSample3__0375",
+          "SR215_bmr6366__AFSample3__0380",
+          "SR215_bmr6366__AFSample3__0383",
+          "SR215_bmr6366__AFSample3__0385",
+          "SR215_bmr6366__AFSample3__0398",
+          "SR215_bmr6366__AFSample3__0424",
+          "SR215_bmr6366__AFSample3__0439",
+          "SR215_bmr6366__AFSample3__0498",
+          "SR215_bmr6366__AFSample3__0522",
+          "SR215_bmr6366__AFSample3__0526",
+          "SR215_bmr6366__AFSample3__0557",
+          "SR215_bmr6366__AFSample3__0578",
+          "SR215_bmr6366__AFSample3__0598",
+          "SR215_bmr6366__AFSample3__0619",
+          "SR215_bmr6366__AFSample3__0644",
+          "SR215_bmr6366__AFSample3__0667",
+          "SR215_bmr6366__AFSample3__0691",
+          "SR215_bmr6366__AFSample3__0692",
+          "SR215_bmr6366__AFSample3__0714",
+          "SR215_bmr6366__AFSample3__0723",
+          "SR215_bmr6366__AFSample3__0727",
+          "SR215_bmr6366__AFSample3__0763",
+          "SR215_bmr6366__AFSample3__0809",
+          "SR215_bmr6366__AFSample3__0811",
+          "SR215_bmr6366__AFSample3__0871",
+          "SR215_bmr6366__AFSample3__0880",
+          "SR215_bmr6366__AFSample3__0884",
+          "SR215_bmr6366__AFSample3__0889",
+          "SR215_bmr6366__AFSample3__0891",
+          "SR215_bmr6366__AFSample3__0906",
+          "SR215_bmr6366__AFSample3__0941",
+          "SR215_bmr6366__AFSample3__0971",
+          "SR215_bmr6366__AFSample3__0984",
+          "SR215_bmr6366__AFSample3__0995"
+        ]
+      }
+    ],
+    "b": [
+      {
+        "id": "sr215-2000:res32-47-plus78-99-plus121-139:S1:disco50:r1",
+        "format": "directory",
+        "raw_hashes": {
+          "sr215_DP.QR": "dda23937cfa1e75592e0e56970063a6b25db5facc4aed51333896f894894acfc",
+          "cnoe.peaks_match.gz": "b00377825dbfaaf4547ee02592e9657028e12691a8c07ddbd0d561467699badd",
+          "nnoe.peaks_match.gz": "32e3da93691faf7701d3cee44976be96b11e234d8f05dba7c1bd4607cfb18c3e",
+          "sr215_DP.ovw": "caa0821bc6768465bbce65d568113d3348dfad7409aeebfeab760d4ae7454ea3"
+        },
+        "logical_sha256": {
+          "sr215_DP.QR": "dda23937cfa1e75592e0e56970063a6b25db5facc4aed51333896f894894acfc",
+          "cnoe.peaks_match.gz": "a0c19fbd515f4ebb0799d486783ca8828c4ce0e1832e7e573c8fd2e6c3fdf3e5",
+          "nnoe.peaks_match.gz": "ed0693c97fca99f4c0206b10f285ca28c6239949ebecda5309a6b881771474cd",
+          "sr215_DP.ovw": "caa0821bc6768465bbce65d568113d3348dfad7409aeebfeab760d4ae7454ea3"
+        },
+        "match_order": [
+          "cnoe.peaks_match.gz",
+          "nnoe.peaks_match.gz"
+        ],
+        "dataset_sha256": "12c27accc8dbf8bae06f6c335e31794dab7ecee0ebeb8888fea98fee65bee0c1",
+        "coordinate_sha256": "8d1e7c1396f27b0845481bc92404c317d80f3fb697da7cdf9f46345604f35c21",
+        "context": "native-ensemble",
+        "members": [
+          "SR215_bmr6366__AFSample3__0027",
+          "SR215_bmr6366__AFSample3__0037",
+          "SR215_bmr6366__AFSample3__0053",
+          "SR215_bmr6366__AFSample3__0067",
+          "SR215_bmr6366__AFSample3__0078",
+          "SR215_bmr6366__AFSample3__0085",
+          "SR215_bmr6366__AFSample3__0147",
+          "SR215_bmr6366__AFSample3__0154",
+          "SR215_bmr6366__AFSample3__0155",
+          "SR215_bmr6366__AFSample3__0170",
+          "SR215_bmr6366__AFSample3__0182",
+          "SR215_bmr6366__AFSample3__0186",
+          "SR215_bmr6366__AFSample3__0204",
+          "SR215_bmr6366__AFSample3__0265",
+          "SR215_bmr6366__AFSample3__0284",
+          "SR215_bmr6366__AFSample3__0301",
+          "SR215_bmr6366__AFSample3__0331",
+          "SR215_bmr6366__AFSample3__0334",
+          "SR215_bmr6366__AFSample3__0345",
+          "SR215_bmr6366__AFSample3__0374",
+          "SR215_bmr6366__AFSample3__0375",
+          "SR215_bmr6366__AFSample3__0408",
+          "SR215_bmr6366__AFSample3__0462",
+          "SR215_bmr6366__AFSample3__0515",
+          "SR215_bmr6366__AFSample3__0521",
+          "SR215_bmr6366__AFSample3__0529",
+          "SR215_bmr6366__AFSample3__0539",
+          "SR215_bmr6366__AFSample3__0573",
+          "SR215_bmr6366__AFSample3__0588",
+          "SR215_bmr6366__AFSample3__0610",
+          "SR215_bmr6366__AFSample3__0622",
+          "SR215_bmr6366__AFSample3__0644",
+          "SR215_bmr6366__AFSample3__0668",
+          "SR215_bmr6366__AFSample3__0673",
+          "SR215_bmr6366__AFSample3__0687",
+          "SR215_bmr6366__AFSample3__0688",
+          "SR215_bmr6366__AFSample3__0714",
+          "SR215_bmr6366__AFSample3__0746",
+          "SR215_bmr6366__AFSample3__0766",
+          "SR215_bmr6366__AFSample3__0774",
+          "SR215_bmr6366__AFSample3__0791",
+          "SR215_bmr6366__AFSample3__0809",
+          "SR215_bmr6366__AFSample3__0828",
+          "SR215_bmr6366__AFSample3__0867",
+          "SR215_bmr6366__AFSample3__0869",
+          "SR215_bmr6366__AFSample3__0874",
+          "SR215_bmr6366__AFSample3__0906",
+          "SR215_bmr6366__AFSample3__0918",
+          "SR215_bmr6366__AFSample3__0924",
+          "SR215_bmr6366__AFSample3__0961"
+        ]
+      }
+    ]
+  }
+}

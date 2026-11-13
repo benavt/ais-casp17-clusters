@@ -28,11 +28,11 @@ test('coincident printed values are an exact-position count-aware scatter, not j
  saved.models[1].ptm=.66;const split=api.scatterTraces(saved,'dp')[0];assert.deepEqual(split.marker.size,[999,1]);assert.equal(split.customdata[1][2],saved.models[1].model_id);
  assert.deepEqual(api.ptmRange(saved),[.64,.67]);
 });
-test('pooled cohort is a distinct, complete three-mask selection while existing target metadata remain unchanged',()=>{
+test('pooled cohort is a distinct, complete four-mask selection while existing target metadata remain unchanged',()=>{
  const original={id:api.TARGET,residue_ranges:[{id:'all',data:'old.json'}]},before=JSON.stringify(original);
- const catalog={cohort:{id:api.COHORT,available:true,residue_ranges:['all','res5-95','res32-47-plus78-99'].map(id=>({id,data:'rpf-sr215/'+id+'/primary.json'}))}};
+ const catalog={cohort:{id:api.COHORT,available:true,residue_ranges:['all','res5-95','res32-47-plus78-99','res32-47-plus78-99-plus121-139'].map(id=>({id,data:'rpf-sr215/'+id+'/primary.json'}))}};
  assert.equal(api.cohortTarget(original,catalog,'all'),original);const result=api.cohortTarget(original,catalog,api.COHORT);
- assert.equal(result.cohort_id,api.COHORT);assert.equal(result.residue_ranges.length,3);assert.equal(JSON.stringify(original),before);
+ assert.equal(result.cohort_id,api.COHORT);assert.equal(result.residue_ranges.length,4);assert.equal(JSON.stringify(original),before);
  assert.throws(()=>api.cohortTarget(original,{cohort:{...catalog.cohort,available:false}},api.COHORT));
 });
 test('paired violins retain all 2,000 native scores, their source identities and negative DP',()=>{

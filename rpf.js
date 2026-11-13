@@ -58,7 +58,7 @@ function cohortTarget(target,catalog,requested){
  if(requested!==COHORT)return target;
  need(target.id===TARGET&&catalog?.cohort?.id===COHORT&&catalog.cohort.available===true,'The requested pooled RPF cohort is unavailable.');
  const ranges=catalog.cohort.residue_ranges;
- need(Array.isArray(ranges)&&ranges.length===3&&['all','res5-95','res32-47-plus78-99'].every(id=>ranges.some(r=>r.id===id)),'Pooled SR215 residue selections differ.');
+ need(Array.isArray(ranges)&&ranges.length===4&&['all','res5-95','res32-47-plus78-99','res32-47-plus78-99-plus121-139'].every(id=>ranges.some(r=>r.id===id)),'Pooled SR215 residue selections differ.');
  return {...target,cohort_id:COHORT,residue_ranges:ranges};
 }
 const PREPARATIONS={reduce:'Reduce',phenix:'phenix.reduce'};

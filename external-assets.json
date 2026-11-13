@@ -1,0 +1,1710 @@
+{
+  "schema_version": 1,
+  "source_commit": "3a273ffe2094c82a21dfb5e0d7c73c11b59993e4",
+  "files": {
+    "analysis/panels/sr215-2150_all_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_disco50_r1.pdb.gz",
+      "bytes": 1915011,
+      "sha256": "2e8f59e4efe3960698477cd8d064688fcc7de7c14ff2d000c338dd113a03b537",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_all_S1_disco50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_disco50_r2.pdb.gz",
+      "bytes": 1907347,
+      "sha256": "e314a2f60589ca1004b10e272bb4e8b9cdbcb18636fd70858dd753176b2a787c",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_all_S1_disco50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_disco50_r3.pdb.gz",
+      "bytes": 1913811,
+      "sha256": "995350f0fd8d5a415f0cbd87d03a280927e028bdb9f77353d2383908abfd7992",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_all_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1902843,
+      "sha256": "13d56f46ce76043d8aa2bf94e4650abf59d10ca7dfb7e3981cca7afed2ce4016",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_all_S1_mcmc50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_mcmc50_r2.pdb.gz",
+      "bytes": 1908663,
+      "sha256": "bd6f1baa6e8efff935bc969d95d73e200c323e3ad65af014bc02502eafac3728",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_all_S1_mcmc50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_all_S1_mcmc50_r3.pdb.gz",
+      "bytes": 1925551,
+      "sha256": "b483d5bea1e4a023154175509f8cfe89fec247410de452eaa3d781fab62d5a02",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r1.pdb.gz",
+      "bytes": 1987656,
+      "sha256": "9697b7e49be60f8e4e5617b141fb55fa879e9720740b7f3393a6572460bb21a4",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r2.pdb.gz",
+      "bytes": 1989255,
+      "sha256": "f016e82ce2121b9a02de950ec0ef1a0ee01570afcb1e2f0a0bd7815c8888ec37",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_disco50_r3.pdb.gz",
+      "bytes": 1989527,
+      "sha256": "99d3926a63e7bce786a475f3edb9261badb04cca7d937bc724da92decb867f5e",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1989280,
+      "sha256": "27f2b1446d09a9dbed4347f4dae946d24f3b0a13c204b439e7b5a385ca6f7cb7",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r2.pdb.gz",
+      "bytes": 1987780,
+      "sha256": "879423eb69f452ce45ad79cc22b098155b8f288eb8a28b753c07f81457fae8d4",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99-plus121-139_S1_mcmc50_r3.pdb.gz",
+      "bytes": 1988625,
+      "sha256": "4a1fbe943572e04e74e84ad917de2e4c52dfd1b03a4d98c95f62309f0877bcf1",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r1.pdb.gz",
+      "bytes": 1988679,
+      "sha256": "e23d8cd96bd0994b580d678ffe6e5d0043bc95869b1756bfcd1f7290496b306b",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r2.pdb.gz",
+      "bytes": 1987392,
+      "sha256": "553a45bd676e2b4626a18018ae7fa152be21a9e50e9916c98d2ebd7d16da3e63",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_disco50_r3.pdb.gz",
+      "bytes": 1987589,
+      "sha256": "5060a71b606833bbf445cc0ca55dfbe16c18acf929154359d7ce643a087e4152",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1989625,
+      "sha256": "4a3bf6c96067fc8243c1b0b1000e699d3cd1c8da6b2b7b4f7fed8e9740712c96",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r2.pdb.gz",
+      "bytes": 1988144,
+      "sha256": "601b3758666f82e314ba25e64a39120e06b3d4a4f7398a773675843e89f78237",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res32-47-plus78-99_S1_mcmc50_r3.pdb.gz",
+      "bytes": 1989720,
+      "sha256": "ebb88e293f94a5a84fe59b2ce6723ca29c54d53cfc105517da09e19f159d3556",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_disco50_r1.pdb.gz",
+      "bytes": 1917469,
+      "sha256": "dc7dbfce1681c0de7e1f4af1d011ea24c06eeb034a76ea1fa25cb3af3235960b",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_disco50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_disco50_r2.pdb.gz",
+      "bytes": 1896002,
+      "sha256": "1515866781c6de7a9fe66b7006981b591f921c038eef14b293fb970490db219c",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_disco50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_disco50_r3.pdb.gz",
+      "bytes": 1895598,
+      "sha256": "0d6e8c74cefb6c8f2239abf91fc80ccd733f364c19f10915250651f73b818fb7",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1897742,
+      "sha256": "0b0d1713cc941c61382f9ec811801a9800e34b0e3d3d08327ffee44d4ce35c2e",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_mcmc50_r2.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_mcmc50_r2.pdb.gz",
+      "bytes": 1920056,
+      "sha256": "3f4c1d0d54e4bccfb6057e2243d5818fbd716b267e7dd3b5e057680ff91e4c57",
+      "content_type": "application/gzip"
+    },
+    "analysis/panels/sr215-2150_res5-95_S1_mcmc50_r3.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis/panels/sr215-2150_res5-95_S1_mcmc50_r3.pdb.gz",
+      "bytes": 1937537,
+      "sha256": "542749ee0be580065e3bf896ec530d17ff59b39ae626f3f8ef90a5fadb5c7d6a",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_all_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_all_S1_disco50_r1.pdb.gz",
+      "bytes": 1920332,
+      "sha256": "5676cff9b25740f9289e9f346b6dcbe6dc5463ab4fb5f63190381230f282537c",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_all_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_all_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1902390,
+      "sha256": "300cc2e2610361f96e8e5e141f07f33c1abce29f78d6f0e788d1f0d9c25ce932",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res32-47-plus78-99-plus121-139_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res32-47-plus78-99-plus121-139_S1_disco50_r1.pdb.gz",
+      "bytes": 1988054,
+      "sha256": "939a0df0340d83a51e2aab1c47046f997b66da14718caa9ffb18942180ff5ead",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res32-47-plus78-99-plus121-139_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res32-47-plus78-99-plus121-139_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1987670,
+      "sha256": "3781f81798bdfe6e2dbb4efaf6ff973726b8ea06c2cb2066be9ac72eaee19ae5",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res32-47-plus78-99_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res32-47-plus78-99_S1_disco50_r1.pdb.gz",
+      "bytes": 1987689,
+      "sha256": "d51a9ecead928c78c6cbdcefcdde46297287ba10497bdee323f0318d9eb71f3b",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res32-47-plus78-99_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res32-47-plus78-99_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1987306,
+      "sha256": "720fd8c142c46b6e53c81962f466efa4d94ecf7f2962ba03bd73f57118f00614",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res5-95_S1_disco50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res5-95_S1_disco50_r1.pdb.gz",
+      "bytes": 1912557,
+      "sha256": "c53dc75dc5d5a447c78f831028a64125b2678928f9c269b1220b087d504aee26",
+      "content_type": "application/gzip"
+    },
+    "analysis-2000/panels/sr215-2000_res5-95_S1_mcmc50_r1.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/analysis-2000/panels/sr215-2000_res5-95_S1_mcmc50_r1.pdb.gz",
+      "bytes": 1908806,
+      "sha256": "389ba49fad26a326fca3455f69667bf9cf865ed73db2372682f418625594c492",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/all-bonsai-450.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/all-bonsai-450.zip",
+      "bytes": 1363742,
+      "sha256": "3308c1d38a87f5f85cecc05e5dd2945e9286c394f2ae0617f74885d023df4512",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/all/bonsai.json": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/bonsai.json",
+      "bytes": 6221732,
+      "sha256": "f0fe5391f6d920a25ed45ce87b678472927361405897f94c5fa5f158ac1f8a63",
+      "content_type": "application/json"
+    },
+    "sr215-260-states/all/density-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/density-representatives.zip",
+      "bytes": 610720,
+      "sha256": "182294292cb419e481c04720f6d2aa55b8edd6e33262619d51e5a8b96d211a47",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-1-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-1-1-ensemble.pdb.gz",
+      "bytes": 737644,
+      "sha256": "91e51a302427ec35a725fd62cbad5cef12c6b654fda7facfa98ffb94f41511c8",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-1-2-ensemble.pdb.gz",
+      "bytes": 683730,
+      "sha256": "1c60fee405cf21a5af3902bd4cf8e765b68c34b86a489f603482403d25fb0d9b",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-10-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-10-ensemble.pdb.gz",
+      "bytes": 1009779,
+      "sha256": "40c4255144ae4afda93a3ac5e3349b45b78bff2ff4e04494dd7e22e655d9ebc4",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-11-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-11-ensemble.pdb.gz",
+      "bytes": 888508,
+      "sha256": "51ec7e91634589898e6891961ee77627e6698b47c4d6edb089fb4273af3456e4",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-12-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-12-ensemble.pdb.gz",
+      "bytes": 587040,
+      "sha256": "5e5512ab7c65c8b015d52bdccff9aebf508724f6878987b3899996104f8e84c5",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-13-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-13-ensemble.pdb.gz",
+      "bytes": 688382,
+      "sha256": "a3994fe48a62cbb4e596f357620c8df8ffffc24b0e3a26ef85e4998dca636d1a",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-14-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-14-ensemble.pdb.gz",
+      "bytes": 576003,
+      "sha256": "9692200af6522cc480d9e54ec70b11b4a22636ba08a560a168bf245de93bb873",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-15-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-15-ensemble.pdb.gz",
+      "bytes": 755547,
+      "sha256": "5dc0de0132684b41f0d18925d54d0b38bacb360773144148d0c343aed5f0b959",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-16-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-16-ensemble.pdb.gz",
+      "bytes": 621931,
+      "sha256": "acb0093c964dba9ac83dd61386c09b85171770baf64ec95ee910fdeab2851270",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-17-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-17-ensemble.pdb.gz",
+      "bytes": 599054,
+      "sha256": "470490bbf3e33fc1b1aa1660d24a7de6e993d6c5dacf7f86e4c949cddc339891",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-18-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-18-ensemble.pdb.gz",
+      "bytes": 553762,
+      "sha256": "3de9298904d6dbe4a67288f0a6bc438c0327b3135a377a936e0642dc4f607348",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-19-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-19-ensemble.pdb.gz",
+      "bytes": 531517,
+      "sha256": "99bed814aa5cec355a1e1f2f1f6ebbb4a62990fc97efc650d25fda5e5fdb2eaa",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-2-ensemble.pdb.gz",
+      "bytes": 2501096,
+      "sha256": "be65756028c3c9254f4cb959bb52a4c264f122384255a2b666b3ab3fe92b782b",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-20-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-20-ensemble.pdb.gz",
+      "bytes": 359889,
+      "sha256": "cc70e9c963b9540bd9abb7df207b765dfbbf33a4bc1c21c63b36fc49247e55f0",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-21-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-21-ensemble.pdb.gz",
+      "bytes": 360045,
+      "sha256": "b6b1563b32ad9f1785d68c9303b8279b47512d34a1b8cbaf6d979a5896211b95",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-22-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-22-ensemble.pdb.gz",
+      "bytes": 322772,
+      "sha256": "08e7b4d351d6bfcd4806652de19c9720d9fa097752ad0ed71f77e27e530e25ea",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-23-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-23-ensemble.pdb.gz",
+      "bytes": 313636,
+      "sha256": "4f2524bcf5341f4043bbd14759fc8d9cc0ef30c917bfc3e4da5b10e966ca55f6",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-3-ensemble.pdb.gz",
+      "bytes": 2627029,
+      "sha256": "7904d3b7ecb58e1ae6a5a2d51b5f8a908acd7ac3ebbcb2fc13f07dbbb4533726",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-4-ensemble.pdb.gz",
+      "bytes": 1548936,
+      "sha256": "e76f3add68d7b64cd6dc82e55aec7d29b7d448d18969c60606dc76ee9e7949f9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-5-ensemble.pdb.gz",
+      "bytes": 1456906,
+      "sha256": "0fc67c4521616881c9de4c791946a0f4b2578c283061fa835418a494dc981d68",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-6-ensemble.pdb.gz",
+      "bytes": 1693012,
+      "sha256": "b0fafa237b9d342f181eabe0641acbdfd09573e7765dd3565ffbfa401c163384",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-7-ensemble.pdb.gz",
+      "bytes": 1174171,
+      "sha256": "570e22b40d31d46ac1781688eef3028a1d052f5507d0ea49dbc68a2932932601",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-8-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-8-ensemble.pdb.gz",
+      "bytes": 1584282,
+      "sha256": "6d9127c4f3893b174d1324f2d9fb85315108e73226620749bc9bf9e128fa0754",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/density-C1-9-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/density-C1-9-ensemble.pdb.gz",
+      "bytes": 1525188,
+      "sha256": "97e761d5e71445ee4b86e0574dbe7f982cb4f8fe121e66e0b4862b9a5ef892c1",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/ensembles/primary-C1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/ensembles/primary-C1-ensemble.pdb.gz",
+      "bytes": 47332572,
+      "sha256": "68fe90a841e0f9c2e510efe6a671a37214399378e4ba4920c38bccd3b8452be1",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__260State2__0043.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__260State2__0043.pdb",
+      "bytes": 181889,
+      "sha256": "b338d053ef32c51223c6575829eb0b4d7fe269a03dac633c0f09b8e48e13fb15",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0056.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0056.cif",
+      "bytes": 101078,
+      "sha256": "cd1bfd8aaa115e3024615e289ce85b8563934971dd8beac928adcbe6aa6ef846",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0151.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0151.cif",
+      "bytes": 101078,
+      "sha256": "c7c69ffb00a29c55e0a6ce90425b43909af62fcc72c2580d902187fcf4ff9122",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0221.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0221.cif",
+      "bytes": 101078,
+      "sha256": "ffc94d15552ec9218bdd440db9f9fec736ec0ec5a0fba604f3de85193f42b0f9",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0252.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0252.cif",
+      "bytes": 101078,
+      "sha256": "d3b71c0fbf62248ac0bc9a105ab17d61acbcdd8a0ee63ba0e43928da6a009e3a",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0305.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0305.cif",
+      "bytes": 101078,
+      "sha256": "2cc2afb4e8ae9fa6ff6f6952d6694e822bf18c1cd0e7d5c19a333cdde894436f",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0370.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0370.cif",
+      "bytes": 101078,
+      "sha256": "f33f6d74c892775886e8d134b1064ec980b20a6a42f8d120b0951057ebdae5a0",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0402.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0402.cif",
+      "bytes": 101078,
+      "sha256": "b2a2834b3d1178b528ac840dc9472faa0d2819e1d7c2fcfce4127969fb40f5b5",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0410.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0410.cif",
+      "bytes": 101078,
+      "sha256": "215f5d8702b99e5af0c467b91834377f4e4dee2f01228a8ed0db8f3f770a869c",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0422.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0422.cif",
+      "bytes": 101078,
+      "sha256": "e7843e763bae64aafea0cb0a921a26974242b2494b86013bc8db0035db18e417",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0486.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0486.cif",
+      "bytes": 101078,
+      "sha256": "6c72337e8850a9407d7f4cc72e2ecab2bd8ec0759f33746c362023a4bb00bc31",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0518.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0518.cif",
+      "bytes": 101078,
+      "sha256": "ccd6f287c58a06f650d01cc3bd2ccd027ce1403d2414b246e792c1aa4cd3b6b4",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0582.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0582.cif",
+      "bytes": 101078,
+      "sha256": "571d3c9c7006fe5e06892d1767ab53fccbe60be06c97eff955a3d911375affce",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0630.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0630.cif",
+      "bytes": 101078,
+      "sha256": "86bcab5dec8895d7edd9d778a1177b572bf9e966fac5d26e3e02f076642ea5b3",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0820.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0820.cif",
+      "bytes": 101078,
+      "sha256": "e0d4d4cbf1351a5b7a6043c52c7e7f05c9f97dbe752b79529d45f3a6e4dd9ec5",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__AFSample3__0866.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__AFSample3__0866.cif",
+      "bytes": 101078,
+      "sha256": "76a3fe130d877547c2207aabfac3b1f10a9769174815dc1342384af30c4b51b3",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0101.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0101.pdb",
+      "bytes": 90022,
+      "sha256": "6f5a4702abfa87f21cc6a956b07fea8c4a1847bea7b7c9a325a129fc76226a9f",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0231.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0231.pdb",
+      "bytes": 90022,
+      "sha256": "6f7c40497167c2a81bdcfb60fc3d03fe0bd3fa6e98f76320eaf68e22cc23f4fe",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0321.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0321.pdb",
+      "bytes": 90022,
+      "sha256": "d2ee6d15492f5edd4768784653950de01f5879b5e98ade9af28d44e553a2dfc7",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0486.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0486.pdb",
+      "bytes": 90022,
+      "sha256": "8567238e3f6d59a299152ea84046c10cfefcc11eb96f18890e68ccb4a5672d98",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0488.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0488.pdb",
+      "bytes": 90022,
+      "sha256": "1dc50a8f5010a4b29167e003f5378d53d7e93d26cd8aa86e3e8d533d1a9bf3be",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0539.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0539.pdb",
+      "bytes": 90022,
+      "sha256": "1c61cb1d7b453e6132783a59a2cc6a1008b8e993062be58ebf4ccf6670217c0d",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0692.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0692.pdb",
+      "bytes": 90022,
+      "sha256": "135d9eef5884d350fba99e4f0eeac46882060aa58391fb374b45c7241a3bf3fc",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0883.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0883.pdb",
+      "bytes": 90022,
+      "sha256": "f8b82184e63683405e961d0cc3f5bb0f5bd6a24fbfb911a137cccc9eab3926a4",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0974.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/models/SR215_bmr6366__BioEMU2__0974.pdb",
+      "bytes": 90022,
+      "sha256": "3b262aabe70296f29241ae6f978aabe4f46afb722bf39cd947cef1b3e26282bc",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/all/primary-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/all/primary-representatives.zip",
+      "bytes": 28318,
+      "sha256": "ac7ecc0ca9a55ae8d474c74ce8431bed114819152f725163e004f7e1d873f477",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99/bonsai.json": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/bonsai.json",
+      "bytes": 6454259,
+      "sha256": "30fcbf320e1d65eb209238178dafd15e12104927efa83c4739025628fe5073ca",
+      "content_type": "application/json"
+    },
+    "sr215-260-states/res32-47-plus78-99/density-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/density-representatives.zip",
+      "bytes": 730932,
+      "sha256": "11a75e474e89271b6d45ef63eb212b59688c292beff8c026836746aa0370e9f6",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-1-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-1-1-ensemble.pdb.gz",
+      "bytes": 587678,
+      "sha256": "1073f212f0fef681921567cb220f551d016f80ae51af90bf354678a164d49d89",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-1-2-ensemble.pdb.gz",
+      "bytes": 425549,
+      "sha256": "e6cd6cf89c4eeaf7ac9991bf2fb2883b0eb0fff37c9c177463258fc1e57897ed",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-10-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-10-ensemble.pdb.gz",
+      "bytes": 697505,
+      "sha256": "e8f6ca813dcf5196c357286f81f69739d7492f701ddacea1353d6266afce1486",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-11-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-11-ensemble.pdb.gz",
+      "bytes": 587648,
+      "sha256": "85d8e5ad9aeb15b7cfb1e5d7c5091c3d66c7e93ccf335684ec6d8a7e6dca189c",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-12-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-12-ensemble.pdb.gz",
+      "bytes": 706069,
+      "sha256": "f56f5ad0534b3d2a886928e3e30a5491e48931518869bcaeefc22c92bee15015",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-13-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-13-ensemble.pdb.gz",
+      "bytes": 534310,
+      "sha256": "453ffc8fe14b6227c093b55832615197d8828a8acc417a81a66f42ee1d08cd6b",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-14-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-14-ensemble.pdb.gz",
+      "bytes": 473934,
+      "sha256": "083ee1c6d911654bdd360367ae72943721a589a38e20cab09603c6a153443af5",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-15-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-15-ensemble.pdb.gz",
+      "bytes": 379064,
+      "sha256": "76b17c04d7e273fc2b65c832d5b64d7c205581784a12713297d2b31ada778146",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-16-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-16-ensemble.pdb.gz",
+      "bytes": 310248,
+      "sha256": "fa127c5b4a1c46d049e358f518421f64dcfff0c3af7801008f8e3a1a27da8245",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-17-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-17-ensemble.pdb.gz",
+      "bytes": 284615,
+      "sha256": "bb15dc12dca21d36763c2e553afea77dbe94fd9a551e2ea7536437a2600b1b79",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-2-ensemble.pdb.gz",
+      "bytes": 890606,
+      "sha256": "b13480d2e850c35bf7dec5e357370fb5632084f2884ea018c1edb849df10d592",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-3-ensemble.pdb.gz",
+      "bytes": 875497,
+      "sha256": "9d9f3274cb5dc810f867156141f692ed6c3b2e7842cba06e36843b3d92f4bd12",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-4-ensemble.pdb.gz",
+      "bytes": 898513,
+      "sha256": "79d0239821f0cb7d48df39405ca2b2d2c48ba3339174eae8bfa177eb79f9834a",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-5-ensemble.pdb.gz",
+      "bytes": 945998,
+      "sha256": "4a1ec4790bf45bf3a4c9074244cd37cf4f5a9ef71b4610f0c1efef8343cbb7a1",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-6-ensemble.pdb.gz",
+      "bytes": 878458,
+      "sha256": "c19cd148c5de19ca842b5b97f881f7dcf48fb7de4feed5a1199f54f6e8ec9aac",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-7-ensemble.pdb.gz",
+      "bytes": 783970,
+      "sha256": "c194c3a425b53c7f2dffa66239c5dc1a4820e222a407a774c888917b36900de1",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-8-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-8-ensemble.pdb.gz",
+      "bytes": 720167,
+      "sha256": "d1640ec2fbdfe6e69a8bb77a1068a5b6a72e2b7ef456b84ed4325cf94a87759d",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C1-9-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C1-9-ensemble.pdb.gz",
+      "bytes": 851209,
+      "sha256": "75cac2ecac33ceead5458175a987ab65b4e8452d670bc4720f5f377099a87eed",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-1-ensemble.pdb.gz",
+      "bytes": 1584783,
+      "sha256": "cfb4b2cb68cbe47b309e6b7e463d884d3e01da43b793469debc28a9eff49eaec",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-10-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-10-ensemble.pdb.gz",
+      "bytes": 375517,
+      "sha256": "93c6011eb727913d66448629744660d66980aa702eafaec31135387648ea9dcc",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-2-ensemble.pdb.gz",
+      "bytes": 1484598,
+      "sha256": "263d8fae5ba31153fab8d6d5531b33028539b91bd68272364b65431f9c811df8",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-3-ensemble.pdb.gz",
+      "bytes": 1180104,
+      "sha256": "bc6531025d02d36c7e000176189c68be76c033bcdd3a2f6a814e2021ebc790f9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-4-ensemble.pdb.gz",
+      "bytes": 1538370,
+      "sha256": "ecd0a7a9defa891343acefac5521fd6dd2e3071a37e5006676655d272d8086e9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-5-ensemble.pdb.gz",
+      "bytes": 1316010,
+      "sha256": "1c898de7b78c7269ed82307534fca79a9efba85bad1c29792977aa1eaf57a952",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-6-ensemble.pdb.gz",
+      "bytes": 1428077,
+      "sha256": "4ba803911b4afa23daef0a49171c54c3401c865cd0c6458a87ab7e4fa07c416e",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-7-ensemble.pdb.gz",
+      "bytes": 933919,
+      "sha256": "d81eba8aace4489bb09c696cb384fdcb585ff609cd6b7a31ef7e730734016bbc",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-8-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-8-ensemble.pdb.gz",
+      "bytes": 781205,
+      "sha256": "fc9c1ced2ee783aa86fe4b45a9f5b8d00d69da02ab4e10f0358251169551372c",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/density-C2-9-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/density-C2-9-ensemble.pdb.gz",
+      "bytes": 512955,
+      "sha256": "8d3e4ebddbe02355cef781b6af18b547fb70a24b4aeb4e85d09e114b2bdee41a",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/primary-C1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/primary-C1-ensemble.pdb.gz",
+      "bytes": 26661383,
+      "sha256": "2e6904d9c4fab7e69e92797de7151e388ea4ebac1eb347f7859cdafadf758c08",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/ensembles/primary-C2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/ensembles/primary-C2-ensemble.pdb.gz",
+      "bytes": 20672218,
+      "sha256": "ee4175745c3e98b5bb8d8293c74db24adc9c0822cad9d12ab002aa57bee6e0bc",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State1__0022.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State1__0022.pdb",
+      "bytes": 181889,
+      "sha256": "7b3c96e47d89df776ae8ea343f382019513737d0c6aebf25ab6a36748dea6703",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State1__0039.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State1__0039.pdb",
+      "bytes": 181889,
+      "sha256": "3725cafbd1495e105e3580f74e92621f6c73c1a7324eb7089b464b88e77a7568",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State2__0025.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__260State2__0025.pdb",
+      "bytes": 181889,
+      "sha256": "fdf23c3bb15e439d4bc988223a8c895dbc2f4ba22cf5745f25828d296f3df345",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0117.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0117.cif",
+      "bytes": 101078,
+      "sha256": "84b25b1b2da1ed6f09b7e47cba4be1ec79b01e252440140167501e24be5f9e55",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0127.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0127.cif",
+      "bytes": 101078,
+      "sha256": "d4334041d8182989b94436312991607f6f54288dc8a77f9ee1843d0bcc6d65d2",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0204.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0204.cif",
+      "bytes": 101078,
+      "sha256": "701ed8a9d593ecd4d504ae969ea3a1da311ca26ad7b5d2690398f9f227fa8531",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0230.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0230.cif",
+      "bytes": 101078,
+      "sha256": "44065ef1937d8a08609fbfbf693acd88a15ab79848677dbdcf5f8534dfc798ba",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0331.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0331.cif",
+      "bytes": 101078,
+      "sha256": "ccf6f7bb7d9cca66022cf2212648a579d8918232272ae66c85ba77bac88dca9b",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0418.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0418.cif",
+      "bytes": 101078,
+      "sha256": "03728d819d121113047a3cd1fb43f17cfc17341417a2a794c11a0eb59ad7cec9",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0453.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0453.cif",
+      "bytes": 101078,
+      "sha256": "fb1c594d7e0ab6e3b6f644e6a177954f830983551634295a2f5213afda2c1a97",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0510.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0510.cif",
+      "bytes": 101078,
+      "sha256": "5fe2db0ab2422f1aed41062039693d3083de34278c0befed5c28b6262ecdd6f0",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0559.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0559.cif",
+      "bytes": 101078,
+      "sha256": "12ba1ecf67b1b8564d4a711600f7dc1f4520b85f6c3026d7e695596e7cd9c458",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0607.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0607.cif",
+      "bytes": 101078,
+      "sha256": "08ae450790b055d6b6cd5cccd7a10632ae55c7a804d736a06f9951ae13ae51a8",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0618.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0618.cif",
+      "bytes": 101078,
+      "sha256": "78c682f183f0e0db515cc82f1f42d3fa0e367e86ba8157507103053359a9af0b",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0661.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0661.cif",
+      "bytes": 101078,
+      "sha256": "de90ec9c4f7470964cf8c338e3650d62ac92e8069c8be2fbf9c4ddaa74aa05ab",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0671.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0671.cif",
+      "bytes": 101078,
+      "sha256": "0ab7254e4f8fac103bc7f582ebe6a8cb7c5d730df45e657a4ab98cbfbcca7bd1",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0729.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0729.cif",
+      "bytes": 101078,
+      "sha256": "d72881feba6f6ea5489902623fbf5a7f2debc86edb9427036c9c5337bc3751c4",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0761.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0761.cif",
+      "bytes": 101078,
+      "sha256": "008b877c20289cd031632973c72a0584ae6064e0c29c7a1012191cbd47673a84",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0808.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__AFSample3__0808.cif",
+      "bytes": 101078,
+      "sha256": "01e3112a218c2b27724a1b5b27b68d96fecf37b3283c11f4fee7164ef53279c4",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0175.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0175.pdb",
+      "bytes": 90022,
+      "sha256": "015b9bc07cde77a90b5cb0d2f456385fa73caafd43b629a6de82d8810e6bf212",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0188.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0188.pdb",
+      "bytes": 90022,
+      "sha256": "7009447a53ec312d13bd27834061b1b8e9d3105d72a1b7fb129f0e486bd97400",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0200.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0200.pdb",
+      "bytes": 90022,
+      "sha256": "a99e9c7f2c8aef8c0bfcff00abbf9345cba884d46085625178f7e1de5e124ac1",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0293.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0293.pdb",
+      "bytes": 90022,
+      "sha256": "d956792cc165e05af9888294dd1188d6bb85327e1eb24b2cdab46b07243f25a5",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0351.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0351.pdb",
+      "bytes": 90022,
+      "sha256": "714df5822463079b01406221bc4152d7b0d19308544ee6a398d80834e6005f8d",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0376.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0376.pdb",
+      "bytes": 90022,
+      "sha256": "9a4b0c8ca4c5b10aea6a5d955d7c669b4b70d8150f2c84e8fe24e8eb223ffea8",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0392.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0392.pdb",
+      "bytes": 90022,
+      "sha256": "dae8c81b519d4c31b846e6542615a71844d405bfcf2982106a7c2516b7c46dbb",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0455.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0455.pdb",
+      "bytes": 90022,
+      "sha256": "f67c14f256baecfbc987eff4539af5a4573048e74d815e443d16f22f1bd9213a",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0700.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0700.pdb",
+      "bytes": 90022,
+      "sha256": "07557b2381a9264eb4f34aad3de049e8d86fa1b31c53fe09046d20659ff96dae",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0949.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0949.pdb",
+      "bytes": 90022,
+      "sha256": "8f29b0271aba51773aa6cc33ae7abacdbcc2c13a3188c5bb28ef8ca9afe99bf2",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0974.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/models/SR215_bmr6366__BioEMU2__0974.pdb",
+      "bytes": 90022,
+      "sha256": "3b262aabe70296f29241ae6f978aabe4f46afb722bf39cd947cef1b3e26282bc",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99/primary-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/primary-representatives.zip",
+      "bytes": 56790,
+      "sha256": "2096e7c529b4bbf0555c32cef25f6daa9eef03eda12676b5d9903d84a05c57e0",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99/res32-47-plus78-99-bonsai-450.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99/res32-47-plus78-99-bonsai-450.zip",
+      "bytes": 1404554,
+      "sha256": "04bda7dee35c397287ca726aca356d15ab2e8060299934d621081eec3b05adf0",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/bonsai.json": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/bonsai.json",
+      "bytes": 6207407,
+      "sha256": "6dc9b289294d82eaad302f93b36cedb427be1a419e3247f12d8123b9bfe274ad",
+      "content_type": "application/json"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/density-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/density-representatives.zip",
+      "bytes": 591556,
+      "sha256": "a8d474a5e4a95375eed79c0efbe77680f9a0d113465c92e738f27051bfa24dcc",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-1-ensemble.pdb.gz",
+      "bytes": 2050053,
+      "sha256": "0ae860fc013676e095e9ac0d1b2dd30228e2a00d511f4e765554d58a2b1d3ee7",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-10-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-10-ensemble.pdb.gz",
+      "bytes": 977492,
+      "sha256": "36398fdc0c899285f62651b382e52979a6455b3dd6e0104871039428bba3286d",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-11-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-11-ensemble.pdb.gz",
+      "bytes": 798273,
+      "sha256": "b2c4b0b5d10bf491e8e8c1ef2c7edd4788a43fab6dfcc92a41a0ad9e39dbf936",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-12-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-12-ensemble.pdb.gz",
+      "bytes": 1043302,
+      "sha256": "a4c4808ef7e97fc3a6903464cd2e23e84477e0c47a30b73888a729909fe1c787",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-13-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-13-ensemble.pdb.gz",
+      "bytes": 762205,
+      "sha256": "0f0355c6a46e40cd597dda7962b313d69a766ee9ba8f5eeb50ef5b4d5f397ce0",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-14-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-14-ensemble.pdb.gz",
+      "bytes": 720891,
+      "sha256": "a4d5005c62944ae89573276a0deccb7dee6e2b12d160226e7669c336032a4eb7",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-15-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-15-ensemble.pdb.gz",
+      "bytes": 844884,
+      "sha256": "87c62597c946dcd45cc20db6e9909391663e7a8cc240f769325c005b032e6071",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-16-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-16-ensemble.pdb.gz",
+      "bytes": 662986,
+      "sha256": "741ae81c08d2d2e77df1fa21ddb1d8d5bc76447ac1fd30eef8231e8e3a5b14b0",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-17-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-17-ensemble.pdb.gz",
+      "bytes": 549303,
+      "sha256": "7ac55b06acf7dac818b079dbf36ff98234ea593d471d120be5e2392d8d20bce8",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-18-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-18-ensemble.pdb.gz",
+      "bytes": 511373,
+      "sha256": "a3b5009d805f5cda526a017b5d4b49fdf3ab139640b547c4eb19eeabad99efb7",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-19-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-19-ensemble.pdb.gz",
+      "bytes": 591978,
+      "sha256": "98d1a95d74ddcba4149ccbbce4ed2f01e60984ae7321b7dfba1a775438cda56f",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-2-ensemble.pdb.gz",
+      "bytes": 1693507,
+      "sha256": "3da4a1756adbe6c0fd2e7e508989dd90b26650e5d27e0d64fac6fa13f9ff2c06",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-20-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-20-ensemble.pdb.gz",
+      "bytes": 435749,
+      "sha256": "e6faf1fd3742f3e05b5f3ea96c66d4375b868986b76b210b9e5584db3da0833e",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-21-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-21-ensemble.pdb.gz",
+      "bytes": 706832,
+      "sha256": "cfdb73c3410e51d408fd14a23dd4cd46b9dddd2e00d7710863390fcd23f96cbe",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-22-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-22-ensemble.pdb.gz",
+      "bytes": 507597,
+      "sha256": "e24c93128ee9364e7d6d1a72bf2f876f95dbaf67e58340fa7833ab945f4957c4",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-23-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-23-ensemble.pdb.gz",
+      "bytes": 334943,
+      "sha256": "7d8308d28688d757a4b4cc78b94ec63ed413a2ca3bebee1dd1cbaa8ec81756e8",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-3-ensemble.pdb.gz",
+      "bytes": 1815928,
+      "sha256": "fd768e95c750bf6a37ba646bacbd254788ddc4bb72a2582bf6516d505a8873ca",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-4-ensemble.pdb.gz",
+      "bytes": 1716367,
+      "sha256": "19e857dac8032b9e00cb49052f847d4b31219519072e24eebfafcf0e87ef3216",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-5-ensemble.pdb.gz",
+      "bytes": 1595053,
+      "sha256": "a5f67a6a9a2e7745cec536248e7d6db4c8c16a54e3bf3e3bac4cb87377b37905",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-6-ensemble.pdb.gz",
+      "bytes": 1478613,
+      "sha256": "bb014f3770ffb4d8655da6ae9f8b4871ba90a5659a0e7067cf7ab169e7896dd5",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-7-ensemble.pdb.gz",
+      "bytes": 1390817,
+      "sha256": "0f0dad6b3de9667dc6813a63891d685f26fedf04d5939fa2a6ff7d71f372ae4a",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-8-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-8-ensemble.pdb.gz",
+      "bytes": 1087369,
+      "sha256": "28f4594a83cd92ce410852e717a3bfbe506ed8d995e73e533bf6f0dd644096b0",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-9-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/density-C1-9-ensemble.pdb.gz",
+      "bytes": 992372,
+      "sha256": "1daafb377a864567a438644b51207374beb35376a85889785ebc200861b16a4a",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/primary-C1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/ensembles/primary-C1-ensemble.pdb.gz",
+      "bytes": 47332572,
+      "sha256": "b8bde6edc0be24fab7ca589797d64ae4bcf138044c5aa04c96d0d0283ef6e391",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__260State2__0038.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__260State2__0038.pdb",
+      "bytes": 181889,
+      "sha256": "f3dfb04fb2d481eeab016a0df0ab27c0559fb004c8dd48993121c7574f324269",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0151.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0151.cif",
+      "bytes": 101078,
+      "sha256": "c7c69ffb00a29c55e0a6ce90425b43909af62fcc72c2580d902187fcf4ff9122",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0186.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0186.cif",
+      "bytes": 101078,
+      "sha256": "64c30c98dc5038d5acb374190dc1b3197fd9dcf0aa6e719176c5d27cfeb0c679",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0187.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0187.cif",
+      "bytes": 101078,
+      "sha256": "6e0d77e0cc0206d577565340a2ee06b9f8ba98cec02f3d95fba9e0cb5567c6dd",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0357.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0357.cif",
+      "bytes": 101078,
+      "sha256": "f7cd29b098a7c13763d9af4e8d381154774bcf7c30713dc00b35d8462aec72c5",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0402.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0402.cif",
+      "bytes": 101078,
+      "sha256": "b2a2834b3d1178b528ac840dc9472faa0d2819e1d7c2fcfce4127969fb40f5b5",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0410.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0410.cif",
+      "bytes": 101078,
+      "sha256": "215f5d8702b99e5af0c467b91834377f4e4dee2f01228a8ed0db8f3f770a869c",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0470.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0470.cif",
+      "bytes": 101078,
+      "sha256": "a89816cdf5b092c836dc6a925f807a7f6c0a68eeccc4dc8c4ea52ce5e7b90b2e",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0630.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0630.cif",
+      "bytes": 101078,
+      "sha256": "86bcab5dec8895d7edd9d778a1177b572bf9e966fac5d26e3e02f076642ea5b3",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0641.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0641.cif",
+      "bytes": 101078,
+      "sha256": "eac83a421d1e2aea9927c4d3c94db6064097ff840a927f9e1639e2a4df5fc5b1",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0649.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0649.cif",
+      "bytes": 101078,
+      "sha256": "39708285e2780f2e5cf7006d191b9bf32db4dbba95888a00eaf8fc4d1885f5d4",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0686.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0686.cif",
+      "bytes": 101078,
+      "sha256": "67d4179aa946ad635bdfe2de79065f2b59755770ff646c9f655acf2315029335",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0738.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0738.cif",
+      "bytes": 101078,
+      "sha256": "c7a4205bedb4ae39bb0f527292b5a4567c9a2526a2c5e1d8945d6ccacbfd3167",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0741.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0741.cif",
+      "bytes": 101078,
+      "sha256": "bbfcfdef58ed86c401ee4266da6c18c9a8c79cde91d1f23ead4a98d6fa4fe525",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0754.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0754.cif",
+      "bytes": 101078,
+      "sha256": "4b3ce131e8568f9bf83313c9ff91bb30776f853bb95f4cb7f5596722302ebc1c",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0820.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0820.cif",
+      "bytes": 101078,
+      "sha256": "e0d4d4cbf1351a5b7a6043c52c7e7f05c9f97dbe752b79529d45f3a6e4dd9ec5",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0083.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0083.pdb",
+      "bytes": 90022,
+      "sha256": "7e7ef67f22b9997e3b4fbdda9c45f2c8dc640950de11c05c0a2d77a139df82d9",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0198.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0198.pdb",
+      "bytes": 90022,
+      "sha256": "0308ea13f83f85633cdd398ed9aae9491e780f528e81c237402c9856fc914a7a",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0353.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0353.pdb",
+      "bytes": 90022,
+      "sha256": "2e0920fed69808b4cf3ef45aea360158ec86d64e90601caf239123db11c28e09",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0486.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0486.pdb",
+      "bytes": 90022,
+      "sha256": "8567238e3f6d59a299152ea84046c10cfefcc11eb96f18890e68ccb4a5672d98",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0741.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0741.pdb",
+      "bytes": 90022,
+      "sha256": "a14c2b31b944c67227e73dd97d91278c25b65aa98da029baac608c72abcb4e8f",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0856.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0856.pdb",
+      "bytes": 90022,
+      "sha256": "f3104a712c2752e89d62b2f91634cc909460391915aadc0bf75ee221bdae80e3",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0885.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0885.pdb",
+      "bytes": 90022,
+      "sha256": "a1991596d9d10179b6ed6e31462cf2640799e84a097c086c4a659a82a4489c24",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0890.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0890.pdb",
+      "bytes": 90022,
+      "sha256": "d504bd4d9a653553e8848d2acc945df8e76f3db4cb4fdf1a3c57cee96eacfddf",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/primary-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/primary-representatives.zip",
+      "bytes": 28340,
+      "sha256": "2d83d1e6746048e4e3a48af5824ba02cc0d540ec6182318ed0a01fd6f836ea69",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/res32-47-plus78-99-plus121-139-bonsai-450.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res32-47-plus78-99-plus121-139/res32-47-plus78-99-plus121-139-bonsai-450.zip",
+      "bytes": 1357573,
+      "sha256": "bb9fe976588c89f48277f97eb22ff552bd978071ae76117bc5c7db1871a9ebda",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res5-95/bonsai.json": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/bonsai.json",
+      "bytes": 6564850,
+      "sha256": "74f8270c945421ce757f5483aa24318c6c6cbb27c4b8504ba6a39e4d087c6ead",
+      "content_type": "application/json"
+    },
+    "sr215-260-states/res5-95/density-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/density-representatives.zip",
+      "bytes": 2412330,
+      "sha256": "4b11420726972a07c62e349c9f6469062fcd4ef19bc3cdd5ca43523d5d77abeb",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-1-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-1-1-ensemble.pdb.gz",
+      "bytes": 493644,
+      "sha256": "63e6551a35395975b9ba1cafbc9241dcef03b5f9cb819f96e9bd3226f6788a55",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-1-2-ensemble.pdb.gz",
+      "bytes": 311305,
+      "sha256": "1200a4dce3e2a48bffc587959f139c48dbb1020225e138b7e7645e002ab48c0e",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-10-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-10-ensemble.pdb.gz",
+      "bytes": 341240,
+      "sha256": "1a525052702e4e68575be818e580ccea03fa23964f884876db6ca5db54cd9231",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-11-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-11-ensemble.pdb.gz",
+      "bytes": 303661,
+      "sha256": "006d2bf751d54436407e0ef70b971a055d2f8b4a5baa9ca74f2264d0397f2828",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-12-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-12-ensemble.pdb.gz",
+      "bytes": 303386,
+      "sha256": "81f94dde578fe42f7810d26d852bdf51537d93e5ac62c7d2ab4c7dc85b63c792",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-2-ensemble.pdb.gz",
+      "bytes": 2028559,
+      "sha256": "81f8c83d58eabfacaa814f00a44bb64b5f070a40bc8e09463a2d8ad7f6d624a4",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-3-ensemble.pdb.gz",
+      "bytes": 1912122,
+      "sha256": "3d75ec5aee51e4c5da9c5bfbeb63728bb37f7b8ec9587e1376116c00daa44e98",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-4-ensemble.pdb.gz",
+      "bytes": 1686792,
+      "sha256": "e0824026764b8e2898629e24b70e52914ff658308d507d49091a91cfaf90f1cb",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-5-ensemble.pdb.gz",
+      "bytes": 1491252,
+      "sha256": "b586456d4d8a3cf67ecddccd2f6abf43f22668090f2e9929b9bb5688a28d389c",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-6-ensemble.pdb.gz",
+      "bytes": 1088054,
+      "sha256": "8eb6cdafffa17e38cc8a780092ef4f11d803c2e8d0f38d6bd354defe575e23d9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-7-ensemble.pdb.gz",
+      "bytes": 704797,
+      "sha256": "7fb8e76971104b5c06c629cf5f8c44a1fd0e30ef5834293677779aa9c8bdea28",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-8-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-8-ensemble.pdb.gz",
+      "bytes": 544214,
+      "sha256": "1117c4b8de215441e0e4988522b0fd8653fc580ee09dba00bed3f776dbe66a82",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C1-9-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C1-9-ensemble.pdb.gz",
+      "bytes": 497574,
+      "sha256": "54d86a4c5eb479c707262d416dc0b43574d88a337680283c862dfba5f85d1d5e",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-1-ensemble.pdb.gz",
+      "bytes": 2573407,
+      "sha256": "1c490a8d03ad49c1c12f1c9cd893f2453098af1ca45f0fb7d547213d6173c6c9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-2-ensemble.pdb.gz",
+      "bytes": 1997953,
+      "sha256": "ef7bf0d855b1321c9c99cab9dce812d4de60496b7dc3d82a88d5a8a32f967d0b",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-3-ensemble.pdb.gz",
+      "bytes": 937308,
+      "sha256": "79be2d21e4c8750e87b1fb42258214dff65399d11a8be4fb009eb815794ef111",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-4-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-4-ensemble.pdb.gz",
+      "bytes": 758413,
+      "sha256": "aea7249555e916025179c45f568be96d2e76d983d25c8a95dd6a2b151950673c",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-5-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-5-ensemble.pdb.gz",
+      "bytes": 558146,
+      "sha256": "0b041aa900c5e37af1bc00e8ca75b34f057b1a7b05e8bdd21d8e185db5a2aad4",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-6-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-6-ensemble.pdb.gz",
+      "bytes": 425032,
+      "sha256": "248fcdaad350320ea6c2ad3e0ae81c77e3394f8c84a9279b187efd4ba0518cac",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C2-7-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C2-7-ensemble.pdb.gz",
+      "bytes": 379932,
+      "sha256": "f88cab6856c87daf430c779ec402f450538e1050cf75cee7f1e68ffec09b5377",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C3-1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C3-1-ensemble.pdb.gz",
+      "bytes": 1760031,
+      "sha256": "fdb91531c3b57a7764524850f459226890007887f4c6e0daf3b87248af5da901",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C3-2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C3-2-ensemble.pdb.gz",
+      "bytes": 1443222,
+      "sha256": "983030c79496d47c86ea64852b5637428a0629bf5e4105eccdaf507d58d9e7e7",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/density-C3-3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/density-C3-3-ensemble.pdb.gz",
+      "bytes": 441975,
+      "sha256": "5f9253402ff77ccfee6d3d233834b33bac921a790067d7c17bdef0aa9ea77bc9",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/primary-C1-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/primary-C1-ensemble.pdb.gz",
+      "bytes": 24381940,
+      "sha256": "ab40cb5fb9ebb5cd089a772042f58d1b68f2e32f2859205e3c4ff8f327131fcd",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/primary-C2-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/primary-C2-ensemble.pdb.gz",
+      "bytes": 14350287,
+      "sha256": "0d8527c7c303837b968197e872095c4a24eaffe60319396ac3904461572f51c8",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/ensembles/primary-C3-ensemble.pdb.gz": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/ensembles/primary-C3-ensemble.pdb.gz",
+      "bytes": 8601609,
+      "sha256": "b50e284268e05b8862f6ee64f91e0b7bda8dcfbc169deea7e701eaea2a480784",
+      "content_type": "application/gzip"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__260State1__0006.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__260State1__0006.pdb",
+      "bytes": 181889,
+      "sha256": "852257c17b0337713e14428441beb161e8e16bbfa4a019274c20fb70622ab6ba",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__260State2__0012.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__260State2__0012.pdb",
+      "bytes": 181889,
+      "sha256": "75f838f55f9203283501fe3685fa2d5ad197a193b062e8b9d88e72ad8f2e0eb2",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0031.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0031.cif",
+      "bytes": 101078,
+      "sha256": "a84691fc99b4330f7131195150aefe019e72aad34d96f4fbd901c752c8ca0b9f",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0061.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0061.cif",
+      "bytes": 101078,
+      "sha256": "ee59002526665ed03d67a15519d1d7359c5df4d031e9cac7b341f43b02ee40a9",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0100.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0100.cif",
+      "bytes": 101078,
+      "sha256": "24b8a0f29d730028ce31fb685f69e2d030ee01234636b63ca49a8e67422c33d3",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0185.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0185.cif",
+      "bytes": 101078,
+      "sha256": "de6fd73eacca58bf897cd86a83ff38b006b3b26766f16e5dc77b2a371f4e4007",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0384.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0384.cif",
+      "bytes": 101078,
+      "sha256": "8f6af11a8e64ef8fdbc3850036bd370e032750932e7495a5642a9df03b8ead03",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0434.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0434.cif",
+      "bytes": 101078,
+      "sha256": "61ebd12d0ee5ba972ca0b3b17b01caec1ba5a5859e301bc4f04ba58cc3ce1140",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0440.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0440.cif",
+      "bytes": 101078,
+      "sha256": "f413942b5caa40fdcabbac06cdb6ddca51d2cf28ae12f17f121bf16ca22736ea",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0559.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0559.cif",
+      "bytes": 101078,
+      "sha256": "12ba1ecf67b1b8564d4a711600f7dc1f4520b85f6c3026d7e695596e7cd9c458",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0642.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0642.cif",
+      "bytes": 101078,
+      "sha256": "d4a077bfdcb3fb6da0dde18c92fc063a531cc1bd28bcc7a2a86facf50de8eb1e",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0694.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0694.cif",
+      "bytes": 101078,
+      "sha256": "318f6e0b38d66110dfa6a92c8de0ab40e77a5dbe39ffe3e02d39dd6611814e77",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0703.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0703.cif",
+      "bytes": 101078,
+      "sha256": "efe4d1f430ff4e395f486d4aa211f0f8cf0d54405dcbd3b0f527f40465ecb283",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0713.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0713.cif",
+      "bytes": 101078,
+      "sha256": "b36e16900d91f3ccbc3d416aecdd8324f9c8aed634277e7ceb9e3ff727980372",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0729.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0729.cif",
+      "bytes": 101078,
+      "sha256": "d72881feba6f6ea5489902623fbf5a7f2debc86edb9427036c9c5337bc3751c4",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0752.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0752.cif",
+      "bytes": 101078,
+      "sha256": "fd36fd5acf5f0ef166bbe1c6071ad6e503240fec81a50c7cd62d19f7782dc87d",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0761.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0761.cif",
+      "bytes": 101078,
+      "sha256": "008b877c20289cd031632973c72a0584ae6064e0c29c7a1012191cbd47673a84",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0811.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0811.cif",
+      "bytes": 101078,
+      "sha256": "e1c3d01dea572c4a26748546c8d8a9fab2efcb8fc97f8191c1809079191a572b",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0938.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__AFSample3__0938.cif",
+      "bytes": 101078,
+      "sha256": "ecccff7f7907948f62677204f4efbc6bf226c8634b05b04eb5005ceebd8c021b",
+      "content_type": "chemical/x-cif"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0229.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0229.pdb",
+      "bytes": 90022,
+      "sha256": "cd334acec606018508edf6a6aa8b527794564b0431bd376bd6d9af8e84646ea4",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0622.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0622.pdb",
+      "bytes": 90022,
+      "sha256": "9464e0c739e1452aea6d945193a04ece0840ec5ab25535055e07da10f514327c",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0680.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0680.pdb",
+      "bytes": 90022,
+      "sha256": "cefc5402e56dc0effd6a888e939fa4dbcebf5147e64b4065247d561d80bce909",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0785.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0785.pdb",
+      "bytes": 90022,
+      "sha256": "2971e3284cbe96229d9395b5cd6096df9f0337f23b31bf9242b02bf0008c9871",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0802.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0802.pdb",
+      "bytes": 90022,
+      "sha256": "e2d185450464129638c8cf24600dc5068afefece9a4a4bce8acc41f655ae3979",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0883.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0883.pdb",
+      "bytes": 90022,
+      "sha256": "f8b82184e63683405e961d0cc3f5bb0f5bd6a24fbfb911a137cccc9eab3926a4",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0891.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/models/SR215_bmr6366__BioEMU2__0891.pdb",
+      "bytes": 90022,
+      "sha256": "7f85fdee6a5da4cd0491f8a1c7742da7cc38c3f4db18fda562b3b87933cbb612",
+      "content_type": "chemical/x-pdb"
+    },
+    "sr215-260-states/res5-95/primary-representatives.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/primary-representatives.zip",
+      "bytes": 85204,
+      "sha256": "4d890dea3a004da74042c7fb39315b5a28a118b3a0d69b09ea118bf51ea9ff5c",
+      "content_type": "application/zip"
+    },
+    "sr215-260-states/res5-95/res5-95-bonsai-450.zip": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/sr215-260-states/res5-95/res5-95-bonsai-450.zip",
+      "bytes": 1429997,
+      "sha256": "9f1afcb78d22b4efb1c9a4bb843af2bacb09eb85b9523bf0c180a90b4db834e2",
+      "content_type": "application/zip"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0022.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0022.cif",
+      "bytes": 101078,
+      "sha256": "ccd3dd2eda47ccdf6d41acc666f6628e9e52e574685997aa8aaca1f499e49e81",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0096.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0096.cif",
+      "bytes": 101078,
+      "sha256": "fa09787443d75f57a9bbc8fd09d048e3e9436b0d497060733a957db3592137b7",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0133.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0133.cif",
+      "bytes": 101078,
+      "sha256": "6aaadc4032f6871c60f27530ac3c69f6b090dedfc2b5544f33435bd293fc0488",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0146.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0146.cif",
+      "bytes": 101078,
+      "sha256": "66292a9fca8ecef498de06e2a98946d0a1ff665bb9769b67005ed7c8d647beae",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0151.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0151.cif",
+      "bytes": 101078,
+      "sha256": "c7c69ffb00a29c55e0a6ce90425b43909af62fcc72c2580d902187fcf4ff9122",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0172.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0172.cif",
+      "bytes": 101078,
+      "sha256": "d8bd199a21b5eac51003c999a83d3be66d74b8066877ce29f1d2f8e0385599e4",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0410.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0410.cif",
+      "bytes": 101078,
+      "sha256": "215f5d8702b99e5af0c467b91834377f4e4dee2f01228a8ed0db8f3f770a869c",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0450.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0450.cif",
+      "bytes": 101078,
+      "sha256": "88334b0a5a59142611d87b186c25b63737f77d1551ab13ff0554b849d537e2ae",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0592.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0592.cif",
+      "bytes": 101078,
+      "sha256": "4951018fd4692b121e6419b9c9957a1372e8c4a6c9c2aa1ad5f2c84c4e01ea92",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0618.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0618.cif",
+      "bytes": 101078,
+      "sha256": "78c682f183f0e0db515cc82f1f42d3fa0e367e86ba8157507103053359a9af0b",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0649.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0649.cif",
+      "bytes": 101078,
+      "sha256": "39708285e2780f2e5cf7006d191b9bf32db4dbba95888a00eaf8fc4d1885f5d4",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0702.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0702.cif",
+      "bytes": 101078,
+      "sha256": "61a4fa67ebe301cbf2626e7dde55a8e69e1018d326d4a10c5d51c914c6b56a3a",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0825.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0825.cif",
+      "bytes": 101078,
+      "sha256": "cecb4141da87bb42aec302fdeda04044faebf5d4d1500186c2473f8adfa815bc",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0903.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0903.cif",
+      "bytes": 101078,
+      "sha256": "a664a9465287b2a3dde58c888af900fd31f7c60a60654fe0036f44fc0b23e0cb",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0986.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0986.cif",
+      "bytes": 101078,
+      "sha256": "05d9bd985bcf5ac531bb3e916f4453b227eeef16b0f892ed4043f22d212d0cbf",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0998.cif": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__AFSample3__0998.cif",
+      "bytes": 101078,
+      "sha256": "1988982ea071ea2a72299d7e5011db02da21f54af0eab0daec8fa4c321393fac",
+      "content_type": "chemical/x-cif"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0083.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0083.pdb",
+      "bytes": 90022,
+      "sha256": "7e7ef67f22b9997e3b4fbdda9c45f2c8dc640950de11c05c0a2d77a139df82d9",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0084.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0084.pdb",
+      "bytes": 90022,
+      "sha256": "2c32111e090bf44626dc903b7137de3f3c4de85641dfa9b193cc2bb0ef5ab68c",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0198.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0198.pdb",
+      "bytes": 90022,
+      "sha256": "0308ea13f83f85633cdd398ed9aae9491e780f528e81c237402c9856fc914a7a",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0486.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0486.pdb",
+      "bytes": 90022,
+      "sha256": "8567238e3f6d59a299152ea84046c10cfefcc11eb96f18890e68ccb4a5672d98",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0705.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0705.pdb",
+      "bytes": 90022,
+      "sha256": "60e1aa5f89040d75e497bd68a9f0ea248632bc570b67a2853b1b7dd479de8590",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0741.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0741.pdb",
+      "bytes": 90022,
+      "sha256": "a14c2b31b944c67227e73dd97d91278c25b65aa98da029baac608c72abcb4e8f",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0800.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0800.pdb",
+      "bytes": 90022,
+      "sha256": "b6080f9aa1a927256d43933e94040ee750529b9ef51e601d0465ea6444dc11e8",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0885.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0885.pdb",
+      "bytes": 90022,
+      "sha256": "a1991596d9d10179b6ed6e31462cf2640799e84a097c086c4a659a82a4489c24",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0890.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0890.pdb",
+      "bytes": 90022,
+      "sha256": "d504bd4d9a653553e8848d2acc945df8e76f3db4cb4fdf1a3c57cee96eacfddf",
+      "content_type": "chemical/x-pdb"
+    },
+    "rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0971.pdb": {
+      "url": "https://benavt.github.io/sr215-cohort-atlas/rpf-sr215/res32-47-plus78-99-plus121-139/models/SR215_bmr6366__BioEMU2__0971.pdb",
+      "bytes": 90022,
+      "sha256": "051b68278b46baecd1a754f950398e65a7a4a633974c9e0a62f17df7d0e9f4bc",
+      "content_type": "chemical/x-pdb"
+    }
+  }
+}

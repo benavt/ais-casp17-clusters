@@ -90,14 +90,16 @@
       const spanX = xmax - xmin || 1, spanY = ymax - ymin || 1, scale = Math.min((width - 80) / spanX, (height - 80) / spanY);
       const xy = p => [width / 2 + (p[0] - (xmin + xmax) / 2) * scale, height / 2 - (p[1] - (ymin + ymax) / 2) * scale];
       for (const segment of layout.edges) world.append(element('polyline', {points: segment.map(xy).map(p => p.join(',')).join(' '), fill: 'none', stroke: '#a0a0a0', 'stroke-width': 1.2, 'vector-effect': 'non-scaling-stroke'}));
-      const vertices = new Map();let visibleHighlighted=0;
-      for (const row of payload.models) { const i=byName.get(row.model),value=scheme.values[i],key=scheme.type==='continuous'?(Number.isFinite(value)?'valid':'Not calculable'):String(value??'Unspecified');if(hiddenCategories.has(key))continue; if (!vertices.has(row.vertex)) vertices.set(row.vertex, []); vertices.get(row.vertex).push(row); }
+      const vertices = new Map(), uploadedForeground=[];let visibleHighlighted=0;
+      for (const row of payload.models) { const i=byName.get(row.model),value=scheme.values[i],key=scheme.type==='continuous'?(Number.isFinite(value)?'valid':'Not calculable'):String(value??'Unspecified');if(hiddenCategories.has(key)&&!root.AISUploadedStates?.starMeta(data,i))continue; if (!vertices.has(row.vertex)) vertices.set(row.vertex, []); vertices.get(row.vertex).push(row); }
       for (const [vertex, rows] of vertices) {
         const [x, y] = xy(layout.nodes[vertex]), radius = 5 * Math.sqrt(rows.length);
         rows.forEach((row, sector) => {
           const i = byName.get(row.model), title = describe(row, i), attributes = {fill: color(scheme.values[i]), stroke: 'white', 'stroke-width': .8, 'data-model': row.model, 'data-cluster': data.clusters[i], tabindex: 0, role: 'button', 'aria-label': title, opacity: highlightedModels?(highlightedModels.has(row.model)?1:.16):1, 'data-sampling-highlight': String(!!highlightedModels?.has(row.model))};
           let marker;
-          if (rows.length === 1) marker = element('circle', {...attributes, cx: x, cy: y, r: radius});
+          const uploadedStar=root.AISUploadedStates?.starMeta(data,i);
+          if(uploadedStar)marker=element('path',{...attributes,fill:uploadedStar.color,opacity:1,d:root.AISUploadedStates.starPath(x,y,uploadedStar.medoid?12:6),'data-uploaded-state':uploadedStar.state,'data-state-medoid':String(uploadedStar.medoid)});
+          else if (rows.length === 1) marker = element('circle', {...attributes, cx: x, cy: y, r: radius});
           else {
             const a = 2 * Math.PI * sector / rows.length, b = 2 * Math.PI * (sector + 1) / rows.length;
             marker = element('path', {...attributes, d: `M${x},${y} L${x + radius * Math.cos(a)},${y + radius * Math.sin(a)} A${radius},${radius} 0 ${b - a > Math.PI ? 1 : 0} 1 ${x + radius * Math.cos(b)},${y + radius * Math.sin(b)} Z`});
@@ -107,7 +109,7 @@
           marker.addEventListener('focus', () => { info.textContent = title; info.hidden = false; });
           marker.addEventListener('click', () => { if (!drag?.moved) onChoose(data.clusters[i], row.model); });
           marker.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onChoose(data.clusters[i], row.model); } });
-          world.append(marker);
+          if(uploadedStar)uploadedForeground.push(marker);else world.append(marker);
           if(highlightedModels?.has(row.model)){
             ++visibleHighlighted;
             const ring={fill:'none',stroke:'#151515','stroke-width':1.8,'vector-effect':'non-scaling-stroke','pointer-events':'none','aria-hidden':'true','data-sampling-ring':'true','data-sampling-model':row.model,'data-model-index':i};
@@ -116,6 +118,7 @@
         });
         if (rows.some(r => data.clusters[byName.get(r.model)] === active)) world.append(element('circle', {cx: x, cy: y, r: radius + 3, fill: 'none', stroke: '#153f4d', 'stroke-width': 2, 'pointer-events': 'none', 'data-selection-ring': 'true'}));
       }
+      for(const marker of uploadedForeground)world.append(marker);
       legend.replaceChildren();
       const heading = document.createElement('strong'); heading.textContent = scheme.name; legend.append(heading);
       if (scheme.type === 'continuous') {
@@ -133,6 +136,7 @@
           entry.append(dot, String(value ?? 'Unspecified')); legend.append(entry);
         }
       }
+      if(data.cohort_id===root.AISUploadedStates?.COHORT)for(const n of [1,2,3]){const entry=document.createElement('span');entry.textContent='★ 260 State '+n;entry.style.color=['#1f77b4','#ff7f0e','#9467bd'][n-1];legend.append(entry);}
       note.textContent = `${payload.models.length} models · ${data.representatives.length} clusters.`+(highlightedModels?` ${visibleHighlighted} of ${highlightedModels.size} highlights.`:'');
       if (detailsHref) {
         const link = document.createElement('a'); link.href = detailsHref; link.className = 'bonsai-details-link'; link.textContent = 'Methods'; link.setAttribute('aria-label', 'Bonsai plot details and controls');

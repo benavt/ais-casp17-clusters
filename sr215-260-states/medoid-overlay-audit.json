@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "status": "verified_accepted_static_overlay",
+  "cohort_id": "afsample3-bioemu2-260-states-2150",
+  "models": 2150,
+  "baseline_catalog_sha256": "0d4e2a53c5978b3846487b4b6c70dc862e1d35a7ae3e652d6bdfcf7963a3bbaf",
+  "catalog_sha256": "722c1e124ed9396a80912b85cda653aba8423a073a748841db756294c13aaeff",
+  "science_acceptance_sha256": "2c83c0a38c5cabda42753138dad466b56bde4232ce649a8a42dee2dd93ab4b9a",
+  "plan_sha256": "4c549ce02995edb9d37efc256e2a090cd50c6dd86a7dd598a59923cf4aa442ca",
+  "current_rpf_source_sha256": "83390542cb0af458699c85fbad27d3849b6736c6984b595c6087640dbc66d1b1",
+  "views": [
+    {
+      "range": "all",
+      "view": "primary",
+      "payload": "sr215-260-states/all/primary.json",
+      "baseline_sha256": "257d0fcd5d483b9a919c3a6f72f9f500ff1a3d806194a3586eb9fad60ea069e8",
+      "sha256": "322f3685db5b5e9c156fd569f5e331f4667b137cb98b48a36f464a153f609101",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "a25c16b36a5ae80fb8e49832bf24ee708448986a6239a52524deb24c8c5a4efa",
+      "clusters_sha256": "0fe32d44267107307b38f4e93afb711d7415d11bfbb22da59ee02e4070f631fd",
+      "representatives_sha256": "80f69d2c767969243bde681b553114483245e71f3124b6b6ec99147931451241",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "f0fe5391f6d920a25ed45ce87b678472927361405897f94c5fa5f158ac1f8a63",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "all",
+      "view": "density",
+      "payload": "sr215-260-states/all/density.json",
+      "baseline_sha256": "304a353c1f9a7e22022a9497c1525d6b909a0d3240d9d578551918ac4a7b4778",
+      "sha256": "5e67f55579a3f68859bfe1d0178a4bdc32994467e27edc094ee1ff2e1498fffb",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "a25c16b36a5ae80fb8e49832bf24ee708448986a6239a52524deb24c8c5a4efa",
+      "clusters_sha256": "5048efbb021ab9dca4e14ffacf6edad4c7508d5206376eb2d772c5013af601db",
+      "representatives_sha256": "69cdd415eacffdd4d48cc24fbd8a00cc76abde17f39e71839e49c19c3d81aaf4",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "f0fe5391f6d920a25ed45ce87b678472927361405897f94c5fa5f158ac1f8a63",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res5-95",
+      "view": "primary",
+      "payload": "sr215-260-states/res5-95/primary.json",
+      "baseline_sha256": "1ecf164a91194bd4032b30e97705f950ddd9094626580b5ee326057869008c4a",
+      "sha256": "5a6570b21a9119e8584062f5e7961628fcdf107d5ba99b2783a3613322f7e318",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "7f0fb1567ce6a0de4442d7b759880e657d32b513f74902214ba7e591bd56947b",
+      "clusters_sha256": "ab6d3a7e7d0a43184aa13c21e762b0cb570b73412711f76bdbbd0117c8ce4ec3",
+      "representatives_sha256": "34f51411a1b27229cf68810db6abbc1e7f4fe87543a990054ec6fd0be7eb6159",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "74f8270c945421ce757f5483aa24318c6c6cbb27c4b8504ba6a39e4d087c6ead",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res5-95",
+      "view": "density",
+      "payload": "sr215-260-states/res5-95/density.json",
+      "baseline_sha256": "9ca4aa9360e2e49661ea188de2cd13b3496ef4e0bcd218eed460764fafe81e82",
+      "sha256": "62d19e6dee4a4da82d13a4d42e6e111ec7188a07c8bb8ef3b90ef19ea80ce523",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "7f0fb1567ce6a0de4442d7b759880e657d32b513f74902214ba7e591bd56947b",
+      "clusters_sha256": "d4d641c86d6a7db74ffb36f0ca3d3ac1e75e2851711b00cce302f2da620f20e5",
+      "representatives_sha256": "9c24e5abf5f97b5f6c74eb605e4f52e969f8e4006679a52350156e4502ee73fd",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "74f8270c945421ce757f5483aa24318c6c6cbb27c4b8504ba6a39e4d087c6ead",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res32-47-plus78-99",
+      "view": "primary",
+      "payload": "sr215-260-states/res32-47-plus78-99/primary.json",
+      "baseline_sha256": "aaee5928ad1ef79c68d56972af9d87b969ae03e000986eddd08e503687c5f184",
+      "sha256": "17a725cede78899bbcc3adf6046150254b0718493ceb57eb7b85adaace3af3ef",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "978cd0495b4d48cefc82b8fad583b1204a1beb4d9507c36f1afe2a20f06a7c55",
+      "clusters_sha256": "f527d1ef8d52a61eaf71233304f1356e32dd19e1ea27a5ee217129ea0404bc80",
+      "representatives_sha256": "964d8402e1ae1928c38931a7c016b57f51908772a8d9ae7dcbb69a841e700e41",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "30fcbf320e1d65eb209238178dafd15e12104927efa83c4739025628fe5073ca",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res32-47-plus78-99",
+      "view": "density",
+      "payload": "sr215-260-states/res32-47-plus78-99/density.json",
+      "baseline_sha256": "1736132eba0ad3542a2551d2e2c04c793e48bbcc018855665c7460c5e4652f40",
+      "sha256": "3ec71ff059bcd66755991a87957668626f6b8e82c09d47dd262d084fb9beb525",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "978cd0495b4d48cefc82b8fad583b1204a1beb4d9507c36f1afe2a20f06a7c55",
+      "clusters_sha256": "eb0170797320836a18a95ea5ed7127e315e39821094cbccf061143051d14c882",
+      "representatives_sha256": "13e42f17806cedca843bdb4659aa0e7307bdeb97180fd522eb9cb628cace9312",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "30fcbf320e1d65eb209238178dafd15e12104927efa83c4739025628fe5073ca",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res32-47-plus78-99-plus121-139",
+      "view": "primary",
+      "payload": "sr215-260-states/res32-47-plus78-99-plus121-139/primary.json",
+      "baseline_sha256": "4e09f3cf07f2f130f8e894b1ca1dd9bfc810712d72707ae14558bf9f09833ef8",
+      "sha256": "ca763a0b0c7b4a7213473a56dc539a8d11c94c76c1e6e4140f7d8ccdc9bae159",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "7e43de4390ed303d287cde9c3dadd4183925f3cb4f4a4ac936b211db3f4134f6",
+      "clusters_sha256": "760649a16804c90baf7f09a4404350163e0814e1537c7d1c4207da9aa444ef31",
+      "representatives_sha256": "1c77f53f1aa943cf7a67c496ac2a17c2fcd472768a9df3ca28bbb4587620944b",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "6dc9b289294d82eaad302f93b36cedb427be1a419e3247f12d8123b9bfe274ad",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    },
+    {
+      "range": "res32-47-plus78-99-plus121-139",
+      "view": "density",
+      "payload": "sr215-260-states/res32-47-plus78-99-plus121-139/density.json",
+      "baseline_sha256": "c0763c8013cba047a6da6738cf5d1582e9c8e5e63191eb23436f88ba4e6591a6",
+      "sha256": "3a44956412876c141239712b61d022d29fb129af204d5b5ff46854c9e0d246bd",
+      "models": 2150,
+      "tm_values_per_state": 2000,
+      "current_rpf_models": 2000,
+      "unscored_uploaded_models": 150,
+      "projections_sha256": "7e43de4390ed303d287cde9c3dadd4183925f3cb4f4a4ac936b211db3f4134f6",
+      "clusters_sha256": "bcccf6bd3ccff2410553da836481586b9a1ca6b1112d8d14f6a334b049cead67",
+      "representatives_sha256": "95bde12a873b43efe68aa4f2aba2c635d8d28d5403243adae8352dbef14ad656",
+      "bonsai_descriptor": {
+        "file": "bonsai.json",
+        "sha256": "6dc9b289294d82eaad302f93b36cedb427be1a419e3247f12d8123b9bfe274ad",
+        "selected_models": 450
+      },
+      "projections_unchanged": true,
+      "memberships_unchanged": true,
+      "representatives_unchanged": true,
+      "bonsai_unchanged": true
+    }
+  ],
+  "medoids": [
+    {
+      "state": "260_state1",
+      "model": "SR215_bmr6366__260State1__0045",
+      "mean_ca_rmsd": 3.076838119255376,
+      "source_frame": 45,
+      "member_count": 50,
+      "shared_ca_count": 139,
+      "medoid_metric": "minimum_mean_pairwise_rigid_fit_ca_rmsd",
+      "canonical_residues": [
+        1,
+        139
+      ],
+      "tie_break": "first sourceordinal among means within native isclose rtol1e-8 atol1e-8",
+      "file": "sr215-260-states/medoids/SR215_bmr6366__260State1__0045.pdb",
+      "format": "pdb",
+      "sha256": "6d763cabf86148e050400e281ce2de78018b76ed623050c529186f1a00adf299",
+      "source_sha256": "6d763cabf86148e050400e281ce2de78018b76ed623050c529186f1a00adf299",
+      "mean_ca_rmsd_convention": "Native mean over all 50 conformers, including the zero self-comparison; 49 other conformers determine the same medoid ranking."
+    },
+    {
+      "state": "260_state2",
+      "model": "SR215_bmr6366__260State2__0040",
+      "mean_ca_rmsd": 3.565509741050533,
+      "source_frame": 40,
+      "member_count": 50,
+      "shared_ca_count": 139,
+      "medoid_metric": "minimum_mean_pairwise_rigid_fit_ca_rmsd",
+      "canonical_residues": [
+        1,
+        139
+      ],
+      "tie_break": "first sourceordinal among means within native isclose rtol1e-8 atol1e-8",
+      "file": "sr215-260-states/medoids/SR215_bmr6366__260State2__0040.pdb",
+      "format": "pdb",
+      "sha256": "5b5e6fceb3dfa6674def9c3e9128e8475da085a7c13dbace57aea04a9a1c36bb",
+      "source_sha256": "5b5e6fceb3dfa6674def9c3e9128e8475da085a7c13dbace57aea04a9a1c36bb",
+      "mean_ca_rmsd_convention": "Native mean over all 50 conformers, including the zero self-comparison; 49 other conformers determine the same medoid ranking."
+    },
+    {
+      "state": "260_state3",
+      "model": "SR215_bmr6366__260State3__0042",
+      "mean_ca_rmsd": 5.93961985153959,
+      "source_frame": 42,
+      "member_count": 50,
+      "shared_ca_count": 139,
+      "medoid_metric": "minimum_mean_pairwise_rigid_fit_ca_rmsd",
+      "canonical_residues": [
+        1,
+        139
+      ],
+      "tie_break": "first sourceordinal among means within native isclose rtol1e-8 atol1e-8",
+      "file": "sr215-260-states/medoids/SR215_bmr6366__260State3__0042.pdb",
+      "format": "pdb",
+      "sha256": "38715c8578f36a14e046bdc1d756ee828e38b7814ab75dcf8fd69eff6fdfed85",
+      "source_sha256": "38715c8578f36a14e046bdc1d756ee828e38b7814ab75dcf8fd69eff6fdfed85",
+      "mean_ca_rmsd_convention": "Native mean over all 50 conformers, including the zero self-comparison; 49 other conformers determine the same medoid ranking."
+    }
+  ],
+  "metric_scope": [
+    1,
+    139
+  ],
+  "clustering_scope_count": 4,
+  "clustering_fits": 0,
+  "new_rpf_calls": 0,
+  "new_bonsai_fits": 0,
+  "paid_calls": 0,
+  "public_deployment": false,
+  "files": {
+    "sr215-260-states/medoids/SR215_bmr6366__260State1__0045.pdb": {
+      "sha256": "6d763cabf86148e050400e281ce2de78018b76ed623050c529186f1a00adf299",
+      "bytes": 181889
+    },
+    "sr215-260-states/medoids/SR215_bmr6366__260State2__0040.pdb": {
+      "sha256": "5b5e6fceb3dfa6674def9c3e9128e8475da085a7c13dbace57aea04a9a1c36bb",
+      "bytes": 181889
+    },
+    "sr215-260-states/medoids/SR215_bmr6366__260State3__0042.pdb": {
+      "sha256": "38715c8578f36a14e046bdc1d756ee828e38b7814ab75dcf8fd69eff6fdfed85",
+      "bytes": 181889
+    },
+    "sr215-260-states/downloads/tm-and-current-rpf-2000.csv": {
+      "sha256": "9a61a60b8f6f48d3083a168254cec77b6ea3b6b1c6aff3a25d9f3c63882fc767",
+      "bytes": 370926
+    },
+    "sr215-260-states/downloads/uploaded-state-medoids.json": {
+      "sha256": "dd298332cba40108c8d6717df43908026461082c60aca66da5748ca3858998c7",
+      "bytes": 2507
+    },
+    "sr215-260-states/downloads/tm-and-current-rpf-2000.json": {
+      "sha256": "a48d4be4b9184150e9b766e6d1355f1d65572fd3c23262d9ba5437994f349481",
+      "bytes": 790803
+    },
+    "sr215-260-states/downloads/independent-validation.json": {
+      "sha256": "25909785e6e8c3b3346a813f61c23e6df458a0c58b9f7d1e116a8c6af6a39973",
+      "bytes": 2173
+    },
+    "sr215-260-states/downloads/medoid-tm-provenance.json": {
+      "sha256": "b2fc364d792c52e6f6072a79390fbb035fcd28fae72cf20ecf90b7bdfea614ee",
+      "bytes": 4378
+    },
+    "sr215-260-states/all/primary.json": {
+      "sha256": "322f3685db5b5e9c156fd569f5e331f4667b137cb98b48a36f464a153f609101",
+      "bytes": 1179239
+    },
+    "sr215-260-states/all/density.json": {
+      "sha256": "5e67f55579a3f68859bfe1d0178a4bdc32994467e27edc094ee1ff2e1498fffb",
+      "bytes": 1242391
+    },
+    "sr215-260-states/res5-95/primary.json": {
+      "sha256": "5a6570b21a9119e8584062f5e7961628fcdf107d5ba99b2783a3613322f7e318",
+      "bytes": 1193382
+    },
+    "sr215-260-states/res5-95/density.json": {
+      "sha256": "62d19e6dee4a4da82d13a4d42e6e111ec7188a07c8bb8ef3b90ef19ea80ce523",
+      "bytes": 1252764
+    },
+    "sr215-260-states/res32-47-plus78-99/primary.json": {
+      "sha256": "17a725cede78899bbcc3adf6046150254b0718493ceb57eb7b85adaace3af3ef",
+      "bytes": 1241623
+    },
+    "sr215-260-states/res32-47-plus78-99/density.json": {
+      "sha256": "3ec71ff059bcd66755991a87957668626f6b8e82c09d47dd262d084fb9beb525",
+      "bytes": 1307832
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/primary.json": {
+      "sha256": "ca763a0b0c7b4a7213473a56dc539a8d11c94c76c1e6e4140f7d8ccdc9bae159",
+      "bytes": 1289663
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/density.json": {
+      "sha256": "3a44956412876c141239712b61d022d29fb129af204d5b5ff46854c9e0d246bd",
+      "bytes": 1353074
+    },
+    "sr215-260-states/catalog.json": {
+      "sha256": "722c1e124ed9396a80912b85cda653aba8423a073a748841db756294c13aaeff",
+      "bytes": 3895
+    },
+    "sr215-260-states/downloads/uploaded-state-medoids.json.gz": {
+      "sha256": "01f03ea7de8036c41af1832da53b2f3eaa771f223f6e91165d0f357726024f65",
+      "bytes": 630
+    },
+    "sr215-260-states/downloads/tm-and-current-rpf-2000.json.gz": {
+      "sha256": "883063cd38b173a6c88c85aeff692294fb8e44630a3fc3a1fd7ceffa7385f15c",
+      "bytes": 152686
+    },
+    "sr215-260-states/downloads/independent-validation.json.gz": {
+      "sha256": "9b4d3038f61d2f08274a62df31566fca26e4b955ecd790ca957d8fa26d09f6a4",
+      "bytes": 634
+    },
+    "sr215-260-states/downloads/medoid-tm-provenance.json.gz": {
+      "sha256": "5ca6edb17c245b40a2b64e33cccfac0b09a877891c9158c86d6bab23ab8ee8a5",
+      "bytes": 1409
+    },
+    "sr215-260-states/all/primary.json.gz": {
+      "sha256": "c52e3f431cc94624e2fbc05e44784265ec6b7a1a1df08444a5f2ad23c4e5df5d",
+      "bytes": 194968
+    },
+    "sr215-260-states/all/density.json.gz": {
+      "sha256": "80e47fbd6ad78ad27f89e690097fa38d36b0ac18ea22dc1a6a69b44a71d1be1a",
+      "bytes": 203981
+    },
+    "sr215-260-states/res5-95/primary.json.gz": {
+      "sha256": "26b3c5690f5e1c85dcac59da54e58ee467e01883ab76d2bacadbeb7060364d03",
+      "bytes": 198774
+    },
+    "sr215-260-states/res5-95/density.json.gz": {
+      "sha256": "c2fb4802fbbd94d34650375e9d71d676599bcae2c109d3803e475346b7413550",
+      "bytes": 207094
+    },
+    "sr215-260-states/res32-47-plus78-99/primary.json.gz": {
+      "sha256": "a50b06a066710c6b682e2e2ed59cc575d32c896ebf94b1c53b6b556c86440360",
+      "bytes": 197432
+    },
+    "sr215-260-states/res32-47-plus78-99/density.json.gz": {
+      "sha256": "6ecbfe7d6253b8051666451055c0b2dd5a719b39a81412046900587914562709",
+      "bytes": 207008
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/primary.json.gz": {
+      "sha256": "678c5eb23cd3c5378afa11b43e6057360cf8827e6b6c44e124f6f078e342b39b",
+      "bytes": 196259
+    },
+    "sr215-260-states/res32-47-plus78-99-plus121-139/density.json.gz": {
+      "sha256": "6408400317ef9a927d3e44b1ea9792772b9fe17dc58e74dacad4a80bd594c846",
+      "bytes": 204665
+    },
+    "sr215-260-states/catalog.json.gz": {
+      "sha256": "f595f5d4cde8addbc168135a526b012366a2d762007ff9f19dfddd344af6b609",
+      "bytes": 799
+    },
+    "packed-assets.json": {
+      "sha256": "18123377770095b20e5f70700002fe382ecdace01337ccb48b0451b754742c8b",
+      "bytes": 1037527
+    }
+  },
+  "note": "This fresh audit uses the current authoritative per-view catalog hashes; the inherited earlier completion-audit payload hashes are historical."
+}
