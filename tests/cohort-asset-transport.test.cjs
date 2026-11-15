@@ -93,5 +93,5 @@ test('404 asset responses retain native status without attempted decompression',
 test('actual integrated inventory validates without reading scientific payloads',async()=>{
  const path=__dirname+'/../';
  const packed=JSON.parse(fs.readFileSync(path+'packed-assets.json','utf8')),external=JSON.parse(fs.readFileSync(path+'external-assets.json','utf8'));
- const f=await fixture({packed,external});assert.equal(f.calls.length,2);assert.equal(Object.keys(external.files).length,284);
+ const f=await fixture({packed,external});assert.equal(f.calls.length,2);assert.equal(Object.keys(external.files).length,681);assert(external.files['sr215-afs1-afs3/downloads/cohort-manifest.json']);assert(external.files['sr215-afs1-afs3/downloads/publication-sanitization.json']);
 });
