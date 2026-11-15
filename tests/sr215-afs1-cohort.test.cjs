@@ -11,8 +11,8 @@ test('the relaxed AFS1 plus AFS3 catalog binds all accepted 7,000-model views an
  for(const range of catalog.residue_ranges){assert.equal(range.views.length,2);for(const view of range.views){
   const data=read(view.data);assert.equal(data.cohort_id,catalog.id);assert.equal(data.range_id,range.id);assert.equal(data.view_id,view.source_view_id);assert.equal(data.models.length,7000);assert.equal(data.models.length,new Set(data.models).size);assert.equal(packed.files[view.data].sha256,view.source_data_sha256);
   assert.equal(data.schemes.find(row=>row.key==='ais_method').values.length,7000);assert.equal(data.schemes.find(row=>row.key==='protein_ebm_energy_t10').values.length,7000);
-  assert(external.files[range.asset_root+'/'+data.membership_file]);assert(external.files[range.asset_root+'/'+data.bonsai.file]);
-  for(const row of data.representatives){representatives++;assert(external.files[range.asset_root+'/'+row.file]);for(const part of row.ensemble_downloads||[]){parts++;assert.equal(part.sha256.length,64);assert(part.bytes>0);}}
+  assert(external.files[view.asset_root+'/'+data.membership_file]);assert(external.files[view.asset_root+'/'+data.bonsai.file]);
+  for(const row of data.representatives){representatives++;assert(external.files[view.asset_root+'/'+row.file]);for(const part of row.ensemble_downloads||[]){parts++;assert.equal(part.sha256.length,64);assert(part.bytes>0);}}
  }}
  assert.equal(representatives,376);assert.equal(parts,507);
 });
