@@ -1,15 +1,16 @@
 /* Display accepted saved panels. This module performs no scientific sampling. */
 (function(root){
  'use strict';
- const sources={'afsample3-bioemu2':{count:2000,root:'analysis-2000',scores:'model-scores-2000.json'},'afsample3-bioemu2-260-states-2150':{count:2150,root:'analysis',scores:'model-scores-2150.json'}},cache=new Map();
+ const sources={'afsample3-bioemu2':{count:2000,root:'analysis-2000',scores:'model-scores-2000.json'},'afsample3-bioemu2-260-states-2150':{count:2150,root:'analysis',scores:'model-scores-2150.json'},'current-12104':{count:12104,root:'sr215-current/sampling',embeddedRoster:true}},cache=new Map();
  const empty=()=>({active:false,indices:new Set(),orderedIndices:[]});
  let context=null,current=null,highlight=empty(),preference={state:'S1',method:'none',repeat:1},redraw=()=>{},busy=false;
  const supports=data=>!!sources[data?.cohort_id];
  function need(ok,message){if(!ok)throw Error('Saved cohort sampling: '+message)}
  function validate(data,summary,scores){
   const source=sources[data.cohort_id];need(source&&summary.cohort_id===data.cohort_id&&summary.cohort_models===source.count,'cohort identity differs.');
-  const roster=new Set(data.models),scoreRoster=new Set(scores.map(row=>row.model));
-  need(roster.size===source.count&&data.models.length===source.count&&scoreRoster.size===source.count&&scores.length===source.count&&data.models.every(id=>scoreRoster.has(id)),'model roster differs.');
+  const roster=new Set(data.models),acceptedModels=source.embeddedRoster?summary.models:scores.map(row=>row.model),scoreRoster=new Set(acceptedModels);
+  need(roster.size===source.count&&data.models.length===source.count&&scoreRoster.size===source.count&&acceptedModels.length===source.count&&data.models.every(id=>scoreRoster.has(id)),'model roster differs.');
+  if(source.embeddedRoster)need(data.models.every((model,index)=>model===acceptedModels[index]),'model order differs.');
   const mask=summary.masks.find(row=>row.id===data.range_id);need(mask,'residue subset is missing.');
   const panels=summary.panels.filter(row=>row.mask===mask.id),keys=new Set(),byModel=new Map(data.models.map((id,i)=>[id,i]));
   for(const panel of panels){
@@ -23,8 +24,8 @@
  async function prepare(data){
   if(!supports(data))return null;
   const source=sources[data.cohort_id];
-  if(!cache.has(data.cohort_id))cache.set(data.cohort_id,Promise.all(['summary.json',source.scores].map(async name=>{const response=await fetch(source.root+'/'+name,{cache:'no-cache'});need(response.ok,'accepted results unavailable.');return response.json()})).catch(error=>{cache.delete(data.cohort_id);throw error}));
-  const [summary,scores]=await cache.get(data.cohort_id);return validate(data,summary,scores);
+  if(!cache.has(data.cohort_id))cache.set(data.cohort_id,Promise.all(['summary.json',...(source.scores?[source.scores]:[])].map(async name=>{const response=await fetch(source.root+'/'+name,{cache:'no-cache'});need(response.ok,'accepted results unavailable.');return response.json()})).catch(error=>{cache.delete(data.cohort_id);throw error}));
+  const [summary,scores=[]]=await cache.get(data.cohort_id);return validate(data,summary,scores);
  }
  function select(ctx,settings){
   if(!ctx||settings.method==='none')return empty();
