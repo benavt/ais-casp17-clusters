@@ -5,6 +5,7 @@ const nodes=new Map();function node(id){if(!nodes.has(id))nodes.set(id,{value:''
 global.document={getElementById:node,createElement:()=>({})};global.location={hash:''};global.history={replaceState(_a,_b,hash){global.location.hash=hash}};
 global.AISUploadedStates={starMeta(data,i){return data.models[i].includes('__260State')?{medoid:data.uploaded_state_medoids?.some(row=>row.model===data.models[i])}:null}};
 const api=require('../cohort_sampling.js');
+assert.equal(api.supports({cohort_id:'current-12104'}),true,'The accepted 12,104-model RPF panels must be available in the Atlas');
 function read(file){return JSON.parse(fs.existsSync(file)?fs.readFileSync(file):zlib.gunzipSync(fs.readFileSync(file+'.gz')))}
 const original=read('rpf-overlays.json'),expanded=read('sr215-260-states/catalog.json');
 function catalogs(value){if(!value||typeof value!=='object')return [];let out=[];if(value.id==='afsample3-bioemu2'&&value.residue_ranges)out.push(value);for(const child of Object.values(value))if(typeof child==='object')out.push(...catalogs(child));return out}
@@ -31,5 +32,18 @@ for(const [catalog,root,scoresFile]of [[legacy,'analysis-2000','model-scores-200
   if(summary.cohort_models===2000)assert.throws(()=>api.select(context,{state:'S1',method:'mcmc50',repeat:2}),/unavailable/);
  }
 }
-assert.equal(panelCases,64);assert.equal(projectionCases,192);
+const currentCatalog=read('sr215-current/catalog.json'),currentSummary=read('sr215-current/sampling/summary.json');
+const currentRange=currentCatalog.residue_ranges.find(range=>range.id==='res32-47-plus78-99'),currentView=currentRange.views.find(view=>view.id==='density'),currentData=read(currentView.data);
+currentData.cohort_id=currentSummary.cohort_id;currentData.range_id=currentRange.id;
+const currentContext=api.validate(currentData,currentSummary,[]);
+assert.equal(currentContext.mask.states.length,3);assert.equal(currentContext.panels.length,18);assert.equal(currentSummary.models.length,12104);
+for(const panel of currentContext.panels){
+ const chosen=api.select(currentContext,{state:panel.state,method:panel.method,repeat:panel.repeat});assert.equal(chosen.indices.size,50);assert.deepEqual(chosen.orderedIndices.map(i=>currentData.models[i]),panel.models);panelCases++;
+ assert(panel.pdb.startsWith('https://benavt.github.io/rpf-results/current/panels/'));assert(fs.existsSync(panel.members_csv));
+ global.location.hash='#SR215_bmr6366?cohort=current-12104&range=res32-47-plus78-99&view=density&sampleState='+panel.state+'&sampleMethod='+panel.method+'&sampleRepeat='+panel.repeat;api.mount(currentData,currentContext,()=>{});
+ for(const method of ['pca','umap','tsne']){const trace=api.overlay(currentData,method,{type:'categorical',values:currentData.models.map(()=>'visible')},()=>true,new Set());assert.equal(trace.customdata.length,50);projectionCases++}
+}
+global.location.hash='#SR215_bmr6366?cohort=current-12104&range=res32-47-plus78-99&view=density&sampleState=S1&sampleMethod=mcmc50&sampleRepeat=1';
+api.mount(currentData,currentContext,()=>{});assert.equal(api.highlight.indices.size,50);assert.deepEqual(api.highlight.orderedIndices.map(i=>currentData.models[i]),currentContext.panels.find(p=>p.state==='S1'&&p.method==='mcmc50'&&p.repeat===1).models);
+assert.equal(panelCases,82);assert.equal(projectionCases,246);
 console.log(`PASS: ${panelCases} exact panel/view memberships, ${projectionCases} projection render memberships, deep links/repeats, uploaded-star filter policy, busy controls, clear, and invalid IDs/states/repeats.`);

@@ -126,7 +126,7 @@ function changeSavedSelection(){
  window.history?.replaceState(null,'','#'+analysisHash(data.target,data.range_id,data.policy_view_id||data.view_id));scheduleSelectionDraw().catch(fail);
 }
 function updateTMStateControls(){
- const row=$('tmStateControls');if(!row)return;row.hidden=data?.cohort_id==='afsample3-bioemu2'||typeof AISExplorerTMStates==='undefined'||tmStateLoader?.enabled!==true;if(row.hidden){renderTMStateDownloads(false);return}
+ const row=$('tmStateControls');if(!row)return;row.hidden=cohortSampling()?.supports(data)||typeof AISExplorerTMStates==='undefined'||tmStateLoader?.enabled!==true;if(row.hidden){renderTMStateDownloads(false);return}
  const available=!!tmStatePayload&&!tmStateLoading,select=$('tmStateSelect'),states=tmStatePayload?.states||[];
  const options=[Object.assign(document.createElement('option'),{value:'none',textContent:'None'})];
  if(states.length)options.push(Object.assign(document.createElement('option'),{value:'all',textContent:'All supported states'}));
