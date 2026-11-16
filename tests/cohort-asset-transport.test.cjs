@@ -94,4 +94,12 @@ test('actual integrated inventory validates without reading scientific payloads'
  const path=__dirname+'/../';
  const packed=JSON.parse(fs.readFileSync(path+'packed-assets.json','utf8')),external=JSON.parse(fs.readFileSync(path+'external-assets.json','utf8'));
  const f=await fixture({packed,external});assert.equal(f.calls.length,2);assert.equal(Object.keys(external.files).length,681);assert(external.files['sr215-afs1-afs3/downloads/cohort-manifest.json']);assert(external.files['sr215-afs1-afs3/downloads/publication-sanitization.json']);
+ const remoteStateDownloads=[
+  '260_state1-50-model-ensemble.pdb','260_state2-50-model-ensemble.pdb','260_state3-50-model-ensemble.pdb',
+  'independent-validation.json','medoid-tm-provenance.json','tm-and-current-rpf-2000.json','uploaded-state-medoids.json'
+ ];
+ for(const name of remoteStateDownloads){
+  const key='sr215-260-states/downloads/'+name;
+  assert.equal(packed.files[key].url,remote+key+'.gz','remote URL for '+key);
+ }
 });
