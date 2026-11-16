@@ -1,8 +1,9 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),zlib=require('node:zlib'),path=require('node:path');
 process.chdir(path.join(__dirname,'..'));
-const nodes=new Map();function node(id){if(!nodes.has(id))nodes.set(id,{value:'',textContent:'',disabled:false,setAttribute(k,v){this[k]=v},replaceChildren(...children){this.children=children}});return nodes.get(id)}
-global.document={getElementById:node,createElement:()=>({})};global.location={hash:''};global.history={replaceState(_a,_b,hash){global.location.hash=hash}};
+function element(){return{value:'',textContent:'',disabled:false,hidden:false,style:{},children:[],setAttribute(k,v){this[k]=v},replaceChildren(...children){this.children=children},append(...children){this.children.push(...children)}}}
+const nodes=new Map();function node(id){if(!nodes.has(id))nodes.set(id,element());return nodes.get(id)}
+global.document={getElementById:node,createElement:element,createTextNode:text=>({textContent:text})};global.location={hash:''};global.history={replaceState(_a,_b,hash){global.location.hash=hash}};
 global.AISUploadedStates={starMeta(data,i){return data.models[i].includes('__260State')?{medoid:data.uploaded_state_medoids?.some(row=>row.model===data.models[i])}:null}};
 const api=require('../cohort_sampling.js');
 assert.equal(api.supports({cohort_id:'current-12104'}),true,'The accepted 12,104-model RPF panels must be available in the Atlas');
@@ -45,5 +46,11 @@ for(const panel of currentContext.panels){
 }
 global.location.hash='#SR215_bmr6366?cohort=current-12104&range=res32-47-plus78-99&view=density&sampleState=S1&sampleMethod=mcmc50&sampleRepeat=1';
 api.mount(currentData,currentContext,()=>{});assert.equal(api.highlight.indices.size,50);assert.deepEqual(api.highlight.orderedIndices.map(i=>currentData.models[i]),currentContext.panels.find(p=>p.state==='S1'&&p.method==='mcmc50'&&p.repeat===1).models);
-assert.equal(panelCases,82);assert.equal(projectionCases,246);
+for(const method of ['mcmc50','disco50']){
+ global.location.hash='#SR215_bmr6366?cohort=current-12104&range=res32-47-plus78-99&view=density&sampleState=all&sampleMethod='+method+'&sampleRepeat=1';
+ api.mount(currentData,currentContext,()=>{});assert.equal(api.highlight.groups.length,3);assert.equal(api.highlight.indices.size,150);assert.deepEqual(api.highlight.groups.map(group=>group.color),['#0080ff','#ff8000','#339933']);
+ const expected=currentContext.mask.states.flatMap(state=>currentContext.panels.find(p=>p.state===state.id&&p.method===method&&p.repeat===1).models);assert.deepEqual(api.highlight.orderedIndices.map(i=>currentData.models[i]),expected);
+ for(const projection of ['pca','umap','tsne']){const traces=api.overlayTraces(currentData,projection,{type:'categorical',values:currentData.models.map(()=>'visible')},()=>true,new Set());assert.equal(traces.length,3);assert.deepEqual(traces.map(trace=>trace.customdata.length),[50,50,50]);assert.deepEqual(traces.map(trace=>trace.meta.state_id),['S1','S2','S3']);assert.deepEqual(traces.map(trace=>trace.marker.line.color),['#0080ff','#ff8000','#339933']);projectionCases+=3}
+}
+assert.equal(panelCases,82);assert.equal(projectionCases,264);
 console.log(`PASS: ${panelCases} exact panel/view memberships, ${projectionCases} projection render memberships, deep links/repeats, uploaded-star filter policy, busy controls, clear, and invalid IDs/states/repeats.`);

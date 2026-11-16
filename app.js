@@ -107,7 +107,7 @@ function clearAllSelectionHighlights(){
 function clearSamplingHighlight(){selectionPayload=null;selectionHighlight={active:false,indices:new Set(),orderedIndices:[]};selectionResult={status:'loading',note:''};++selectionRenderSerial;}
 function baseSelectionProjectionTraces(method){const rows=traces(method);if(hdbStateHighlight.active&&typeof AISExplorerSelections!=='undefined'){return [...rows,...hdbStateHighlight.groups.map(group=>{const t=AISExplorerSelections.overlayTrace(data,method,{active:true,orderedIndices:group.indices},scheme(),visibleCluster,hiddenProjectionCategories);return {...t,name:group.state_id+' · '+group.method,meta:{...t.meta,hdbStateHighlight:true,state_id:group.state_id}}})]}if(tmStateHighlight.active&&typeof AISExplorerTMStates!=='undefined')return [...rows,...AISExplorerTMStates.overlayTraces(data,method,tmStateHighlight,scheme(),visibleCluster,hiddenProjectionCategories)];if(typeof AISExplorerSelections==='undefined')return rows;const overlay=AISExplorerSelections.overlayTrace(data,method,selectionHighlight,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...rows,overlay]:rows;}
 function selectionProjectionTraces(method){
- if(cohortSampling()?.supports(data)){const overlay=cohortSampling()?.overlay(data,method,scheme(),visibleCluster,hiddenProjectionCategories);return overlay?[...traces(method),overlay]:traces(method)}
+ if(cohortSampling()?.supports(data)){const overlays=cohortSampling()?.overlayTraces(data,method,scheme(),visibleCluster,hiddenProjectionCategories)||[];return overlays.length?[...traces(method),...overlays]:traces(method)}
  const rows=baseSelectionProjectionTraces(method),highlight=hdbStateHighlight.active?hdbStateHighlight:tmStateHighlight;
  const sampler=hdbStateHighlight.active?hdbStatePreference.method:tmStatePreference.method;
  if(!highlight.active||!['mcmc50','disco50'].includes(sampler)||typeof AISProjectionHover==='undefined')return rows;
@@ -824,7 +824,7 @@ async function drawMedoidTM(){
 }
 
 let bonsaiPanel=null,bonsaiSerial=0,tmBonsaiObserver=null;
-function colorTMStateBonsai(){if(data&&typeof AISExplorerTMStates!=='undefined')AISExplorerTMStates.colorBonsaiRings($('bonsai'),data.models,tmStateHighlight)}
+function colorTMStateBonsai(){if(data&&typeof AISExplorerTMStates!=='undefined')AISExplorerTMStates.colorBonsaiRings($('bonsai'),data.models,cohortSampling()?.supports(data)?cohortSampling()?.highlight:tmStateHighlight)}
 function observeTMStateBonsai(){if(!tmBonsaiObserver&&typeof MutationObserver!=='undefined'){tmBonsaiObserver=new MutationObserver(colorTMStateBonsai);tmBonsaiObserver.observe($('bonsai'),{childList:true,subtree:true})}colorTMStateBonsai()}
 async function drawBonsai(){
  const serial=++bonsaiSerial,current=data;if(hdbStateHighlight.active)return drawHDBBonsai(serial,current);if($('hdbBonsaiStatus'))$('hdbBonsaiStatus').hidden=true;$('bonsaiPanel').hidden=!current.bonsai;if(!current.bonsai)return;
